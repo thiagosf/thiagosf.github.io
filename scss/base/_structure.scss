@@ -1,0 +1,7 @@
+// H`s
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: $font-family-serif;
+    font-style: italic;
+  }
+}

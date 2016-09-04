@@ -1,0 +1,1 @@
+export intl from './intl'
