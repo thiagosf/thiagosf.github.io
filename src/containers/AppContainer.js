@@ -8,7 +8,7 @@ class AppContainer extends Component {
         <header className="main-header">
           <div className="container-fluid">
             <div className="logo-box">
-              <div className="logo"></div>
+              <div className="logo"><Icon name="logo" /></div>
               <span className="author">Thiago S.F.</span>
             </div>
             <a href="#" className="open-nav">
@@ -24,6 +24,7 @@ class AppContainer extends Component {
               </ul>
             </nav>
           </div>
+          <span className="nib-box"><Icon name="nib" /></span>
         </header>
         <section className="post-section">
           <div className="container-fluid">
@@ -40,7 +41,7 @@ class AppContainer extends Component {
                   <p>Essa semana foi lançado o MDL: Material Design Lite, framework criado pelo Google. Ele traz vários componentes para criar páginas web seguindo o conceito do Material Design. No site, você pode testar vários templates legais, mostrando como utilizar em seu site, blog, aplicativo web, etc.</p>
                   <p>Ele chega sendo uma alternativa aos vários frameworks do mercado, como o Foundation, Bootstrap, Pure, UIkit, entre outros. Particularmente eu prefiro o Foundation, tem ótimas ferramentas para sites responsivos, bastante personalizável, e segue um conceito de nomes de classes bem amigáveis.</p>
                   <p>Entretanto, vale a pena dar uma olhada com calma no MDL, seja para utilizar em admin ou mesmo sites em geral.</p>
-                  <p><a href="#" className="btn btn-primary">http://www.getmdl.io/</a></p>
+                  <p><a href="#">http://www.getmdl.io/</a></p>
                 </div>
               </div>
             </div>
