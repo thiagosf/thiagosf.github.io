@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { Icon } from '../components'
 
 class AppContainer extends Component {
@@ -8,8 +9,10 @@ class AppContainer extends Component {
         <header className="main-header">
           <div className="container-fluid">
             <div className="logo-box">
-              <div className="logo"><Icon name="logo" /></div>
-              <span className="author">Thiago S.F.</span>
+              <Link to="/">
+                <span className="logo"><Icon name="logo" /></span>
+                <span className="author">Thiago S.F.</span>
+              </Link>
             </div>
             <a href="#" className="open-nav">
               <span className="open">Open</span>

@@ -12,3 +12,15 @@ svg {
   height: 100%;
   display: block;
 }
+
+// Links
+a {
+  &:hover,
+  &:focus,
+  &:active,
+  &:active:focus {
+    color: inherit;
+    background: inherit;
+    text-decoration: none;
+  }
+}
