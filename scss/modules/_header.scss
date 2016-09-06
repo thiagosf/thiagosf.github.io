@@ -1,11 +1,32 @@
 .main-header {
   background: $header-bg-color;
   color: white;
-  position: relative;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  width: 100%;
+  &.small {
+    .logo-box {
+      a {
+        padding: 15px 10px 0px 10px;
+      }
+      .logo {
+        margin-bottom: 0;
+      }
+      .author {
+        opacity: 0;
+        transform: scale(1, 0);
+      }
+    }
+  }
   .logo-box {
     text-align: center;
+    position: relative;
+    z-index: 11;
     a {
-      padding-top: 10px;
+      transition: all 300ms;
+      padding: 15px 10px 10px 10px;
       color: white;
       display: inline-block;
       &:hover {
@@ -13,6 +34,7 @@
       }
     }
     .logo {
+      transition: all 300ms;
       width: 40px;
       height: 40px;
       display: inline-block;
@@ -22,9 +44,14 @@
       }
     }
     .author {
+      transition: all 300ms;
       display: block;
       font-size: 9px;
       line-height: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
   }
   .nib-box {
@@ -37,13 +64,77 @@
       fill: $header-bg-color;
     }
   }
-  .open-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }
 
 .main-nav {
-  display: none;
+  transition: all 300ms;
+  opacity: 0;
+  transform: translateY(-100%);
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $header-bg-color;
+  padding: 100px 20px 20px 20px;
+  ul {
+    li {
+      a {
+        color: white;
+        font-size: 16px;
+        line-height: 1;
+        display: block;
+        padding: 10px 10px;
+      }
+    }
+  }
+}
+
+.open-nav {
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  box-sizing: content-box;
+  svg {
+    fill: white;
+  }
+  span {
+    transition: all 500ms;
+    width: 32px;
+    height: 32px;
+    display: block;
+    &.open {
+      position: relative;
+    }
+    &.close {
+      transform: scale(.7);
+      opacity: 0;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  }
+}
+
+.main-header {
+  &.opened-nav {
+    .open-nav {
+      span {
+        &.open {
+          opacity: 0;
+          transform: scale(.7);
+        }
+        &.close {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+    .main-nav {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
 }

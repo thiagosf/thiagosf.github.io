@@ -1,34 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Icon } from '../components'
+import { HeaderContainer } from './'
 
 class AppContainer extends Component {
   render() {
     return(
       <div className="page-app">
-        <header className="main-header">
-          <div className="container-fluid">
-            <div className="logo-box">
-              <Link to="/">
-                <span className="logo"><Icon name="logo" /></span>
-                <span className="author">Thiago S.F.</span>
-              </Link>
-            </div>
-            <a href="#" className="open-nav">
-              <span className="open">Open</span>
-              <span className="close">Close</span>
-            </a>
-            <nav className="main-nav">
-              <ul>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Playground</a></li>
-                <li><a href="#">Posts</a></li>
-              </ul>
-            </nav>
-          </div>
-          <span className="nib-box"><Icon name="nib" /></span>
-        </header>
+        <HeaderContainer />
         <section className="post-section">
           <div className="container-fluid">
             <div className="panel panel-default">
