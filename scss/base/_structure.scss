@@ -62,3 +62,123 @@ a {
     }
   }
 }
+
+// Pagina com formatacao padrao
+%page-header {
+  margin: 0 0 20px 0;
+  border: 0;
+  padding: 0;
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+    @media #{$medium-up} {
+      font-size: 42px;
+    }
+    @media #{$xlarge-up} {
+      font-size: 48px;
+    }
+  }
+}
+.page-header {
+  @extend %page-header;
+}
+%page-content {
+  font-size: 16px;
+  line-height: 1.4;
+  @media #{$xlarge-up} {
+    font-size: 18px;
+  }
+  p {
+    margin-bottom: 20px;
+    @media #{$xlarge-up} {
+      margin-bottom: 20px;
+    }
+  }
+  @for $i from 0 through 6 {
+    h#{$i} {
+      color: #777;
+      margin: 0 0 20px 0;
+    }
+  }
+  h1, h2 {
+    font-size: 22px;
+    @media #{$xlarge-up} {
+      font-size: 36px;
+    }
+  }
+  h3 {
+    font-size: 20px;
+    @media #{$xlarge-up} {
+      font-size: 32px;
+    }
+  }
+  h4 {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    @media #{$xlarge-up} {
+      font-size: 28px;
+    }
+  }
+  h5 {
+    font-size: 17px;
+    margin: 0 0 15px 0;
+    @media #{$xlarge-up} {
+      font-size: 24px;
+    }
+  }
+  h6 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    @media #{$xlarge-up} {
+      font-size: 20px;
+    }
+  }
+  blockquote {
+    font-style: italic;
+    font-family: $font-family-serif;
+    position: relative;
+    padding: 0 0 0 20px;
+    border: 0;
+    @media #{$xlarge-up} {
+      font-size: 28px;
+    }
+    &::after {
+      content: "\201C";
+      position: absolute;
+      top: -10px;
+      left: -5px;
+      font-size: 42px;
+      color: #bbb;
+      font-family: Georgia, $font-family-serif;
+    }
+  }
+  a {
+    font-weight: 600;
+    position: relative;
+    &::before {
+      transition: all 200ms;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      opacity: 0;
+      background: $green;
+      border-radius: 2px;
+      transform: scale(1.1, 1);
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      &::before {
+        opacity: .5;
+        width: 100%;
+      }
+    }
+  }
+}
+.page-content {
+  @extend %page-content;
+}

@@ -2,7 +2,7 @@ import { TOGGLE_NAV, SCROLLED, SET_CURRENT_LINK } from '../constants'
 
 let initialState = {
   opened: false,
-  nav: [{
+  links: [{
     label: 'Sobre',
     link: '/sobre',
     active: false
@@ -18,8 +18,7 @@ let initialState = {
     label: 'Posts',
     link: '/posts',
     active: false
-  }],
-  current_link: null
+  }]
 }
 
 const nav = (state = initialState, action) => {
@@ -36,7 +35,14 @@ const nav = (state = initialState, action) => {
 
     case SET_CURRENT_LINK:
       return Object.assign({}, state, {
-        current_link: action.current_link
+        nav: state.links.map((item) => {
+          if (item.link == action.link) {
+            item.active = true
+          } else {
+            item.active = false
+          }
+          return item
+        })
       })
 
     default:

@@ -6,9 +6,19 @@ export const toggleNav = () => {
   }
 }
 
-export const setCurrentLink = (current_link) => {
+export const setCurrentLink = (link) => {
   return {
     type: SET_CURRENT_LINK,
-    current_link
+    link
+  }
+}
+
+export const checkLink = (location) => {
+  return dispatch => {
+    if (location.pathname) {
+      let link = location.pathname
+      if (link.startsWith('/posts')) link = '/posts'
+      dispatch(setCurrentLink(link));
+    }
   }
 }

@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Icon } from '../components'
 import { HeaderContainer } from './'
+import { checkLink } from '../actions/nav'
 
 class AppContainer extends Component {
+  componentDidMount() {
+    this.props.checkLink(this.props.location)
+  }
   render() {
     return(
       <div className="page-app">
@@ -26,4 +31,12 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkLink: (location) => {
+      return dispatch(checkLink(location))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AppContainer)

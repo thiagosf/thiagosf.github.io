@@ -6,6 +6,17 @@ import { Icon } from '../components'
 import { toggleNav, setCurrentLink } from '../actions/nav'
 import { onScroll } from '../actions/header'
 
+const RenderNav = ({ onClick, label, link, active }) => {
+  const link_classname = classnames({
+    active: active
+  })
+  return (
+    <li>
+      <Link className={link_classname} onClick={onClick} to={link}>{label}</Link>
+    </li>
+  )
+}
+
 class HeaderContainer extends Component {
   componentDidMount() {
     let last_scroll_top = 0;
@@ -21,7 +32,8 @@ class HeaderContainer extends Component {
     this.props.toggleNav()
   }
   setCurrentLink(e) {
-    this.props.setCurrentLink('/projetos')
+    this.props.setCurrentLink(e.currentTarget.getAttribute('href'))
+    this.props.toggleNav()
     return e
   }
   render() {
@@ -35,7 +47,7 @@ class HeaderContainer extends Component {
         <div className="logo-wrapper">
           <div className="container-fluid">
             <div className="logo-box">
-              <Link to="/">
+              <Link to="/" onClick={this.setCurrentLink.bind(this)}>
                 <span className="logo"><Icon name="logo" /></span>
                 <span className="author">Thiago S.F.</span>
               </Link>
@@ -49,10 +61,15 @@ class HeaderContainer extends Component {
         </div>
         <nav className="main-nav">
           <ul className="list-unstyled">
-            <li><Link onClick={this.setCurrentLink.bind(this)} to="/sobre" className="active">Sobre</Link></li>
-            <li><Link onClick={this.setCurrentLink.bind(this)} to="/projetos">Projetos</Link></li>
-            <li><Link onClick={this.setCurrentLink.bind(this)} to="/playground">Playground</Link></li>
-            <li><Link onClick={this.setCurrentLink.bind(this)} to="/posts">Posts</Link></li>
+            {this.props.nav.links.map((item) => {
+              return (
+                <RenderNav 
+                  onClick={this.setCurrentLink.bind(this)} 
+                  key={item.link} 
+                  {...item} 
+                  />
+              )
+            })}
           </ul>
           <span className="nib-box"><Icon name="nib" /></span>
         </nav>
@@ -76,8 +93,8 @@ const mapDispatchToProps = (dispatch) => {
     onScroll: (scroll_top, direction) => {
       return dispatch(onScroll(scroll_top, direction))
     },
-    setCurrentLink: (current_link) => {
-      return dispatch(setCurrentLink(current_link))
+    setCurrentLink: (link) => {
+      return dispatch(setCurrentLink(link))
     }
   }
 }
