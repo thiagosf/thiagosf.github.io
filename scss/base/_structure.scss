@@ -2,6 +2,9 @@
 body {
   padding-top: 115px;
   color: black;
+  @media #{$large-up} {
+    padding-top: 40px;
+  }
 }
 
 // H`s
@@ -29,5 +32,20 @@ a {
     color: inherit;
     background: inherit;
     text-decoration: none;
+  }
+}
+
+// .page-app
+.page-app {
+  @media #{$large-up} {
+    margin: 0 240px 0 20px;
+  }
+  @media #{$xlarge-up} {
+    margin: 0 auto;
+    max-width: 720px;
+    position: relative;
+  }
+  @media #{$xxlarge-up} {
+    max-width: 920px;
   }
 }
