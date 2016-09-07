@@ -5,7 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: __dirname,
-    filename: PROD ? 'bundle.min.js' : 'bundle.js'
+    filename: 'bundle.js'
+    // filename: PROD ? 'bundle.min.js' : 'bundle.js'
   },
   module: {
     loaders: [{

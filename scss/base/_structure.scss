@@ -1,3 +1,9 @@
+// Body
+body {
+  padding-top: 115px;
+  color: black;
+}
+
 // H`s
 @for $i from 1 through 6 {
   h#{$i} {
@@ -11,6 +17,7 @@ svg {
   width: 100%;
   height: 100%;
   display: block;
+  fill: currentColor;
 }
 
 // Links

@@ -1,4 +1,4 @@
-import { TOGGLE_NAV } from '../constants'
+import { TOGGLE_NAV, SCROLLED } from '../constants'
 
 let initialState = {
   opened: false
@@ -9,6 +9,11 @@ const nav = (state = initialState, action) => {
     case TOGGLE_NAV:
       return Object.assign({}, state, {
         opened: !state.opened
+      })
+
+    case SCROLLED:
+      return Object.assign({}, state, {
+        opened: false
       })
 
     default:

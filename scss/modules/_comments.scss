@@ -1,0 +1,17 @@
+.comments-section {
+  h2 {
+    font-size: 22px;
+    line-height: 1;
+    font-family: $font-family-sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    .icon {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: top;
+    }
+  }
+}

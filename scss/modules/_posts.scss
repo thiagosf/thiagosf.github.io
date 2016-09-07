@@ -1,0 +1,66 @@
+.post-section {
+  .post-time {
+    color: #999;
+    font-size: 11px;
+    line-height: 1;
+    margin: 0 0 5px 0;
+    text-align: right;
+    .icon {
+      width: 12px;
+      height: 12px;
+      margin-right: 2px;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .post-header {
+    margin: 0 0 20px 0;
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+  .post-content {
+    font-size: 14px;
+    line-height: 1.4;
+    h1, h2 {
+      font-size: 22px;
+      margin: 0 0 20px 0;
+    }
+    h3 {
+      font-size: 20px;
+      margin: 0 0 20px 0;
+    }
+    h4 {
+      font-size: 18px;
+      margin: 0 0 15px 0;
+    }
+    h5 {
+      font-size: 16px;
+      margin: 0 0 15px 0;
+    }
+    h6 {
+      font-size: 14px;
+      margin: 0 0 10px 0;
+    }
+    blockquote {
+      font-style: italic;
+      font-family: $font-family-serif;
+      position: relative;
+      padding: 0 0 0 20px;
+      border: 0;
+      &::after {
+        content: "\201C";
+        position: absolute;
+        top: -10px;
+        left: -5px;
+        font-size: 42px;
+        color: #999;
+      }
+    }
+    a {
+      border-bottom: 1px dotted;
+    }
+  }
+}
