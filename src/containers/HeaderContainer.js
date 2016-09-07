@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import classnames from 'classnames'
 import { Link } from 'react-router'
 import { Icon } from '../components'
-import { toggleNav } from '../actions/nav'
+import { toggleNav, setCurrentLink } from '../actions/nav'
 import { onScroll } from '../actions/header'
 
 class HeaderContainer extends Component {
@@ -19,6 +19,10 @@ class HeaderContainer extends Component {
   toggleNav(e) {
     e.preventDefault()
     this.props.toggleNav()
+  }
+  setCurrentLink(e) {
+    this.props.setCurrentLink('/projetos')
+    return e
   }
   render() {
     const main_header_classname = classnames({
@@ -45,10 +49,10 @@ class HeaderContainer extends Component {
         </div>
         <nav className="main-nav">
           <ul className="list-unstyled">
-            <li><a href="#" className="active">Sobre</a></li>
-            <li><a href="#">Projetos</a></li>
-            <li><a href="#">Playground</a></li>
-            <li><a href="#">Posts</a></li>
+            <li><Link onClick={this.setCurrentLink.bind(this)} to="/sobre" className="active">Sobre</Link></li>
+            <li><Link onClick={this.setCurrentLink.bind(this)} to="/projetos">Projetos</Link></li>
+            <li><Link onClick={this.setCurrentLink.bind(this)} to="/playground">Playground</Link></li>
+            <li><Link onClick={this.setCurrentLink.bind(this)} to="/posts">Posts</Link></li>
           </ul>
           <span className="nib-box"><Icon name="nib" /></span>
         </nav>
@@ -71,6 +75,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onScroll: (scroll_top, direction) => {
       return dispatch(onScroll(scroll_top, direction))
+    },
+    setCurrentLink: (current_link) => {
+      return dispatch(setCurrentLink(current_link))
     }
   }
 }

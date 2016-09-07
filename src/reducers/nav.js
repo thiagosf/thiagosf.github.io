@@ -1,7 +1,25 @@
-import { TOGGLE_NAV, SCROLLED } from '../constants'
+import { TOGGLE_NAV, SCROLLED, SET_CURRENT_LINK } from '../constants'
 
 let initialState = {
-  opened: false
+  opened: false,
+  nav: [{
+    label: 'Sobre',
+    link: '/sobre',
+    active: false
+  }, {
+    label: 'Projetos',
+    link: '/projetos',
+    active: false
+  }, {
+    label: 'Playground',
+    link: '/playground',
+    active: false
+  }, {
+    label: 'Posts',
+    link: '/posts',
+    active: false
+  }],
+  current_link: null
 }
 
 const nav = (state = initialState, action) => {
@@ -14,6 +32,11 @@ const nav = (state = initialState, action) => {
     case SCROLLED:
       return Object.assign({}, state, {
         opened: false
+      })
+
+    case SET_CURRENT_LINK:
+      return Object.assign({}, state, {
+        current_link: action.current_link
       })
 
     default:

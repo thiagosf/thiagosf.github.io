@@ -49,3 +49,16 @@ a {
     max-width: 920px;
   }
 }
+
+// .panel-body
+.panel-body {
+  &.panel-body-large {
+    padding: 30px;
+    @media #{$medium-up} {
+      padding: 40px;
+    }
+    @media #{$large-up} {
+      padding: 60px;
+    }
+  }
+}

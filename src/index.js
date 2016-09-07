@@ -21,6 +21,12 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={containers.AppContainer}>
         <IndexRoute component={containers.HomeContainer} />
+        <Route path="/sobre" component={containers.AboutContainer} />
+        <Route path="/projetos" component={containers.ProjectsContainer} />
+        <Route path="/playground" component={containers.PlaygroundContainer} />
+        <Route path="/playground/:slug" component={containers.PlaygroundContainer} />
+        <Route path="/posts" component={containers.PostsContainer} />
+        <Route path="/posts/:slug" component={containers.PostViewContainer} />
         <Route path="*" component={containers.NoMatchContainer} />
       </Route>
     </Router>
