@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import classnames from 'classnames'
 import { Icon } from '../components'
 import { HeaderContainer } from './'
 import { checkLink } from '../actions/nav'
@@ -10,10 +11,14 @@ class AppContainer extends Component {
     this.props.checkLink(this.props.location)
   }
   render() {
+    const page_content_box = classnames({
+      'page-content-box': true,
+      'enter': this.props.page.enter
+    })
     return(
       <div className="page-app">
         <HeaderContainer />
-        <div className="page-content-box">
+        <div className={page_content_box}>
           {this.props.children}
           <div className="container-fluid">
             <footer className="main-footer">
@@ -31,6 +36,12 @@ class AppContainer extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    page: state.page
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     checkLink: (location) => {
@@ -39,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(AppContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)

@@ -7,7 +7,7 @@ Site pessoal usando React e Redux.
 
 - [ ] i18n
 - [ ] SEO com react
-- [ ] Sobre
-- [ ] Projetos
+- [x] Sobre
+- [x] Projetos
 - [ ] Playground
 - [ ] Posts

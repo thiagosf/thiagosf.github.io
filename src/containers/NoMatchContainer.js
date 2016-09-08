@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { CommonSectionContainer } from './'
+import { meta } from '../helpers'
 
 class NoMatchContainer extends Component {
+  componentDidMount() {
+    meta.setSubTitle('Página não encontrada')
+  }
   render() {
     return(
       <CommonSectionContainer>

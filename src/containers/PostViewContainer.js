@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { Icon, Comments, LatestPosts } from '../components'
+import { meta } from '../helpers'
 
 class PostViewContainer extends Component {
+  componentDidMount() {
+    meta.setSubTitle('Material Design Lite: o framework html do Google')
+  }
   render() {
     return(
       <div>

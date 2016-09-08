@@ -7,3 +7,6 @@ export const SET_CURRENT_LINK = 'SET_CURRENT_LINK'
 
 // Header
 export const SCROLLED = 'SCROLLED'
+
+// Page
+export const AFTER_TRANSITION = 'AFTER_TRANSITION'

@@ -182,3 +182,8 @@ a {
 .page-content {
   @extend %page-content;
 }
+.page-content-box {
+  &.enter {
+    animation: onEnterCommonSection 300ms forwards;
+  }
+}

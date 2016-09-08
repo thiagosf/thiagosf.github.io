@@ -1,4 +1,5 @@
 import { TOGGLE_NAV, SET_CURRENT_LINK } from '../constants'
+import { enterPage } from './page'
 
 export const toggleNav = () => {
   return {
@@ -7,9 +8,12 @@ export const toggleNav = () => {
 }
 
 export const setCurrentLink = (link) => {
-  return {
-    type: SET_CURRENT_LINK,
-    link
+  return dispatch => {
+    enterPage(dispatch)
+    dispatch({
+      type: SET_CURRENT_LINK,
+      link
+    })
   }
 }
 

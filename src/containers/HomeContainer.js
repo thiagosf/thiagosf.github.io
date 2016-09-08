@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { CommonSectionContainer } from './'
+import { meta, settings } from '../helpers'
 
 class HomeContainer extends Component {
+  componentDidMount() {
+    meta.setTitle(settings.get('full_title'))
+  }
   render() {
     return(
       <CommonSectionContainer>

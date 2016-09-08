@@ -16,7 +16,7 @@ class LatestPosts extends Component {
                 11 de Abril de 2016
               </div>
               <p className="post-title">
-                <Link to="/posts/nome-do-post">Deixando seu servidor um pouco mais seguro</Link>
+                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
               </p>
             </div>
             <div className="post-item">
@@ -24,7 +24,7 @@ class LatestPosts extends Component {
                 11 de Abril de 2016
               </div>
               <p className="post-title">
-                <Link to="/posts/nome-do-post">Deixando seu servidor um pouco mais seguro</Link>
+                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
               </p>
             </div>
             <div className="post-item">
@@ -32,7 +32,7 @@ class LatestPosts extends Component {
                 11 de Abril de 2016
               </div>
               <p className="post-title">
-                <Link to="/posts/nome-do-post">Deixando seu servidor um pouco mais seguro</Link>
+                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
               </p>
             </div>
           </div>
