@@ -1,4 +1,7 @@
+import { Map, Set } from 'immutable'
 import {
+  REQUEST_HOME_POSTS,
+  RECEIVE_HOME_POSTS,
   REQUEST_POSTS,
   RECEIVE_POSTS,
   REQUEST_POST,
@@ -6,40 +9,62 @@ import {
   FILTER_POSTS
 } from '../constants'
 
+
 let initialState = {
   fetch_posts: false,
+  home_posts: [],
   posts: [],
   post: {},
-  filters: []
+  filters: [],
+  filter: null,
+  page: 1
 }
 
 const post = (state = initialState, action) => {
   switch (action.type) {
+    case REQUEST_HOME_POSTS:
+      return Map(state).merge({
+        fetch_posts: true,
+        home_posts: []
+      }).toJS()
+
     case REQUEST_POSTS:
     case REQUEST_POST:
-      return Object.assign({}, state, {
+      return Map(state).merge({
         fetch_posts: true,
-        posts: [],
-        post: {}
-      })
+        post: {},
+        posts: (action.page != 1 ? state.posts : []),
+        page: action.page || state.page
+      }).toJS()
+
+    case RECEIVE_HOME_POSTS:
+      return Map(state).merge({
+        fetch_posts: false,
+        home_posts: action.posts
+      }).toJS()
 
     case RECEIVE_POSTS:
-      return Object.assign({}, state, {
+      return Map(state).merge({
         fetch_posts: false,
-        posts: action.posts
-      })
+        posts: Set(state.posts).union(action.posts).toJS()
+      }).toJS()
 
     case RECEIVE_POST:
-      return Object.assign({}, state, {
+      return Map(state).merge({
         fetch_posts: false,
         post: action.post
-      })
+      }).toJS()
 
     case FILTER_POSTS:
-      console.log(state.filters)
-      return Object.assign({}, state, {
-        filters: [action.filter].concat(state.filters)
-      })
+      let list = Set(state.filters)
+      if (action.add_filter) {
+        list = list.add(action.filter).reverse()
+      }
+      list = list.take(5)
+      return Map(state).merge({
+        filter: action.filter,
+        filters: list
+      }).toJS()
 
     default:
       return state

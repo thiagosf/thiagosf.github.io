@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { CommonSectionContainer } from './'
-import { PostList } from '../components'
+import { PostList, Spinner } from '../components'
 import { meta, settings } from '../helpers'
-import { fetchPosts } from '../actions/post'
+import { fetchHomePosts } from '../actions/post'
 
 class HomeContainer extends Component {
   componentDidMount() {
     meta.setTitle(settings.get('full_title'))
-    this.props.fetchPosts()
-  }
-  getLoader() {
-    if (this.props.post.fetch_posts) {
-      return <p>Carregando...</p>
+    if (this.props.post.home_posts.length == 0) {
+      this.props.fetchHomePosts()
     }
   }
   render() {
@@ -21,8 +18,8 @@ class HomeContainer extends Component {
         <section className="post-list-section">
           <div className="panel panel-default">
             <div className="panel-body panel-body-large">
-              {this.getLoader()}
-              <PostList posts={this.props.post.posts} />
+              <Spinner absolute show={this.props.post.fetch_posts} />
+              <PostList posts={this.props.post.home_posts} />
             </div>
           </div>
         </section>
@@ -39,8 +36,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPosts: (page = 1) => {
-      dispatch(fetchPosts(page))
+    fetchHomePosts: () => {
+      dispatch(fetchHomePosts())
     }
   }
 }

@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { PostList, Icon } from '../components'
+import classnames from 'classnames'
+import { PostList, Icon, Spinner } from '../components'
 import { meta } from '../helpers'
-import { fetchPosts, filterPosts } from '../actions/post'
+import { fetchPosts, filterPosts, nextPage } from '../actions/post'
+import { HistoryFilterContainer } from './'
 
 class PostsContainer extends Component {
   componentDidMount() {
     meta.setSubTitle('Posts')
-    this.props.fetchPosts()
+    if (this.props.post.posts.length == 0) {
+      this.props.fetchPosts()
+    }
   }
   getLoader() {
     if (this.props.post.fetch_posts) {
@@ -15,10 +19,14 @@ class PostsContainer extends Component {
     }
   }
   searchPosts(e) {
-    e.preventDefault()
+    if (e) e.preventDefault()
+    const current_filter = this.props.post.filter
     const filter = this.refs.filter.value
     if (filter.length >= 2) {
-      this.props.filterPosts(filter)
+      if (current_filter != filter) {
+        this.refs.filter.select()
+        this.props.filterPosts(filter)
+      }
     } else {
       this.refs.filter.placeholder = 'Mínimo de 2 caracteres'
       this.refs.filter.focus()
@@ -27,7 +35,17 @@ class PostsContainer extends Component {
       }, 1300)
     }
   }
+  loadMore(e) {
+    e.preventDefault()
+    this.props.nextPage()
+  }
   render() {
+    const { post } = this.props
+    const loadMoreClassname = classnames({
+      'btn': true,
+      'btn-info': true,
+      'disabled': post.fetch_posts
+    })
     return(
       <div className="container-fluid">
         <header className="page-header text-center">
@@ -35,15 +53,19 @@ class PostsContainer extends Component {
         </header>
         <section className="post-list-section">
           <div className="panel panel-default">
-            <div className="panel-body panel-body-large">
+            <div className="panel-body panel-body-large relative">
+              <Spinner absolute show={this.props.post.fetch_posts} />
               <form className="form-filter-post" onSubmit={this.searchPosts.bind(this)}>
                 <div className="form-group">
                   <input type="text" ref="filter" placeholder="Pesquise" className="form-control"/>
                 </div>
                 <button><Icon name="search" /></button>
               </form>
-              {this.getLoader()}
-              <PostList posts={this.props.post.posts} />
+              <HistoryFilterContainer input={this.refs.filter} />
+              <PostList posts={post.posts} />
+              <div className="load-more-box">
+                <a href="#" onClick={this.loadMore.bind(this)} className={loadMoreClassname}>Carregar mais</a>
+              </div>
             </div>
           </div>
         </section>
@@ -65,6 +87,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     filterPosts: (filter) => {
       dispatch(filterPosts(filter))
+    },
+    nextPage: () => {
+      dispatch(nextPage())
     }
   }
 }

@@ -9,6 +9,7 @@ export const toggleNav = () => {
 
 export const setCurrentLink = (link) => {
   return dispatch => {
+    window.scrollTo(0, 0)
     enterPage(dispatch)
     dispatch({
       type: SET_CURRENT_LINK,

@@ -10,8 +10,8 @@ body {
 // H`s
 @for $i from 1 through 6 {
   h#{$i} {
-    font-family: $font-family-serif;
-    font-style: italic;
+    font-family: $font-family-sans-serif;
+    font-weight: 700;
   }
 }
 
@@ -183,6 +183,7 @@ a {
   @extend %page-content;
 }
 .page-content-box {
+  position: relative;
   &.enter {
     animation: onEnterCommonSection 300ms forwards;
   }
@@ -191,6 +192,7 @@ a {
 // btn
 .btn {
   transition: all 200ms;
+  font-family: $font-family-sans-serif;
   &:hover {
     box-shadow: rgba(black, .2) 0 -3px 0 0 inset;
   }
@@ -199,4 +201,8 @@ a {
   &:hover {
     background: $brand-info;
   }
+}
+
+.relative {
+  position: relative;
 }
