@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Router, Route, browserHistory, IndexRoute, routerReducer } from 'react-router'
+import moment_pt from 'moment/locale/pt'
 
 import * as reducers from './reducers'
 import * as containers from './containers'

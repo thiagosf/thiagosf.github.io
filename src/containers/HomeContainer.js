@@ -1,19 +1,48 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { CommonSectionContainer } from './'
+import { PostList } from '../components'
 import { meta, settings } from '../helpers'
+import { fetchPosts } from '../actions/post'
 
 class HomeContainer extends Component {
   componentDidMount() {
     meta.setTitle(settings.get('full_title'))
+    this.props.fetchPosts()
+  }
+  getLoader() {
+    if (this.props.post.fetch_posts) {
+      return <p>Carregando...</p>
+    }
   }
   render() {
     return(
-      <CommonSectionContainer>
-        <h1>Home</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </CommonSectionContainer>
+      <div className="container-fluid">
+        <section className="post-list-section">
+          <div className="panel panel-default">
+            <div className="panel-body panel-body-large">
+              {this.getLoader()}
+              <PostList posts={this.props.post.posts} />
+            </div>
+          </div>
+        </section>
+      </div>
     )
   }
 }
 
-export default HomeContainer
+const mapStateToProps = (state) => {
+  return {
+    post: state.post
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPosts: (page = 1) => {
+      dispatch(fetchPosts(page))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)

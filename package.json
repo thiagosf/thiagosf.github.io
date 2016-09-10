@@ -27,6 +27,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "json-loader": "^0.5.4",
+    "moment": "^2.14.1",
     "react": "^15.3.0",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.0",
