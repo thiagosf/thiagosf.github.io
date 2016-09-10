@@ -4,13 +4,20 @@
 
 .project-item {
   .panel-heading {
-    padding: 10px 0;
+    padding: 0 0 10px 0;
     margin: 0 0 10px 0;
     font-size: 26px;
     line-height: 1.4;
     font-family: $font-family-serif;
     @media #{$medium-up} {
       font-size: 32px;
+    }
+  }
+  .panel-body {
+    &.panel-body-large {
+      @media #{$large-up} {
+        padding: 40px;
+      }
     }
   }
   p {

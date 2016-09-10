@@ -9,5 +9,5 @@ Site pessoal usando React e Redux.
 - [ ] SEO com react
 - [x] Sobre
 - [x] Projetos
-- [ ] Playground
+- [x] Playground
 - [ ] Posts

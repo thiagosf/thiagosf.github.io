@@ -15,7 +15,7 @@ const ProjectItem = ({ title, link, description }) => {
             {title}
           </div>
           <p>{description}</p>
-          <a href={link} target="_blank" className="btn btn-primary btn-sm">{shortLink(link)}</a>
+          <a href={link} target="_blank" className="btn btn-info btn-sm">{shortLink(link)}</a>
         </div>
       </div>
     </div>

@@ -97,7 +97,6 @@ a {
   }
   @for $i from 0 through 6 {
     h#{$i} {
-      color: #777;
       margin: 0 0 20px 0;
     }
   }
@@ -156,6 +155,7 @@ a {
   a {
     font-weight: 600;
     position: relative;
+    display: inline-block;
     &::before {
       transition: all 200ms;
       content: "";
@@ -185,5 +185,18 @@ a {
 .page-content-box {
   &.enter {
     animation: onEnterCommonSection 300ms forwards;
+  }
+}
+
+// btn
+.btn {
+  transition: all 200ms;
+  &:hover {
+    box-shadow: rgba(black, .2) 0 -3px 0 0 inset;
+  }
+}
+.btn-info {
+  &:hover {
+    background: $brand-info;
   }
 }
