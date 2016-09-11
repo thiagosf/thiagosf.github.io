@@ -13,16 +13,11 @@ class PostsContainer extends Component {
       this.props.fetchPosts()
     }
   }
-  getLoader() {
-    if (this.props.post.fetch_posts) {
-      return <p>Carregando...</p>
-    }
-  }
   searchPosts(e) {
     if (e) e.preventDefault()
     const current_filter = this.props.post.filter
     const filter = this.refs.filter.value
-    if (filter.length >= 2) {
+    if (filter.length >= 2 || current_filter) {
       if (current_filter != filter) {
         this.refs.filter.select()
         this.props.filterPosts(filter)
@@ -44,7 +39,7 @@ class PostsContainer extends Component {
     const loadMoreClassname = classnames({
       'btn': true,
       'btn-info': true,
-      'disabled': post.fetch_posts
+      'disabled': post.fetch_posts || post.count == 0
     })
     return(
       <div className="container-fluid">

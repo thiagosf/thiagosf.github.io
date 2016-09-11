@@ -11,9 +11,11 @@ class HistoryFilterContainer extends Component {
     })
   }
   setFilter(item) {
-    this.props.input.value = item
+    if (this.props.input.value != item) {
+      this.props.input.value = item
+      this.props.filterPosts(item)
+    }
     this.props.input.select()
-    this.props.filterPosts(item)
   }
   render() {
     if (this.props.filters.length == 0) return false

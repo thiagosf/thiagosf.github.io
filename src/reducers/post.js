@@ -17,7 +17,8 @@ let initialState = {
   post: {},
   filters: [],
   filter: null,
-  page: 1
+  page: 1,
+  count: 0
 }
 
 const post = (state = initialState, action) => {
@@ -46,7 +47,8 @@ const post = (state = initialState, action) => {
     case RECEIVE_POSTS:
       return Map(state).merge({
         fetch_posts: false,
-        posts: Set(state.posts).union(action.posts).toJS()
+        posts: Set(state.posts).union(action.posts).toJS(),
+        count: action.count
       }).toJS()
 
     case RECEIVE_POST:
@@ -57,7 +59,7 @@ const post = (state = initialState, action) => {
 
     case FILTER_POSTS:
       let list = Set(state.filters)
-      if (action.add_filter) {
+      if (action.add_filter && action.filter) {
         list = list.add(action.filter).reverse()
       }
       list = list.take(5)

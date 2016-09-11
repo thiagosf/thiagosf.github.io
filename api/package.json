@@ -1,0 +1,17 @@
+{
+  "name": "reagindo-api",
+  "version": "1.0.0",
+  "description": "API para testes",
+  "main": "server.js",
+  "dependencies": {
+    "hapi": "^14.1.0",
+    "immutable": "^3.8.1",
+    "nodemon": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Thiago Silva Ferreira",
+  "license": "MIT"
+}

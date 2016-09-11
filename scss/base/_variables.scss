@@ -1,9 +1,10 @@
 // Colors
 $dark-blue: #2d3c43;
+$dark-blue-2: #37474f;
 $blue: #37474F;
 $light-blue: #1976d2;
 $yellow: #eddb41;
-$green: #7cb342;
+$green: #4caf50;
 $light-gray: #eaeaea;
 
 // Elements
@@ -11,7 +12,8 @@ $header-bg-color: $dark-blue;
 $link-color: $green;
 $active-link-color: $yellow;
 $body-bg: $light-gray;
-$main-nav-bg-color: #37474f;
+$main-nav-bg-color: $dark-blue-2;
+$footer-bg-color: $dark-blue-2;
 
 // Bootstrap custom
 $border-radius-base: 2px;

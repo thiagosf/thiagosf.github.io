@@ -1,3 +1,5 @@
+import request from 'superagent'
+import { api } from '../helpers'
 import {
   REQUEST_HOME_POSTS,
   RECEIVE_HOME_POSTS,
@@ -11,81 +13,60 @@ import {
 export const fetchHomePosts = () => {
   return dispatch => {
     dispatch({ type: REQUEST_HOME_POSTS })
-    setTimeout(() => {
-      let posts = [{
-        id: 1,
-        image: 'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 2,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Material_Design.svg/2000px-Material_Design.svg.png',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 3,
-        image: 'https://d13yacurqjgara.cloudfront.net/users/409459/screenshots/1770941/drawer.gif',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 4,
-        image: null,
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }]
-      dispatch({ type: RECEIVE_HOME_POSTS, posts })
-    }, 3000)
+    request
+      .get(api.url('/posts'))
+      .query(api.params({
+        home: true,
+        page: 1,
+        limit: 10
+      }))
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) {
+          error.handleAjax(err, res, dispatch)
+        } else {
+          let posts = []
+          if (res.body.success) posts = res.body.data
+          dispatch({
+            type: RECEIVE_HOME_POSTS,
+            posts
+          })
+        }
+      })
   }
 }
 
 export const fetchPosts = ({ page = 1, limit = 10, filter = null }) => {
   return dispatch => {
-    console.log('-- pagina', page, '-- filter', filter)
     dispatch({ type: REQUEST_POSTS, page: page })
-    setTimeout(() => {
-      let posts = [{
-        id: 10 + page,
-        image: 'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg',
-        title: 'Sites estáticos com Middleman ' + filter,
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 20 + page,
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Material_Design.svg/2000px-Material_Design.svg.png',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 30 + page,
-        image: 'https://d13yacurqjgara.cloudfront.net/users/409459/screenshots/1770941/drawer.gif',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }, {
-        id: 40 + page,
-        image: null,
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }]
-      dispatch({ type: RECEIVE_POSTS, posts })
-    }, 1000)
+    request
+      .get(api.url('/posts'))
+      .query(api.params({
+        page: page,
+        limit: limit,
+        filter: filter
+      }))
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) {
+          error.handleAjax(err, res, dispatch)
+        } else {
+          let [posts, count] = [[], 0]
+          if (res.body.success) {
+            posts = res.body.data
+            count = res.body.count
+          }
+          dispatch({
+            type: RECEIVE_POSTS,
+            posts,
+            count
+          })
+        }
+      })
   }
 }
 
-export const fetchPost = (id) => {
+export const fetchPost = (slug) => {
   return dispatch => {
     dispatch({ type: REQUEST_POST })
     setTimeout(() => {
@@ -98,7 +79,7 @@ export const fetchPost = (id) => {
         created_at: Date.now()
       }
       dispatch({ type: RECEIVE_POST, post })
-    }, 2000)
+    }, 1000)
   }
 }
 

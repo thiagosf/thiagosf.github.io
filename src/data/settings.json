@@ -3,5 +3,9 @@
   "short_title": "Thiago S.F.",
   "email": "thiago@thiagosf.net",
   "github": "https://github.com/thiagosf/",
-  "linkedin": "https://www.linkedin.com/in/thiagosfsjc"
+  "linkedin": "https://www.linkedin.com/in/thiagosfsjc",
+  "api": {
+    "development": "http://api.dev.azk.io",
+    "production": "http://api.thiagosf.net"
+  }
 }
