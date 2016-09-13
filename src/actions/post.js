@@ -7,7 +7,9 @@ import {
   RECEIVE_POSTS,
   REQUEST_POST,
   RECEIVE_POST,
-  FILTER_POSTS
+  FILTER_POSTS,
+  REQUEST_LATEST_POST,
+  RECEIVE_LATEST_POST
 } from '../constants'
 
 export const fetchHomePosts = () => {
@@ -69,17 +71,35 @@ export const fetchPosts = ({ page = 1, limit = 10, filter = null }) => {
 export const fetchPost = (slug) => {
   return dispatch => {
     dispatch({ type: REQUEST_POST })
-    setTimeout(() => {
-      let post = {
-        id: 1,
-        image: 'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg',
-        title: 'Sites estáticos com Middleman',
-        link: '/posts-test',
-        excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-        created_at: Date.now()
-      }
-      dispatch({ type: RECEIVE_POST, post })
-    }, 1000)
+    request
+      .get(api.url(`/posts/${slug}`))
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) {
+          error.handleAjax(err, res, dispatch)
+        } else {
+          let post = {}
+          if (res.body.success) {
+            post = res.body.data
+          }
+          dispatch({
+            type: RECEIVE_POST,
+            post
+          })
+        }
+      })
+
+    // setTimeout(() => {
+    //   let post = {
+    //     id: 1,
+    //     image: 'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg',
+    //     title: 'Sites estáticos com Middleman',
+    //     link: '/posts-test',
+    //     excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
+    //     created_at: Date.now()
+    //   }
+    //   dispatch({ type: RECEIVE_POST, post })
+    // }, 1000)
   }
 }
 
@@ -97,5 +117,32 @@ export const nextPage = () => {
       page: post.page + 1,
       filter: post.filter
     }))
+  }
+}
+
+export const fetchLatestPosts = (current_post_id) => {
+  return dispatch => {
+    dispatch({ type: REQUEST_LATEST_POST })
+    request
+      .get(api.url('/posts/latest'))
+      .query(api.params({
+        current_post_id: current_post_id,
+        home: true,
+        page: 1,
+        limit: 10
+      }))
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) {
+          error.handleAjax(err, res, dispatch)
+        } else {
+          let posts = []
+          if (res.body.success) posts = res.body.data
+          dispatch({
+            type: RECEIVE_LATEST_POST,
+            posts
+          })
+        }
+      })
   }
 }

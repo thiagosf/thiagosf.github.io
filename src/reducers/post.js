@@ -6,7 +6,9 @@ import {
   RECEIVE_POSTS,
   REQUEST_POST,
   RECEIVE_POST,
-  FILTER_POSTS
+  FILTER_POSTS,
+  REQUEST_LATEST_POST,
+  RECEIVE_LATEST_POST
 } from '../constants'
 
 
@@ -18,7 +20,9 @@ let initialState = {
   filters: [],
   filter: null,
   page: 1,
-  count: 0
+  count: 0,
+  fetch_latest_posts: false,
+  latest_posts: []
 }
 
 const post = (state = initialState, action) => {
@@ -27,6 +31,12 @@ const post = (state = initialState, action) => {
       return Map(state).merge({
         fetch_posts: true,
         home_posts: []
+      }).toJS()
+
+    case REQUEST_LATEST_POST:
+      return Map(state).merge({
+        fetch_latest_posts: true,
+        latest_posts: []
       }).toJS()
 
     case REQUEST_POSTS:
@@ -66,6 +76,12 @@ const post = (state = initialState, action) => {
       return Map(state).merge({
         filter: action.filter,
         filters: list
+      }).toJS()
+
+    case RECEIVE_LATEST_POST:
+      return Map(state).merge({
+        fetch_latest_posts: false,
+        latest_posts: action.posts
       }).toJS()
 
     default:

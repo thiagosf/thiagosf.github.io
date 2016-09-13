@@ -3,29 +3,20 @@
 }
 
 .project-item {
-  .panel-heading {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  &:last-child {
+    margin: 0;
     padding: 0;
-    margin: 0 0 10px 0;
-    font-size: 20px;
-    line-height: 1.4;
-    font-family: $font-family-sans-serif;
-    font-weight: 700;
-    @media #{$medium-up} {
-      font-size: 24px;
-    }
+    border: 0;
   }
-  .panel-body {
-    p {
-      font-size: 16px;
-      margin: 0 0 20px 0;
-    }
-    &.panel-body-large {
-      @media #{$large-up} {
-        padding: 30px;
-      }
-    }
+  h2 {
+    font-size: 26px;
+    margin: 0 0 10px 0;
   }
   p {
-    margin: 0 0 30px 0;
+    margin: 0 0 20px 0;
+    font-size: 16px;
   }
 }

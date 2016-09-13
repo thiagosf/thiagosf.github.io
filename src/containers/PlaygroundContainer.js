@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Gravatar from 'react-gravatar'
+import { CommonSectionContainer } from './'
 import { meta } from '../helpers'
 import playground from '../data/playground'
 
@@ -9,15 +10,9 @@ const PlaygroundItem = ({ title, link, description }) => {
   }
   return (
     <div className="project-item">
-      <div className="panel panel-default">
-        <div className="panel-body panel-body-large">
-          <div className="panel-heading">
-            {title}
-          </div>
-          <p>{description}</p>
-          <a href={link} target="_blank" className="btn btn-info btn-sm">{shortLink(link)}</a>
-        </div>
-      </div>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <a href={link} target="_blank" className="btn btn-info btn-sm">{shortLink(link)}</a>
     </div>
   )
 }
@@ -28,8 +23,8 @@ class PlaygroundContainer extends Component {
   }
   render() {
     return(
-      <div className="container-fluid">
-        <header className="page-header text-center">
+      <CommonSectionContainer>
+        <header className="page-header">
           <h1>Playground</h1>
         </header>
         <div className="projects-box">
@@ -37,7 +32,7 @@ class PlaygroundContainer extends Component {
             return <PlaygroundItem key={index} {...item} />
           })}
         </div>
-      </div>
+      </CommonSectionContainer>
     )
   }
 }

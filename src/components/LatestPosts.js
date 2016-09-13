@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import { Link } from './'
 import { Icon } from './'
 
+const PostItem = ({ title, created_at, link }) => {
+  return(
+    <div className="post-item">
+      <div className="post-time">
+        {created_at}
+      </div>
+      <p className="post-title">
+        <Link to={link}>{title}</Link>
+      </p>
+    </div>
+  )
+}
+
 class LatestPosts extends Component {
   render() {
     return(
@@ -10,32 +23,9 @@ class LatestPosts extends Component {
           <h3>
             <Icon name="hourglass" /> Últimos posts
           </h3>
-          <div className="posts-box">
-            <div className="post-item">
-              <div className="post-time">
-                11 de Abril de 2016
-              </div>
-              <p className="post-title">
-                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
-              </p>
-            </div>
-            <div className="post-item">
-              <div className="post-time">
-                11 de Abril de 2016
-              </div>
-              <p className="post-title">
-                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
-              </p>
-            </div>
-            <div className="post-item">
-              <div className="post-time">
-                11 de Abril de 2016
-              </div>
-              <p className="post-title">
-                <Link to="/posts-test">Deixando seu servidor um pouco mais seguro</Link>
-              </p>
-            </div>
-          </div>
+          {this.props.posts.map((item) => {
+            return <PostItem key={item.id} {...item} />
+          })}
         </div>
       </section>
     )

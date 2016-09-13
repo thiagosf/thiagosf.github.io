@@ -72,11 +72,28 @@ a {
     margin: 0;
     font-size: 28px;
     line-height: 1.2;
+    color: $h1-color;
+    position: relative;
+    padding-bottom: 10px;
     @media #{$medium-up} {
       font-size: 42px;
     }
     @media #{$xlarge-up} {
       font-size: 48px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      border-bottom: 1px dotted #ccc;
+      left: 0;
+      right: -30px;
+      @media #{$medium-up} {
+        right: -40px;
+      }
+      @media #{$large-up} {
+        right: -60px;
+      }
     }
   }
 }

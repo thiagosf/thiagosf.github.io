@@ -38,12 +38,24 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/posts/{id}',
+  path: '/posts/{slug}',
   handler: (request, reply) => {
-    const id = request.params.id
+    const slug = request.params.slug
     const list = Immutable.List(require('./posts.json'))
-    const post = list.find(item => item.id == id)
+    const post = list.find(item => item.slug == slug)
     return reply({ success: true, data: post })
+  }
+})
+
+server.route({
+  method: 'GET',
+  path: '/posts/latest', 
+  handler: (request, reply) => {
+    const posts = Immutable.List(require('./posts.json'))
+    return reply({
+      success: true,
+      data: posts
+    })
   }
 })
 

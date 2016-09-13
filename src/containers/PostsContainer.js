@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import classnames from 'classnames'
+import { CommonSectionContainer } from './'
 import { PostList, Icon, Spinner } from '../components'
 import { meta } from '../helpers'
 import { fetchPosts, filterPosts, nextPage } from '../actions/post'
@@ -42,29 +43,25 @@ class PostsContainer extends Component {
       'disabled': post.fetch_posts || post.count == 0
     })
     return(
-      <div className="container-fluid">
-        <header className="page-header text-center">
+      <CommonSectionContainer>
+        <header className="page-header">
           <h1>Posts</h1>
         </header>
-        <section className="post-list-section">
-          <div className="panel panel-default">
-            <div className="panel-body panel-body-large relative">
-              <Spinner absolute show={this.props.post.fetch_posts} />
-              <form className="form-filter-post" onSubmit={this.searchPosts.bind(this)}>
-                <div className="form-group">
-                  <input type="text" ref="filter" placeholder="Pesquise" className="form-control"/>
-                </div>
-                <button><Icon name="search" /></button>
-              </form>
-              <HistoryFilterContainer input={this.refs.filter} />
-              <PostList posts={post.posts} />
-              <div className="load-more-box">
-                <a href="#" onClick={this.loadMore.bind(this)} className={loadMoreClassname}>Carregar mais</a>
-              </div>
+        <div>
+          <Spinner absolute show={this.props.post.fetch_posts} />
+          <form className="form-filter-post" onSubmit={this.searchPosts.bind(this)}>
+            <div className="form-group">
+              <input type="text" ref="filter" placeholder="Pesquise" className="form-control"/>
             </div>
+            <button><Icon name="search" /></button>
+          </form>
+          <HistoryFilterContainer input={this.refs.filter} />
+          <PostList posts={post.posts} />
+          <div className="load-more-box">
+            <a href="#" onClick={this.loadMore.bind(this)} className={loadMoreClassname}>Carregar mais</a>
           </div>
-        </section>
-      </div>
+        </div>
+      </CommonSectionContainer>
     )
   }
 }

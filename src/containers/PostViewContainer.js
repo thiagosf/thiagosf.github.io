@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { Icon, Comments, LatestPosts, Spinner, PostView } from '../components'
+import { Icon, Comments, Spinner, PostView } from '../components'
+import { LatestPostsContainer } from './'
 import { meta } from '../helpers'
 import { fetchPost } from '../actions/post'
 
@@ -16,6 +17,12 @@ class PostViewContainer extends Component {
     const { post } = this.props
     if (post.post.id) {
       return <PostView post={post.post} />
+    }
+  }
+  getLatestPostsContainer() {
+    const { post } = this.props
+    if (post.post.id) {
+      return <LatestPostsContainer post={post} />
     }
   }
   render() {
@@ -33,7 +40,7 @@ class PostViewContainer extends Component {
           </div>
         </section>
         <Comments />
-        <LatestPosts />
+        {this.getLatestPostsContainer()}
       </div>
     )
   }
