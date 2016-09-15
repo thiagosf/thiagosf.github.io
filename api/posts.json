@@ -12,7 +12,7 @@
   "title": "Outro post qualquer",
   "slug": "test2",
   "link": "/posts/test2",
-  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
+  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção.",
   "created_at": "2016-08-09 14:05:30"
 }, {
   "id": 3,
@@ -28,6 +28,6 @@
   "slug": "test4",
   "title": "Sites estáticos com Middleman",
   "link": "/posts/test4",
-  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
+  "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe consequuntur magni iste, sint illo voluptate itaque distinctio, culpa optio cumque nisi ex praesentium perferendis voluptatum tenetur molestias ea sapiente dolorem!",
   "created_at": "2016-08-09 14:05:30"
 }]

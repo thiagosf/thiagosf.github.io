@@ -11,8 +11,11 @@ body {
 @for $i from 1 through 6 {
   h#{$i} {
     font-family: $font-family-sans-serif;
-    font-weight: 700;
+    font-weight: 500;
   }
+}
+h1 {
+  font-weight: 600;
 }
 
 // Svg
@@ -50,10 +53,16 @@ a {
   }
 }
 
+// .panel
+.panel {
+  border: 0;
+  box-shadow: rgba($dark-blue, .17) 0 1px 2px 1px;
+}
+
 // .panel-body
 .panel-body {
   &.panel-body-large {
-    padding: 30px;
+    padding: 15px;
     @media #{$medium-up} {
       padding: 40px;
     }
@@ -68,32 +77,20 @@ a {
   margin: 0 0 20px 0;
   border: 0;
   padding: 0;
+  @media #{$medium-up} {
+    margin: 0 0 30px 0;
+  }
   h1 {
     margin: 0;
     font-size: 28px;
     line-height: 1.2;
     color: $h1-color;
     position: relative;
-    padding-bottom: 10px;
     @media #{$medium-up} {
       font-size: 42px;
     }
     @media #{$xlarge-up} {
       font-size: 48px;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      border-bottom: 1px dotted #ccc;
-      left: 0;
-      right: -30px;
-      @media #{$medium-up} {
-        right: -40px;
-      }
-      @media #{$large-up} {
-        right: -60px;
-      }
     }
   }
 }

@@ -8,8 +8,14 @@ import { fetchPost } from '../actions/post'
 
 class PostViewContainer extends Component {
   componentDidMount() {
-    meta.setSubTitle('Material Design Lite: o framework html do Google')
-    if (this.props.params.slug) {
+    this.loadPost()
+  }
+  componentWillUpdate() {
+    setTimeout(this.loadPost.bind(this), 100)
+  }
+  loadPost() {
+    if (this.props.params.slug && this.props.params.slug != this.current_slug) {
+      this.current_slug = this.props.params.slug
       this.props.fetchPost(this.props.params.slug)
     }
   }
@@ -27,6 +33,9 @@ class PostViewContainer extends Component {
   }
   render() {
     const { post } = this.props
+    if (post.post.title) {
+      meta.setSubTitle(post.post.title)
+    }
     return(
       <div>
         <section className="post-section">

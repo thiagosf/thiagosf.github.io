@@ -29,6 +29,8 @@
 }
 
 .latest-posts-section {
+  margin-bottom: 30px;
+  overflow: hidden;
   h3 {
     font-family: $font-family-sans-serif;
     font-size: 14px;
@@ -44,26 +46,57 @@
       vertical-align: top;
     }
   }
+  .row {
+    .col-sm-6 {
+      @media #{$medium-up} {
+        &:nth-child(2n+1) {
+          clear: both;
+        }
+      }
+    }
+  }
 }
 
 .posts-box {
-
+  
 }
 
 .post-item {
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
+  .post-image {
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    max-height: 200px;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
   .post-time {
     color: #999;
-    font-size: 10px;
+    font-size: 12px;
+    line-height: 1;
     margin: 0 0 2px 0;
     font-family: $font-family-sans-serif;
   }
   .post-title {
-    margin: 0;
+    margin: 0 0 5px 0;
+    font-family: $font-family-sans-serif;
+    font-size: 22px;
+    line-height: 1.4;
     a {
-      color: #555;
-      font-size: 18px;
-      line-height: 1.4;
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .post-excerpt {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    a {
+      color: #333;
       &:hover {
         text-decoration: underline;
       }
