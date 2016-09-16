@@ -5,7 +5,8 @@
   "slug": "test",
   "link": "/posts/test",
   "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
-  "created_at": "2016-08-09 14:05:30"
+  "created_at": "2016-08-09 14:05:30",
+  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
 }, {
   "id": 2,
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Material_Design.svg/2000px-Material_Design.svg.png",
@@ -13,7 +14,8 @@
   "slug": "test2",
   "link": "/posts/test2",
   "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção.",
-  "created_at": "2016-08-09 14:05:30"
+  "created_at": "2016-08-09 14:05:30",
+  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
 }, {
   "id": 3,
   "image": "https://d13yacurqjgara.cloudfront.net/users/409459/screenshots/1770941/drawer.gif",
@@ -21,7 +23,8 @@
   "slug": "test3",
   "link": "/posts/test3",
   "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
-  "created_at": "2016-08-09 14:05:30"
+  "created_at": "2016-08-09 14:05:30",
+  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
 }, {
   "id": 4,
   "image": null,
@@ -29,5 +32,6 @@
   "title": "Sites estáticos com Middleman",
   "link": "/posts/test4",
   "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe consequuntur magni iste, sint illo voluptate itaque distinctio, culpa optio cumque nisi ex praesentium perferendis voluptatum tenetur molestias ea sapiente dolorem!",
-  "created_at": "2016-08-09 14:05:30"
+  "created_at": "2016-08-09 14:05:30",
+  "body": "Quem **nunca precisou** fazer um site que não compensasse utilizar linguagens server-side? E usou html puro, já que é muito fácil e rápido. Porém, como sabemos bem, os sites mudam com uma velocidade alta, suas informações mais ainda, é um _bota isso, tira aquilo, aumenta o logo_, etc.\n\nJá havia esbarrado no [jekyll](http://jekyllrb.com/) em matérias e tutoriais, porém nunca tive a curiosidade de saber do que se tratava. Até que enfim, conheci os geradores de sites estáticos e suas possibilidades. Gostei demasiadamente do processo e das facilidades, principalmente com o deploy com um único comando.\n\nNo decorrer da pesquisa, encontrei o [middleman](https://middlemanapp.com/), e me adaptei rapidamente com a estrutura e as ferramentas disponíveis. Tem uma lista bacana de [templates](https://directory.middlemanapp.com/#/templates/all), onde você pode escolher algum que se encaixa na sua necessidade, ou pode criar um, que é boiada demais.\n\nPor padrão, ele traz o ERb como template engine. Porém, tem [diversas alternativas](https://middlemanapp.com/basics/template_engine_options/), inclusive o tão querido [HAML](http://haml.info/) e nosso amigo [Markdown](http://daringfireball.net/projects/markdown/).\n\nNa empolgação, criei um template simples, usando foundation, compass e haml, que batizei em [Middleman-Kame](https://github.com/thiagosf/middleman-kame)."
 }]

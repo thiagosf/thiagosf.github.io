@@ -1,4 +1,8 @@
 .comments-section {
+  margin-bottom: 20px;
+  @media #{$medium-up} {
+    margin-bottom: 40px;
+  }
   h2 {
     font-size: 18px;
     line-height: 1;

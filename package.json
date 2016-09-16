@@ -41,6 +41,7 @@
     "react-sound": "^0.5.2",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
+    "showdown": "^1.4.3",
     "superagent": "^2.2.0"
   }
 }

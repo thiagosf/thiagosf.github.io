@@ -88,18 +88,6 @@ export const fetchPost = (slug) => {
           })
         }
       })
-
-    // setTimeout(() => {
-    //   let post = {
-    //     id: 1,
-    //     image: 'http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg',
-    //     title: 'Sites estáticos com Middleman',
-    //     link: '/posts-test',
-    //     excerpt: 'Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.',
-    //     created_at: Date.now()
-    //   }
-    //   dispatch({ type: RECEIVE_POST, post })
-    // }, 1000)
   }
 }
 
