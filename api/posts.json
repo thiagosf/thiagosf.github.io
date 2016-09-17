@@ -63,8 +63,8 @@
   "body": "<pre>warning: CRLF will be replaced by LF in file.psd.</pre>\n\nMe deparei com esse problema algumas vezes, um solução que havia encontrado, foi ignorar as mudanças do arquivo, mas não era possível que essa era a única solução!\n\nPesquisando mais a fundo, encontrei esse artigo [Dealing with line endings](https://help.github.com/articles/dealing-with-line-endings/) do GitHub, que explica como funciona e como corrigir problemas corriqueiros.\n\nA solução encontrada, por exemplo, desse problema para um arquivo PSD, foi alterar o arquivo **.gitattributes** especificando que o PSD se trata de um arquivo binário, assim resolvendo o problema de vez!\n\n<pre>*.psd binary</pre>"
 }, {
   "id": 9,
-  "image": "http://api.dev.azk.io/images/servidor-seguro.jpg",
-  "image_header": "http://api.dev.azk.io/images/servidor-seguro-header.jpg",
+  "image": "http://static.thiagosf.net/images/servidor-seguro.jpg",
+  "image_header": "http://static.thiagosf.net/images/servidor-seguro-header.jpg",
   "title": "Deixando seu servidor um pouco mais seguro",
   "slug": "deixando-seu-servidor-um-pouco-mais-seguro",
   "link": "/posts/deixando-seu-servidor-um-pouco-mais-seguro",
