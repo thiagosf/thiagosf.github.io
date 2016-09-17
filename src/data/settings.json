@@ -5,7 +5,7 @@
   "github": "https://github.com/thiagosf/",
   "linkedin": "https://www.linkedin.com/in/thiagosfsjc",
   "api": {
-    "development": "http://api.dev.azk.io",
-    "production": "http://api.thiagosf.net"
+    "development": "//api.dev.azk.io",
+    "production": "//api.thiagosf.net"
   }
 }
