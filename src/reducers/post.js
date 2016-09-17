@@ -21,6 +21,7 @@ let initialState = {
   filter: null,
   page: 1,
   count: 0,
+  limit: 5,
   fetch_latest_posts: false,
   latest_posts: []
 }

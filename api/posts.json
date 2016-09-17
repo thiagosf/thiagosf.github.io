@@ -1,37 +1,74 @@
 [{
   "id": 1,
-  "image": "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/03/materialdesign.jpg",
-  "title": "Um post novo",
-  "slug": "test",
-  "link": "/posts/test",
-  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
-  "created_at": "2016-08-09 14:05:30",
-  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
+  "image": null,
+  "title": "PhalconPHP: Primeiras impressões",
+  "slug": "phalconphp-primeiras-impressoes",
+  "link": "/posts/phalconphp-primeiras-impressoes",
+  "excerpt": "Desempenho impressionante, similaridade muito grande com CakePHP, sem dúvidas um ótimo framework.",
+  "created_at": "2014-10-10 00:00:00",
+  "body": "Sempre trabalhei com CakePHP, desde sua versão 1.3, e o que sempre me motivou a continuar com ele, é a abstração de coisas que repetimos em todos os projetos e a facilidade em desenvolver. Porém, comparando com outros frameworks, sempre pecou no desempenho, ficando abaixo dos principais frameworks do mercado.\n\nEntretanto, o servidor conta muito, ao usar as hospedagens comuns que temos por ai, o CakePHP fica desesperador em alguns casos, porém tive a experiência de instalar em um cloud server, configurando com NGINX e MariaDB, e o desempenho superou as expectativas, e o pior, era a versão 1.3 do CakePHP! Pretendo em um próximo post falar sobre as experiências que tive com a nuvem.\n\nVoltando ao Phalcon, tive alguns problemas para instalar no Ubuntu 14.04, mas nada que o stackoverflow e o google não consigam ajudar. Gostei bastante da separação dos arquivos, das formas de se trabalhar com models, validações, etc. E o melhor, o desempenho é realmente absurdo!  \n\nPor ser similar com o CakePHP, isso facilitou um pouco, porém todo novo framework requer um tempo para se familiarizar e e melhorar a produtividade. ~~Aliás esse site que estar a ver, foi desenvolvido com PhalconPHP!~~ Nessa nova versão estou usando React.\n\nVale a pena aprender, e os docs são bem didáticos, com muitos exemplos práticos.\n\n[http://phalconphp.com/en/](http://phalconphp.com/en/)"
 }, {
   "id": 2,
-  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Material_Design.svg/2000px-Material_Design.svg.png",
-  "title": "Outro post qualquer",
-  "slug": "test2",
-  "link": "/posts/test2",
-  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção.",
-  "created_at": "2016-08-09 14:05:30",
-  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
+  "image": null,
+  "title": "Cloud Server com DigitalOcean",
+  "slug": "cloud-server-com-digitalocean",
+  "link": "/posts/cloud-server-com-digitalocean",
+  "excerpt": "Acha que Magento lento? Ou mesmo CakePHP? Talvez o problema seja seu servidor, e está na hora de conhecer um Cloud Server, e aqui descrevo um pouco da minha experiência com DigitalOcean.",
+  "created_at": "2014-12-14 00:00:00",
+  "body": "Por um tempo fiquei de estudar **Cloud Server**, pois quem usa, conta suas inúmeras vantagens. Deixei um pouco de lado, pois queria já começar com a [AWS](http://aws.amazon.com/pt/) e eu desanimava pela dificuldade em entender os cálculos dos custos e as diversas plataformas disponíveis.\n\nConheci a pouco tempo a [DigitalOcean](https://www.digitalocean.com/?refcode=2a790b2bec8a), e a forma como é feito a configuração do servidor, é absurdamente amigável, e isso ajuda muito pra quem está iniciando com cloud. Os custos são bem interessantes, e você adiciona créditos para manter o serviço funcionando, como um celular pré-pago.  \n\nA parte mais legal é poder instalar tudo o que precisar no servidor, e deixar com a últimas versão do PHP, brincar com nodejs, ruby, etc! No momento estou utilizando o [NGINX](http://nginx.org), [PHP-FPM](http://php-fpm.org/) e [MariaDB](http://mariadb.org) (no lugar do MySQL). O resultado impressiona, não sei criar os benchmarks, mas velocidade comparando com o servidor anterior (Locaweb) é notável.\n\nAinda preciso aprender mais sobre configuração de servidor, segurança, firewall, etc. Porém tem muitos artigos na própria DigitalOcean que auxiliam nisso. E um dia, ainda vou dominar essa tal de AWS  :grimacing:\n\nE que tal fazer deploy com git? Sem usar FTP? Aí ficou interessante né?! Veja ai um tutorial bacana feito pelo meu xará:\n\n[http://blog.thiagobelem.net/automatizando-a-instalacao-deploy-e-atualizacao-de-sites-com-git/](http://blog.thiagobelem.net/automatizando-a-instalacao-deploy-e-atualizacao-de-sites-com-git/)"
 }, {
   "id": 3,
-  "image": "https://d13yacurqjgara.cloudfront.net/users/409459/screenshots/1770941/drawer.gif",
-  "title": "Mais um post",
-  "slug": "test3",
-  "link": "/posts/test3",
-  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
-  "created_at": "2016-08-09 14:05:30",
-  "body": "### What about Images?\n\nImages work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:\n\n![The Ghost Logo](http://tryghost.org/ghost.png)\n\nNot sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:\n\n![A bowl of bananas]"
-}, {
-  "id": 4,
   "image": null,
-  "slug": "test4",
+  "title": "Migrando para o Grunt",
+  "slug": "migrando-para-o-grunt",
+  "link": "/posts/migrando-para-o-grunt",
+  "excerpt": "Grunt é um poderoso automatizador de tarefas de front-end (e back-end também), e o melhor de tudo, like a terminal!",
+  "created_at": "2015-01-29 00:00:00",
+  "body": "Já testei vários aplicativos que facilitam a automação de tarefas como Scout, Koala e mais recentemete CodeKit. Porém, uma hora ou outra da um probleminha, demora para compilar o sass, para concatenar e minificar o javascript, além de dar umas travadas bacanas.\n\nAlgumas pessoas com quem trabalhei utilizavam o Grunt, e não me havia despertado a atenção. Mas essa semana peguei para testar e ver o que ele é capaz de fazer. Achei a sintaxe a forma de configuração bem simples e concisa, e o melhor, muitos plugins legais para fazer muitas coisas!\n\nSe você ainda não conhece, vale a pena conferir, segue um tutorial mamão-com-açucar para seguir e aprender, não leva mais que 15 minutos.\n\n[http://www.voltsdigital.com.br/labs/gruntjs-por-onde-comecar/](http://www.voltsdigital.com.br/labs/gruntjs-por-onde-comecar/)\n\nSó pra adiantar, segue uma configuração simples do Grunt:\n\n\n\n<pre>module.exports = function(grunt) {\n  grunt.initConfig({\n    concat: {\n      options: {\n        separator: ';', \n      },\n      dist: {\n        src: ['src/js/*.js'], \n        dest: 'assets/js/main.js'\n      }\n    }, // concat\n\n    uglify: {\n      options: {\n        mangle: false\n      },\n      dist: {\n        files: {\n          'assets/js/main.min.js': ['src/js/main.js']\n        }\n      }\n    }, // uglify\n\n    compass: {\n      dist: {\n        options: {\n          config: 'config.rb'\n        }\n      }\n    }, // compass\n\n    jshint: {\n      options: {\n        jshintrc: true\n      },\n      gruntfile: {\n        src: 'Gruntfile.js'\n      },\n      src: {\n        src: ['src/js/*.js']\n      }\n    }, // jhint\n\n    watch: {\n      dist: {\n        files: [\n          'src/js/*',\n          'src/sass/*',\n          'assets/img/**/*.{png,jpg,gif}'\n        ],\n        tasks: ['jshint', 'concat', 'uglify', 'compass'],\n        options: {\n          spawn: false,\n        }\n      }\n    }, // watch\n\n    imagemin: {\n      dynamic: {\n        files: [{\n          expand: true, \n          cwd: 'assets/img/', \n          src: ['**/*.{png,jpg,gif}'], \n          dest: 'assets/img/'\n        }]\n      }\n    }, // imagemin\n\n    imageoptim: {\n      dynamic: {\n        src: ['assets/img/**/*.{png,jpg,gif}']\n      }\n    } // imageoptim -- processo demorado, rodar esporadicamente\n  });\n\n  // Plugins do grunt\n  grunt.loadNpmTasks('grunt-contrib-uglify');\n  grunt.loadNpmTasks('grunt-contrib-watch');\n  grunt.loadNpmTasks('grunt-contrib-concat');\n  grunt.loadNpmTasks('grunt-contrib-imagemin');\n  grunt.loadNpmTasks('grunt-imageoptim');\n  grunt.loadNpmTasks('grunt-contrib-jshint');\n  grunt.loadNpmTasks('grunt-contrib-compass');\n\n  // Tarefas que serao executadas\n  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'compass', 'imagemin', 'imageoptim']);\n\n  // Tarefa para watch\n  grunt.registerTask('w', ['watch']);\n};</pre>\n\n"
+}, {
+  "id": 5,
+  "image": null,
+  "title": "SVG Sprites para ícones",
+  "slug": "svg-sprites-para-icones",
+  "link": "/posts/svg-sprites-para-icones",
+  "excerpt": "Deixar os ícones do site legal em qualquer resolução sempre foi um desafio. Nesse momento o SVG é uma ótima opção em relação ao PNG e Font Icons.",
+  "created_at": "2015-04-19 00:00:00",
+  "body": "Um dos maiores problemas com os font icons é que, semanticamente, ele fere seu html. SVG nada mais é do que uma imagem em vetor, assim encaixando perfeitamente para aplicar em ícones.  \n\nSe você usa o [Grunt](http://gruntjs.com/), um plugin bacana é o [grunt-svgstore](https://github.com/FWeinb/grunt-svgstore), ele basicamente junta todos seus SVGs em um único arquivo, facilitando a manipulação no html e personalização através do css. Existem [outras formas de fazer isso](https://css-tricks.com/svg-sprites-use-better-icon-fonts/), porém esse plugin achei que faz bem isso e muito simples.\n\nConforme a dica do CSS-Tricks, sua utilização seria basicamente assim:\n\n<pre>&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n...\n&lt;/head&gt;\n&lt;body&gt;\n&lt;?php include_once(&quot;processed/svg-defs.svg&quot;); ?&gt;</pre>\n\nE chamando assim para os devidos ícones:\n\n<pre>&lt;svg viewBox=&quot;0 0 100 100&quot; class=&quot;icon shape-codepen&quot;&gt;\n  &lt;use xlink:href=&quot;#shape-codepen&quot;&gt;&lt;/use&gt;\n&lt;/svg&gt;</pre>"
+}, {
+  "id": 6,
+  "image": null,
+  "title": "Material Design Lite: o framework html do Google",
+  "slug": "material-design-lite-o-framework-html-do-google",
+  "link": "/posts/material-design-lite-o-framework-html-do-google",
+  "excerpt": "O Google lançou essa semana seu framework html, seguindo os conceitos do Material Design.",
+  "created_at": "2015-07-09 00:00:00",
+  "body": "Faz algum tempo que o Material Design do Google foi lançado, alguns desenvolvedores aplicaram esse conceito criando seus próprios framewoks html, porém nenhum oficial.\n\nEssa semana foi lançado o [MDL: Material Design Lite](http://www.getmdl.io/), framework criado pelo Google. Ele traz vários componentes para criar páginas web seguindo o conceito do Material Design. No site, você pode testar vários [templates](http://www.getmdl.io/templates/index.html) legais, mostrando como utilizar em seu site, blog, aplicativo web, etc.\n\nEle chega sendo uma alternativa aos vários frameworks do mercado, como o [Foundation](http://foundation.zurb.com/), [Bootstrap](http://getbootstrap.com/), [Pure](http://purecss.io/), [UIkit](http://getuikit.com/), entre outros. Particularmente eu prefiro o Foundation, tem ótimas ferramentas para sites responsivos, bastante personalizável, e segue um conceito de nomes de classes bem amigáveis.\n\nEntretanto, vale a pena dar uma olhada com calma no MDL, seja para utilizar em admin ou mesmo sites em geral.\n\n[http://www.getmdl.io/](http://www.getmdl.io/)"
+}, {
+  "id": 7,
+  "image": null,
   "title": "Sites estáticos com Middleman",
-  "link": "/posts/test4",
-  "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe consequuntur magni iste, sint illo voluptate itaque distinctio, culpa optio cumque nisi ex praesentium perferendis voluptatum tenetur molestias ea sapiente dolorem!",
-  "created_at": "2016-08-09 14:05:30",
-  "body": "Quem **nunca precisou** fazer um site que não compensasse utilizar linguagens server-side? E usou html puro, já que é muito fácil e rápido. Porém, como sabemos bem, os sites mudam com uma velocidade alta, suas informações mais ainda, é um _bota isso, tira aquilo, aumenta o logo_, etc.\n\nJá havia esbarrado no [jekyll](http://jekyllrb.com/) em matérias e tutoriais, porém nunca tive a curiosidade de saber do que se tratava. Até que enfim, conheci os geradores de sites estáticos e suas possibilidades. Gostei demasiadamente do processo e das facilidades, principalmente com o deploy com um único comando.\n\nNo decorrer da pesquisa, encontrei o [middleman](https://middlemanapp.com/), e me adaptei rapidamente com a estrutura e as ferramentas disponíveis. Tem uma lista bacana de [templates](https://directory.middlemanapp.com/#/templates/all), onde você pode escolher algum que se encaixa na sua necessidade, ou pode criar um, que é boiada demais.\n\nPor padrão, ele traz o ERb como template engine. Porém, tem [diversas alternativas](https://middlemanapp.com/basics/template_engine_options/), inclusive o tão querido [HAML](http://haml.info/) e nosso amigo [Markdown](http://daringfireball.net/projects/markdown/).\n\nNa empolgação, criei um template simples, usando foundation, compass e haml, que batizei em [Middleman-Kame](https://github.com/thiagosf/middleman-kame)."
+  "slug": "sites-estaticos-com-middleman",
+  "link": "/posts/sites-estaticos-com-middleman",
+  "excerpt": "Criar sites estáticos com são bem chatos para dar manutenção. Que tal deixar mais dinâmico com geradores? Essa é a proposta do Middleman e outros similares.",
+  "created_at": "2015-08-01 00:00:00",
+  "body": "Quem nunca precisou fazer um site que não compensasse utilizar linguagens server-side? E usou html puro, já que é muito fácil e rápido. Porém, como sabemos bem, os sites mudam com uma velocidade alta, suas informações mais ainda, é um _bota isso, tira aquilo, aumenta o logo_, etc.\n\nJá havia esbarrado no [jekyll](http://jekyllrb.com/) em matérias e tutoriais, porém nunca tive a curiosidade de saber do que se tratava. Até que enfim, conheci os geradores de sites estáticos e suas possibilidades. Gostei demasiadamente do processo e das facilidades, principalmente com o deploy com um único comando.\n\nNo decorrer da pesquisa, encontrei o [middleman](https://middlemanapp.com/), e me adaptei rapidamente com a estrutura e as ferramentas disponíveis. Tem uma lista bacana de [templates](https://directory.middlemanapp.com/#/templates/all), onde você pode escolher algum que se encaixa na sua necessidade, ou pode criar um, que é boiada demais.\n\nPor padrão, ele traz o ERb como template engine. Porém, tem [diversas alternativas](https://middlemanapp.com/basics/template_engine_options/), inclusive o tão querido [HAML](http://haml.info/) e nosso amigo [Markdown](http://daringfireball.net/projects/markdown/). \n\nNa empolgação, criei um template simples, usando foundation, compass e haml, que batizei em [Middleman-Kame](https://github.com/thiagosf/middleman-kame)."
+}, {
+  "id": 8,
+  "image": null,
+  "title": "Git: CRLF will be replaced by LF",
+  "slug": "git-crlf-will-be-replaced-by-lf",
+  "link": "/posts/git-crlf-will-be-replaced-by-lf",
+  "excerpt": "Problema chato, agora resolvido!",
+  "created_at": "2015-08-05 00:00:00",
+  "body": "<pre>warning: CRLF will be replaced by LF in file.psd.</pre>\n\nMe deparei com esse problema algumas vezes, um solução que havia encontrado, foi ignorar as mudanças do arquivo, mas não era possível que essa era a única solução!\n\nPesquisando mais a fundo, encontrei esse artigo [Dealing with line endings](https://help.github.com/articles/dealing-with-line-endings/) do GitHub, que explica como funciona e como corrigir problemas corriqueiros.\n\nA solução encontrada, por exemplo, desse problema para um arquivo PSD, foi alterar o arquivo **.gitattributes** especificando que o PSD se trata de um arquivo binário, assim resolvendo o problema de vez!\n\n<pre>*.psd binary</pre>"
+}, {
+  "id": 9,
+  "image": "http://api.dev.azk.io/images/servidor-seguro.jpg",
+  "image_header": "http://api.dev.azk.io/images/servidor-seguro-header.jpg",
+  "title": "Deixando seu servidor um pouco mais seguro",
+  "slug": "deixando-seu-servidor-um-pouco-mais-seguro",
+  "link": "/posts/deixando-seu-servidor-um-pouco-mais-seguro",
+  "excerpt": "Segurança de servidores é uma área muito complexa, mas tem algumas coisas básicas que melhoram sua proteção contra invasores.",
+  "created_at": "2016-04-11 00:00:00",
+  "body": "Não sou expert em segurança, porém gosto muito de entender um pouco sobre as diversas áreas em que uma aplicação web é dividida.\n\nUltimamente venho trabalhando muito com cloud server, e no decorrer dos projetos, aprendi bastante coisa em relação a infraestrutura de um servidor e sua segurança. Vou colocar algumas coisas básicas sobre segurança, mas que já ajudam bastante.\n\n## Utilizar SSH Keys e desabilitar acesso através de senhas\n\nSenhas são mais fáceis de serem quebradas através do **brute force**. Ao criar o servidor adicione sua chave pública e remova o **PasswordAuthentication** alterando o arquivo _/etc/ssh/sshd_config_:\n\n<pre>PasswordAuthentication no</pre>\n\nDepois basta reiniciar o serviço o SSH:  \n\n<pre>$ restart ssh</pre>\n\n## Verifique tentativas de login no SSH e bloqueie com firewall  \n\nPara aumentar mais a segurança, rode o seguinte comando para listar as tentativas de acesso ao SSH:\n\n<pre>cat /var/log/secure | grep 'sshd.*Invalid'</pre>\n\nDepois basta bloquear esse IP através do **iptables**:  \n\n<pre>iptables -I INPUT -s 1.2.3.4 -j DROP</pre>\n\nBom, isso é o básico, com certeza existem mais formas de proteger seu servidor, basta dar uma pesquisada pra se aprofundar mais no assunto. Por mais que você seja um **front-end** ou **back-end**, é sempre bom dar uma olhada na **infraestrutura** da sua aplicação.\n\nAliás, as duas dicas foram testadas no **Ubuntu**, porém é ser fácil adaptar para outras distros."
 }]

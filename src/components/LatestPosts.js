@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
+import moment from 'moment'
 import { Link, Icon } from './'
 
 const PostItem = ({ title, image, created_at, link, excerpt }) => {
@@ -20,9 +21,7 @@ const PostItem = ({ title, image, created_at, link, excerpt }) => {
     <div className="post-item">
       {postImage(image)}
       <div className={postInfoClassname}>
-        <div className="post-time">
-          {created_at}
-        </div>
+        <div className="post-time">{moment(created_at).format('LL')}</div>
         <h4 className="post-title">
           <Link to={link}>{title}</Link>
         </h4>

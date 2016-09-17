@@ -100,13 +100,32 @@ a {
 %page-content {
   font-size: 16px;
   line-height: 1.4;
-  @media #{$xlarge-up} {
+  @media #{$medium-up} {
     font-size: 18px;
   }
   p {
     margin-bottom: 20px;
     @media #{$xlarge-up} {
       margin-bottom: 20px;
+    }
+  }
+  pre {
+    border: 0;
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    border-radius: 0;
+    padding: 20px;
+    margin: 0 -20px 20px;
+    color: #777;
+    font-family: $font-family-monospace;
+    @media #{$medium-up} {
+      padding: 40px;
+      margin: 0 -40px 20px;
+    }
+    @media #{$large-up} {
+      padding: 40px;
+      margin: 0 -60px 20px;
     }
   }
   @for $i from 0 through 6 {

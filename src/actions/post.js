@@ -20,7 +20,7 @@ export const fetchHomePosts = () => {
       .query(api.params({
         home: true,
         page: 1,
-        limit: 10
+        limit: 5
       }))
       .set('Accept', 'application/json')
       .end((err, res) => {
@@ -42,14 +42,15 @@ export const fetchHomePosts = () => {
   }
 }
 
-export const fetchPosts = ({ page = 1, limit = 10, filter = null }) => {
-  return dispatch => {
+export const fetchPosts = ({ page = 1, filter = null }) => {
+  return (dispatch, getState) => {
+    const { post } = getState()
     dispatch({ type: REQUEST_POSTS, page: page })
     request
       .get(api.url('/posts'))
       .query(api.params({
         page: page,
-        limit: limit,
+        limit: post.limit,
         filter: filter
       }))
       .set('Accept', 'application/json')

@@ -22,7 +22,7 @@ export const checkLink = (location) => {
   return dispatch => {
     if (location.pathname) {
       let link = location.pathname
-      if (link.startsWith('/posts')) link = '/posts'
+      if (link.includes('/posts')) link = '/posts'
       dispatch(setCurrentLink(link));
     }
   }

@@ -40,7 +40,7 @@ class PostsContainer extends Component {
     const loadMoreClassname = classnames({
       'btn': true,
       'btn-info': true,
-      'disabled': post.fetch_posts || post.count == 0
+      'disabled': post.fetch_posts || post.count == 0 || post.count < post.limit
     })
     return(
       <CommonSectionContainer>

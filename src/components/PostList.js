@@ -23,7 +23,7 @@ const PostItem = ({ title, excerpt, link, created_at, image }) => {
       {postImage(image)}
       <div className={postInfoClassname}>
         <div className="post-time">
-          {moment(created_at).format('LLLL')}
+          {moment(created_at).format('LL')}
         </div>
         <h2 className="post-title">
           <Link to={link}>{title}</Link>

@@ -17,7 +17,7 @@
       height: 12px;
       margin-right: 2px;
       display: inline-block;
-      vertical-align: top;
+      vertical-align: middle;
       @media #{$xlarge-up} {
         width: 16px;
         height: 16px;
@@ -29,6 +29,9 @@
   }
   .post-content {
     @extend %page-content;
+  }
+  .post-image {
+    margin: 0 0 20px 0;
   }
   .share-box {
     text-align: right;
