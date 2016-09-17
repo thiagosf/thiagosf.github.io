@@ -32,8 +32,11 @@ class HeaderContainer extends Component {
     this.props.toggleNav()
   }
   setCurrentLink(e) {
-    this.props.setCurrentLink(e.currentTarget.getAttribute('href'))
-    this.props.toggleNav()
+    const href = e.currentTarget.getAttribute('href')
+    this.props.setCurrentLink(href)
+    if (href != '/') {
+      this.props.toggleNav()
+    }
     return e
   }
   render() {

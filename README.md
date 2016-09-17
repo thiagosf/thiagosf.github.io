@@ -10,4 +10,4 @@ Site pessoal usando React e Redux.
 - [x] Sobre
 - [x] Projetos
 - [x] Playground
-- [ ] Posts
+- [x] Posts

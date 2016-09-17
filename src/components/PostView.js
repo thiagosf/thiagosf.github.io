@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import showdown from 'showdown'
 import { Icon } from './'
+import { ShareButtons } from 'react-share'
 
 class PostView extends Component {
   convertMarkdown() {
@@ -21,9 +22,15 @@ class PostView extends Component {
         </header>
         <div className="post-content" dangerouslySetInnerHTML={this.convertMarkdown()} />
         <div className="share-box">
-          <a href="#"><Icon name="google-plus" /></a>
-          <a href="#"><Icon name="twitter" /></a>
-          <a href="#"><Icon name="facebook" /></a>
+          <ShareButtons.GooglePlusShareButton title={post.title} url={window.location.href}>
+            <Icon name="google-plus" />
+          </ShareButtons.GooglePlusShareButton>
+          <ShareButtons.TwitterShareButton title={post.title} url={window.location.href}>
+            <Icon name="twitter" />
+          </ShareButtons.TwitterShareButton>
+          <ShareButtons.FacebookShareButton title={post.title} url={window.location.href}>
+            <Icon name="facebook" />
+          </ShareButtons.FacebookShareButton>
         </div>
       </div>
     )

@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { api } from '../helpers'
+import { api, error } from '../helpers'
 import {
   REQUEST_HOME_POSTS,
   RECEIVE_HOME_POSTS,
@@ -25,6 +25,10 @@ export const fetchHomePosts = () => {
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) {
+          dispatch({
+            type: RECEIVE_HOME_POSTS,
+            posts: []
+          })
           error.handleAjax(err, res, dispatch)
         } else {
           let posts = []

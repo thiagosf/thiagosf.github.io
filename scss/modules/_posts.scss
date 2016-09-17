@@ -33,17 +33,19 @@
   .share-box {
     text-align: right;
     margin-top: 40px;
-    a {
+    a,
+    .SocialMediaShareButton {
       display: inline-block;
       width: 22px;
       height: 22px;
-      color: black;
+      color: $text-color;
       margin: 0 0 0 5px;
       padding: 10px;
       border-radius: 2px;
       box-sizing: content-box;
       transition: all 300ms;
       background: white;
+      cursor: pointer;
       &:hover {
         background: #eee;
       }
@@ -108,7 +110,7 @@
     font-size: 22px;
     line-height: 1.4;
     a {
-      color: black;
+      color: $text-color;
       &:hover {
         text-decoration: underline;
       }
@@ -119,7 +121,7 @@
     font-size: 16px;
     line-height: 1.4;
     a {
-      color: #333;
+      color: $text-color;
       &:hover {
         text-decoration: underline;
       }
@@ -166,12 +168,12 @@
     margin: 0 0 2px 0;
   }
   .post-title {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
     font-size: 24px;
     line-height: 1.2;
     color: $brand-primary;
     a {
-      color: inherit;
+      color: $text-color;
       &:hover {
         text-decoration: underline;
       }

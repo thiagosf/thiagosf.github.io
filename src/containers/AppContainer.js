@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import classnames from 'classnames'
 import { Icon } from '../components'
-import { HeaderContainer } from './'
+import { HeaderContainer, NotificationContainer } from './'
 import { checkLink } from '../actions/nav'
 
 class AppContainer extends Component {
@@ -19,6 +19,7 @@ class AppContainer extends Component {
       <div className="page-app">
         <HeaderContainer />
         <div className={page_content_box}>
+          <NotificationContainer />
           {this.props.children}
           <div className="container-fluid">
             <footer className="main-footer">

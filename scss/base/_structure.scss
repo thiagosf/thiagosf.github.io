@@ -1,7 +1,6 @@
 // Body
 body {
   padding-top: 115px;
-  color: black;
   @media #{$large-up} {
     padding-top: 40px;
   }
@@ -12,6 +11,7 @@ body {
   h#{$i} {
     font-family: $font-family-sans-serif;
     font-weight: 500;
+    color: inherit;
   }
 }
 h1 {
@@ -62,7 +62,8 @@ a {
 // .panel-body
 .panel-body {
   &.panel-body-large {
-    padding: 15px;
+    padding: 20px;
+    min-height: 60px;
     @media #{$medium-up} {
       padding: 40px;
     }
@@ -82,9 +83,8 @@ a {
   }
   h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 36px;
     line-height: 1.2;
-    color: $h1-color;
     position: relative;
     @media #{$medium-up} {
       font-size: 42px;
