@@ -6,12 +6,13 @@ const Immutable = require('immutable')
 const fs = require('fs')
 const util = require('util')
 
+const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 const server = new Hapi.Server()
 
 server.register(Inert, () => {
   server.connection({ 
-    host: '0.0.0.0', 
+    host: host, 
     port: port,
     routes: {
       cors: true
