@@ -16,7 +16,7 @@ class Comments extends Component {
           </h2>
           <div className="panel panel-default">
             <div className="panel-body panel-body-large">
-              <ReactDisqus shortname="thiagosf" identifier="thiagosf-blog" />
+              <ReactDisqus protocol="https" shortname="thiagosf" identifier="thiagosf-blog" />
             </div>
           </div>
         </div>
