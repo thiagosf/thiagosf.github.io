@@ -2,11 +2,11 @@ var webpack = require('webpack');
 var PROD = JSON.parse(process.env.PROD_ENV || '0');
 
 module.exports = {
+  devtool: PROD ? 'cheap-module-source-map' : 'eval',
   entry: './src/index.js',
   output: {
     path: __dirname,
     filename: 'bundle.js'
-    // filename: PROD ? 'bundle.min.js' : 'bundle.js'
   },
   module: {
     loaders: [{
@@ -30,6 +30,11 @@ module.exports = {
   plugins: PROD ? [
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
     })
   ] : []
 };

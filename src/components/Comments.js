@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import ReactDisqus from 'react-disqus'
-import { Icon } from './'
+import { Icon, ReactDisqus } from './'
 
 class Comments extends Component {
   handleNewComment() {
@@ -16,7 +15,11 @@ class Comments extends Component {
           </h2>
           <div className="panel panel-default">
             <div className="panel-body panel-body-large">
-              <ReactDisqus protocol="https" shortname="thiagosf" identifier="thiagosf-blog" />
+              <ReactDisqus 
+                protocol="https" 
+                shortname="thiagosf" 
+                identifier="thiagosf-blog" 
+                />
             </div>
           </div>
         </div>
