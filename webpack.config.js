@@ -29,7 +29,9 @@ module.exports = {
   },
   plugins: PROD ? [
     new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
+      compress: { warnings: false },
+      comments: false,
+      sourceMap: false
     }),
     new webpack.DefinePlugin({
       'process.env': {
