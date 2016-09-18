@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Router, Route, browserHistory, IndexRoute, routerReducer } from 'react-router'
+import ReactGA from 'react-ga'
 import moment_pt from 'moment/locale/pt'
 
 import * as reducers from './reducers'
@@ -20,9 +21,15 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 )
 
+ReactGA.initialize('UA-1966000-17')
+const logPageView = () => {
+  ReactGA.set({ page: window.location.pathname })
+  ReactGA.pageview(window.location.pathname)
+}
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={browserHistory} onUpdate={logPageView}>
       <Route path="/" component={containers.AppContainer}>
         <IndexRoute component={containers.HomeContainer} />
         <Route path="/sobre" component={containers.AboutContainer} />
