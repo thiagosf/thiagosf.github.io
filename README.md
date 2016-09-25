@@ -11,3 +11,4 @@ Site pessoal usando React e Redux.
 - [x] Projetos
 - [x] Playground
 - [x] Posts
+- [ ] Página de erro
