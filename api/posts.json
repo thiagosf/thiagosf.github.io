@@ -73,8 +73,8 @@
   "body": "Não sou expert em segurança, porém gosto muito de entender um pouco sobre as diversas áreas em que uma aplicação web é dividida.\n\nUltimamente venho trabalhando muito com cloud server, e no decorrer dos projetos, aprendi bastante coisa em relação a infraestrutura de um servidor e sua segurança. Vou colocar algumas coisas básicas sobre segurança, mas que já ajudam bastante.\n\n## Utilizar SSH Keys e desabilitar acesso através de senhas\n\nSenhas são mais fáceis de serem quebradas através do **brute force**. Ao criar o servidor adicione sua chave pública e remova o **PasswordAuthentication** alterando o arquivo _/etc/ssh/sshd_config_:\n\n<pre>PasswordAuthentication no</pre>\n\nDepois basta reiniciar o serviço o SSH:  \n\n<pre>$ restart ssh</pre>\n\n## Verifique tentativas de login no SSH e bloqueie com firewall  \n\nPara aumentar mais a segurança, rode o seguinte comando para listar as tentativas de acesso ao SSH:\n\n<pre>cat /var/log/secure | grep 'sshd.*Invalid'</pre>\n\nDepois basta bloquear esse IP através do **iptables**:  \n\n<pre>iptables -I INPUT -s 1.2.3.4 -j DROP</pre>\n\nBom, isso é o básico, com certeza existem mais formas de proteger seu servidor, basta dar uma pesquisada pra se aprofundar mais no assunto. Por mais que você seja um **front-end** ou **back-end**, é sempre bom dar uma olhada na **infraestrutura** da sua aplicação.\n\nAliás, as duas dicas foram testadas no **Ubuntu**, porém é ser fácil adaptar para outras distros."
 }, {
   "id": 10,
-  "image": "//static.thiagosf.net/images/citroenorigins.jpg",
-  "image_header": "//static.thiagosf.net/images/citroenorigins-header.jpg",
+  "image": "//static.thiagosf.net/fantastic/images/citroenorigins.jpg",
+  "image_header": "//static.thiagosf.net/fantastic/images/citroenorigins-header.jpg",
   "title": "Fantastic: Citroën Origins",
   "slug": "fantastic-citroen-origins",
   "link": "/posts/fantastic-citroen-origins",
