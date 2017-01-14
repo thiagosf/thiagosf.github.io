@@ -5,7 +5,7 @@
   }
   .post-time {
     font-family: $font-family-sans-serif;
-    color: #999;
+    color: $dark-gray;
     font-size: 12px;
     line-height: 1;
     margin: 0 0 10px 0;
@@ -86,7 +86,7 @@
 }
 
 .posts-box {
-  
+
 }
 
 .post-item {
@@ -95,13 +95,24 @@
     overflow: hidden;
     margin: 0 0 10px 0;
     max-height: 200px;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 4px;
+      right: 4px;
+      height: 4px;
+      background: #eceff1;
+    }
     img {
       display: block;
       width: 100%;
     }
   }
   .post-time {
-    color: #999;
+    color: $dark-gray;
     font-size: 12px;
     line-height: 1;
     margin: 0 0 2px 0;
@@ -166,7 +177,7 @@
   }
   .post-time {
     font-family: $font-family-sans-serif;
-    color: #999;
+    color: $dark-gray;
     font-size: 12px;
     margin: 0 0 2px 0;
   }

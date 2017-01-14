@@ -26,7 +26,7 @@ systems({
     },
   },
   api: {
-    depends: [],
+    depends: ['mongodb'],
     image: {"docker": "azukiapp/node"},
     provision: [
       "npm install",
@@ -37,6 +37,7 @@ systems({
     wait: 20,
     mounts: {
       '/azk/#{manifest.dir}': sync("./api"),
+      '/azk/#{manifest.dir}/public': path("./api/public"),
       '/azk/#{manifest.dir}/node_modules': persistent("./node_modules_azk"),
     },
     scalable: {"default": 1},
@@ -49,6 +50,24 @@ systems({
     envs: {
       NODE_ENV: "dev",
       PORT: "8000",
+    },
+  },
+  mongodb: {
+    image : {docker: 'azukiapp/mongodb:3.2'},
+    scalable: false,
+    wait: 20,
+    mounts: {
+      '/data/db': persistent('mongodb-#{manifest.dir}'),
+    },
+    ports: {
+      data: '32770:27017/tcp'
+    },
+    http: {
+      domains: ['#{manifest.dir}-#{system.name}.#{azk.default_domain}'],
+    },
+    export_envs: {
+      MONGODB_URI: 'mongodb://#{net.host}:#{net.port[27017]}/#{manifest.dir}_development',
+      MONGODB_URI_TEST: 'mongodb://#{net.host}:#{net.port[27017]}/#{manifest.dir}_test'
     },
   }
 });

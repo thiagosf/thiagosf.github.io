@@ -1,6 +1,12 @@
+// Html
+html {
+  min-height: 100%;
+}
+
 // Body
 body {
   padding-top: 115px;
+  background: linear-gradient(-20deg, $medium-gray, $light-gray);
   @media #{$large-up} {
     padding-top: 40px;
   }

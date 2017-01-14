@@ -58,15 +58,17 @@ export const fetchPosts = ({ page = 1, filter = null }) => {
         if (err) {
           error.handleAjax(err, res, dispatch)
         } else {
-          let [posts, count] = [[], 0]
+          let [posts, count, pages] = [[], 0, 0]
           if (res.body.success) {
             posts = res.body.data
             count = res.body.count
+            pages = res.body.pages
           }
           dispatch({
             type: RECEIVE_POSTS,
             posts,
-            count
+            count,
+            pages
           })
         }
       })

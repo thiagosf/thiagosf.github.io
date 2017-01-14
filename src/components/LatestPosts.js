@@ -35,6 +35,7 @@ const PostItem = ({ title, image, created_at, link, excerpt }) => {
 
 class LatestPosts extends Component {
   render() {
+    if (this.props.posts.length == 0) return false
     return(
       <section className="latest-posts-section">
         <div className="container-fluid">

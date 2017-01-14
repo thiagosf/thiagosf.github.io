@@ -22,6 +22,7 @@ let initialState = {
   page: 1,
   count: 0,
   limit: 5,
+  pages: 0,
   fetch_latest_posts: false,
   latest_posts: []
 }
@@ -59,7 +60,8 @@ const post = (state = initialState, action) => {
       return Map(state).merge({
         fetch_posts: false,
         posts: Set(state.posts).union(action.posts).toJS(),
-        count: action.count
+        count: action.count,
+        pages: action.pages
       }).toJS()
 
     case RECEIVE_POST:
