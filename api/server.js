@@ -21,8 +21,8 @@ const Page = require('./models').Page
 
 const onError = (reply, message, error) => {
   return reply({
-    success: false, 
-    message: message, 
+    success: false,
+    message: message,
     error: error ? error.message : undefined,
     validations: error ? error.errors : undefined
   }).code(400)
@@ -37,8 +37,8 @@ const validate = function (request, username, password, callback) {
   })
 }
 
-server.connection({ 
-  host: host, 
+server.connection({
+  host: host,
   port: port,
   routes: {
     cors: true
@@ -63,7 +63,7 @@ server.register([Inert, Basic], (err) => {
   // Posts
   server.route({
     method: 'GET',
-    path: '/posts', 
+    path: '/posts',
     handler: (request, reply) => {
       const filter = request.query.filter
       var limit = parseInt(request.query.limit || 10)
@@ -176,7 +176,7 @@ server.register([Inert, Basic], (err) => {
 
   server.route({
     method: 'GET',
-    path: '/posts/latest', 
+    path: '/posts/latest',
     handler: (request, reply) => {
       const params = { active: true }
       if (request.query.current_post_id) {
@@ -260,13 +260,15 @@ server.register([Inert, Basic], (err) => {
           if (!data) throw Error('Post não encontrado')
           return data.remove().then((data) => {
             const images = data.getLocalImages();
-            images.map((image) => {
-              fs.stat(image, (error, stats) => {
-                if (!error) {
-                  fs.unlink(image)
-                }
+            if (images) {
+              images.map((image) => {
+                fs.stat(image, (error, stats) => {
+                  if (!error) {
+                    fs.unlink(image)
+                  }
+                })
               })
-            })
+            }
             reply({ success: true })
           }).catch(onError.bind(this, reply, 'Não foi possível remover post'))
         }).catch(onError.bind(this, reply, 'Post não encontrado'))
@@ -302,7 +304,7 @@ server.register([Inert, Basic], (err) => {
 
   server.route({
     method: 'GET',
-    path: '/pages/{slug}', 
+    path: '/pages/{slug}',
     handler: (request, reply) => {
       const slug = request.params.slug
       return Page.findOne({ slug: slug }).then((data) => {
