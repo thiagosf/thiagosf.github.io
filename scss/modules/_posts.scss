@@ -96,6 +96,7 @@
     margin: 0 0 10px 0;
     max-height: 200px;
     position: relative;
+    z-index: 2;
     &::after {
       content: "";
       position: absolute;
@@ -145,13 +146,52 @@
 
 .post-list-item {
   overflow: hidden;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $light-gray;
   margin-bottom: 30px;
   padding-bottom: 30px;
+  position: relative;
   &:last-child {
     border: 0;
     margin: 0;
     padding: 0;
+    &::after {
+      display: none;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 50px;
+    background: $light-gray;
+  }
+  &.post-list-item-featured {
+    @media #{$medium-up} {
+      .post-image {
+        float: none;
+        margin: 0 0 20px 0;
+        width: auto;
+        max-height: initial;
+      }
+      .post-info {
+        &.with-image {
+          margin: 0;
+        }
+      }
+      .post-time {
+        font-size: 16px;
+      }
+      .post-title {
+        font-size: 48px;
+        line-height: 1;
+        margin: 0 0 15px 0;
+      }
+      .post-excerpt {
+        font-size: 20px;
+      }
+    }
   }
   .post-image {
     overflow: hidden;
@@ -259,4 +299,29 @@
 .load-more-box {
   margin-top: 30px;
   text-align: center;
+}
+
+.post-image-shadow {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 23px;
+    left: 8px;
+    width: 50%;
+    height: 2px;
+    background: black;
+    box-shadow: black 0 0 5px 5px;
+    opacity: .5;
+    border-radius: 5px;
+    transform: skewY(-4deg);
+    transition: all 400ms;
+  }
+  &::after {
+    right: 8px;
+    left: auto;
+    transform: skewY(4deg);
+  }
 }

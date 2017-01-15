@@ -15,18 +15,18 @@ module.exports = {
       const folder = options && options.folder ? options.folder : 'uploads'
       const filepath = `./public/${folder}/${name}`
       const file_stream = fs.createWriteStream(filepath)
-      
+
       file_stream.on('error', (err) => {
         reject(err)
       })
-      
+
       file.pipe(file_stream)
-      
+
       file.on('end', () => {
         if (true) {
           const fileinfo = { path: filepath, name: name }
           this.crop(fileinfo, record.getImageOptions()).then((data) => {
-            resolve({ name: name, hapi: file.hapi, data: data })
+            resolve({ name: name })
           })
         } else {
           resolve({ name: name })

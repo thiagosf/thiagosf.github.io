@@ -15,7 +15,8 @@ const postSchema = mongoose.Schema({
   active: {
     type: Boolean,
     default: true
-  }
+  },
+  tags: [String]
 }, {
   timestamps: true
 })
@@ -35,6 +36,7 @@ postSchema.methods.patchEntity = function (data) {
   if (data.body) this.set('body', data.body)
   if (data.image) this.set('image', data.image)
   if (data.createdAt) this.set('createdAt', data.createdAt)
+  if (data.tags) this.set('tags', data.tags)
   return this
 }
 
@@ -70,6 +72,16 @@ postSchema.methods.getImageHeader = function () {
   }
 }
 
+postSchema.methods.getLocalImages = function () {
+  if (this.image) {
+    return [
+      `./public/uploads/${this.image}`,
+      `./public/uploads/large_${this.image}`,
+      `./public/uploads/header_${this.image}`
+    ]
+  }
+}
+
 postSchema.methods.apiFormat = function () {
   var output = {}
   output.id = this._id
@@ -79,8 +91,9 @@ postSchema.methods.apiFormat = function () {
   output.slug = this.slug
   output.link = this.getLink()
   output.created_at = this.createdAt
+  output.excerpt = this.excerpt
   output.body = this.body
-  output.tags = []
+  output.tags = this.tags
   return output
 }
 

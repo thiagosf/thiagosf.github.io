@@ -19,7 +19,7 @@ class HomeContainer extends Component {
           <div className="panel panel-default">
             <div className="panel-body panel-body-large">
               <Spinner absolute show={this.props.post.fetch_posts} />
-              <PostList posts={this.props.post.home_posts} />
+              <PostList posts={this.props.post.home_posts} home />
             </div>
           </div>
         </section>

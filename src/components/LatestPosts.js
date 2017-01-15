@@ -7,8 +7,10 @@ const PostItem = ({ title, image, created_at, link, excerpt }) => {
   const postImage = (image) => {
     if (image) {
       return(
-        <div className="post-image img-thumbnail">
-          <Link to={link}><img src={image} /></Link>
+        <div className="post-image-shadow">
+          <div className="post-image img-thumbnail">
+            <Link to={link}><img src={image} /></Link>
+          </div>
         </div>
       )
     }

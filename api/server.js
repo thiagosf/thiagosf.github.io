@@ -82,7 +82,7 @@ server.register([Inert, Basic], (err) => {
           }
         }
         return Post.find(params, options).sort(sort).limit(limit).then((result) => {
-          return reply({
+          reply({
             success: true,
             data: result.map((item) => {
               return item.apiFormat()
@@ -95,7 +95,7 @@ server.register([Inert, Basic], (err) => {
         })
       } else {
         return Post.paginate(params, options).then((result) => {
-          return reply({
+          reply({
             success: true,
             data: result.docs.map((item) => {
               return item.apiFormat()
@@ -122,28 +122,35 @@ server.register([Inert, Basic], (err) => {
         maxBytes: 1048576 * 5
       },
       handler: (request, reply) => {
-        const post = new Post()
-        var data = {
+        const data = new Post()
+        var create_data = {
           title: request.payload.title,
           slug: slugify(request.payload.title),
           image: null,
           excerpt: request.payload.excerpt,
           createdAt: new Date(),
-          body: request.payload.body
+          body: request.payload.body,
+          tags: request.payload.tags
         }
         if (request.payload.createdAt) {
-          data.createdAt = request.payload.createdAt
+          create_data.createdAt = request.payload.createdAt
         }
-        post.patchEntity(data).save().then((data) => {
+        data.patchEntity(create_data).save().then((data) => {
           const file = request.payload.image
           if (file) {
             upload.store(data, file).then((file_data) => {
               data.patchEntity({ image: file_data.name }).save().then((data) => {
-                reply({ success: true, data: data })
+                reply({
+                  success: true,
+                  data: data.apiFormat()
+                })
               }).catch(onError.bind(this, reply, 'Erro ao salvar imagem'))
             }).catch(onError.bind(this, reply, 'Erro ao subir imagem'))
           } else {
-            return reply({ success: true, data: data })
+            reply({
+              success: true,
+              data: data.apiFormat()
+            })
           }
         }).catch(onError.bind(this, reply, 'Não foi possível salvar o post'))
       }
@@ -157,7 +164,7 @@ server.register([Inert, Basic], (err) => {
       const slug = request.params.slug
       return Post.findOne({ slug: slug }).then((data) => {
         if (!data) throw Error('Post não encontrado')
-        return reply({
+        reply({
           success: true,
           data: data.apiFormat()
         })
@@ -175,13 +182,93 @@ server.register([Inert, Basic], (err) => {
       }
       const options = { limit: 4, sort: '-createdAt' }
       return Post.paginate(params, options).then((result) => {
-        return reply({
+        reply({
           success: true,
           data: result.docs.map((item) => {
             return item.apiFormat()
           })
         })
       })
+    }
+  })
+
+  server.route({
+    method: 'PATCH',
+    path: '/posts/{slug}',
+    config: {
+      auth: 'simple',
+      payload: {
+        output: 'stream',
+        parse: true,
+        allow: 'multipart/form-data',
+        maxBytes: 1048576 * 5
+      },
+      handler: (request, reply) => {
+        const slug = request.params.slug
+        return Post.findOne({ slug: slug }).then((data) => {
+          if (!data) throw Error('Post não encontrado')
+          var update_data = {
+            title: request.payload.title,
+            slug: slugify(request.payload.title),
+            image: null,
+            excerpt: request.payload.excerpt,
+            createdAt: new Date(),
+            body: request.payload.body,
+            tags: request.payload.tags
+          }
+          if (request.payload.createdAt) {
+            update_data.createdAt = request.payload.createdAt
+          }
+          return new Promise((resolve, reject) => {
+            const file = request.payload.image
+            if (file) {
+              upload.store(data, file).then((file_data) => {
+                resolve(file_data)
+              }).catch((error) => {
+                reject(error)
+              })
+            } else {
+              resolve(null)
+            }
+          }).then((file_data) => {
+            console.log(file_data);
+            if (file_data) {
+              update_data.image = file_data.name
+            }
+            return data.patchEntity(update_data).save().then((data) => {
+              reply({
+                success: true,
+                data: data.apiFormat()
+              })
+            }).catch(onError.bind(this, reply, 'Não foi possível remover post'))
+          }).catch(onError.bind(this, reply, 'Não foi possível remover post'))
+        }).catch(onError.bind(this, reply, 'Post não encontrado'))
+      }
+    }
+  })
+
+  server.route({
+    method: 'DELETE',
+    path: '/posts/{slug}',
+    config: {
+      auth: 'simple',
+      handler: (request, reply) => {
+        const slug = request.params.slug
+        return Post.findOne({ slug: slug }).then((data) => {
+          if (!data) throw Error('Post não encontrado')
+          return data.remove().then((data) => {
+            const images = data.getLocalImages();
+            images.map((image) => {
+              fs.stat(image, (error, stats) => {
+                if (!error) {
+                  fs.unlink(image)
+                }
+              })
+            })
+            reply({ success: true })
+          }).catch(onError.bind(this, reply, 'Não foi possível remover post'))
+        }).catch(onError.bind(this, reply, 'Post não encontrado'))
+      }
     }
   })
 
