@@ -1,8 +1,8 @@
 module.exports = function(str) {
   str = str.replace(/^\s+|\s+$/g, '')
   str = str.toLowerCase()
-  const from = "ãàáäâèéëêìíïîòóöôùúüûñç·/_,:;"
-  const to = "aaaaaeeeeiiiioooouuuunc------"
+  const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;"
+  const to = "aaaaaeeeeiiiiooooouuuunc------"
   for (var i = 0, l = from.length; i<l ; i++) {
     str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
   }
