@@ -17,6 +17,7 @@ const upload = require('./helpers/upload')
 require('./database')
 const Post = require('./models').Post
 const User = require('./models').User
+const Page = require('./models').Page
 
 const onError = (reply, message, error) => {
   return reply({
@@ -59,6 +60,7 @@ server.register([Inert, Basic], (err) => {
     }
   })
 
+  // Posts
   server.route({
     method: 'GET',
     path: '/posts', 
@@ -269,6 +271,47 @@ server.register([Inert, Basic], (err) => {
           }).catch(onError.bind(this, reply, 'Não foi possível remover post'))
         }).catch(onError.bind(this, reply, 'Post não encontrado'))
       }
+    }
+  })
+
+  // Pages
+  server.route({
+    method: 'POST',
+    path: '/pages',
+    config: {
+      auth: 'simple',
+      handler: (request, reply) => {
+        const data = new Page()
+        var create_data = {
+          title: request.payload.title,
+          slug: slugify(request.payload.title),
+          body: request.payload.body,
+          keyValues: request.payload.keyValues,
+          pageItems: request.payload.pageItems
+        }
+        console.log(request.payload);
+        data.patchEntity(create_data).save().then((data) => {
+          reply({
+            success: true,
+            data: data
+          })
+        }).catch(onError.bind(this, reply, 'Não foi possível salvar a página'))
+      }
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/pages/{slug}', 
+    handler: (request, reply) => {
+      const slug = request.params.slug
+      return Page.findOne({ slug: slug }).then((data) => {
+        if (!data) throw Error('Página não encontrada')
+        reply({
+          success: true,
+          data: data
+        })
+      }).catch(onError.bind(this, reply, 'Página não encontrada'))
     }
   })
 

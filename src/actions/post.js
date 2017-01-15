@@ -75,26 +75,36 @@ export const fetchPosts = ({ page = 1, filter = null }) => {
   }
 }
 
+let cachePosts = {}
+
 export const fetchPost = (slug) => {
   return dispatch => {
-    dispatch({ type: REQUEST_POST })
-    request
-      .get(api.url(`/posts/${slug}`))
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) {
-          error.handleAjax(err, res, dispatch)
-        } else {
-          let post = {}
-          if (res.body.success) {
-            post = res.body.data
-          }
-          dispatch({
-            type: RECEIVE_POST,
-            post
-          })
-        }
+    if (cachePosts[slug]) {
+      dispatch({
+        type: RECEIVE_POST,
+        post: cachePosts[slug]
       })
+    } else {
+      dispatch({ type: REQUEST_POST })
+      request
+        .get(api.url(`/posts/${slug}`))
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          if (err) {
+            error.handleAjax(err, res, dispatch)
+          } else {
+            let post = {}
+            if (res.body.success) {
+              post = res.body.data
+              cachePosts[slug] = post
+            }
+            dispatch({
+              type: RECEIVE_POST,
+              post
+            })
+          }
+        })
+    }
   }
 }
 

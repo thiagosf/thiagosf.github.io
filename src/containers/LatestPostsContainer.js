@@ -5,8 +5,17 @@ import { fetchLatestPosts } from '../actions/post'
 
 class LatestPostsContainer extends Component {
   componentDidMount() {
+    this.fetchLatestPosts()
+  }
+  componentWillUpdate() {
+    setTimeout(this.fetchLatestPosts.bind(this), 100)
+  }
+  fetchLatestPosts() {
     const { post } = this.props
-    this.props.fetchLatestPosts(post.post.id)
+    if (post.post.id != this.current_post_id) {
+      this.current_post_id = post.post.id
+      this.props.fetchLatestPosts(post.post.id)
+    }
   }
   render() {
     const { post } = this.props

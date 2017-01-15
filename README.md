@@ -12,4 +12,4 @@ Site pessoal usando React e Redux.
 - [x] Playground
 - [x] Posts
 - [ ] Página de erro
-- [ ] Conteúdo de todas páginas dinâmicas
+- [x] Conteúdo de todas páginas dinâmicas

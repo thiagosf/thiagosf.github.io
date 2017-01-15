@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
 import moment from 'moment'
-import showdown from 'showdown'
 import { ShareButtons } from 'react-share'
-import emoji from 'node-emoji'
 import { Icon } from './'
-import { settings } from '../helpers'
+import { settings, markdown } from '../helpers'
 
 class PostView extends Component {
-  convertMarkdown() {
-    const converter = new showdown.Converter({ strikethrough: true })
-    let body = this.props.post.body
-    body = emoji.emojify(body)
-    body = converter.makeHtml(body)
-    return { __html: body }
-  }
   getImage() {
     const { post } = this.props
     if (post.image_header) {
@@ -36,7 +27,7 @@ class PostView extends Component {
           <h1>{post.title}</h1>
         </header>
         {this.getImage()}
-        <div className="post-content" dangerouslySetInnerHTML={this.convertMarkdown()} />
+        <div className="post-content" dangerouslySetInnerHTML={markdown.convert(post.body)} />
         <div className="share-box">
           <ShareButtons.GooglePlusShareButton title={post.title} url={url}>
             <Icon name="google-plus" />

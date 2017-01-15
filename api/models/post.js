@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const db = mongoose.connection
-const api = require('./helpers/api')
+const api = require('../helpers/api')
 const mongoosePaginate = require('mongoose-paginate')
 
 const postSchema = mongoose.Schema({
@@ -112,16 +112,4 @@ postSchema.pre('save', function(next) {
 
 const Post = db.model('Post', postSchema)
 
-const userSchema = mongoose.Schema({
-  username: String,
-  password: String
-}, {
-  timestamps: false
-})
-
-const User = db.model('User', userSchema)
-
-module.exports = {
-  Post: Post,
-  User: User
-}
+module.exports = Post

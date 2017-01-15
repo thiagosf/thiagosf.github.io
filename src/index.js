@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Provider } from 'react-intl-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { Router, Route, browserHistory, IndexRoute, routerReducer } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { routerReducer } from 'react-router-redux'
 import ReactGA from 'react-ga'
 import moment_pt from 'moment/locale/pt'
 
@@ -42,6 +43,6 @@ ReactDOM.render(
         <Route path="*" component={containers.NoMatchContainer} />
       </Route>
     </Router>
-  </Provider>, 
+  </Provider>,
   document.getElementById('app')
 )

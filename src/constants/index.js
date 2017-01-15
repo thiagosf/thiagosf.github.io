@@ -10,6 +10,8 @@ export const SCROLLED = 'SCROLLED'
 
 // Page
 export const AFTER_TRANSITION = 'AFTER_TRANSITION'
+export const REQUEST_PAGE = 'REQUEST_PAGE'
+export const RECEIVE_PAGE = 'RECEIVE_PAGE'
 
 // Post
 export const REQUEST_HOME_POSTS = 'REQUEST_HOME_POSTS'
