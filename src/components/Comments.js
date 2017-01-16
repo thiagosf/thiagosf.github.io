@@ -4,6 +4,8 @@ import { Icon, ReactDisqus } from './'
 
 class Comments extends Component {
   render() {
+    const { post } = this.props
+    if (!post) return false
     return(
       <section className="comments-section">
         <div className="container-fluid">
@@ -13,6 +15,7 @@ class Comments extends Component {
           <div className="panel panel-default">
             <div className="panel-body panel-body-large">
               <ReactDisqus
+                post_id={post.id}
                 protocol="https"
                 shortname="thiagosf"
                 identifier="thiagosf-blog"

@@ -31,6 +31,12 @@ class PostViewContainer extends Component {
       return <LatestPostsContainer post={post} />
     }
   }
+  getComments() {
+    const { post } = this.props
+    if (post.post.id) {
+      return <Comments post={post.post} />
+    }
+  }
   render() {
     const { post } = this.props
     if (post.post.title) {
@@ -48,7 +54,7 @@ class PostViewContainer extends Component {
             </div>
           </div>
         </section>
-        <Comments />
+        {this.getComments()}
         {this.getLatestPostsContainer()}
       </div>
     )
