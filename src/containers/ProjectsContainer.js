@@ -4,18 +4,33 @@ import Gravatar from 'react-gravatar'
 import classnames from 'classnames'
 import { CommonSectionContainer } from './'
 import { Spinner } from '../components'
-import { meta } from '../helpers'
+import { meta, markdown } from '../helpers'
 import { fetchPage } from '../actions/page'
 
 const ProjectItem = ({ item }) => {
   const shortLink = (link) => {
     return link.replace(/(https?:\/\/|www\.)/i, '')
   }
+  const button = () => {
+    if (item.discontinued) {
+      return (
+        <a className="btn btn-warning btn-sm" disabled>
+          @deprecated
+        </a>
+      )
+    } else {
+      return (
+        <a href={item.link} target="_blank" className="btn btn-info btn-sm">
+          {shortLink(item.link)}
+        </a>
+      )
+    }
+  }
   return (
     <div className="project-item">
       <h2>{item.title}</h2>
-      <p>{item.description}</p>
-      <a href={item.link} target="_blank" className="btn btn-info btn-sm">{shortLink(item.link)}</a>
+      <p dangerouslySetInnerHTML={markdown.convert(item.description)} />
+      {button()}
     </div>
   )
 }
