@@ -57,7 +57,7 @@ systems({
     scalable: false,
     wait: 20,
     mounts: {
-      '/data/db': persistent('mongodb-#{manifest.dir}'),
+      '/data/db': persistent('./mongodb'),
     },
     ports: {
       data: '32770:27017/tcp'
@@ -66,8 +66,8 @@ systems({
       domains: ['#{manifest.dir}-#{system.name}.#{azk.default_domain}'],
     },
     export_envs: {
-      MONGODB_URI: 'mongodb://#{net.host}:#{net.port[27017]}/#{manifest.dir}_development',
-      MONGODB_URI_TEST: 'mongodb://#{net.host}:#{net.port[27017]}/#{manifest.dir}_test'
+      MONGODB_URI: 'mongodb://#{net.host}:#{net.port[27017]}/mongo_development',
+      MONGODB_URI_TEST: 'mongodb://#{net.host}:#{net.port[27017]}/mongo_test'
     },
   }
 });

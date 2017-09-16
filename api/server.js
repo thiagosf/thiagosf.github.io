@@ -32,6 +32,9 @@ const validate = function (request, username, password, callback) {
   User.findOne({ username: username }).then((data) => {
     if (!data) return callback(null, false)
     Bcrypt.compare(password, data.password, (err, isValid) => {
+      if (isValid) {
+        request.user = data
+      }
       callback(err, isValid, { name: data.name })
     })
   })
@@ -314,6 +317,40 @@ server.register([Inert, Basic], (err) => {
           data: data
         })
       }).catch(onError.bind(this, reply, 'Página não encontrada'))
+    }
+  })
+
+  // Login
+  server.route({
+    method: 'POST',
+    path: '/users/login',
+    config: {
+      handler: (request, reply) => {
+        let username = request.payload.username
+        let password = request.payload.password
+
+        User.findOne({ username: username }).then((data) => {
+          if (!data) return callback(null, false)
+          Bcrypt.compare(password, data.password, (err, isValid) => {
+            if (isValid) {
+              reply({
+                success: true,
+                message: 'Login efetuado com sucesso',
+                data: {
+                  id: data._id,
+                  username: data.username,
+                  active: data.active
+                }
+              })
+            } else {
+              reply({
+                success: false,
+                message: 'Credenciais inválidas'
+              })
+            }
+          })
+        })
+      }
     }
   })
 
