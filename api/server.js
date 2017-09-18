@@ -236,7 +236,6 @@ server.register([Inert, Basic], (err) => {
               resolve(null)
             }
           }).then((file_data) => {
-            console.log(file_data);
             if (file_data) {
               update_data.image = file_data.name
             }
@@ -294,13 +293,39 @@ server.register([Inert, Basic], (err) => {
           keyValues: request.payload.keyValues,
           pageItems: request.payload.pageItems
         }
-        console.log(request.payload);
         data.patchEntity(create_data).save().then((data) => {
           reply({
             success: true,
             data: data
           })
         }).catch(onError.bind(this, reply, 'Não foi possível salvar a página'))
+      }
+    }
+  })
+  server.route({
+    method: 'PUT',
+    path: '/pages/{slug}',
+    config: {
+      auth: 'simple',
+      handler: (request, reply) => {
+        const slug = request.params.slug
+        return Page.findOne({ slug: slug }).then((data) => {
+          if (!data) throw Error('Página não encontrada')
+          var update_data = {
+            body: request.payload.body,
+            keyValues: request.payload.keyValues,
+            pageItems: request.payload.pageItems
+          }
+          if (request.payload.createdAt) {
+            update_data.createdAt = request.payload.createdAt
+          }
+          return data.patchEntity(update_data).save().then((data) => {
+            reply({
+              success: true,
+              data: data.apiFormat()
+            })
+          }).catch(onError.bind(this, reply, 'Não foi possível atualizar a página'))
+        }).catch(onError.bind(this, reply, 'Página não encontrada'))
       }
     }
   })

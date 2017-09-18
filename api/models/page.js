@@ -42,6 +42,22 @@ pageSchema.methods.patchEntity = function (data) {
   return this
 }
 
+pageSchema.methods.getLink = function () {
+  return `/${this.slug}`
+}
+
+pageSchema.methods.apiFormat = function () {
+  var output = {}
+  output.id = this._id
+  output.title = this.title
+  output.slug = this.slug
+  output.link = this.getLink()
+  output.body = this.body
+  output.keyValues = this.keyValues
+  output.pageItems = this.pageItems
+  return output
+}
+
 pageSchema.pre('save', function(next) {
   var options = { slug: this.slug }
   if (this._id) {
