@@ -37,6 +37,9 @@ postSchema.methods.patchEntity = function (data) {
   if (data.image) this.set('image', data.image)
   if (data.createdAt) this.set('createdAt', data.createdAt)
   if (data.tags) this.set('tags', data.tags)
+  if (typeof data.active !== 'undefined') {
+    this.set('active', data.active)
+  }
   return this
 }
 
@@ -95,6 +98,7 @@ postSchema.methods.apiFormat = function () {
   output.excerpt = this.excerpt
   output.body = this.body
   output.tags = this.tags
+  output.active = this.active
   return output
 }
 

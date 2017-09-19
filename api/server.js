@@ -40,6 +40,56 @@ const validate = function (request, username, password, callback) {
   })
 }
 
+const postList = (request, reply, admin) => {
+  const filter = request.query.filter
+  var limit = parseInt(request.query.limit || 10)
+  var page = parseInt(request.query.page || 1)
+  var params = { active: true }
+  if (admin) {
+    params = {}
+  }
+  var options = { page: page, limit: limit, sort: '-createdAt' }
+  if (filter) {
+    limit = 20
+    var sort = { score: { $meta: 'textScore' } }
+    params.$text = {
+      $search: filter,
+      $caseSensitive: false,
+      $diacriticSensitive: false
+    }
+    options = {
+      score: {
+        $meta: 'textScore'
+      }
+    }
+    return Post.find(params, options).sort(sort).limit(limit).then((result) => {
+      reply({
+        success: true,
+        data: result.map((item) => {
+          return item.apiFormat()
+        }),
+        count: result.length,
+        page: page,
+        limit: limit,
+        pages: 1
+      })
+    })
+  } else {
+    return Post.paginate(params, options).then((result) => {
+      reply({
+        success: true,
+        data: result.docs.map((item) => {
+          return item.apiFormat()
+        }),
+        count: result.total,
+        page: page,
+        limit: limit,
+        pages: result.pages
+      })
+    })
+  }
+}
+
 server.connection({
   host: host,
   port: port,
@@ -68,49 +118,17 @@ server.register([Inert, Basic], (err) => {
     method: 'GET',
     path: '/posts',
     handler: (request, reply) => {
-      const filter = request.query.filter
-      var limit = parseInt(request.query.limit || 10)
-      var page = parseInt(request.query.page || 1)
-      var params = { active: true }
-      var options = { page: page, limit: limit, sort: '-createdAt' }
-      if (filter) {
-        limit = 20
-        var sort = { score: { $meta: 'textScore' } }
-        params.$text = {
-          $search: filter,
-          $caseSensitive: false,
-          $diacriticSensitive: false
-        }
-        options = {
-          score: {
-            $meta: 'textScore'
-          }
-        }
-        return Post.find(params, options).sort(sort).limit(limit).then((result) => {
-          reply({
-            success: true,
-            data: result.map((item) => {
-              return item.apiFormat()
-            }),
-            count: result.length,
-            page: page,
-            limit: limit,
-            pages: 1
-          })
-        })
-      } else {
-        return Post.paginate(params, options).then((result) => {
-          reply({
-            success: true,
-            data: result.docs.map((item) => {
-              return item.apiFormat()
-            }),
-            count: result.total,
-            page: page,
-            limit: limit,
-            pages: result.pages
-          })
-        })
+      return postList(request, reply)
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/admin-posts',
+    config: {
+      auth: 'simple',
+      handler: (request, reply) => {
+        return postList(request, reply, true)
       }
     }
   })
@@ -128,7 +146,7 @@ server.register([Inert, Basic], (err) => {
       },
       handler: (request, reply) => {
         const data = new Post()
-        let slug = request.payload.slug
+        var slug = request.payload.slug
         if (!slug) {
           slug = slugify(request.payload.title)
         }
@@ -140,7 +158,8 @@ server.register([Inert, Basic], (err) => {
           createdAt: new Date(),
           updatedAt: new Date(),
           body: request.payload.body,
-          tags: request.payload.tags
+          tags: request.payload.tags,
+          active: request.payload.active
         }
         if (request.payload.createdAt) {
           create_data.createdAt = request.payload.createdAt
@@ -217,7 +236,7 @@ server.register([Inert, Basic], (err) => {
         const id = request.params.id
         return Post.findOne({ _id: id }).then((data) => {
           if (!data) throw Error('Post não encontrado')
-          let slug = request.payload.slug
+          var slug = request.payload.slug
           if (!slug) {
             slug = slugify(request.payload.title)
           }
@@ -228,7 +247,8 @@ server.register([Inert, Basic], (err) => {
             excerpt: request.payload.excerpt,
             updatedAt: new Date(),
             body: request.payload.body,
-            tags: request.payload.tags
+            tags: request.payload.tags,
+            active: request.payload.active
           }
           return new Promise((resolve, reject) => {
             const file = request.payload.image
@@ -292,7 +312,7 @@ server.register([Inert, Basic], (err) => {
       auth: 'simple',
       handler: (request, reply) => {
         const data = new Page()
-        let slug = request.payload.slug
+        var slug = request.payload.slug
         if (!slug) {
           slug = slugify(request.payload.title)
         }
@@ -361,8 +381,8 @@ server.register([Inert, Basic], (err) => {
     path: '/users/login',
     config: {
       handler: (request, reply) => {
-        let username = request.payload.username
-        let password = request.payload.password
+        var username = request.payload.username
+        var password = request.payload.password
 
         User.findOne({ username: username }).then((data) => {
           if (!data) return callback(null, false)
