@@ -128,12 +128,17 @@ server.register([Inert, Basic], (err) => {
       },
       handler: (request, reply) => {
         const data = new Post()
+        let slug = request.payload.slug
+        if (!slug) {
+          slug = slugify(request.payload.title)
+        }
         var create_data = {
           title: request.payload.title,
-          slug: slugify(request.payload.title),
+          slug: slug,
           image: null,
           excerpt: request.payload.excerpt,
           createdAt: new Date(),
+          updatedAt: new Date(),
           body: request.payload.body,
           tags: request.payload.tags
         }
@@ -199,7 +204,7 @@ server.register([Inert, Basic], (err) => {
 
   server.route({
     method: 'PATCH',
-    path: '/posts/{slug}',
+    path: '/posts/{id}',
     config: {
       auth: 'simple',
       payload: {
@@ -209,20 +214,21 @@ server.register([Inert, Basic], (err) => {
         maxBytes: 1048576 * 5
       },
       handler: (request, reply) => {
-        const slug = request.params.slug
-        return Post.findOne({ slug: slug }).then((data) => {
+        const id = request.params.id
+        return Post.findOne({ _id: id }).then((data) => {
           if (!data) throw Error('Post não encontrado')
+          let slug = request.payload.slug
+          if (!slug) {
+            slug = slugify(request.payload.title)
+          }
           var update_data = {
             title: request.payload.title,
-            slug: slugify(request.payload.title),
+            slug: slug,
             image: null,
             excerpt: request.payload.excerpt,
-            createdAt: new Date(),
+            updatedAt: new Date(),
             body: request.payload.body,
             tags: request.payload.tags
-          }
-          if (request.payload.createdAt) {
-            update_data.createdAt = request.payload.createdAt
           }
           return new Promise((resolve, reject) => {
             const file = request.payload.image
@@ -286,9 +292,13 @@ server.register([Inert, Basic], (err) => {
       auth: 'simple',
       handler: (request, reply) => {
         const data = new Page()
+        let slug = request.payload.slug
+        if (!slug) {
+          slug = slugify(request.payload.title)
+        }
         var create_data = {
           title: request.payload.title,
-          slug: slugify(request.payload.title),
+          slug: slug,
           body: request.payload.body,
           keyValues: request.payload.keyValues,
           pageItems: request.payload.pageItems

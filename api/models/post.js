@@ -91,6 +91,7 @@ postSchema.methods.apiFormat = function () {
   output.slug = this.slug
   output.link = this.getLink()
   output.created_at = this.createdAt
+  output.updated_at = this.updatedAt
   output.excerpt = this.excerpt
   output.body = this.body
   output.tags = this.tags
