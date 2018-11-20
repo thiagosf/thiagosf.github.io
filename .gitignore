@@ -1,7 +1,1 @@
-.azk
 .DS_Store
-node_modules
-DEV.md
-api/public/uploads/*
-!api/public/uploads/.keep
-api/contents
