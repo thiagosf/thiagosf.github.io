@@ -3,8 +3,8 @@
 /* ==== */
 
 :root {
-  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --color-green: #7CB342;
+  --font-base: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  --color-green: #40A333;
   --color-orange: #F57C00;
   --color-gray: #9F9F9F;
   --color-white: white;
@@ -12,7 +12,7 @@
   --color-gradient-gray-start: #464646;
   --color-gradient-gray-end: #292929;
   --weight-light: 300;
-  --weight-regular: 400;
+  --weight-regular: 500;
   --weight-bold: 800;
   --transition-default: all 300ms ease-in-out;
 }
@@ -69,10 +69,11 @@ a {
 }
 .main-header h1 {
   font-weight: var(--weight-bold);
-  font-size: 14px;
+  font-size: 16px;
 }
 .main-header h1 span {
   font-weight: var(--weight-light);
+  font-size: 14px;
 }
 
 /* ==== */
@@ -121,6 +122,10 @@ a {
 .content-item .content-item__wrapper {}
 .content-item h2 {
   display: none;
+  color: var(--color-green);
+  font-weight: var(--weight-light);
+  font-size: 36px;
+  margin: 0 0 20px 0;
 }
 .content-item p {}
 .content-item .tools {
@@ -160,7 +165,6 @@ a {
   right: -10px;
   background: var(--color-orange);
   content: "";
-  border-radius: 0px;
   opacity: 0;
   transition: var(--transition-default);
   transform: scale(0, 1);
@@ -185,7 +189,7 @@ a {
 
 .projects {}
 .project-item {
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
 }
 .project-item:last-child {
   margin: 0;
@@ -193,11 +197,10 @@ a {
 .project-item h3 {
   font-size: 18px;
   font-weight: var(--weight-regular);
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
 }
 .project-item h3 a {
   transition: var(--transition-default);
-  border-bottom: 2px solid;
   text-decoration: none;
 }
 .project-item h3 a:hover {
@@ -212,7 +215,37 @@ a {
 /* ==== */
 
 @media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+  .main-header h1 {
+    font-size: 20px;
+  }
+  .main-header h1 span {
+    font-size: 18px;
+  }
+  .mobile-nav {
+    display: none;
+  }
+  .main-content {
+    padding-left: 0;
+    margin: 0 -20px;
+    display: flex;
+  }
+  .content-item {
+    max-width: 33%;
+    padding: 0 20px;
+  }
   .content-item h2 {
     display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-content {
+    justify-content: center;
+  }
+  .content-item {
+    max-width: 400px;
   }
 }
