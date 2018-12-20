@@ -231,7 +231,7 @@ a {
 
 @media (min-width: 768px) {
   body {
-    font-size: 3vw;
+    font-size: 5vw;
     padding: 40px;
   }
   .mobile-nav {
@@ -240,6 +240,10 @@ a {
 }
 
 @media (min-width: 1280px) {
+  body {
+    font-size: 3vw;
+    padding: 40px;
+  }
   .main-content {
     justify-content: center;
   }
