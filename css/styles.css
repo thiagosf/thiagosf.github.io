@@ -77,7 +77,6 @@ a {
 }
 .main-header h1 {
   line-height: 1;
-  text-transform: lowercase;
 }
 .main-header h1 span {
   font-weight: var(--weight-extra-bold);
