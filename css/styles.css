@@ -9,8 +9,8 @@
   --color-gray: #9F9F9F;
   --color-white: white;
   --color-blue: #3F51B5;
-  --color-gradient-gray-start: #464646;
-  --color-gradient-gray-end: #292929;
+  --color-gradient-start: #004D40;
+  --color-gradient-end: #263238;
   --weight-extra-light: 100;
   --weight-light: 300;
   --weight-regular: 500;
@@ -34,8 +34,8 @@
 html {
   background: radial-gradient(
     ellipse farthest-corner at 0px 0px,
-    var(--color-gradient-gray-start) 0%,
-    var(--color-gradient-gray-end) 40%
+    var(--color-gradient-start) 0%,
+    var(--color-gradient-end) 40%
   );
   min-height: 100vh;
   color: var(--color-white);
