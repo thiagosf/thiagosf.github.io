@@ -6,8 +6,8 @@
   --font-base: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
   --color-green: #40A333;
   --color-orange: #F57C00;
-  --color-gray: #9F9F9F;
   --color-white: white;
+  --color-white-50: rgba(255, 255, 255, 0.5);
   --color-blue: #3F51B5;
   --color-gradient-start: #004D40;
   --color-gradient-end: #263238;
@@ -120,7 +120,7 @@ a {
 }
 .content-item .tools {
   margin: 20px 0;
-  color: var(--color-gray);
+  color: var(--color-white-50);
   font-weight: var(--weight-extra-light);
 }
 .content-item .social-networks {
@@ -138,7 +138,7 @@ a {
   display: none;
 }
 .content-item .social-networks li a {
-  color: var(--color-gray);
+  color: var(--color-white-50);
   font-weight: var(--weight-extra-light);
   text-decoration: none;
   position: relative;
@@ -219,7 +219,7 @@ a {
   z-index: 2;
 }
 .project-item p {
-  color: var(--color-gray);
+  color: var(--color-white-50);
   font-weight: var(--weight-extra-light);
 }
 
