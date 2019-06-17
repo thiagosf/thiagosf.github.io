@@ -1,5 +1,5 @@
-var titleEl = document.querySelector('.main-header h1 span')
-var titleValue = titleEl.innerText
+var titleEl = document.querySelector('.main-header h1 > span')
+var titleValue = titleEl.innerText.trim()
 var newTitleContent = []
 var letters = titleValue.length
 var middle = Math.round(letters / 2)
