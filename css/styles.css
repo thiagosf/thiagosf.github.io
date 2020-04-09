@@ -93,6 +93,7 @@ a {
 
 .main-header {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -163,12 +164,34 @@ a {
   margin: 0 0 60px 0;
 }
 .main-content__article__title {
-  font-weight: var(--weight-light);
+  font-weight: var(--weight-bold);
   color: var(--color-red);
   margin-bottom: 30px;
 }
 .main-content__article__content {
   font-size: 20px;
+}
+
+/** Techs
+ ---------------------------------------------------------*/
+
+.techs {
+  text-align: center;
+  margin-top: 20px;
+}
+.techs__svg {
+  display: inline-block;
+  animation: rotateTechs 60s linear infinite;
+  width: 100%;
+}
+/*.techs__svg:hover {
+  animation-play-state: paused;
+}*/
+.techs__svg__circle {
+  fill: rgba(255, 255, 255, 0.3);
+}
+.techs__svg__text {
+  font-size: 32px;
 }
 
 /**
@@ -258,6 +281,18 @@ a {
     --full-stack-dev-width: 320px;
     --header-height: 180px;
   }
+
+  /** Grid
+   ---------------------------------------------------------*/
+  .row {
+    display: grid;
+    grid-gap: 20px;
+  }
+  .row--2 { grid-template-columns: repeat(2, 1fr); }
+  .row--3 { grid-template-columns: repeat(3, 1fr); }
+  .row--4 { grid-template-columns: repeat(4, 1fr); }
+  .row--5 { grid-template-columns: repeat(5, 1fr); }
+
   .main-header__name {
     font-size: 20px;
     padding-top: 40px;
@@ -266,10 +301,50 @@ a {
   .main-header__role {
     font-size: 54px;
   }
+
+  .main-header__nav {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-top: 40px;
+    padding-right: 40px;
+  }
+  .main-header__nav__list {
+    display: flex;
+    margin: 0 -10px;
+  }
+  .main-header__nav__list__item {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .main-header__nav__list__item__link {
+    color: var(--color-black);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: var(--weight-bold);
+  }
+
   .main-content__article__title {
     font-size: 60px;
   }
   .main-content__article__content {
-    font-size: 32px;
+    font-size: 26px;
+  }
+  .techs {
+    margin: 0;
+  }
+}
+
+/**
+ * Keyframes
+ */
+
+@keyframes rotateTechs {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }
