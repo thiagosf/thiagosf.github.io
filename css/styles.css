@@ -98,24 +98,25 @@ a {
   left: 0;
   right: 0;
   height: var(--header-height);
+}
+.main-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
   background: var(--color-yellow);
 }
-.main-header::before,
 .main-header::after {
   content: "";
   height: 5px;
   background-color: var(--color-red);
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-}
-.main-header::before {
   left: 0;
-  right: calc(50% + (var(--full-stack-dev-width) / 2));
-}
-.main-header::after {
-  left: calc(50% + (var(--full-stack-dev-width) / 2));
   right: 0;
+  transform: translateY(-50%);
 }
 .main-header__name {
   font-size: 12px;
@@ -137,6 +138,9 @@ a {
   z-index: 1;
   text-align: center;
   font-size: 20px;
+  background: var(--color-yellow);
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
 }
 .main-header__role__full {
   display: block;
@@ -158,18 +162,37 @@ a {
 
 .main-content {
   padding-top: var(--header-height);
+  animation: initialAnimiation 1000ms cubic-bezier(0.7,0,0,0.85) forwards;
+  transform-origin: top center 0;
 }
 .main-content__article {
   padding: 0 40px;
   margin: 0 0 60px 0;
 }
 .main-content__article__title {
-  font-weight: var(--weight-bold);
+  position: relative;
+  font-weight: var(--weight-light);
   color: var(--color-red);
   margin-bottom: 30px;
 }
-.main-content__article__content {
+.main-content__article__title::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  height: 3px;
+  width: 20px;
+  background: var(--color-red);
+  transform: translateY(-50%);
+}
+.main-content__article__content__text {
   font-size: 20px;
+}
+.main-content__article__content__text p {
+  margin: 0 0 20px 0;
+}
+.main-content__article__content__text p:last-child {
+  margin: 0;
 }
 
 /** Techs
@@ -178,20 +201,44 @@ a {
 .techs {
   text-align: center;
   margin-top: 20px;
+  overflow: hidden;
 }
 .techs__svg {
   display: inline-block;
   animation: rotateTechs 60s linear infinite;
   width: 100%;
 }
-/*.techs__svg:hover {
-  animation-play-state: paused;
-}*/
 .techs__svg__circle {
   fill: rgba(255, 255, 255, 0.3);
 }
 .techs__svg__text {
   font-size: 32px;
+}
+
+/** Projects
+ ---------------------------------------------------------*/
+
+.projects {}
+.projects__item {
+  margin: 0 -40px;
+}
+.projects__item__link {
+  transition: var(--transition-default);
+  padding: 10px 40px;
+  display: block;
+  text-decoration: none;
+  color: var(--color-black);
+}
+.projects__item__link:hover {
+  background: var(--color-black);
+  color: white;
+}
+.projects__item__title {
+  font-size: 26px;
+  margin: 0 0 10px 0;
+}
+.projects__item__description {
+  font-size: 20px;
 }
 
 /**
@@ -293,17 +340,55 @@ a {
   .row--4 { grid-template-columns: repeat(4, 1fr); }
   .row--5 { grid-template-columns: repeat(5, 1fr); }
 
+  /** Header
+   ---------------------------------------------------------*/
+
+  .main-header::before {
+    height: 90px;
+  }
+  .main-header::after {
+    height: 10px;
+  }
   .main-header__name {
-    font-size: 20px;
+    font-size: 16px;
     padding-top: 40px;
     padding-left: 40px;
   }
   .main-header__role {
-    font-size: 54px;
+    font-size: 48px;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 40px;
   }
 
+  /** Content
+   ---------------------------------------------------------*/
+
+  .main-content__article__title {
+    font-size: 36px;
+  }
+  .main-content__article__title::before {
+    height: 5px;
+  }
+  .techs {
+    margin: 0;
+  }
+}
+
+/** Large
+ ---------------------------------------------------------*/
+
+@media (min-width: 1024px) {
+  /** Header
+   ---------------------------------------------------------*/
+
+  .main-header__name {
+    font-size: 20px;
+  }
+  .main-header__role {
+    font-size: 54px;
+  }
   .main-header__nav {
-    display: block;
+    /*display: block;*/
     position: absolute;
     right: 0;
     top: 0;
@@ -321,14 +406,20 @@ a {
   .main-header__nav__list__item__link {
     color: var(--color-black);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: var(--weight-bold);
   }
 
+  /** Content
+   ---------------------------------------------------------*/
+
   .main-content__article__title {
-    font-size: 60px;
+    font-size: 48px;
   }
-  .main-content__article__content {
+  .main-content__article__title::before {
+    height: 5px;
+  }
+  .main-content__article__content__text {
     font-size: 26px;
   }
   .techs {
@@ -346,5 +437,14 @@ a {
   }
   100% {
     transform: rotate(359deg);
+  }
+}
+
+@keyframes initialAnimiation {
+  0% {
+    transform: scale(1, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }
