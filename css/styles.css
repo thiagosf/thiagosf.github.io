@@ -253,7 +253,8 @@ a {
 .main-footer__social-networks {}
 .main-footer__social-networks__list {}
 .main-footer__social-networks__list__item {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
 }
 .main-footer__social-networks__list__item__link {
   display: flex;
