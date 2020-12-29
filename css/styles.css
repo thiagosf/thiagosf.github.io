@@ -117,7 +117,7 @@ a {
 
 .main-header {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;
@@ -450,6 +450,23 @@ a {
   .techs {
     margin: 0;
   }
+}
+
+/**
+ * Modifiers
+ */
+
+body.enabled-scroll .viewport {
+  position: initial;
+  height: initial;
+  width: initial;
+}
+
+body.enabled-scroll .scroll-container {
+  position: initial;
+  overflow: initial;
+  z-index: 1;
+  width: initial;
 }
 
 /**

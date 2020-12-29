@@ -1,8 +1,13 @@
 // reference: https://codepen.io/osublake/pen/QqPqbN
 
-var touchSupport = window.DocumentTouch && document instanceof DocumentTouch
+var isTouchCapable = (
+  'ontouchstart' in window ||
+  (window.DocumentTouch && document instanceof window.DocumentTouch) ||
+  navigator.maxTouchPoints > 0 ||
+  window.navigator.msMaxTouchPoints > 0
+)
 
-if (!touchSupport) {
+if (!isTouchCapable) {
   var html = document.documentElement;
   var body = document.body;
 
@@ -71,4 +76,6 @@ if (!touchSupport) {
       requestId = requestAnimationFrame(updateScroller);
     }
   }
+} else {
+  document.querySelector('body').classList.add('enabled-scroll')
 }
