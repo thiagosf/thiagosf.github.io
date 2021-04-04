@@ -469,6 +469,24 @@ body.enabled-scroll .scroll-container {
   width: initial;
 }
 
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+  border-radius: 0;
+}
+
+body::-webkit-scrollbar-track {
+  background: linear-gradient(
+    0deg,
+    var(--color-yellow-2),
+    var(--color-yellow) 70%
+  );
+  border-radius: 0;
+}
+
 /**
  * Keyframes
  */

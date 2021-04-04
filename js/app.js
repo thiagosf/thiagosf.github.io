@@ -13,7 +13,7 @@ if (!isTouchCapable) {
 
   var scroller = {
     target: document.querySelector('.scroll-container'),
-    ease: 0.07,
+    ease: 0.1,
     endY: 0,
     y: 0,
     resizeRequest: 1,
