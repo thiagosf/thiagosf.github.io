@@ -103,6 +103,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
+  padding-bottom: 30px;
 }
 
 .scroll-container {
@@ -241,7 +242,7 @@ a {
   fill: rgba(255, 255, 255, 0.3);
 }
 .techs__svg__text {
-  font-size: 27.5px;
+  font-size: 33.5px;
 }
 
 /** Projects
