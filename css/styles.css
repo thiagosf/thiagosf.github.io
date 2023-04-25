@@ -28,7 +28,7 @@
 
   /* @animations */
 
-  --transition-default: all 300ms cubic-bezier(0.7,0,0,0.85);
+  --transition-default: all 300ms cubic-bezier(0.7, 0, 0, 0.85);
 
   /* @general */
 
@@ -251,6 +251,23 @@ a {
 .projects__item {
   margin: 0 -40px;
   transform: matrix(1, -0.03, -0.06, 1, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+.projects__item::after {
+  transition: var(--transition-default);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  transform: translateX(-101%);
+  background: var(--color-black);
+}
+.projects__item:hover::after {
+  transform: translateX(0%);
 }
 .projects__item__link {
   transition: var(--transition-default);
@@ -258,10 +275,12 @@ a {
   display: block;
   text-decoration: none;
   color: var(--color-black);
+  position: relative;
+  z-index: 1;
 }
 .projects__item__link:hover {
-  background: var(--color-black);
   color: white;
+  padding: 10px 35px 10px 45px;
 }
 .projects__item__title {
   font-size: 26px;
