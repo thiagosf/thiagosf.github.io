@@ -91,6 +91,44 @@ a {
 }
 
 /**
+ * Gradient Balls
+ */
+.gradient-ball {
+  border-radius: 9999em;
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  opacity: 0.3;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 0, 0, 1) 0,
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0) 100%
+  );
+}
+
+.gradient-ball--top-left {
+  top: -40vh;
+  left: -50vh;
+  width: 100vh;
+  height: 100vh;
+}
+
+.gradient-ball--top-right {
+  top: -60vh;
+  right: -50vh;
+  width: 100vh;
+  height: 100vh;
+}
+
+.gradient-ball--bottom-center {
+  bottom: -50vh;
+  right: -50vh;
+  width: 200vh;
+  height: 100vh;
+}
+
+/**
  * Scroll container
  */
 
@@ -424,6 +462,31 @@ a {
  ---------------------------------------------------------*/
 
 @media (min-width: 1024px) {
+  /**
+  * Gradient Balls
+  */
+  .gradient-ball--top-left {
+    top: -100vh;
+    left: -100vh;
+    width: 200vh;
+    height: 200vh;
+  }
+
+  .gradient-ball--top-right {
+    top: -120vh;
+    right: -100vh;
+    width: 200vh;
+    height: 200vh;
+  }
+
+  .gradient-ball--bottom-center {
+    bottom: -100vh;
+    right: -400vh;
+    transform: translateX(-50%);
+    width: 500vh;
+    height: 200vh;
+  }
+
   /** Header
    ---------------------------------------------------------*/
 
