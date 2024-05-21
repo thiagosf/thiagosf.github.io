@@ -79,8 +79,6 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  overscroll-behavior: none;
 }
 
 /** Link
@@ -97,7 +95,7 @@ a {
   border-radius: 9999em;
   pointer-events: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 0;
   opacity: 0.3;
   background: radial-gradient(
     circle at center,
@@ -126,29 +124,6 @@ a {
   right: -50vh;
   width: 200vh;
   height: 100vh;
-}
-
-/**
- * Scroll container
- */
-
-.viewport {
-  overflow: hidden;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding-bottom: 30px;
-}
-
-.scroll-container {
-  position: absolute;
-  overflow: hidden;
-  z-index: 1;
-  width: 100%;
 }
 
 /**
@@ -203,16 +178,20 @@ a {
   font-size: 20px;
   background: var(--color-yellow);
   padding: 20px;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 30px 20px rgba(255, 0, 0, 0.05);
 }
 .main-header__role__full {
   display: block;
   line-height: 1;
   font-weight: var(--weight-black);
+  text-transform: lowercase;
 }
 .main-header__role__dev {
   display: block;
   line-height: 1;
   font-weight: var(--weight-light);
+  text-transform: lowercase;
 }
 .main-header__nav {
   display: none;
@@ -572,6 +551,23 @@ body::-webkit-scrollbar-track {
 }
 
 /**
+ * Scroll-driven
+ */
+.main-content__article__title,
+.projects__item {
+  animation: slideIn linear both;
+  animation-timeline: view(block);
+  animation-range: cover 0% contain 30%;
+}
+
+.end-of-the-page {
+  margin-top: 50vh;
+  text-align: center;
+  padding: 20px;
+  font-size: 48px;
+}
+
+/**
  * Keyframes
  */
 
@@ -590,5 +586,19 @@ body::-webkit-scrollbar-track {
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    /* transform: skewX(5deg) skewY(-15deg) translateY(50%); */
+    transform: matrix(1, -0.3, -0.15, 1, 0, 20) translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    /* translate: 0 3%; */
+    /* transform: skewX(0deg) skewY(0deg) translateY(0%); */
+    transform: matrix(1, -0.03, -0.06, 1, 0, 0) translateX(0px);
   }
 }
