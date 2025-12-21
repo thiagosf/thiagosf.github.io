@@ -19,12 +19,12 @@ export function BackgroundEffect() {
                 return (
                     <div
                         key={i}
-                        className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-300/30 dark:via-stone-600/30 to-transparent"
+                        className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/70 dark:via-white/40 to-transparent"
                         style={{
                             top: `${topPosition}%`,
                             animation: `fadeInOut ${duration}s ease-in-out infinite`,
                             animationDelay: `${i * 0.1}s`,
-                            opacity: 0.9,
+                            opacity: 0,
                         }}
                     />
                 )

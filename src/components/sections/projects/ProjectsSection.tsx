@@ -84,7 +84,7 @@ export function ProjectsSection({ projects, onDemoClick, onSourceClick }: Projec
     return (
         <section
             ref={sectionRef}
-            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-white dark:bg-stone-950 relative overflow-hidden"
+            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden"
         >
             {/* Design elements similar to ExperienceSection */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">

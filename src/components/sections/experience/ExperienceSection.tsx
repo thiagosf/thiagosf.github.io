@@ -81,7 +81,7 @@ export function ExperienceSection({ experiences, onItemClick, onFilterTech }: Ex
 
     if (!experiences || experiences.length === 0) {
         return (
-            <section ref={sectionRef} className="py-24 px-8 text-center bg-white dark:bg-stone-950">
+            <section ref={sectionRef} className="py-24 px-8 text-center bg-transparent dark:bg-transparent">
                 <p className="text-stone-500 dark:text-stone-400">No experience records found.</p>
             </section>
         );
@@ -93,7 +93,7 @@ export function ExperienceSection({ experiences, onItemClick, onFilterTech }: Ex
     return (
         <section
             ref={sectionRef}
-            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-white dark:bg-stone-950 relative overflow-hidden"
+            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden"
         >
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {[...Array(10)].map((_, i) => (

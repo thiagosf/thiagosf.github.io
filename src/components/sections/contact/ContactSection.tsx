@@ -88,7 +88,7 @@ export function ContactSection({
     return (
         <section
             ref={sectionRef}
-            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-white dark:bg-stone-950 relative overflow-hidden"
+            className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden"
         >
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {[...Array(10)].map((_, i) => (
@@ -135,7 +135,7 @@ export function ContactSection({
                         ))}
                     </div>
                 ) : (
-                    <div className="rounded-2xl border border-dashed border-stone-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-900/60 p-12 text-center" aria-live="polite">
+                    <div className="rounded-2xl border border-dashed border-stone-300/70 dark:border-stone-600/70 bg-white/5 dark:bg-white/10 p-12 text-center" aria-live="polite">
                         <p className="text-lg text-stone-500 dark:text-stone-400">No contact information provided.</p>
                     </div>
                 )}
