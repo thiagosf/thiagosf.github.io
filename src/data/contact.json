@@ -11,34 +11,26 @@
     {
       "id": "cl-002",
       "platform": "LinkedIn",
-      "label": "linkedin.com/in/thiago-sf",
-      "url": "https://linkedin.com/in/thiago-sf",
+      "label": "linkedin.com/in/thiagosfsjc/",
+      "url": "https://www.linkedin.com/in/thiagosfsjc/",
       "icon": "linkedin",
       "type": "social"
     },
     {
       "id": "cl-003",
       "platform": "Twitter",
-      "label": "twitter.com/thiagosf",
-      "url": "https://twitter.com/thiagosf",
+      "label": "twitter.com/thiago9",
+      "url": "https://twitter.com/thiago9",
       "icon": "twitter",
       "type": "social"
     },
     {
       "id": "cl-004",
       "platform": "Email",
-      "label": "hello@thiago.me",
-      "url": "mailto:hello@thiago.me",
+      "label": "thiago@thiagosf.net",
+      "url": "mailto:thiago@thiagosf.net",
       "icon": "mail",
       "type": "contact"
-    },
-    {
-      "id": "cl-005",
-      "platform": "Blog",
-      "label": "thiago.me/blog",
-      "url": "https://thiago.me/blog",
-      "icon": "globe",
-      "type": "other"
     }
   ]
 }
