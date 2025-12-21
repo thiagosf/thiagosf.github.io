@@ -2,7 +2,7 @@ import React from 'react'
 
 /**
  * BackgroundEffect Component
- * 
+ *
  * Renders the animated horizontal line effect originally designed for the Hero section.
  * Designed to be used as a persistent background in the AppShell.
  */
@@ -24,7 +24,7 @@ export function BackgroundEffect() {
                             top: `${topPosition}%`,
                             animation: `fadeInOut ${duration}s ease-in-out infinite`,
                             animationDelay: `${i * 0.1}s`,
-                            opacity: 0.3,
+                            opacity: 0.9,
                         }}
                     />
                 )
