@@ -1,94 +1,107 @@
 [
     {
         "id": "proj-001",
-        "title": "Quantum Flow",
-        "description": "A high-performance particle simulation engine built for real-time generative art, optimized for low-end devices.",
+        "title": "WannaGift!",
+        "description": "Create wishlist and share with your friends anonymously! A platform for managing gift wishlists privately.",
         "year": "2024",
-        "type": "Creative Tool",
+        "type": "Web Application",
         "techStack": [
-            "TypeScript",
-            "WebGPU",
-            "Rust",
-            "Wasm"
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "Docker"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
-        "demoUrl": "https://quantum-flow.demo",
-        "githubUrl": "https://github.com/thiago/quantum-flow"
+        "previewUrl": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "https://www.wannagift.app/"
     },
     {
         "id": "proj-002",
-        "title": "Architect OS",
-        "description": "A minimal, keyboard-driven project management system designed for independent developers and small agile teams.",
+        "title": "Stroo",
+        "description": "Publish and share software architectures. A collaborative platform for documenting and visualizing software design.",
         "year": "2024",
-        "type": "Productivity App",
+        "type": "Developer Tool",
         "techStack": [
-            "Next.js",
-            "PostgreSQL",
-            "Tailwind CSS",
-            "Zustand"
+            "React",
+            "Node.js",
+            "D3.js",
+            "Docker"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200",
-        "demoUrl": "https://architect-os.app",
-        "githubUrl": "https://github.com/thiago/architect-os"
+        "previewUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "https://www.stroo.app/"
     },
     {
         "id": "proj-003",
-        "title": "Lumina Interface",
-        "description": "A set of high-performance UI components built for the next generation of spatial computing devices.",
+        "title": "workout@home",
+        "description": "Webapp to help you exercise at home with guided routines and timer functionality.",
         "year": "2023",
-        "type": "Design System",
+        "type": "Fitness App",
         "techStack": [
             "React",
-            "Three.js",
-            "GSAP",
-            "Framer Motion"
+            "JavaScript",
+            "CSS3"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=1200",
-        "demoUrl": "https://lumina-ui.com",
-        "githubUrl": "https://github.com/thiago/lumina-interface"
+        "previewUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "https://thiagosf.github.io/workout-at-home",
+        "githubUrl": "https://github.com/thiagosf/workout-at-home"
     },
     {
         "id": "proj-004",
-        "title": "Neural Bridge",
-        "description": "An experimental bridge between standard web APIs and local LLM execution using WebGPU for privacy-first AI apps.",
+        "title": "Sinoniza",
+        "description": "Sinoniza is an app that searches synonyms of a word or phrase. A simple and fast synonym finder.",
         "year": "2023",
-        "type": "Technical Experiment",
+        "type": "Utility App",
         "techStack": [
-            "Python",
             "JavaScript",
-            "ONNX",
-            "WebGPU"
+            "HTML5",
+            "CSS3"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-        "githubUrl": "https://github.com/thiago/neural-bridge"
+        "previewUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "https://sinoniza.thiagosf.net/"
     },
     {
         "id": "proj-005",
-        "title": "Sonic Layer",
-        "description": "A browser-based audio workstation for live loop manipulation and generative soundscapes using the Web Audio API.",
+        "title": "Camisapedia",
+        "description": "The encyclopedia of soccer jerseys. A comprehensive database of football shirts from teams around the world.",
         "year": "2022",
-        "type": "Creative App",
+        "type": "Content Platform",
         "techStack": [
-            "Tone.js",
-            "React",
-            "Canvas API"
+            "PHP",
+            "MySQL",
+            "JavaScript",
+            "Bootstrap"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200",
-        "demoUrl": "https://sonic-layer.app"
+        "previewUrl": "https://images.unsplash.com/photo-1614632537197-38a17061c2bd?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "https://camisapedia.thiagosf.net/"
     },
     {
         "id": "proj-006",
-        "title": "Vanguard CLI",
-        "description": "A blazingly fast development workflow orchestrator that automates environment setup across different stack architectures.",
-        "year": "2022",
-        "type": "Developer Tool",
+        "title": "Skitter",
+        "description": "A jQuery slideshow plugin with a lot of transitions and animation effects.",
+        "year": "2020",
+        "type": "jQuery Plugin",
         "techStack": [
-            "Go",
-            "Cobra",
-            "Docker",
-            "Bash"
+            "jQuery",
+            "JavaScript",
+            "CSS3"
         ],
-        "previewUrl": "https://images.unsplash.com/photo-1629654230608-2162279996ed?auto=format&fit=crop&q=80&w=1200",
-        "githubUrl": "https://github.com/thiago/vanguard-cli"
+        "previewUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "http://skitter-slider.net/",
+        "githubUrl": "https://github.com/thiagosf/skitter"
+    },
+    {
+        "id": "proj-007",
+        "title": "chatNow!",
+        "description": "An open source chat built with PHP and MySQL. Real-time messaging platform with multiple room support.",
+        "year": "2019",
+        "type": "Chat Application",
+        "techStack": [
+            "PHP",
+            "MySQL",
+            "JavaScript",
+            "WebSockets"
+        ],
+        "previewUrl": "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&q=80&w=1200",
+        "demoUrl": "http://chatnow.thiagosf.net/",
+        "githubUrl": "https://github.com/thiagosf/chatnow"
     }
 ]
