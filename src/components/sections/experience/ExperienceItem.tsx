@@ -12,7 +12,7 @@ function TechChip({ tech, onHover, onClick }: TechChipProps) {
             onMouseEnter={() => onHover?.(tech)}
             onMouseLeave={() => onHover?.(null)}
             onClick={() => onClick?.(tech)}
-            className="px-0 py-0.5 text-[9px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-600 hover:text-lime-500 dark:hover:text-lime-400 transition-all duration-300 cursor-pointer"
+            className="px-0 py-0.5 text-[9px] font-medium uppercase tracking-[0.15em] text-stone-400 dark:text-stone-600 transition-all duration-300"
         >
             {tech}
         </span>
