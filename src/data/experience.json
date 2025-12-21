@@ -1,0 +1,47 @@
+[
+    {
+        "id": "exp-001",
+        "role": "Senior Creative Developer",
+        "company": "Antigravity Labs",
+        "location": "Remote",
+        "period": "Jan 2023 — Present",
+        "description": "Leading the development of high-performance web experiences using React and GSAP. Spearheaded the redesign of the core product interface, resulting in a 40% increase in user engagement. Mentored junior developers and established best practices for animation performance.",
+        "technologies": [
+            "React",
+            "TypeScript",
+            "GSAP",
+            "Tailwind CSS"
+        ],
+        "isCurrent": true
+    },
+    {
+        "id": "exp-002",
+        "role": "Full Stack Engineer",
+        "company": "TechVision Systems",
+        "location": "São Paulo, Brazil",
+        "period": "Mar 2021 — Dec 2022",
+        "description": "Developed and maintained complex web applications using Node.js and Vue.js. Implemented scalable backend services with PostgreSQL and Redis. Integrated third-party APIs for payment processing and real-time notifications.",
+        "technologies": [
+            "Vue.js",
+            "Node.js",
+            "PostgreSQL",
+            "Docker"
+        ],
+        "isCurrent": false
+    },
+    {
+        "id": "exp-003",
+        "role": "Frontend Developer",
+        "company": "DesignFlow Agency",
+        "location": "Curitiba, Brazil",
+        "period": "Jun 2019 — Feb 2021",
+        "description": "Collaborated with design teams to translate Figma prototypes into pixel-perfect, responsive websites. Focused on accessibility (WCAG) and cross-browser compatibility. Built a reusable component library used across multiple client projects.",
+        "technologies": [
+            "JavaScript",
+            "Sass",
+            "Figma",
+            "WordPress"
+        ],
+        "isCurrent": false
+    }
+]

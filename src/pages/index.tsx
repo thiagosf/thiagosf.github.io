@@ -1,15 +1,14 @@
 import React from 'react'
-import { HeroSection } from '../components/sections'
+import { HeroSection, ExperienceSection } from '../components/sections'
 import heroData from '../data/hero-data.json'
+import experienceData from '../data/experience.json'
 
 export const HeroPage = () => (
     <HeroSection data={heroData} />
 )
 
 export const ExperiencePage = () => (
-    <div className="flex-1 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-primary-500">Experience Section</h1>
-    </div>
+    <ExperienceSection experiences={experienceData} />
 )
 
 export const ProjectsPage = () => (
