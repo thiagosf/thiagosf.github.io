@@ -1,46 +1,87 @@
 [
     {
         "id": "exp-001",
-        "role": "Senior Creative Developer",
-        "company": "Antigravity Labs",
-        "location": "Remote",
-        "period": "Jan 2023 — Present",
-        "description": "Leading the development of high-performance web experiences using React and GSAP. Spearheaded the redesign of the core product interface, resulting in a 40% increase in user engagement. Mentored junior developers and established best practices for animation performance.",
+        "role": "Senior Frontend Developer",
+        "company": "trbo",
+        "location": "Munich, Bavaria, Germany",
+        "period": "Feb 2024 — Present",
+        "description": "Leading frontend architecture and development initiatives for a personalization platform serving enterprise clients. Architecting scalable Vue.js and React applications with focus on performance optimization and maintainability. Driving technical excellence through comprehensive code reviews, test-driven development practices, and continuous refactoring of legacy systems. Implementing robust CI/CD pipelines using CircleCI to ensure code quality and seamless deployments.",
         "technologies": [
+            "Vue.js",
             "React",
+            "Node.js",
+            "Ruby on Rails",
             "TypeScript",
-            "GSAP",
-            "Tailwind CSS"
+            "PostgreSQL",
+            "Redis",
+            "Jest",
+            "Mocha",
+            "Cypress",
+            "CircleCI"
         ],
         "isCurrent": true
     },
     {
         "id": "exp-002",
-        "role": "Full Stack Engineer",
-        "company": "TechVision Systems",
-        "location": "São Paulo, Brazil",
-        "period": "Mar 2021 — Dec 2022",
-        "description": "Developed and maintained complex web applications using Node.js and Vue.js. Implemented scalable backend services with PostgreSQL and Redis. Integrated third-party APIs for payment processing and real-time notifications.",
+        "role": "Senior Frontend Developer",
+        "company": "Chatchamp",
+        "location": "Munich, Bavaria, Germany",
+        "period": "Feb 2022 — Feb 2024",
+        "description": "Spearheaded frontend development for an AI-powered conversational commerce platform, building sophisticated user interfaces with Vue.js and React. Developed and maintained RESTful APIs using Node.js (Express) and Ruby on Rails, ensuring seamless integration between frontend and backend systems. Implemented comprehensive testing strategies and established CI/CD workflows, significantly improving code reliability and deployment efficiency.",
         "technologies": [
             "Vue.js",
+            "React",
             "Node.js",
+            "Ruby on Rails",
+            "TypeScript",
             "PostgreSQL",
-            "Docker"
+            "Redis",
+            "CircleCI"
         ],
         "isCurrent": false
     },
     {
         "id": "exp-003",
-        "role": "Frontend Developer",
-        "company": "DesignFlow Agency",
-        "location": "Curitiba, Brazil",
-        "period": "Jun 2019 — Feb 2021",
-        "description": "Collaborated with design teams to translate Figma prototypes into pixel-perfect, responsive websites. Focused on accessibility (WCAG) and cross-browser compatibility. Built a reusable component library used across multiple client projects.",
+        "role": "Full-stack Developer",
+        "company": "Slideworks",
+        "location": "São Paulo, Brazil",
+        "period": "Dec 2020 — Apr 2022",
+        "description": "Built and maintained full-stack web applications for multiple clients, delivering modern solutions using React (Next.js), Vue.js (Nuxt.js), and robust backend APIs with Node.js and Ruby on Rails. Architected responsive, mobile-first interfaces and managed MySQL databases while implementing containerized development and production environments using Docker. Successfully developed cross-platform mobile applications with Flutter and established automated CI/CD pipelines.",
         "technologies": [
-            "JavaScript",
-            "Sass",
-            "Figma",
-            "WordPress"
+            "React",
+            "Next.js",
+            "Vue.js",
+            "Node.js",
+            "Ruby on Rails",
+            "TypeScript",
+            "MySQL",
+            "Docker",
+            "Flutter",
+            "GitHub Actions",
+            "Bitbucket Pipelines"
+        ],
+        "isCurrent": false
+    },
+    {
+        "id": "exp-004",
+        "role": "Full-stack Developer",
+        "company": "EFFICI",
+        "location": "São Paulo, Brazil",
+        "period": "Jan 2020 — Dec 2020",
+        "description": "Led the migration of a legacy Koa-based system to a modern Express architecture, improving maintainability and performance. Developed comprehensive GraphQL APIs and built dynamic frontend applications using Vue.js (Nuxt.js) and React. Managed cloud infrastructure across Google Cloud, Digital Ocean, and AWS, implementing containerized solutions with Docker and establishing automated deployment pipelines.",
+        "technologies": [
+            "Node.js",
+            "Express",
+            "Koa",
+            "GraphQL",
+            "Vue.js",
+            "Nuxt.js",
+            "React",
+            "MySQL",
+            "Docker",
+            "Google Cloud",
+            "AWS",
+            "Bitbucket Pipelines"
         ],
         "isCurrent": false
     }
