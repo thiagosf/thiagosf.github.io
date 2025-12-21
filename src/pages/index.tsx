@@ -1,9 +1,10 @@
 import React from 'react'
-import { HeroSection, ExperienceSection, ProjectsSection, PlaygroundSection } from '../components/sections'
+import { ContactSection, HeroSection, ExperienceSection, ProjectsSection, PlaygroundSection } from '../components/sections'
 import heroData from '../data/hero-data.json'
 import experienceData from '../data/experience.json'
 import projectsData from '../data/projects.json'
 import playgroundData from '../data/playground.json'
+import contactData from '../data/contact.json'
 
 export const HeroPage = () => (
     <HeroSection data={heroData} />
@@ -34,7 +35,15 @@ export const PlaygroundPage = () => {
 }
 
 export const ContactPage = () => (
-    <div className="flex-1 flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-primary-500">Contact Section</h1>
-    </div>
+    <ContactSection
+        contactLinks={contactData.contactLinks}
+        onLinkClick={(id, url) => {
+            const link = contactData.contactLinks.find((item) => item.id === id)
+            if (link?.type === 'contact' && url.startsWith('mailto:')) {
+                window.location.href = url
+                return
+            }
+            window.open(url, '_blank', 'noopener,noreferrer')
+        }}
+    />
 )

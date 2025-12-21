@@ -1,0 +1,44 @@
+{
+  "contactLinks": [
+    {
+      "id": "cl-001",
+      "platform": "GitHub",
+      "label": "github.com/thiagosf",
+      "url": "https://github.com/thiagosf",
+      "icon": "github",
+      "type": "social"
+    },
+    {
+      "id": "cl-002",
+      "platform": "LinkedIn",
+      "label": "linkedin.com/in/thiago-sf",
+      "url": "https://linkedin.com/in/thiago-sf",
+      "icon": "linkedin",
+      "type": "social"
+    },
+    {
+      "id": "cl-003",
+      "platform": "Twitter",
+      "label": "twitter.com/thiagosf",
+      "url": "https://twitter.com/thiagosf",
+      "icon": "twitter",
+      "type": "social"
+    },
+    {
+      "id": "cl-004",
+      "platform": "Email",
+      "label": "hello@thiago.me",
+      "url": "mailto:hello@thiago.me",
+      "icon": "mail",
+      "type": "contact"
+    },
+    {
+      "id": "cl-005",
+      "platform": "Blog",
+      "label": "thiago.me/blog",
+      "url": "https://thiago.me/blog",
+      "icon": "globe",
+      "type": "other"
+    }
+  ]
+}
