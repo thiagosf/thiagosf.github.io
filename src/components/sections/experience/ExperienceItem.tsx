@@ -43,7 +43,7 @@ export function ExperienceItem({
     return (
         <div
             className={`relative pl-16 pb-24 last:pb-0 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                } ${isHighlighted ? 'scale-[1.02]' : 'scale-100'}`}
+                }`}
             style={{ transitionDelay: `${index * 150}ms` }}
             onClick={() => onItemClick?.(experience.id)}
         >
