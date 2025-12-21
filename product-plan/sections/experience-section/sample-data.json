@@ -1,0 +1,86 @@
+{
+    "_meta": {
+        "models": {
+            "experience": "Represents a professional role or milestone in your career journey."
+        },
+        "relationships": [
+            "The experience list is sorted chronologically from most recent to oldest."
+        ]
+    },
+    "experiences": [
+        {
+            "id": "exp-001",
+            "role": "Senior Creative Developer",
+            "company": "Antigravity Labs",
+            "location": "Remote",
+            "period": "Jan 2023 — Present",
+            "description": "Leading the development of high-performance web experiences using React and GSAP. Spearheaded the redesign of the core product interface, resulting in a 40% increase in user engagement. Mentored junior developers and established best practices for animation performance.",
+            "technologies": [
+                "React",
+                "TypeScript",
+                "GSAP",
+                "Tailwind CSS"
+            ],
+            "isCurrent": true
+        },
+        {
+            "id": "exp-002",
+            "role": "Full Stack Engineer",
+            "company": "TechVision Systems",
+            "location": "São Paulo, Brazil",
+            "period": "Mar 2021 — Dec 2022",
+            "description": "Developed and maintained complex web applications using Node.js and Vue.js. Implemented scalable backend services with PostgreSQL and Redis. Integrated third-party APIs for payment processing and real-time notifications.",
+            "technologies": [
+                "Vue.js",
+                "Node.js",
+                "PostgreSQL",
+                "Docker"
+            ],
+            "isCurrent": false
+        },
+        {
+            "id": "exp-003",
+            "role": "Frontend Developer",
+            "company": "DesignFlow Agency",
+            "location": "Curitiba, Brazil",
+            "period": "Jun 2019 — Feb 2021",
+            "description": "Collaborated with design teams to translate Figma prototypes into pixel-perfect, responsive websites. Focused on accessibility (WCAG) and cross-browser compatibility. Built a reusable component library used across multiple client projects.",
+            "technologies": [
+                "JavaScript",
+                "Sass",
+                "Figma",
+                "WordPress"
+            ],
+            "isCurrent": false
+        },
+        {
+            "id": "exp-004",
+            "role": "Junior Web Developer",
+            "company": "StartUp Hub",
+            "location": "Belo Horizonte, Brazil",
+            "period": "Jan 2018 — May 2019",
+            "description": "Assisted in the development of MVPs for various startups. Gained extensive experience in rapid prototyping and agile methodologies. Contributed to both frontend and backend tasks under the guidance of senior engineers.",
+            "technologies": [
+                "PHP",
+                "Laravel",
+                "jQuery",
+                "MySQL"
+            ],
+            "isCurrent": false
+        },
+        {
+            "id": "exp-005",
+            "role": "Web Development Intern",
+            "company": "EduTech Solutions",
+            "location": "Porto Alegre, Brazil",
+            "period": "Jul 2017 — Dec 2017",
+            "description": "Developed interactive educational tools for primary school students. Fixed bugs and improved internal dashboard performance. Learned the fundamentals of the software development lifecycle.",
+            "technologies": [
+                "HTML5",
+                "CSS3",
+                "JavaScript"
+            ],
+            "isCurrent": false
+        }
+    ]
+}

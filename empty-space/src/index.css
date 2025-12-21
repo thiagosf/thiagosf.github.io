@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222 47% 7%;
+  --foreground: 222 20% 98%;
+  --primary: 267 89% 70%;
+  --primary-foreground: 222 20% 98%;
+  --secondary: 222 20% 18%;
+  --secondary-foreground: 222 20% 98%;
+  --accent: 174 70% 60%;
+  --accent-foreground: 222 20% 98%;
+  --muted: 222 20% 24%;
+  --muted-foreground: 222 20% 80%;
+  --border: 222 20% 24%;
+  --ring: 267 89% 70%;
+  --card: 222 20% 12%;
+  --card-foreground: 222 20% 98%;
+  --gradient-primary: 90deg, hsl(267 89% 70% / 0.8) 0%, hsl(174 70% 60% / 0.8) 100%;
+  --gradient-accent: 90deg, hsl(174 70% 60% / 0.8) 0%, hsl(267 89% 70% / 0.8) 100%;
+  --gradient-dark: 120deg, hsl(222 47% 7% / 0.9) 0%, hsl(222 20% 18% / 0.9) 100%;
+  --shadow-soft: 0 2px 16px 0 hsl(222 47% 7% / 0.12);
+  --shadow-glow: 0 0 16px 2px hsl(267 89% 70% / 0.35);
+  --radius: 0.75rem;
+}
+
+html {
+  font-family: 'Space Grotesk', sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+body {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: 222 20% 98%;
+    --foreground: 222 47% 7%;
+    --primary: 267 89% 60%;
+    --primary-foreground: 222 47% 7%;
+    --secondary: 222 20% 92%;
+    --secondary-foreground: 222 47% 7%;
+    --accent: 174 70% 50%;
+    --accent-foreground: 222 47% 7%;
+    --muted: 222 20% 90%;
+    --muted-foreground: 222 47% 7%;
+    --border: 222 20% 80%;
+    --ring: 267 89% 60%;
+    --card: 222 20% 96%;
+    --card-foreground: 222 47% 7%;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

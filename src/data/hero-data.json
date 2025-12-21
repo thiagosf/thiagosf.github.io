@@ -1,0 +1,54 @@
+{
+    "introduction": {
+        "name": "Thiago Silva Ferreira",
+        "title": "Creative Developer",
+        "subtitle": "Crafting digital experiences",
+        "description": "I blend code with creativity to build interfaces that don't just work—they inspire. Specializing in full-stack development with a passion for pixel-perfect design and smooth animations.",
+        "tagline": "Code • Design • Create"
+    },
+    "mainSkill": {
+        "label": "Full-Stack Creative Development",
+        "description": "Frontend meets backend with style"
+    },
+    "socialLinks": {
+        "github": "https://github.com/thiagosf",
+        "linkedin": "https://linkedin.com/in/thiagosf",
+        "twitter": "https://twitter.com/thiagosf"
+    },
+    "techStack": {
+        "frontend": [
+            {
+                "name": "React",
+                "category": "Framework"
+            },
+            {
+                "name": "TypeScript",
+                "category": "Language"
+            },
+            {
+                "name": "Tailwind CSS",
+                "category": "Styling"
+            }
+        ],
+        "backend": [
+            {
+                "name": "Node.js",
+                "category": "Runtime"
+            },
+            {
+                "name": "PostgreSQL",
+                "category": "Database"
+            }
+        ],
+        "tools": [
+            {
+                "name": "Docker",
+                "category": "DevOps"
+            },
+            {
+                "name": "Git",
+                "category": "Version Control"
+            }
+        ]
+    }
+}

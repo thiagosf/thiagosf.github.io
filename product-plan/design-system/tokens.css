@@ -1,0 +1,33 @@
+/* Design Tokens for Thiago Silva - Developer Portfolio */
+
+:root {
+    /* Colors (based on Tailwind palettes) */
+    --color-primary: #84cc16;
+    /* lime-500 */
+    --color-primary-dark: #65a30d;
+    /* lime-600 */
+    --color-secondary: #10b981;
+    /* emerald-500 */
+    --color-neutral: #78716c;
+    /* stone-500 */
+    --color-bg-light: #fafaf9;
+    /* stone-50 */
+    --color-bg-dark: #0c0a09;
+    /* stone-950 */
+
+    /* Typography */
+    --font-heading: 'Sora', sans-serif;
+    --font-body: 'Sora', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    /* Spacing */
+    --section-padding-y: 6rem;
+    --container-px: 2rem;
+}
+
+.dark {
+    --color-primary: #a3e635;
+    /* lime-400 */
+    --color-neutral: #a8a29e;
+    /* stone-400 */
+}
