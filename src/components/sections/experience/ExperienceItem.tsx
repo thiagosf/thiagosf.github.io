@@ -33,11 +33,11 @@ export function ExperienceItem({
     >
       {/* Timeline Node - centered with period text */}
       <div
-        className={`absolute left-[-5px] top-[3px] w-2.5 h-2.5 bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-700 transition-all duration-500 ${
+        className={`absolute left-[-5px] top-[3px] w-2.5 h-2.5 transition-all duration-500 ${
           experience.isCurrent
-            ? 'bg-lime-500 border-lime-500 shadow-[0_0_15px_rgba(132,204,22,0.4)]'
-            : ''
-        } ${isHighlighted ? 'border-lime-500 scale-125' : ''}`}
+            ? 'bg-lime-500 border-lime-500 dark:bg-lime-500 dark:border-lime-500'
+            : 'bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-700'
+        } ${isHighlighted ? 'border-lime-500 dark:border-lime-500 scale-125' : ''}`}
       />
 
       <div className="space-y-3">
