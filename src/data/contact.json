@@ -23,14 +23,6 @@
       "url": "https://twitter.com/thiago9",
       "icon": "twitter",
       "type": "social"
-    },
-    {
-      "id": "cl-004",
-      "platform": "Email",
-      "label": "thiago@thiagosf.net",
-      "url": "mailto:thiago@thiagosf.net",
-      "icon": "mail",
-      "type": "contact"
     }
   ]
 }
