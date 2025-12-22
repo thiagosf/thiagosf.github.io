@@ -1,0 +1,63 @@
+[
+  {
+    "id": "play-001",
+    "title": "Solidity Study",
+    "description": "Some studies using Solidity to create Ethereum Contracts on Blockchain. Exploring smart contract development and DeFi concepts.",
+    "year": "2024",
+    "type": "Blockchain",
+    "techStack": ["Solidity", "Ethereum", "Hardhat"],
+    "githubUrl": "https://github.com/thiagosf/solidity-study",
+    "language": "Solidity"
+  },
+  {
+    "id": "play-002",
+    "title": "English Study",
+    "description": "A web application to scrape URL contents looking for audios to train listening and option to click in words to see its definition.",
+    "year": "2024",
+    "type": "Learning Tool",
+    "techStack": ["JavaScript", "Web Scraping", "Web Audio API"],
+    "demoUrl": "https://playground.thiagosf.net/english-study",
+    "language": "JavaScript"
+  },
+  {
+    "id": "play-003",
+    "title": "National Geographic Mobile Concept",
+    "description": "A concept mobile site of National Geographic. Responsive design study with mobile-first approach.",
+    "year": "2023",
+    "type": "Design Concept",
+    "techStack": ["HTML5", "CSS3", "JavaScript"],
+    "demoUrl": "https://playground.thiagosf.net/national-geographic-mobile-concept",
+    "language": "JavaScript"
+  },
+  {
+    "id": "play-004",
+    "title": "vue-ske",
+    "description": "Skeleton for web apps with vue.js. A boilerplate project structure for quick Vue.js application setup.",
+    "year": "2023",
+    "type": "Starter Template",
+    "techStack": ["Vue.js", "Webpack", "Vuex"],
+    "githubUrl": "https://github.com/thiagosf/vue-ske",
+    "language": "JavaScript"
+  },
+  {
+    "id": "play-005",
+    "title": "reagindo",
+    "description": "Initial studies with React. Learning project exploring React fundamentals and component patterns.",
+    "year": "2022",
+    "type": "Learning Project",
+    "techStack": ["React", "JavaScript", "CSS"],
+    "githubUrl": "https://github.com/thiagosf/reagindo",
+    "language": "JavaScript"
+  },
+  {
+    "id": "play-006",
+    "title": "React Fifteen Puzzle",
+    "description": "A simple fifteen puzzle game with React and Redux. Classic sliding puzzle implementation with state management.",
+    "year": "2022",
+    "type": "Game",
+    "techStack": ["React", "Redux", "JavaScript"],
+    "demoUrl": "https://thiagosf.github.io/react-jogo-do-quinze",
+    "githubUrl": "https://github.com/thiagosf/react-jogo-do-quinze",
+    "language": "JavaScript"
+  }
+]

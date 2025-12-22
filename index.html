@@ -1,230 +1,47 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Thiago Silva Ferreira - Full Stack Developer</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1966000-17"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-1966000-17');
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" media="all">
-  <meta name="theme-color" content="#E25314">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <div class="gradient-ball gradient-ball--top-left"></div>
-  <div class="gradient-ball gradient-ball--top-right"></div>
-  <div class="gradient-ball gradient-ball--bottom-center"></div>
-  <header class="main-header">
-    <h1 class="main-header__name">Thiago Silva Ferreira</h1>
-    <p class="main-header__role">
-      <span class="main-header__role__full">Full Stack</span>
-      <span class="main-header__role__dev">Developer</span>
-    </p>
-    <nav class="main-header__nav">
-      <ul class="main-header__nav__list">
-        <li class="main-header__nav__list__item">
-          <a
-            class="main-header__nav__list__item__link"
-            href="/#/about"
-          >About</a>
-        </li>
-        <li class="main-header__nav__list__item">
-          <a
-            class="main-header__nav__list__item__link"
-            href="/#/projects"
-          >Side projects</a>
-        </li>
-        <li class="main-header__nav__list__item">
-          <a
-            class="main-header__nav__list__item__link"
-            href="/#/playground"
-          >Playground</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <div class="viewport">
-    <div class="scroll-container">
-      <main class="main-content">
-        <article class="main-content__article" id="about">
-          <h2 class="main-content__article__title">About</h2>
-          <div class="main-content__article__content">
-            <div class="row row--2">
-              <div class="main-content__article__content__text">
-                <p><strong>Howdy!</strong> My name is Thiago, I've been working on web development since 2007, I really like to craft experiences to <strong>end-users</strong> and developers to consume <strong>API’s</strong> without pain.</p>
-                <p>I was born and I live in <strong>Brazil</strong>, most of my knowledge I learned from the <strong>open source community</strong>, therefore I'm very grateful and I try to give back in some way.</p>
-              </div>
-              <div>
-                <div class="techs">
-                  <svg class="techs__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-                    <defs>
-                      <path id="criclePath" d=" M 150, 150 m -120, 0 a 120,120 0 0,1 240,0 a 120,120 0 0,1 -240,0 "/>
-                    </defs>
-                    <circle cx="150" cy="150" r="150" class="techs__svg__circle" />
-                    <circle cx="150" cy="150" r="100" class="techs__svg__circle-inner" />
-                    <g>
-                      <use xlink:href="#criclePath" fill="none"/>
-                      <text fill="#000" class="techs__svg__text" >
-                          <textPath xlink:href="#criclePath">nodejs • react • vue • ruby • docker • mysql • unix •</textPath>
-                      </text>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="main-content__article" id="projects">
-          <h2 class="main-content__article__title">Side projects</h2>
-          <div class="main-content__article__content">
-            <div class="projects">
-              <div class="projects__item">
-                <a href="https://www.wannagift.app" class="projects__item__link">
-                  <h2 class="projects__item__title">WannaGift!</h2>
-                  <p class="projects__item__description">Create wishlist and share with your friends anonymously!</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://www.stroo.app" class="projects__item__link">
-                  <h2 class="projects__item__title">Stroo</h2>
-                  <p class="projects__item__description">Publish and share software architectures</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://thiagosf.github.io/workout-at-home" class="projects__item__link">
-                  <h2 class="projects__item__title">workout@home</h2>
-                  <p class="projects__item__description">Webapp to help you exercise at home</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://sinoniza.thiagosf.net/" class="projects__item__link">
-                  <h2 class="projects__item__title">Sinoniza</h2>
-                  <p class="projects__item__description">Sinoniza is an app than search synonyms of a word or phrase</p>
-                </a>
-              </div>
-              <!-- <div class="projects__item">
-                <a href="https://thiagosf.github.io/insta-gallerify" class="projects__item__link">
-                  <h2 class="projects__item__title">Insta Gallerify</h2>
-                  <p class="projects__item__description">Build gallery with Instagram public profile</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="http://workout.thiagosf.net/" class="projects__item__link">
-                  <h2 class="projects__item__title">Workout Stats</h2>
-                  <p class="projects__item__description">Control your training evolution and make list of excercises.</p>
-                </a>
-              </div> -->
-              <div class="projects__item">
-                <a href="https://camisapedia.thiagosf.net/" class="projects__item__link">
-                  <h2 class="projects__item__title">Camisapedia</h2>
-                  <p class="projects__item__description">The encyclopedia of soccer jersey.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="http://skitter-slider.net/" class="projects__item__link">
-                  <h2 class="projects__item__title">Skitter</h2>
-                  <p class="projects__item__description">A jQuery slideshow with a lot of transitions.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="http://chatnow.thiagosf.net/" class="projects__item__link">
-                  <h2 class="projects__item__title">chatNow!</h2>
-                  <p class="projects__item__description">A open source chat built php and mysql.</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="main-content__article" id="playground">
-          <h2 class="main-content__article__title">Playground</h2>
-          <div class="main-content__article__content">
-            <div class="projects">
-              <div class="projects__item">
-                <a href="https://github.com/thiagosf/solidity-study" class="projects__item__link">
-                  <h2 class="projects__item__title">Solidity Study</h2>
-                  <p class="projects__item__description">Some studies using Solidity to create Ethereum Contracts on Blockchain.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://playground.thiagosf.net/english-study" class="projects__item__link">
-                  <h2 class="projects__item__title">English Study</h2>
-                  <p class="projects__item__description">A web application to scrape URL contents looking for audios to train listening and option to click in words to see it definition.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://playground.thiagosf.net/national-geographic-mobile-concept" class="projects__item__link">
-                  <h2 class="projects__item__title">National Geographic Mobile Concept</h2>
-                  <p class="projects__item__description">A concept mobile site of National Geographic, see source code here.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://github.com/thiagosf/vue-ske" class="projects__item__link">
-                  <h2 class="projects__item__title">vue-ske</h2>
-                  <p class="projects__item__description">Skeleton for web apps with vue.js</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://github.com/thiagosf/reagindo" class="projects__item__link">
-                  <h2 class="projects__item__title">reagindo</h2>
-                  <p class="projects__item__description">Initial studies with react.</p>
-                </a>
-              </div>
-              <div class="projects__item">
-                <a href="https://thiagosf.github.io/react-jogo-do-quinze" class="projects__item__link">
-                  <h2 class="projects__item__title">React fifteen puzzle</h2>
-                  <p class="projects__item__description">A simple fifteen puzzle game with react and redux.</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </main>
-    </div>
-  </div>
-  <footer class="main-footer">
-    <div class="main-footer__social-networks">
-      <ul class="main-footer__social-networks__list">
-        <li class="main-footer__social-networks__list__item">
-          <a
-            class="main-footer__social-networks__list__item__link main-footer__social-networks__list__item__link--github"
-            href="https://github.com/thiagosf"
-          >
-            <span class="main-footer__social-networks__list__item__link__title">thiagosf</span>
-            <svg class="main-footer__social-networks__list__item__link__icon" xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
-              <path d="M47.5,32A15.7,15.7,0,0,0,32,47.895,15.864,15.864,0,0,0,42.6,62.972a1.212,1.212,0,0,0,.263.028.75.75,0,0,0,.8-.789c0-.381-.014-1.377-.021-2.706a7.064,7.064,0,0,1-1.564.187,3.6,3.6,0,0,1-3.661-2.318,4.2,4.2,0,0,0-1.723-2.325c-1.349-.948-.007-.976.1-.976H36.8a3.332,3.332,0,0,1,2.373,1.647,3.043,3.043,0,0,0,2.74,1.737,4.312,4.312,0,0,0,1.771-.415,3.434,3.434,0,0,1,.983-2.124c-3.439-.4-7.058-1.765-7.058-7.854A6.221,6.221,0,0,1,39.2,42.8a5.851,5.851,0,0,1,.152-4.207,1.284,1.284,0,0,1,.346-.035c.561,0,1.827.215,3.917,1.668a14.146,14.146,0,0,1,7.764,0c2.09-1.453,3.356-1.668,3.917-1.668a1.284,1.284,0,0,1,.346.035A5.851,5.851,0,0,1,55.79,42.8a6.246,6.246,0,0,1,1.592,4.263c0,6.1-3.626,7.446-7.079,7.84a3.854,3.854,0,0,1,1.052,2.941c0,2.124-.021,3.84-.021,4.359a.746.746,0,0,0,.789.8,1.335,1.335,0,0,0,.277-.028A15.951,15.951,0,0,0,47.5,32Z" transform="translate(-32 -32)"/>
-            </svg>
-          </a>
-        </li>
-        <li class="main-footer__social-networks__list__item">
-          <a
-            class="main-footer__social-networks__list__item__link main-footer__social-networks__list__item__link--linkedin"
-            href="https://www.linkedin.com/in/thiagosfsjc"
-          >
-            <span class="main-footer__social-networks__list__item__link__title">/thiagosfsjc</span>
-            <svg class="main-footer__social-networks__list__item__link__icon" xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
-              <path d="M60.521,32H34.649A2.529,2.529,0,0,0,32,34.414V60.344A2.728,2.728,0,0,0,34.649,63H60.513A2.589,2.589,0,0,0,63,60.344V34.414A2.377,2.377,0,0,0,60.521,32ZM41.609,57.84H37.168V44.032h4.441ZM39.542,41.933h-.032a2.414,2.414,0,1,1,.032,0ZM57.84,57.84H53.4V50.29c0-1.809-.646-3.045-2.253-3.045a2.428,2.428,0,0,0-2.277,1.639,2.992,2.992,0,0,0-.154,1.091V57.84H44.274V44.032h4.441v1.922a4.5,4.5,0,0,1,4.005-2.245c2.915,0,5.121,1.922,5.121,6.064Z" transform="translate(-32 -32)"/>
-            </svg>
-          </a>
-        </li>
-        <li class="main-footer__social-networks__list__item">
-          <a
-            class="main-footer__social-networks__list__item__link main-footer__social-networks__list__item__link--twitter"
-            href="https://twitter.com/thiago9"
-          >
-            <span class="main-footer__social-networks__list__item__link__title">@thiago9</span>
-            <svg class="main-footer__social-networks__list__item__link__icon" xmlns="http://www.w3.org/2000/svg" width="33.214" height="26.572" viewBox="0 0 33.214 26.572">
-              <path d="M49.214,67.148A13.89,13.89,0,0,1,45.3,68.207a6.537,6.537,0,0,0,3-3.709,13.585,13.585,0,0,1-4.329,1.626,6.837,6.837,0,0,0-11.789,4.581,6.427,6.427,0,0,0,.176,1.529,19.423,19.423,0,0,1-14.047-7.01,6.506,6.506,0,0,0-.927,3.37,6.688,6.688,0,0,0,3.045,5.584,6.651,6.651,0,0,1-3.1-.837v.083A6.737,6.737,0,0,0,22.8,80a6.947,6.947,0,0,1-1.8.235,6.516,6.516,0,0,1-1.28-.125,6.811,6.811,0,0,0,6.37,4.657,13.811,13.811,0,0,1-8.464,2.872,14.035,14.035,0,0,1-1.626-.1,18.9,18.9,0,0,0,10.431,3.031A19.1,19.1,0,0,0,45.836,71.487c0-.291-.008-.581-.021-.865a13.627,13.627,0,0,0,3.4-3.474Z" transform="translate(-16 -64)"/>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <div class="end-of-the-page">🙂 🥳 😎</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thiago Silva — Creative Full-stack Developer</title>
+
+    <!-- Primary SEO -->
+    <meta name="description" content="Thiago Silva — full-stack developer focused on frontend. Portfolio showcasing projects, experience, and contact." />
+    <meta name="keywords" content="Thiago Silva, full-stack developer, frontend developer, portfolio, React, TypeScript" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://thiagosf.github.io/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Thiago Silva — Portfolio" />
+    <meta property="og:description" content="Portfolio of Thiago Silva — full-stack developer focused on frontend." />
+    <meta property="og:image" content="/og-image.svg" />
+    <meta property="og:url" content="https://thiagosf.github.io/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thiago Silva — Portfolio" />
+    <meta name="twitter:description" content="Portfolio of Thiago Silva — full-stack developer focused on frontend." />
+    <meta name="twitter:image" content="/og-image.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"Person","name":"Thiago Silva","url":"https://thiagosf.github.io/","sameAs":["https://github.com/thiagosf"],"jobTitle":"Full-Stack Developer (Frontend-focused)","description":"Portfolio of Thiago Silva — full-stack developer focused on frontend."}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

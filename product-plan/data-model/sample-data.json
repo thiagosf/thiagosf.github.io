@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "introduction": {
+      "name": "Thiago Silva Ferreira",
+      "title": "Creative Developer",
+      "subtitle": "Crafting digital experiences",
+      "description": "I blend code with creativity to build interfaces that don't just work—they inspire. Specializing in full-stack development with a passion for pixel-perfect design and smooth animations.",
+      "tagline": "Code • Design • Create"
+    },
+    "mainSkill": {
+      "label": "Full-Stack Creative Development",
+      "description": "Frontend meets backend with style"
+    },
+    "socialLinks": {
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com"
+    },
+    "techStack": {
+      "frontend": [
+        {
+          "name": "React",
+          "category": "Framework"
+        },
+        {
+          "name": "Vue",
+          "category": "Framework"
+        },
+        {
+          "name": "TypeScript",
+          "category": "Language"
+        },
+        {
+          "name": "Tailwind CSS",
+          "category": "Styling"
+        }
+      ],
+      "backend": [
+        {
+          "name": "Node.js",
+          "category": "Runtime"
+        },
+        {
+          "name": "Ruby",
+          "category": "Language"
+        },
+        {
+          "name": "PostgreSQL",
+          "category": "Database"
+        },
+        {
+          "name": "MySQL",
+          "category": "Database"
+        }
+      ],
+      "tools": [
+        {
+          "name": "Docker",
+          "category": "DevOps"
+        },
+        {
+          "name": "Git",
+          "category": "Version Control"
+        },
+        {
+          "name": "Unix",
+          "category": "System"
+        }
+      ]
+    }
+  },
+  "experiences": [
+    {
+      "id": "exp-001",
+      "role": "Senior Creative Developer",
+      "company": "Antigravity Labs",
+      "location": "Remote",
+      "period": "Jan 2023 — Present",
+      "description": "Leading the development of high-performance web experiences using React and GSAP. Spearheaded the redesign of the core product interface, resulting in a 40% increase in user engagement. Mentored junior developers and established best practices for animation performance.",
+      "technologies": ["React", "TypeScript", "GSAP", "Tailwind CSS"],
+      "isCurrent": true
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-001",
+      "title": "Quantum Flow",
+      "description": "A high-performance particle simulation engine built for real-time generative art, optimized for low-end devices.",
+      "year": "2024",
+      "type": "Creative Tool",
+      "techStack": ["TypeScript", "WebGPU", "Rust", "Wasm"],
+      "previewUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
+      "demoUrl": "https://quantum-flow.demo",
+      "githubUrl": "https://github.com/thiago/quantum-flow"
+    }
+  ],
+  "playground": [
+    {
+      "id": "play-001",
+      "title": "GSAP Morphing Engine",
+      "description": "Experimental SVG path morphing engine using GSAP and custom easing functions for fluid character animations.",
+      "year": "2024",
+      "type": "Animation Utility",
+      "techStack": ["GSAP", "SVG", "TypeScript"],
+      "githubUrl": "https://github.com/thiago/gsap-morphing",
+      "stars": 42,
+      "language": "TypeScript"
+    }
+  ],
+  "contactLinks": [
+    {
+      "id": "cl-001",
+      "platform": "GitHub",
+      "label": "github.com/thiago",
+      "url": "https://github.com/thiago",
+      "icon": "github",
+      "type": "social"
+    }
+  ]
+}
