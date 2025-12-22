@@ -16,7 +16,7 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
     const container = containerClassName ?? 'max-w-5xl mx-auto relative z-10'
 
     return (
-      <section ref={ref as any} className={`${base} ${className}`} {...rest}>
+      <section ref={ref as React.Ref<HTMLDivElement>} className={`${base} ${className}`} {...rest}>
         {background}
         <div className={container}>{children}</div>
       </section>

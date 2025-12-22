@@ -22,8 +22,7 @@ export function HeroSection({ data }: HeroSectionProps) {
   const taglineWords = data.introduction.tagline.split('•')
 
   return (
-    <Section className="flex items-center justify-center">
-      <div className="max-w-7xl w-full relative z-10">
+    <Section className="flex items-center justify-center" containerClassName="max-w-7xl w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center py-8 md:py-12">
           {/* Left column - Main content */}
           <div className="space-y-6 sm:space-y-8 lg:space-y-10">
@@ -185,7 +184,6 @@ export function HeroSection({ data }: HeroSectionProps) {
             isVisible={isVisible}
           />
         </div>
-      </div>
     </Section>
   )
 }

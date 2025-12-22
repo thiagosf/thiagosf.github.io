@@ -32,28 +32,32 @@ export function ContactSection({
   const title = 'Contact'
   const titleLetters = title.split('')
 
+  const background = (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(10)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-stone-200/40 dark:via-stone-800/40 to-transparent"
+          style={{
+            left: `${(i + 1) * 10}%`,
+            animation: `fadeInOutVertical ${3 + (i % 3)}s ease-in-out infinite`,
+            animationDelay: `${i * 0.2}s`,
+            opacity: 0.3,
+          }}
+        />
+      ))}
+    </div>
+  )
+
   return (
     <Section
       ref={sectionRef}
       className="bg-transparent dark:bg-transparent relative overflow-hidden"
+      background={background}
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-stone-200/40 dark:via-stone-800/40 to-transparent"
-            style={{
-              left: `${(i + 1) * 10}%`,
-              animation: `fadeInOutVertical ${3 + (i % 3)}s ease-in-out infinite`,
-              animationDelay: `${i * 0.2}s`,
-              opacity: 0.3,
-            }}
-          />
-        ))}
-      </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="mb-8 lg:mb-16 2xl:mb-32">
+
+      <div className="mb-8 lg:mb-16 2xl:mb-32">
           <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-500 dark:text-stone-600 mb-6 ml-1">
             Connect with me
           </div>
@@ -91,7 +95,6 @@ export function ContactSection({
             </p>
           </div>
         )}
-      </div>
 
       <style>{`
                 @keyframes fadeInOutVertical {

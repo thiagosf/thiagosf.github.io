@@ -54,8 +54,7 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
       background={background}
     >
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="mb-8 lg:mb-16 2xl:mb-32">
+      <div className="mb-8 lg:mb-16 2xl:mb-32">
           <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-500 dark:text-stone-600 mb-6 ml-1">
             Experiments & Open Source
           </div>
@@ -81,7 +80,6 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
             </p>
           </div>
         )}
-      </div>
 
       <style>{`
                 @keyframes fadeInOut {
