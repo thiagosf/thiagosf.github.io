@@ -46,8 +46,8 @@ export interface ContactLink {
   platform: string
   label: string
   url: string
-  icon: "github" | "linkedin" | "twitter" | "mail" | "globe"
-  type: "social" | "contact" | "other"
+  icon: 'github' | 'linkedin' | 'twitter' | 'mail' | 'globe'
+  type: 'social' | 'contact' | 'other'
 }
 
 export interface HeroSectionData {

@@ -91,25 +91,25 @@ The Hero section is the first thing users see. Tests should focus on the correct
 ```typescript
 const mockHeroData = {
   introduction: {
-    name: "Test User",
-    title: "Testing Engineer",
-    subtitle: "Verification at scale",
-    description: "This is a test description.",
-    tagline: "Test • Verify • Deploy",
+    name: 'Test User',
+    title: 'Testing Engineer',
+    subtitle: 'Verification at scale',
+    description: 'This is a test description.',
+    tagline: 'Test • Verify • Deploy',
   },
   mainSkill: {
-    label: "Automated Testing",
-    description: "Ensuring quality",
+    label: 'Automated Testing',
+    description: 'Ensuring quality',
   },
   socialLinks: {
-    github: "https://github.com/test",
-    linkedin: "https://linkedin.com/in/test",
-    twitter: "https://twitter.com/test",
+    github: 'https://github.com/test',
+    linkedin: 'https://linkedin.com/in/test',
+    twitter: 'https://twitter.com/test',
   },
   techStack: {
-    frontend: [{ name: "Jest", category: "Test Framework" }],
-    backend: [{ name: "Supertest", category: "API Testing" }],
-    tools: [{ name: "Docker", category: "DevOps" }],
+    frontend: [{ name: 'Jest', category: 'Test Framework' }],
+    backend: [{ name: 'Supertest', category: 'API Testing' }],
+    tools: [{ name: 'Docker', category: 'DevOps' }],
   },
 }
 ```

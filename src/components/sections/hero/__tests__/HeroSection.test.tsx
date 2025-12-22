@@ -1,26 +1,26 @@
-import { render, screen, waitFor } from "@testing-library/react"
-import { describe, it, expect } from "vitest"
-import { HeroSection } from "../HeroSection"
-import heroData from "../../../../data/hero-data.json"
+import { render, screen, waitFor } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
+import { HeroSection } from '../HeroSection'
+import heroData from '../../../../data/hero-data.json'
 
-describe("HeroSection", () => {
+describe('HeroSection', () => {
   const normalizeText = (text: string | null | undefined) =>
-    text?.replace(/\u00a0/g, " ").trim()
+    text?.replace(/\u00a0/g, ' ').trim()
 
-  it("renders the introduction text", async () => {
+  it('renders the introduction text', async () => {
     render(<HeroSection data={heroData} />)
 
     await waitFor(() => {
-      const headings = screen.getAllByRole("heading")
-      const h1 = headings.find((h) => h.tagName === "H1")
-      const h2s = headings.filter((h) => h.tagName === "H2")
+      const headings = screen.getAllByRole('heading')
+      const h1 = headings.find((h) => h.tagName === 'H1')
+      const h2s = headings.filter((h) => h.tagName === 'H2')
 
-      expect(normalizeText(h1?.textContent)).toBe("Thiago")
+      expect(normalizeText(h1?.textContent)).toBe('Thiago')
 
       const lastName = h2s.find((h) =>
-        h.textContent?.replace(/\u00a0/g, " ").includes("Silva"),
+        h.textContent?.replace(/\u00a0/g, ' ').includes('Silva'),
       )
-      expect(normalizeText(lastName?.textContent)).toBe("Silva Ferreira")
+      expect(normalizeText(lastName?.textContent)).toBe('Silva Ferreira')
     })
 
     expect(screen.getByText(heroData.introduction.title)).toBeInTheDocument()
@@ -38,21 +38,21 @@ describe("HeroSection", () => {
     expect(descriptionElement).toBeInTheDocument()
   })
 
-  it("renders social links with correct hrefs", () => {
+  it('renders social links with correct hrefs', () => {
     render(<HeroSection data={heroData} />)
 
     const githubLink = screen.getByLabelText(/GitHub/i)
-    expect(githubLink).toHaveAttribute("href", heroData.socialLinks.github)
-    expect(githubLink).toHaveAttribute("target", "_blank")
+    expect(githubLink).toHaveAttribute('href', heroData.socialLinks.github)
+    expect(githubLink).toHaveAttribute('target', '_blank')
 
     const linkedinLink = screen.getByLabelText(/LinkedIn/i)
-    expect(linkedinLink).toHaveAttribute("href", heroData.socialLinks.linkedin)
+    expect(linkedinLink).toHaveAttribute('href', heroData.socialLinks.linkedin)
 
     const twitterLink = screen.getByLabelText(/Twitter/i)
-    expect(twitterLink).toHaveAttribute("href", heroData.socialLinks.twitter)
+    expect(twitterLink).toHaveAttribute('href', heroData.socialLinks.twitter)
   })
 
-  it("shows the initial tech stack category", async () => {
+  it('shows the initial tech stack category', async () => {
     render(<HeroSection data={heroData} />)
 
     await waitFor(

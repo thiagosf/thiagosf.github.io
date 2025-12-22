@@ -72,11 +72,11 @@ Tests should focus on the display and functionality of social and contact links.
 
 ```typescript
 const mockContactLink = {
-  id: "cl-1",
-  platform: "GitHub",
-  label: "github.com/tester",
-  url: "https://github.com/tester",
-  icon: "github",
-  type: "social",
+  id: 'cl-1',
+  platform: 'GitHub',
+  label: 'github.com/tester',
+  url: 'https://github.com/tester',
+  icon: 'github',
+  type: 'social',
 }
 ```

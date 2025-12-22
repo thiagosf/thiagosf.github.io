@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-primary-50: #f7fee7;
@@ -37,9 +37,9 @@
   --color-neutral-900: #1c1917;
   --color-neutral-950: #0c0a09;
 
-  --font-sans: "Sora", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
-  --font-heading: "Sora", sans-serif;
+  --font-sans: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-heading: 'Sora', sans-serif;
 }
 
 /* Custom Properties for direct CSS usage */
@@ -51,9 +51,9 @@
   --color-bg-light: #fafaf9;
   --color-bg-dark: #0c0a09;
 
-  --font-heading: "Sora", sans-serif;
-  --font-body: "Sora", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
   --section-padding-y: 6rem;
   --container-px: 2rem;

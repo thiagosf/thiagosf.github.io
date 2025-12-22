@@ -74,14 +74,14 @@ Tests should focus on the grid layout, project card hover effects, and correct f
 
 ```typescript
 const mockProject = {
-  id: "p-1",
-  title: "Test Project",
-  description: "A project meant for testing.",
-  year: "2024",
-  type: "Test Utility",
-  techStack: ["Node.js", "Jest"],
-  previewUrl: "https://example.com/image.png",
-  demoUrl: "https://test.demo",
-  githubUrl: "https://github.com/test/repo",
+  id: 'p-1',
+  title: 'Test Project',
+  description: 'A project meant for testing.',
+  year: '2024',
+  type: 'Test Utility',
+  techStack: ['Node.js', 'Jest'],
+  previewUrl: 'https://example.com/image.png',
+  demoUrl: 'https://test.demo',
+  githubUrl: 'https://github.com/test/repo',
 }
 ```

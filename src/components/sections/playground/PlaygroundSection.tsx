@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react"
-import { PlaygroundGrid } from "./PlaygroundGrid"
-import type { PlaygroundSectionProps } from "./types"
+import { useState, useEffect, useRef } from 'react'
+import { PlaygroundGrid } from './PlaygroundGrid'
+import type { PlaygroundSectionProps } from './types'
 
 function AnimatedLetter({
   targetLetter,
@@ -11,23 +11,23 @@ function AnimatedLetter({
   isActive: boolean
   delay: number
 }) {
-  const [currentLetter, setCurrentLetter] = useState("a")
-  const [status, setStatus] = useState<"waiting" | "cycling" | "done">(
-    "waiting",
+  const [currentLetter, setCurrentLetter] = useState('a')
+  const [status, setStatus] = useState<'waiting' | 'cycling' | 'done'>(
+    'waiting',
   )
-  const alphabet = "abcdefghijklmnopqrstuvwxyz"
-  const isSpace = targetLetter === " "
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const isSpace = targetLetter === ' '
 
   useEffect(() => {
     if (!isActive) {
-      setStatus("waiting")
+      setStatus('waiting')
       return
     }
 
     const startTimer = setTimeout(() => {
-      setStatus("cycling")
+      setStatus('cycling')
       const endTimer = setTimeout(() => {
-        setStatus("done")
+        setStatus('done')
         setCurrentLetter(targetLetter)
       }, 300)
       return () => clearTimeout(endTimer)
@@ -37,7 +37,7 @@ function AnimatedLetter({
   }, [isActive, delay, targetLetter])
 
   useEffect(() => {
-    if (status !== "cycling" || isSpace) return
+    if (status !== 'cycling' || isSpace) return
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * alphabet.length)
       setCurrentLetter(alphabet[randomIndex])
@@ -50,14 +50,14 @@ function AnimatedLetter({
   return (
     <span
       className={`inline-block transition-colors duration-300 ${
-        status === "done"
-          ? "text-stone-900 dark:text-stone-100"
-          : status === "cycling"
-            ? "text-lime-500 dark:text-lime-400"
-            : "opacity-0"
+        status === 'done'
+          ? 'text-stone-900 dark:text-stone-100'
+          : status === 'cycling'
+            ? 'text-lime-500 dark:text-lime-400'
+            : 'opacity-0'
       }`}
     >
-      {status === "done" ? targetLetter : currentLetter}
+      {status === 'done' ? targetLetter : currentLetter}
     </span>
   )
 }
@@ -84,8 +84,8 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
     return () => observer.disconnect()
   }, [])
 
-  const title = "Playground"
-  const titleLetters = title.split("")
+  const title = 'Playground'
+  const titleLetters = title.split('')
 
   return (
     <section

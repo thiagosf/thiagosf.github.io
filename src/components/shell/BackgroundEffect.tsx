@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 /**
  * BackgroundEffect Component
@@ -39,7 +39,7 @@ export function BackgroundEffect() {
             className="absolute top-0 bottom-0 bg-lime-400"
             style={{
               left: 0,
-              width: "0%",
+              width: '0%',
               animation: `passThrough ${line.duration}s ease-out infinite`,
             }}
           />

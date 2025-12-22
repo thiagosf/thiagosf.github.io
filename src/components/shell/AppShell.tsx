@@ -1,5 +1,5 @@
-import React from "react"
-import { BackgroundEffect } from "./BackgroundEffect"
+import React from 'react'
+import { BackgroundEffect } from './BackgroundEffect'
 
 /**
  * AppShell Component - Landing Page Pattern

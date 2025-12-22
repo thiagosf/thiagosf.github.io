@@ -31,9 +31,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Sora", "sans-serif"],
-        mono: ["IBM Plex Mono", "monospace"],
-        heading: ["Sora", "sans-serif"],
+        sans: ['Sora', 'sans-serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
+        heading: ['Sora', 'sans-serif'],
       },
     },
   },

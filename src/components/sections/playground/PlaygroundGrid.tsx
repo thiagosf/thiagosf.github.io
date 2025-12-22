@@ -1,5 +1,5 @@
-import type { PlaygroundItem } from "./types"
-import { PlaygroundCard } from "./PlaygroundCard"
+import type { PlaygroundItem } from './types'
+import { PlaygroundCard } from './PlaygroundCard'
 
 interface PlaygroundGridProps {
   items: PlaygroundItem[]

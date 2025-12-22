@@ -1,5 +1,5 @@
-import { ExternalLink, Github } from "lucide-react"
-import type { Project } from "../types"
+import { ExternalLink, Github } from 'lucide-react'
+import type { Project } from '../types'
 
 interface TechChipProps {
   tech: string
@@ -31,7 +31,7 @@ export function ProjectCard({
   return (
     <div
       className={`group relative border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-8 transition-all duration-700 hover:border-lime-500/50 dark:hover:border-lime-400/50 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >

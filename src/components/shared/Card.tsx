@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Star, Code2 } from "lucide-react"
+import { ExternalLink, Github, Star, Code2 } from 'lucide-react'
 
 interface TechChipProps {
   tech: string
@@ -31,20 +31,20 @@ interface CardProps {
   item: CardItem
   index: number
   isVisible: boolean
-  variant: "project" | "playground"
+  variant: 'project' | 'playground'
 }
 
 export function Card({ item, index, isVisible, variant }: CardProps) {
-  const isPlayground = variant === "playground"
+  const isPlayground = variant === 'playground'
   const transitionDelay = isPlayground ? `${index * 150}ms` : `${index * 100}ms`
-  const transitionDuration = isPlayground ? "duration-1000" : "duration-700"
-  const translateY = isPlayground ? "translate-y-12" : "translate-y-8"
-  const minHeight = isPlayground ? "min-h-[4rem]" : "min-h-[4.5rem]"
+  const transitionDuration = isPlayground ? 'duration-1000' : 'duration-700'
+  const translateY = isPlayground ? 'translate-y-12' : 'translate-y-8'
+  const minHeight = isPlayground ? 'min-h-[4rem]' : 'min-h-[4.5rem]'
 
   return (
     <div
       className={`group relative border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 p-8 transition-all ${transitionDuration} hover:border-lime-500/50 dark:hover:border-lime-400/50 ${
-        isVisible ? "opacity-100 translate-y-0" : `opacity-0 ${translateY}`
+        isVisible ? 'opacity-100 translate-y-0' : `opacity-0 ${translateY}`
       }`}
       style={{ transitionDelay }}
     >
@@ -69,7 +69,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
 
         {/* Actions Inline */}
         <div
-          className={`flex ${isPlayground ? "items-center gap-4" : "gap-3"}`}
+          className={`flex ${isPlayground ? 'items-center gap-4' : 'gap-3'}`}
         >
           {item.stars !== undefined && isPlayground && (
             <div className="flex items-center gap-1.5 text-stone-400 dark:text-stone-500">
@@ -120,7 +120,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
         )}
 
         <p
-          className={`text-stone-600 dark:text-stone-400 leading-relaxed ${isPlayground ? "text-sm" : ""} ${minHeight}`}
+          className={`text-stone-600 dark:text-stone-400 leading-relaxed ${isPlayground ? 'text-sm' : ''} ${minHeight}`}
         >
           {item.description}
         </p>

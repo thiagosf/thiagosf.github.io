@@ -72,14 +72,14 @@ Tests should verify the display of GitHub-specific metadata and the overall typo
 
 ```typescript
 const mockPlaygroundItem = {
-  id: "pg-1",
-  title: "Test experiment",
-  description: "Exploring new testing patterns.",
-  year: "2024",
-  type: "Research",
-  techStack: ["React"],
-  githubUrl: "https://github.com/test",
+  id: 'pg-1',
+  title: 'Test experiment',
+  description: 'Exploring new testing patterns.',
+  year: '2024',
+  type: 'Research',
+  techStack: ['React'],
+  githubUrl: 'https://github.com/test',
   stars: 10,
-  language: "TypeScript",
+  language: 'TypeScript',
 }
 ```

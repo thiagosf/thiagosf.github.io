@@ -1,5 +1,5 @@
-import { Card, type CardItem } from "../../shared/Card"
-import type { Project } from "../../../types/projects"
+import { Card, type CardItem } from '../../shared/Card'
+import type { Project } from '../../../types/projects'
 
 interface ProjectCardProps {
   project: Project

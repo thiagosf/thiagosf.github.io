@@ -10,7 +10,7 @@ export interface ContactLink {
   /** The identifier for the icon to display */
   icon: string
   /** Categorization of the link */
-  type: "social" | "contact" | "other"
+  type: 'social' | 'contact' | 'other'
 }
 
 export interface ContactSectionProps {

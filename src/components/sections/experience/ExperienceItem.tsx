@@ -1,4 +1,4 @@
-import type { Experience } from "../../../types/experience"
+import type { Experience } from '../../../types/experience'
 
 interface TechChipProps {
   tech: string
@@ -44,7 +44,7 @@ export function ExperienceItem({
   return (
     <div
       className={`relative pl-16 pb-24 last:pb-0 transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
       onClick={() => onItemClick?.(experience.id)}
@@ -53,9 +53,9 @@ export function ExperienceItem({
       <div
         className={`absolute left-[-5px] top-[3px] w-2.5 h-2.5 bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-700 transition-all duration-500 ${
           experience.isCurrent
-            ? "bg-lime-500 border-lime-500 shadow-[0_0_15px_rgba(132,204,22,0.4)]"
-            : ""
-        } ${isHighlighted ? "border-lime-500 scale-125" : ""}`}
+            ? 'bg-lime-500 border-lime-500 shadow-[0_0_15px_rgba(132,204,22,0.4)]'
+            : ''
+        } ${isHighlighted ? 'border-lime-500 scale-125' : ''}`}
       />
 
       <div className="space-y-3">

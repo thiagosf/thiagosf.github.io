@@ -6,8 +6,8 @@ import {
   Mail,
   Globe,
   ArrowUpRight,
-} from "lucide-react"
-import type { ContactLink } from "./types"
+} from 'lucide-react'
+import type { ContactLink } from './types'
 
 interface ContactLinkCardProps {
   link: ContactLink
@@ -36,12 +36,12 @@ export function ContactLinkCard({
     link.icon,
   )
     ? link.icon
-    : "globe"
+    : 'globe'
 
   return (
     <div
       className={`transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
       style={{ transitionDelay: `${400 + index * 100}ms` }}
     >

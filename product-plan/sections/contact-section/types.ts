@@ -12,9 +12,9 @@ export interface ContactLink {
   /** The destination URL (e.g., 'https://github.com/thiago' or 'mailto:...') */
   url: string
   /** The identifier for the icon to display */
-  icon: "github" | "linkedin" | "twitter" | "mail" | "globe"
+  icon: 'github' | 'linkedin' | 'twitter' | 'mail' | 'globe'
   /** Categorization of the link */
-  type: "social" | "contact" | "other"
+  type: 'social' | 'contact' | 'other'
 }
 
 // =============================================================================

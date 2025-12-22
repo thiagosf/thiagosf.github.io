@@ -16,9 +16,9 @@
   /* stone-950 */
 
   /* Typography */
-  --font-heading: "Sora", sans-serif;
-  --font-body: "Sora", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
   /* Spacing */
   --section-padding-y: 6rem;

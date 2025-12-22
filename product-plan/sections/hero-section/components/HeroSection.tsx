@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import type { HeroSectionProps } from "../types"
+import { useEffect, useState } from 'react'
+import { Github, Linkedin, Twitter } from 'lucide-react'
+import type { HeroSectionProps } from '../types'
 
 // Animated letter component that cycles through alphabet
 function SocialIcon({
@@ -34,29 +34,29 @@ function AnimatedLetter({
   isActive: boolean
   delay: number
 }) {
-  const [currentLetter, setCurrentLetter] = useState("a")
-  const [status, setStatus] = useState<"waiting" | "cycling" | "done">(
-    "waiting",
+  const [currentLetter, setCurrentLetter] = useState('a')
+  const [status, setStatus] = useState<'waiting' | 'cycling' | 'done'>(
+    'waiting',
   )
-  const alphabet = "abcdefghijklmnopqrstuvwxyz"
-  const isSpace = targetLetter === " "
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
+  const isSpace = targetLetter === ' '
 
   useEffect(() => {
     if (!isActive) {
-      setStatus("waiting")
+      setStatus('waiting')
       return
     }
 
     // Reset to waiting when active state changes (restart)
-    setStatus("waiting")
+    setStatus('waiting')
 
     // Start cycling after delay
     const startTimer = setTimeout(() => {
-      setStatus("cycling")
+      setStatus('cycling')
 
       // Stop cycling after 200ms
       const endTimer = setTimeout(() => {
-        setStatus("done")
+        setStatus('done')
         setCurrentLetter(targetLetter)
       }, 200)
 
@@ -68,7 +68,7 @@ function AnimatedLetter({
 
   // Random letter cycling effect
   useEffect(() => {
-    if (status !== "cycling" || isSpace) return
+    if (status !== 'cycling' || isSpace) return
 
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * alphabet.length)
@@ -85,14 +85,14 @@ function AnimatedLetter({
   return (
     <span
       className={`inline-block transition-colors duration-300 ${
-        status === "done"
-          ? "text-lime-500 dark:text-lime-400 opacity-100"
-          : status === "cycling"
-            ? "text-white/50 dark:text-white/50 opacity-100"
-            : "opacity-0"
+        status === 'done'
+          ? 'text-lime-500 dark:text-lime-400 opacity-100'
+          : status === 'cycling'
+            ? 'text-white/50 dark:text-white/50 opacity-100'
+            : 'opacity-0'
       }`}
     >
-      {status === "done" ? targetLetter : currentLetter}
+      {status === 'done' ? targetLetter : currentLetter}
     </span>
   )
 }
@@ -114,15 +114,15 @@ function AnimatedSkillDisplay({
   const currentSkill = skills[currentIndex]
   // Always convert skill name to lowercase for display
   const skillNameLowercase = currentSkill.name.toLowerCase()
-  const skillLetters = skillNameLowercase.split("")
+  const skillLetters = skillNameLowercase.split('')
 
   return (
     <div className="space-y-4">
       <h3
         className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${
           isVisible
-            ? "text-stone-800 dark:text-stone-200"
-            : "text-stone-400 dark:text-stone-600"
+            ? 'text-stone-800 dark:text-stone-200'
+            : 'text-stone-400 dark:text-stone-600'
         }`}
       >
         {category}
@@ -142,8 +142,8 @@ function AnimatedSkillDisplay({
       <p
         className={`text-sm mt-2 transition-opacity duration-300 ${
           isVisible
-            ? "opacity-100 text-stone-500 dark:text-stone-400"
-            : "opacity-0"
+            ? 'opacity-100 text-stone-500 dark:text-stone-400'
+            : 'opacity-0'
         }`}
       >
         {currentSkill.category}
@@ -187,9 +187,9 @@ function TechStackAnimation({
 
     // 1. Calculate how long the current words take to finish
     // Each takes length * 200ms
-    const fWord = frontend[frontendIndex]?.name || ""
-    const bWord = backend[backendIndex]?.name || ""
-    const tWord = tools[toolsIndex]?.name || ""
+    const fWord = frontend[frontendIndex]?.name || ''
+    const bWord = backend[backendIndex]?.name || ''
+    const tWord = tools[toolsIndex]?.name || ''
 
     // Total animation time is simply the max word length * 200ms
     const maxLen = Math.max(fWord.length, bWord.length, tWord.length)
@@ -229,9 +229,9 @@ function TechStackAnimation({
   return (
     <div
       className={`transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
       }`}
-      style={{ animationDelay: "1.4s" }}
+      style={{ animationDelay: '1.4s' }}
     >
       <div className="space-y-8">
         {/* Frontend */}
@@ -273,11 +273,11 @@ export function HeroSection({ data }: HeroSectionProps) {
   }, [])
 
   // Split name into first name and last names
-  const nameParts = data.introduction.name.split(" ")
+  const nameParts = data.introduction.name.split(' ')
   const firstName = nameParts[0] // "Thiago"
-  const lastName = nameParts.slice(1).join(" ") // "Silva Ferreira"
-  const firstNameChars = firstName.split("")
-  const taglineWords = data.introduction.tagline.split("•")
+  const lastName = nameParts.slice(1).join(' ') // "Silva Ferreira"
+  const firstNameChars = firstName.split('')
+  const taglineWords = data.introduction.tagline.split('•')
 
   return (
     <div className="min-h-screen flex items-center justify-center px-8 sm:px-6 md:px-12 relative overflow-hidden bg-gradient-to-br from-stone-50 via-white to-stone-100 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950">
@@ -289,10 +289,10 @@ export function HeroSection({ data }: HeroSectionProps) {
             <div
               className={`transition-all duration-700 mt-2 sm:mt-0 ${
                 isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
+                  ? 'opacity-100 translate-x-0'
+                  : 'opacity-0 -translate-x-8'
               }`}
-              style={{ animationDelay: "0.1s" }}
+              style={{ animationDelay: '0.1s' }}
             >
               <div className="flex items-center gap-3 flex-wrap">
                 {taglineWords.map((word, index) => (
@@ -300,8 +300,8 @@ export function HeroSection({ data }: HeroSectionProps) {
                     key={index}
                     className={`inline-block text-xs sm:text-sm font-medium uppercase tracking-widest text-stone-400 dark:text-stone-500 transition-all duration-500 ${
                       isVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
                     }`}
                     style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                   >
@@ -319,9 +319,9 @@ export function HeroSection({ data }: HeroSectionProps) {
               {/* Name split into two lines */}
               <div
                 className={`transition-all duration-700 ${
-                  isVisible ? "opacity-100" : "opacity-0"
+                  isVisible ? 'opacity-100' : 'opacity-0'
                 }`}
-                style={{ animationDelay: "0.3s" }}
+                style={{ animationDelay: '0.3s' }}
               >
                 {/* First name - Big */}
                 <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 dark:text-stone-100 tracking-tight leading-none">
@@ -330,8 +330,8 @@ export function HeroSection({ data }: HeroSectionProps) {
                       key={index}
                       className={`inline-block transition-all duration-300 ${
                         nameRevealed
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-8"
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 translate-y-8'
                       }`}
                       style={{
                         animationDelay: `${0.4 + index * 0.03}s`,
@@ -343,19 +343,19 @@ export function HeroSection({ data }: HeroSectionProps) {
                 </h1>
                 {/* Last name - Small and light */}
                 <h2 className="text-sm sm:text-xl md:text-3xl lg:text-5xl font-light text-stone-400 dark:text-stone-500 tracking-tight leading-tight mt-1">
-                  {lastName.split("").map((char, index) => (
+                  {lastName.split('').map((char, index) => (
                     <span
                       key={index}
                       className={`inline-block transition-all duration-300 ${
                         nameRevealed
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4"
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 translate-y-4'
                       }`}
                       style={{
                         animationDelay: `${0.6 + index * 0.02}s`,
                       }}
                     >
-                      {char === " " ? "\u00A0" : char}
+                      {char === ' ' ? '\u00A0' : char}
                     </span>
                   ))}
                 </h2>
@@ -365,10 +365,10 @@ export function HeroSection({ data }: HeroSectionProps) {
               <div
                 className={`transition-all duration-700 ${
                   isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-4'
                 }`}
-                style={{ animationDelay: "0.7s" }}
+                style={{ animationDelay: '0.7s' }}
               >
                 <div className="space-y-1">
                   <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 dark:text-stone-200">
@@ -384,18 +384,18 @@ export function HeroSection({ data }: HeroSectionProps) {
             {/* Description */}
             <div
               className={`transition-all duration-700 ${
-                isVisible ? "opacity-100" : "opacity-0"
+                isVisible ? 'opacity-100' : 'opacity-0'
               }`}
-              style={{ animationDelay: "0.9s" }}
+              style={{ animationDelay: '0.9s' }}
             >
               <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400 leading-relaxed max-w-xl">
-                {data.introduction.description.split(" ").map((word, index) => (
+                {data.introduction.description.split(' ').map((word, index) => (
                   <span
                     key={index}
                     className={`inline-block transition-all duration-500 ${
                       isVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-2"
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-2'
                     }`}
                     style={{
                       animationDelay: `${1.0 + index * 0.03}s`,
@@ -403,8 +403,8 @@ export function HeroSection({ data }: HeroSectionProps) {
                   >
                     {word}
                     {index <
-                      data.introduction.description.split(" ").length - 1 &&
-                      "\u00A0"}
+                      data.introduction.description.split(' ').length - 1 &&
+                      '\u00A0'}
                   </span>
                 ))}
               </p>
@@ -412,8 +412,8 @@ export function HeroSection({ data }: HeroSectionProps) {
 
             {/* Social Media Icons */}
             <div
-              className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-              style={{ animationDelay: "1.2s" }}
+              className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+              style={{ animationDelay: '1.2s' }}
             >
               <div className="flex items-center gap-4">
                 <SocialIcon

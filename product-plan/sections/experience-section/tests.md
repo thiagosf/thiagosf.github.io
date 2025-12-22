@@ -75,13 +75,13 @@ Tests should verify the chronological display of roles, the timeline visualizati
 ```typescript
 const mockExperiences = [
   {
-    id: "exp-1",
-    role: "Lead Developer",
-    company: "Test Corp",
-    location: "Remote",
-    period: "2020 - Present",
-    description: "Built the testing infrastructure.",
-    technologies: ["React", "Vitest"],
+    id: 'exp-1',
+    role: 'Lead Developer',
+    company: 'Test Corp',
+    location: 'Remote',
+    period: '2020 - Present',
+    description: 'Built the testing infrastructure.',
+    technologies: ['React', 'Vitest'],
     isCurrent: true,
   },
 ]

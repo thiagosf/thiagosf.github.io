@@ -1,14 +1,14 @@
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import { describe, it, expect, vi } from "vitest"
-import { ContactSection } from "../ContactSection"
-import type { ContactLink } from "../types"
-import contactData from "../../../../data/contact.json"
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { describe, it, expect, vi } from 'vitest'
+import { ContactSection } from '../ContactSection'
+import type { ContactLink } from '../types'
+import contactData from '../../../../data/contact.json'
 
-describe("ContactSection", () => {
+describe('ContactSection', () => {
   const { contactLinks } = contactData
 
-  it("renders contact links with platform and label text", () => {
+  it('renders contact links with platform and label text', () => {
     render(<ContactSection contactLinks={contactLinks} />)
 
     expect(screen.getByText(/github.com\/thiagosf/i)).toBeInTheDocument()
@@ -16,7 +16,7 @@ describe("ContactSection", () => {
     expect(screen.getByText(/hello@thiago\.me/i)).toBeInTheDocument()
   })
 
-  it("calls onLinkClick when a link is clicked", async () => {
+  it('calls onLinkClick when a link is clicked', async () => {
     const handleLinkClick = vi.fn()
     const user = userEvent.setup()
     render(
@@ -26,7 +26,7 @@ describe("ContactSection", () => {
       />,
     )
 
-    const githubLink = screen.getByRole("link", {
+    const githubLink = screen.getByRole('link', {
       name: /github\.com\/thiagosf/i,
     })
     await user.click(githubLink)
@@ -37,7 +37,7 @@ describe("ContactSection", () => {
     )
   })
 
-  it("displays an empty state when no links are provided", () => {
+  it('displays an empty state when no links are provided', () => {
     render(<ContactSection contactLinks={[]} />)
 
     expect(
@@ -45,21 +45,21 @@ describe("ContactSection", () => {
     ).toBeInTheDocument()
   })
 
-  it("falls back to the globe icon when an unknown icon identifier is set", () => {
+  it('falls back to the globe icon when an unknown icon identifier is set', () => {
     const unknownLink: ContactLink = {
-      id: "cl-unknown",
-      platform: "Signal",
-      label: "signal.me/thiago",
-      url: "https://signal.me/thiago",
-      icon: "unknown",
-      type: "other",
+      id: 'cl-unknown',
+      platform: 'Signal',
+      label: 'signal.me/thiago',
+      url: 'https://signal.me/thiago',
+      icon: 'unknown',
+      type: 'other',
     }
 
     render(<ContactSection contactLinks={[unknownLink]} />)
 
-    expect(screen.getByTestId("contact-link-icon-cl-unknown")).toHaveAttribute(
-      "data-icon-name",
-      "globe",
+    expect(screen.getByTestId('contact-link-icon-cl-unknown')).toHaveAttribute(
+      'data-icon-name',
+      'globe',
     )
   })
 })
