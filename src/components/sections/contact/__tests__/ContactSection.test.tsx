@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
+
+import contactData from '../../../../data/contact.json'
 import { ContactSection } from '../ContactSection'
 import type { ContactLink } from '../types'
-import contactData from '../../../../data/contact.json'
 
 describe('ContactSection', () => {
   const { contactLinks } = contactData

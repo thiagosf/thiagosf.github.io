@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
 import type { ProjectsSectionProps } from '../../../types/projects'
 import { ProjectGrid } from './ProjectGrid'
 

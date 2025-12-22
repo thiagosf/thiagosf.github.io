@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import { describe, it, expect } from 'vitest'
-import { HeroSection } from '../HeroSection'
+import { describe, expect, it } from 'vitest'
+
 import heroData from '../../../../data/hero-data.json'
+import { HeroSection } from '../HeroSection'
 
 describe('HeroSection', () => {
   const normalizeText = (text: string | null | undefined) =>

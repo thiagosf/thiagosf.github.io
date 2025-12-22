@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
 import { PlaygroundGrid } from './PlaygroundGrid'
 import type { PlaygroundSectionProps } from './types'
 

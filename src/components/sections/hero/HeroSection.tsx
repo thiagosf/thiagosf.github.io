@@ -1,5 +1,6 @@
-import { useEffect, useState, type ComponentType } from 'react'
 import { Github, Linkedin, Twitter } from 'lucide-react'
+import { type ComponentType, useEffect, useState } from 'react'
+
 import type { HeroSectionProps } from './types'
 
 // Animated letter component that cycles through alphabet

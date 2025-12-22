@@ -1,11 +1,12 @@
 import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Globe,
   ArrowUpRight,
+  Github,
+  Globe,
+  Linkedin,
+  Mail,
+  Twitter,
 } from 'lucide-react'
+
 import type { ContactLink } from '../types'
 
 interface ContactLinkCardProps {

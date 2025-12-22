@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
 import type { ExperienceSectionProps } from '../../../types/experience'
 import { ExperienceItem } from './ExperienceItem'
 

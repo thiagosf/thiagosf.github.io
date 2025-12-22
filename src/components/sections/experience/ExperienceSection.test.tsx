@@ -1,7 +1,8 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { ExperienceSection } from './ExperienceSection'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
 import { Experience } from '../../../types/experience'
+import { ExperienceSection } from './ExperienceSection'
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class {

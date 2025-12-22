@@ -7,6 +7,7 @@ This document outlines the coding standards and guidelines for agents working on
 - **No semicolons**: Do not use semicolons at the end of statements.
 - **2-space indentation**: Use 2 spaces for indentation, no tabs.
 - **Single quotes**: Use single quotes for strings instead of double quotes.
+- **Import spacing**: Add one empty line between import statements.
 - **Function declarations**: Prefer `function` declarations over `const` arrow functions for components and functions.
 - **One component per file**: Each file should contain only one React component.
 - **Shared components**: Use the `shared` folder for generic, reusable components.

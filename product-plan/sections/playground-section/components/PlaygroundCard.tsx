@@ -1,4 +1,5 @@
-import { Github, Star, Code2 } from 'lucide-react'
+import { Code2, Github, Star } from 'lucide-react'
+
 import type { PlaygroundItem } from '../types'
 
 interface TechChipProps {

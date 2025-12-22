@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Star, Code2 } from 'lucide-react'
+import { Code2, ExternalLink, Github, Star } from 'lucide-react'
 
 interface TechChipProps {
   tech: string

@@ -1,9 +1,11 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { ProjectsSection } from '../ProjectsSection'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
 import type { Project } from '../../../../types/projects'
 
 // Mock IntersectionObserver
+import { ProjectsSection } from '../ProjectsSection'
+
 ;(global as any).IntersectionObserver = class {
   observe() {}
   unobserve() {}

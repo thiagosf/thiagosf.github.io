@@ -1,15 +1,15 @@
 import {
   ContactSection,
-  HeroSection,
   ExperienceSection,
-  ProjectsSection,
+  HeroSection,
   PlaygroundSection,
+  ProjectsSection,
 } from '../components/sections'
-import heroData from '../data/hero-data.json'
-import experienceData from '../data/experience.json'
-import projectsData from '../data/projects.json'
-import playgroundData from '../data/playground.json'
 import contactData from '../data/contact.json'
+import experienceData from '../data/experience.json'
+import heroData from '../data/hero-data.json'
+import playgroundData from '../data/playground.json'
+import projectsData from '../data/projects.json'
 
 const handleContactLinkClick = (id: string, url: string) => {
   const link = contactData.contactLinks.find((entry) => entry.id === id)

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import type { ContactSectionProps } from './types'
+
 import { ContactLinkCard } from './ContactLinkCard'
+import type { ContactSectionProps } from './types'
 
 function AnimatedLetter({
   targetLetter,

@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react'
+
 import type { Project } from '../types'
 
 interface TechChipProps {
