@@ -5,7 +5,7 @@
     "company": "trbo",
     "location": "Munich, Bavaria, Germany",
     "period": "Feb 2024 — Present",
-    "description": "Leading the incremental migration from Angular to React, modernizing the frontend through component refactors and safe, small-step rollouts. Introduced Storybook to enable component-driven development and faster, more reliable UI work. Maintain legacy Angular and PHP code while gradually migrating features, and implement CI/CD and testing practices to improve quality. Mentor junior developers with hands-on guidance and code reviews, and champion AI-assisted pair-programming by creating practical guidelines to improve accuracy and productivity. Deliver work iteratively using Scrum/XP/Kanban processes.",
+    "description": "Contributed to the incremental migration from Angular to React, modernizing the frontend through component refactors and safe, small-step rollouts. Helped introduce Storybook to enable component-driven development and faster, more reliable UI work. Maintain legacy Angular and PHP code while gradually migrating features, and implement CI/CD and testing practices to improve quality. Mentor a junior front-end developer with hands-on guidance and code reviews, and support AI-assisted pair-programming by creating practical guidelines to improve accuracy and productivity. Deliver work iteratively using Scrum/XP/Kanban processes.",
     "technologies": [
       "Vue.js",
       "React",
