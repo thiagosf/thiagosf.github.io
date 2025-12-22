@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { AnimatedLetter } from '../../shared'
+import { AnimatedLetter, Section } from '../../shared'
 import type { ExperienceSectionProps } from '../../../types/experience'
 import { ExperienceItem } from './ExperienceItem'
 
@@ -32,14 +32,14 @@ export function ExperienceSection({
 
   if (!experiences || experiences.length === 0) {
     return (
-      <section
+      <Section
         ref={sectionRef}
-        className="py-24 px-8 text-center bg-transparent dark:bg-transparent"
+        className="text-center bg-transparent dark:bg-transparent"
       >
         <p className="text-stone-500 dark:text-stone-400">
           No experience records found.
         </p>
-      </section>
+      </Section>
     )
   }
 
@@ -47,9 +47,9 @@ export function ExperienceSection({
   const titleLetters = title.split('')
 
   return (
-    <section
+    <Section
       ref={sectionRef}
-      className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden"
+      className="bg-transparent dark:bg-transparent relative overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(10)].map((_, i) => (
@@ -105,6 +105,6 @@ export function ExperienceSection({
                     50% { opacity: 0.3; transform: translateY(50px); }
                 }
             `}</style>
-    </section>
+    </Section>
   )
 }

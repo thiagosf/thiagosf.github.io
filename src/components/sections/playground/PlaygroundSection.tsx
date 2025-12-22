@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { AnimatedLetter } from '../../shared'
+import { AnimatedLetter, Section } from '../../shared'
 import { PlaygroundGrid } from './PlaygroundGrid'
 import type { PlaygroundSectionProps } from './types'
 
@@ -29,26 +29,30 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
   const title = 'Playground'
   const titleLetters = title.split('')
 
+  const background = (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(10)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-stone-200/40 dark:via-stone-800/40 to-transparent"
+          style={{
+            left: `${(i + 1) * 10}%`,
+            animation: `fadeInOut ${3 + (i % 3)}s ease-in-out infinite`,
+            animationDelay: `${i * 0.2}s`,
+            opacity: 0.3,
+          }}
+        />
+      ))}
+    </div>
+  )
+
   return (
-    <section
+    <Section
       ref={sectionRef}
       id="playground"
-      className="min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden"
+      className="bg-transparent dark:bg-transparent relative overflow-hidden"
+      background={background}
     >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-stone-200/40 dark:via-stone-800/40 to-transparent"
-            style={{
-              left: `${(i + 1) * 10}%`,
-              animation: `fadeInOut ${3 + (i % 3)}s ease-in-out infinite`,
-              animationDelay: `${i * 0.2}s`,
-              opacity: 0.3,
-            }}
-          />
-        ))}
-      </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="mb-8 lg:mb-16 2xl:mb-32">
@@ -85,6 +89,6 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
                     50% { opacity: 0.3; transform: translateY(50px); }
                 }
             `}</style>
-    </section>
+    </Section>
   )
 }

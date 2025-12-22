@@ -1,7 +1,7 @@
 import { Github, Linkedin, Twitter } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-import { SocialIcon, TechStackAnimation } from '../../shared'
+import { SocialIcon, TechStackAnimation, Section } from '../../shared'
 import type { HeroSectionProps } from './types'
 
 export function HeroSection({ data }: HeroSectionProps) {
@@ -22,7 +22,7 @@ export function HeroSection({ data }: HeroSectionProps) {
   const taglineWords = data.introduction.tagline.split('•')
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-8 sm:px-6 md:px-12 relative overflow-hidden bg-transparent dark:bg-transparent">
+    <Section className="flex items-center justify-center">
       <div className="max-w-7xl w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center py-8 md:py-12">
           {/* Left column - Main content */}
@@ -186,6 +186,6 @@ export function HeroSection({ data }: HeroSectionProps) {
           />
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
