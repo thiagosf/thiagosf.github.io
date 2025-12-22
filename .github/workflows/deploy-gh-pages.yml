@@ -23,7 +23,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rsync
 
       - name: SSH deploy to server
-        if: ${{ secrets.SSH_PRIVATE_KEY != '' && secrets.SSH_HOST != '' && secrets.SSH_USER != '' && secrets.SSH_PATH != '' }}
+        if: secrets.SSH_PRIVATE_KEY != '' && secrets.SSH_HOST != '' && secrets.SSH_USER != '' && secrets.SSH_PATH != ''
         env:
           SSH_PORT: ${{ secrets.SSH_PORT }}
         run: |
