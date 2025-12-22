@@ -4,7 +4,7 @@ export { Card, type CardItem } from './organisms/Card'
 export { AnimatedLetter } from './atoms/AnimatedLetter'
 export { SocialIcon } from './atoms/SocialIcon'
 export { TechChip } from './atoms/TechChip'
-export { Section } from './Section'
+export { Section } from './organisms/Section'
 
 // Molecules
 export { AnimatedSkillDisplay } from './molecules/AnimatedSkillDisplay'
