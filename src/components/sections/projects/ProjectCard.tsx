@@ -17,16 +17,12 @@ interface ProjectCardProps {
     project: Project
     index: number
     isVisible: boolean
-    onDemoClick?: (id: string) => void
-    onSourceClick?: (id: string) => void
 }
 
 export function ProjectCard({
     project,
     index,
-    isVisible,
-    onDemoClick,
-    onSourceClick
+    isVisible
 }: ProjectCardProps) {
     return (
         <div
@@ -43,22 +39,26 @@ export function ProjectCard({
                 {/* Actions Inline */}
                 <div className="flex gap-3">
                     {project.githubUrl && (
-                        <button
-                            onClick={() => onSourceClick?.(project.id)}
+                        <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
                             aria-label="View Source"
                         >
                             <Github size={16} />
-                        </button>
+                        </a>
                     )}
                     {project.demoUrl && (
-                        <button
-                            onClick={() => onDemoClick?.(project.id)}
+                        <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="text-stone-400 hover:text-lime-500 transition-colors duration-200"
                             aria-label="View Demo"
                         >
                             <ExternalLink size={16} />
-                        </button>
+                        </a>
                     )}
                 </div>
             </div>

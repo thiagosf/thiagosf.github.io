@@ -60,32 +60,23 @@ describe('ProjectsSection', () => {
         expect(screen.getByText('COBRA')).toBeInTheDocument();
     });
 
-    it('calls onDemoClick when demo button is clicked', () => {
-        const onDemoClick = vi.fn();
-        render(<ProjectsSection projects={mockProjects} onDemoClick={onDemoClick} />);
+    it('renders demo and source links with correct URLs', () => {
+        render(<ProjectsSection projects={mockProjects} />);
 
-        const demoButton = screen.getByLabelText('View Demo');
-        fireEvent.click(demoButton);
+        const demoLink = screen.getByLabelText('View Demo');
+        const sourceLinks = screen.getAllByLabelText('View Source');
 
-        expect(onDemoClick).toHaveBeenCalledWith('p-1');
+        expect(demoLink).toHaveAttribute('href', 'https://p1.demo');
+        expect(sourceLinks[0]).toHaveAttribute('href', 'https://github.com/p1');
+        expect(sourceLinks[1]).toHaveAttribute('href', 'https://github.com/p2');
     });
 
-    it('calls onSourceClick when source button is clicked', () => {
-        const onSourceClick = vi.fn();
-        render(<ProjectsSection projects={mockProjects} onSourceClick={onSourceClick} />);
-
-        const sourceButtons = screen.getAllByLabelText('View Source');
-        fireEvent.click(sourceButtons[0]);
-
-        expect(onSourceClick).toHaveBeenCalledWith('p-1');
-    });
-
-    it('hides demo/source buttons when URLs are missing', () => {
+    it('hides demo/source links when URLs are missing', () => {
         render(<ProjectsSection projects={mockProjects} />);
 
         // Project Beta has no demoUrl
-        const p2 = screen.getByText('Project Beta').closest('div');
-        expect(p2?.querySelector('[aria-label="View Demo"]')).toBeNull();
+        const demoLinks = screen.queryAllByLabelText('View Demo');
+        expect(demoLinks).toHaveLength(1); // Only one project has demoUrl
     });
 
     it('shows empty state when no projects are provided', () => {

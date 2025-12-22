@@ -57,7 +57,7 @@ function AnimatedLetter({
     )
 }
 
-export function ProjectsSection({ projects, onDemoClick, onSourceClick }: ProjectsSectionProps) {
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
     const [isVisible, setIsVisible] = useState(false)
     const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -127,8 +127,6 @@ export function ProjectsSection({ projects, onDemoClick, onSourceClick }: Projec
                     <ProjectGrid
                         projects={projects}
                         isVisible={isVisible}
-                        onDemoClick={onDemoClick}
-                        onSourceClick={onSourceClick}
                     />
                 )}
             </div>

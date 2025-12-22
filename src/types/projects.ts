@@ -13,6 +13,4 @@ export interface Project {
 export interface ProjectsSectionProps {
     projects: Project[]
     onViewDetails?: (id: string) => void
-    onDemoClick?: (id: string) => void
-    onSourceClick?: (id: string) => void
 }
