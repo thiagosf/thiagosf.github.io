@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="100%" height="100%" fill="#0f172a" />
+  <g fill="#fff" font-family="Sora, Arial, Helvetica, sans-serif">
+    <text x="60" y="220" font-size="48" font-weight="700">Thiago Silva</text>
+    <text x="60" y="290" font-size="28">Full-Stack Developer — Frontend-focused</text>
+    <text x="60" y="380" font-size="20" opacity="0.85">Portfolio — thiagosf.github.io</text>
+  </g>
+</svg>

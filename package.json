@@ -3,9 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://thiagosf.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagosf/thiagosf.github.io.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:static": "vite build && node scripts/generate-sitemap.cjs",
+    "postbuild": "node scripts/generate-sitemap.cjs",
+    "generate:sitemap": "node scripts/generate-sitemap.cjs",
+    "export:gh": "npm run build:static && rm -rf docs && cp -r dist docs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest",
