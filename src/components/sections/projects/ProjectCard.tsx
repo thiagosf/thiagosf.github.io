@@ -64,7 +64,7 @@ export function ProjectCard({
             </div>
 
             <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 tracking-tight group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
                     {project.title}
                 </h3>
 
