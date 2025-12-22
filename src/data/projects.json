@@ -1,23 +1,23 @@
 [
   {
     "id": "proj-001",
-    "title": "WannaGift!",
+    "title": "QueroPresente!",
     "description": "Create wishlist and share with your friends anonymously! A platform for managing gift wishlists privately.",
     "year": "2024",
     "type": "Web Application",
     "techStack": ["React", "Node.js", "PostgreSQL", "Docker"],
     "previewUrl": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&q=80&w=1200",
-    "demoUrl": "https://www.wannagift.app/"
+    "demoUrl": "https://www.queropresente.app/"
   },
   {
     "id": "proj-002",
-    "title": "Stroo",
+    "title": "Stroo [discontinued]",
     "description": "Publish and share software architectures. A collaborative platform for documenting and visualizing software design.",
     "year": "2024",
     "type": "Developer Tool",
     "techStack": ["React", "Node.js", "D3.js", "Docker"],
     "previewUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200",
-    "demoUrl": "https://www.stroo.app/"
+    "githubUrl": "https://github.com/thiagosf/stroo-app"
   },
   {
     "id": "proj-003",
