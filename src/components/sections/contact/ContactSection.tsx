@@ -1,67 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { AnimatedLetter } from '../../shared'
 import { ContactLinkCard } from './ContactLinkCard'
 import type { ContactSectionProps } from './types'
-
-function AnimatedLetter({
-  targetLetter,
-  isActive,
-  delay,
-}: {
-  targetLetter: string
-  isActive: boolean
-  delay: number
-}) {
-  const [currentLetter, setCurrentLetter] = useState('a')
-  const [status, setStatus] = useState<'waiting' | 'cycling' | 'done'>(
-    'waiting',
-  )
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'
-  const isSpace = targetLetter === ' '
-
-  useEffect(() => {
-    if (!isActive) {
-      setStatus('waiting')
-      return
-    }
-
-    const startTimer = setTimeout(() => {
-      setStatus('cycling')
-      const endTimer = setTimeout(() => {
-        setStatus('done')
-        setCurrentLetter(targetLetter)
-      }, 300)
-      return () => clearTimeout(endTimer)
-    }, delay)
-
-    return () => clearTimeout(startTimer)
-  }, [isActive, delay, targetLetter])
-
-  useEffect(() => {
-    if (status !== 'cycling' || isSpace) return
-    const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * alphabet.length)
-      setCurrentLetter(alphabet[randomIndex])
-    }, 40)
-    return () => clearInterval(interval)
-  }, [status, isSpace])
-
-  if (isSpace) return <span className="inline-block w-4" />
-
-  return (
-    <span
-      className={`inline-block transition-colors duration-300 ${
-        status === 'done'
-          ? 'text-stone-900 dark:text-stone-100'
-          : status === 'cycling'
-            ? 'text-lime-500 dark:text-lime-400'
-            : 'opacity-0'
-      }`}
-    >
-      {status === 'done' ? targetLetter : currentLetter}
-    </span>
-  )
-}
 
 export function ContactSection({
   contactLinks,
