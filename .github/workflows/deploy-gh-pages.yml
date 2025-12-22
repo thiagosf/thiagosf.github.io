@@ -19,3 +19,18 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
+
+      - name: SSH deploy to server
+        if: ${{ secrets.SSH_PRIVATE_KEY != '' && secrets.SSH_HOST != '' && secrets.SSH_USER != '' && secrets.SSH_PATH != '' }}
+        env:
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          PORT=${SSH_PORT:-22}
+          ssh-keyscan -p "$PORT" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+          rsync -avz --delete -e "ssh -p $PORT" ./dist/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}"
