@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Server via SSH
 
 on:
   push:
@@ -14,11 +14,6 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build:static
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
       - name: Install rsync
         run: sudo apt-get update && sudo apt-get install -y rsync
 
