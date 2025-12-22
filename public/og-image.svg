@@ -6,6 +6,31 @@
       <stop offset="1" stop-color="#0c0a09" />
     </linearGradient>
 
+    <!-- Horizontal line gradients (white, fades at edges) -->
+    <linearGradient id="hLineA" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5f5f4" stop-opacity="0" />
+      <stop offset="0.20" stop-color="#f5f5f4" stop-opacity="0.40" />
+      <stop offset="0.55" stop-color="#f5f5f4" stop-opacity="0.85" />
+      <stop offset="0.80" stop-color="#f5f5f4" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#f5f5f4" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="hLineB" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5f5f4" stop-opacity="0" />
+      <stop offset="0.28" stop-color="#f5f5f4" stop-opacity="0.30" />
+      <stop offset="0.60" stop-color="#f5f5f4" stop-opacity="0.70" />
+      <stop offset="0.86" stop-color="#f5f5f4" stop-opacity="0.25" />
+      <stop offset="1" stop-color="#f5f5f4" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="hLineC" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5f5f4" stop-opacity="0" />
+      <stop offset="0.18" stop-color="#f5f5f4" stop-opacity="0.25" />
+      <stop offset="0.50" stop-color="#f5f5f4" stop-opacity="0.55" />
+      <stop offset="0.78" stop-color="#f5f5f4" stop-opacity="0.20" />
+      <stop offset="1" stop-color="#f5f5f4" stop-opacity="0" />
+    </linearGradient>
+
     <style>
       .sans { font-family: Sora, Arial, Helvetica, sans-serif; }
       .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
@@ -15,9 +40,19 @@
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bgGradient)" />
 
-  <!-- Subtle horizontal lines (no verticals, no green) -->
-  <g opacity="0.08" stroke="#f5f5f4" stroke-width="1" shape-rendering="crispEdges">
-    <path d="M0 64H1200 M0 128H1200 M0 192H1200 M0 256H1200 M0 320H1200 M0 384H1200 M0 448H1200 M0 512H1200 M0 576H1200" />
+  <!-- Randomized subtle horizontal lines (gradient, no verticals, no green) -->
+  <g shape-rendering="crispEdges" stroke-width="1">
+    <line x1="-80" y1="58" x2="1160" y2="58" stroke="url(#hLineB)" opacity="0.10" />
+    <line x1="40" y1="102" x2="1240" y2="102" stroke="url(#hLineA)" opacity="0.08" />
+    <line x1="-140" y1="146" x2="980" y2="146" stroke="url(#hLineC)" opacity="0.07" />
+    <line x1="120" y1="196" x2="1320" y2="196" stroke="url(#hLineB)" opacity="0.06" />
+    <line x1="-40" y1="248" x2="1120" y2="248" stroke="url(#hLineA)" opacity="0.09" />
+    <line x1="80" y1="304" x2="1280" y2="304" stroke="url(#hLineC)" opacity="0.06" />
+    <line x1="-120" y1="360" x2="1100" y2="360" stroke="url(#hLineB)" opacity="0.07" />
+    <line x1="60" y1="418" x2="1260" y2="418" stroke="url(#hLineA)" opacity="0.06" />
+    <line x1="-160" y1="472" x2="1040" y2="472" stroke="url(#hLineC)" opacity="0.05" />
+    <line x1="140" y1="528" x2="1340" y2="528" stroke="url(#hLineB)" opacity="0.06" />
+    <line x1="-60" y1="582" x2="1140" y2="582" stroke="url(#hLineA)" opacity="0.05" />
   </g>
 
   <!-- Content -->
