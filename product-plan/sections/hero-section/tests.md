@@ -17,15 +17,18 @@ The Hero section is the first thing users see. Tests should focus on the correct
 #### Success Path
 
 **Setup:**
+
 - Provide standard `HeroSectionData` from `sample-data.json`.
 
 **Steps:**
+
 1. User navigates to the home page.
 2. Verify the name "Thiago" appears (animated letters).
 3. Verify the title "Creative Developer" is visible.
 4. Verify the description text matches the sample data.
 
 **Expected Results:**
+
 - [ ] Name elements are present in the DOM.
 - [ ] Title and subtitle are correctly rendered.
 - [ ] Social icons (GitHub, LinkedIn, Twitter) are visible.
@@ -39,12 +42,14 @@ The Hero section is the first thing users see. Tests should focus on the correct
 **Scenario:** The tech stack category and items change over time.
 
 **Steps:**
+
 1. Wait for the initial animation delay.
 2. Verify "Frontend" category is shown first.
 3. Wait for the cycling duration (approx 5-7 seconds).
 4. Verify the category changes to "Backend" or "Tools".
 
 **Expected Results:**
+
 - [ ] Technology names (e.g., "React", "Node.js") are rendered as animated letters.
 - [ ] Category labels update correctly.
 
@@ -55,10 +60,12 @@ The Hero section is the first thing users see. Tests should focus on the correct
 ### Social Icons
 
 **Renders correctly:**
+
 - [ ] Each social link has the correct `href`.
 - [ ] Each icon renders the appropriate Lucide component.
 
 **User interactions:**
+
 - [ ] Clicking a social icon opens the correct URL in a new tab (`target="_blank"`).
 
 ---
@@ -88,21 +95,21 @@ const mockHeroData = {
     title: "Testing Engineer",
     subtitle: "Verification at scale",
     description: "This is a test description.",
-    tagline: "Test • Verify • Deploy"
+    tagline: "Test • Verify • Deploy",
   },
   mainSkill: {
     label: "Automated Testing",
-    description: "Ensuring quality"
+    description: "Ensuring quality",
   },
   socialLinks: {
     github: "https://github.com/test",
     linkedin: "https://linkedin.com/in/test",
-    twitter: "https://twitter.com/test"
+    twitter: "https://twitter.com/test",
   },
   techStack: {
     frontend: [{ name: "Jest", category: "Test Framework" }],
     backend: [{ name: "Supertest", category: "API Testing" }],
-    tools: [{ name: "Docker", category: "DevOps" }]
-  }
-};
+    tools: [{ name: "Docker", category: "DevOps" }],
+  },
+}
 ```

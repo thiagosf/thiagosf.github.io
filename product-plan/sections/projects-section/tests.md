@@ -17,11 +17,13 @@ Tests should focus on the grid layout, project card hover effects, and correct f
 #### Success Path
 
 **Steps:**
+
 1. Provide a list of `Project` items.
 2. Verify all project titles and years are visible.
 3. Verify preview images have correct `src` and `alt` tags.
 
 **Expected Results:**
+
 - [ ] Grid layout maintains responsiveness (check different viewport widths if using E2E tests).
 
 ---
@@ -31,6 +33,7 @@ Tests should focus on the grid layout, project card hover effects, and correct f
 ### ProjectCard
 
 **User interactions:**
+
 - [ ] Hovering over a card reveals the description and action buttons (if using visual/E2E testing).
 - [ ] Clicking the "Demo" button calls `onDemoClick` or opens the `demoUrl`.
 - [ ] Clicking the "GitHub" button calls `onSourceClick` or opens the `githubUrl`.
@@ -42,9 +45,11 @@ Tests should focus on the grid layout, project card hover effects, and correct f
 **Scenario:** No projects available.
 
 **Setup:**
+
 - `projects = []`
 
 **Expected Results:**
+
 - [ ] Shows a "No projects to display" message.
 
 ---
@@ -77,6 +82,6 @@ const mockProject = {
   techStack: ["Node.js", "Jest"],
   previewUrl: "https://example.com/image.png",
   demoUrl: "https://test.demo",
-  githubUrl: "https://github.com/test/repo"
-};
+  githubUrl: "https://github.com/test/repo",
+}
 ```

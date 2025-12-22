@@ -20,6 +20,7 @@ A minimalist, high-end directory of social links and contact information, design
 ## Data Used
 
 **Entities:**
+
 - `ContactLink`
   - `platform`
   - `label`
@@ -38,6 +39,6 @@ See `screenshot.png` (if available) for the target UI design.
 
 ## Callback Props
 
-| Callback | Description |
-|----------|-------------|
+| Callback      | Description                                 |
+| ------------- | ------------------------------------------- |
 | `onLinkClick` | Called when a user clicks on a contact link |

@@ -5,6 +5,7 @@
 ## About These Instructions
 
 **What you're receiving:**
+
 - Finished UI designs (React components with full styling)
 - Data model definitions (TypeScript types and sample data)
 - UI/UX specifications (user flows, requirements, screenshots)
@@ -12,6 +13,7 @@
 - Test-writing instructions for each section (for TDD approach)
 
 **What you need to build:**
+
 - Backend API endpoints and database schema
 - Authentication and authorization
 - Data fetching and state management
@@ -19,6 +21,7 @@
 - Integration of the provided UI components with real data
 
 **Important guidelines:**
+
 - **DO NOT** redesign or restyle the provided components — use them as-is
 - **DO** wire up the callback props to your routing and API calls
 - **DO** replace sample data with real data from your backend
@@ -34,12 +37,14 @@
 Each section includes a `tests.md` file with detailed test-writing instructions. These are **framework-agnostic** — adapt them to your testing setup (Jest, Vitest, Playwright, Cypress, RSpec, Minitest, PHPUnit, etc.).
 
 **For each section:**
+
 1. Read `product-plan/sections/[section-id]/tests.md`
 2. Write failing tests for key user flows (success and failure paths)
 3. Implement the feature to make tests pass
 4. Refactor while keeping tests green
 
 The test instructions include:
+
 - Specific UI elements, button labels, and interactions to verify
 - Expected success and failure behaviors
 - Empty state handling (when no records exist yet)
@@ -70,6 +75,7 @@ Set up the foundational elements: design tokens, data model types, routing struc
 ### 1. Design Tokens
 
 Configure your styling system with these tokens:
+
 - Primary: lime
 - Secondary: emerald
 - Neutral: stone
@@ -80,6 +86,7 @@ Configure your styling system with these tokens:
 ### 2. Data Model Types
 
 Create TypeScript interfaces for your core entities:
+
 - Experience
 - Project
 - Repository
@@ -89,6 +96,7 @@ Create TypeScript interfaces for your core entities:
 ### 3. Routing Structure
 
 Create placeholder routes for each section:
+
 - `/` — Hero Section
 - `/experience` — Experience Section
 - `/projects` — Projects Section
@@ -102,6 +110,7 @@ Create placeholder routes for each section:
 Implement the Hero Section — Animated hero section with introduction text and tech stack showcase.
 
 **Key Functionality:**
+
 - Animated text reveal for introduction
 - Tech stack showcase categorized by frontend, backend, and tools
 - Social links integration
@@ -114,6 +123,7 @@ Implement the Hero Section — Animated hero section with introduction text and 
 Implement the Experience Section — Professional roles and achievements showcase.
 
 **Key Functionality:**
+
 - Chronological timeline of professional roles
 - Detailed achievements for each role
 - Tech chips for primary technologies used
@@ -126,6 +136,7 @@ Implement the Experience Section — Professional roles and achievements showcas
 Implement the Projects Section — Side projects showcase with descriptions.
 
 **Key Functionality:**
+
 - Responsive grid of project cards
 - High-quality image previews
 - Hover effects revealing metadata and action buttons
@@ -138,6 +149,7 @@ Implement the Projects Section — Side projects showcase with descriptions.
 Implement the Playground Section — GitHub repositories integration and display.
 
 **Key Functionality:**
+
 - Grid of repository cards
 - Repository metadata (stars, language, description)
 - Direct links to source code on GitHub
@@ -150,6 +162,7 @@ Implement the Playground Section — GitHub repositories integration and display
 Implement the Contact Section — Social links and contact information.
 
 **Key Functionality:**
+
 - List of social platforms and contact methods
 - Animated section title
 - Hover effects on social links

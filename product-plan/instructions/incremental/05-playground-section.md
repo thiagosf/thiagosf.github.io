@@ -12,6 +12,7 @@ Implement the Playground Section — GitHub repositories integration and display
 A curated showcase of GitHub repositories, code experiments, and open-source contributions. It shares the same premium, editorial design language as the Projects section.
 
 **Key Functionality:**
+
 - Grid of repository cards
 - Repository metadata (stars, language, description)
 - Direct links to source code on GitHub
@@ -28,21 +29,25 @@ See `product-plan/sections/playground-section/tests.md` for detailed test-writin
 ### Components
 
 Copy the section components from `product-plan/sections/playground-section/components/`:
+
 - `PlaygroundGrid.tsx`
 - `PlaygroundCard.tsx`
 
 ### Data Layer
 
 The components expect these data shapes:
+
 - `PlaygroundItem[]` (title, description, year, type, techStack, githubUrl, stars, language)
 
 You'll need to:
+
 - Create API endpoints or data fetching logic
 - Connect real data to the components
 
 ### Callbacks
 
 Wire up these user actions:
+
 - `onItemClick`: User clicks a playground item
 
 ### Empty States

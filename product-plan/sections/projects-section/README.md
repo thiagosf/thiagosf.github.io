@@ -20,6 +20,7 @@ A premium showcase of side projects and technical experiments. It uses a modern 
 ## Data Used
 
 **Entities:**
+
 - `Project`
   - `title`
   - `description`
@@ -41,8 +42,8 @@ See `screenshot.png` (if available) for the target UI design.
 
 ## Callback Props
 
-| Callback | Description |
-|----------|-------------|
+| Callback        | Description                                     |
+| --------------- | ----------------------------------------------- |
 | `onViewDetails` | Called when user clicks to view project details |
-| `onDemoClick` | Called when user clicks the demo link |
-| `onSourceClick` | Called when user clicks the GitHub source link |
+| `onDemoClick`   | Called when user clicks the demo link           |
+| `onSourceClick` | Called when user clicks the GitHub source link  |

@@ -20,6 +20,7 @@ A curated showcase of GitHub repositories, code experiments, and open-source con
 ## Data Used
 
 **Entities:**
+
 - `PlaygroundItem`
   - `title`
   - `description`
@@ -41,6 +42,6 @@ See `screenshot.png` (if available) for the target UI design.
 
 ## Callback Props
 
-| Callback | Description |
-|----------|-------------|
+| Callback      | Description                                    |
+| ------------- | ---------------------------------------------- |
 | `onItemClick` | Called when a user clicks on a playground item |

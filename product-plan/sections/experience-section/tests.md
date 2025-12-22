@@ -17,11 +17,13 @@ Tests should verify the chronological display of roles, the timeline visualizati
 #### Success Path
 
 **Steps:**
+
 1. Provide a list of `Experience` items.
 2. Verify items are rendered in the order provided (assumed most recent first).
 3. Verify role title, company, and period are shown for each.
 
 **Expected Results:**
+
 - [ ] Timeline nodes (squares) are rendered for each item.
 - [ ] Descriptions are visible and accurate.
 
@@ -32,6 +34,7 @@ Tests should verify the chronological display of roles, the timeline visualizati
 ### ExperienceItem
 
 **User interactions:**
+
 - [ ] Clicking an item calls `onItemClick` with the correct ID.
 - [ ] Clicking a tech chip calls `onFilterTech` with the technology name.
 
@@ -42,9 +45,11 @@ Tests should verify the chronological display of roles, the timeline visualizati
 **Scenario:** No experiences provided.
 
 **Setup:**
+
 - `experiences = []`
 
 **Expected Results:**
+
 - [ ] Shows a "No experience records found" message or an empty timeline with a placeholder.
 
 ---
@@ -77,7 +82,7 @@ const mockExperiences = [
     period: "2020 - Present",
     description: "Built the testing infrastructure.",
     technologies: ["React", "Vitest"],
-    isCurrent: true
-  }
-];
+    isCurrent: true,
+  },
+]
 ```

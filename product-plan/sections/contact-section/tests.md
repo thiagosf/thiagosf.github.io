@@ -17,11 +17,13 @@ Tests should focus on the display and functionality of social and contact links.
 #### Success Path
 
 **Steps:**
+
 1. Provide a list of `ContactLink` items.
 2. Verify platform names and labels are rendered.
 3. Verify icons are displayed for each platform.
 
 **Expected Results:**
+
 - [ ] Links lead to the correct destination URLs.
 
 ---
@@ -31,6 +33,7 @@ Tests should focus on the display and functionality of social and contact links.
 ### ContactLinkCard
 
 **User interactions:**
+
 - [ ] Clicking a link calls `onLinkClick` or navigates the browser.
 - [ ] Email links (`type: 'contact'`) use the `mailto:` protocol.
 
@@ -41,9 +44,11 @@ Tests should focus on the display and functionality of social and contact links.
 **Scenario:** No contact links available.
 
 **Setup:**
+
 - `contactLinks = []`
 
 **Expected Results:**
+
 - [ ] Shows "No contact information provided" message.
 
 ---
@@ -72,6 +77,6 @@ const mockContactLink = {
   label: "github.com/tester",
   url: "https://github.com/tester",
   icon: "github",
-  type: "social"
-};
+  type: "social",
+}
 ```

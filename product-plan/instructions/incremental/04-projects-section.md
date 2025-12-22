@@ -12,6 +12,7 @@ Implement the Projects Section — Side projects showcase with descriptions.
 A premium showcase of side projects and technical experiments. It uses a modern grid layout with immersive hover effects and clear call-to-actions for live demos and source code.
 
 **Key Functionality:**
+
 - Responsive grid of project cards
 - High-quality image previews
 - Hover effects revealing metadata and action buttons
@@ -28,21 +29,25 @@ See `product-plan/sections/projects-section/tests.md` for detailed test-writing 
 ### Components
 
 Copy the section components from `product-plan/sections/projects-section/components/`:
+
 - `ProjectGrid.tsx`
 - `ProjectCard.tsx`
 
 ### Data Layer
 
 The components expect these data shapes:
+
 - `Project[]` (title, description, year, type, techStack, previewUrl, demoUrl, githubUrl)
 
 You'll need to:
+
 - Create API endpoints or data fetching logic
 - Connect real data to the components
 
 ### Callbacks
 
 Wire up these user actions:
+
 - `onViewDetails`: User clicks to view project details
 - `onDemoClick`: User clicks the demo link
 - `onSourceClick`: User clicks the GitHub source link

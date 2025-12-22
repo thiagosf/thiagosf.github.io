@@ -1,104 +1,75 @@
 {
-    "_meta": {
-        "models": {
-            "projects": "A collection of side projects and technical experiments built to explore new technologies and solve specific problems."
-        },
-        "relationships": [
-            "Each project stands as an individual entry in the showcase grid."
-        ]
+  "_meta": {
+    "models": {
+      "projects": "A collection of side projects and technical experiments built to explore new technologies and solve specific problems."
     },
-    "projects": [
-        {
-            "id": "proj-001",
-            "title": "Quantum Flow",
-            "description": "A high-performance particle simulation engine built for real-time generative art, optimized for low-end devices.",
-            "year": "2024",
-            "type": "Creative Tool",
-            "techStack": [
-                "TypeScript",
-                "WebGPU",
-                "Rust",
-                "Wasm"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
-            "demoUrl": "https://quantum-flow.demo",
-            "githubUrl": "https://github.com/thiago/quantum-flow"
-        },
-        {
-            "id": "proj-002",
-            "title": "Architect OS",
-            "description": "A minimal, keyboard-driven project management system designed for independent developers and small agile teams.",
-            "year": "2024",
-            "type": "Productivity App",
-            "techStack": [
-                "Next.js",
-                "PostgreSQL",
-                "Tailwind CSS",
-                "Zustand"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200",
-            "demoUrl": "https://architect-os.app",
-            "githubUrl": "https://github.com/thiago/architect-os"
-        },
-        {
-            "id": "proj-003",
-            "title": "Lumina Interface",
-            "description": "A set of high-performance UI components built for the next generation of spatial computing devices.",
-            "year": "2023",
-            "type": "Design System",
-            "techStack": [
-                "React",
-                "Three.js",
-                "GSAP",
-                "Framer Motion"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=1200",
-            "demoUrl": "https://lumina-ui.com",
-            "githubUrl": "https://github.com/thiago/lumina-interface"
-        },
-        {
-            "id": "proj-004",
-            "title": "Neural Bridge",
-            "description": "An experimental bridge between standard web APIs and local LLM execution using WebGPU for privacy-first AI apps.",
-            "year": "2023",
-            "type": "Technical Experiment",
-            "techStack": [
-                "Python",
-                "JavaScript",
-                "ONNX",
-                "WebGPU"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-            "githubUrl": "https://github.com/thiago/neural-bridge"
-        },
-        {
-            "id": "proj-005",
-            "title": "Sonic Layer",
-            "description": "A browser-based audio workstation for live loop manipulation and generative soundscapes using the Web Audio API.",
-            "year": "2022",
-            "type": "Creative App",
-            "techStack": [
-                "Tone.js",
-                "React",
-                "Canvas API"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200",
-            "demoUrl": "https://sonic-layer.app"
-        },
-        {
-            "id": "proj-006",
-            "title": "Vanguard CLI",
-            "description": "A blazingly fast development workflow orchestrator that automates environment setup across different stack architectures.",
-            "year": "2022",
-            "type": "Developer Tool",
-            "techStack": [
-                "Go",
-                "Cobra",
-                "Docker",
-                "Bash"
-            ],
-            "previewUrl": "https://images.unsplash.com/photo-1629654230608-2162279996ed?auto=format&fit=crop&q=80&w=1200",
-            "githubUrl": "https://github.com/thiago/vanguard-cli"
-        }
+    "relationships": [
+      "Each project stands as an individual entry in the showcase grid."
     ]
+  },
+  "projects": [
+    {
+      "id": "proj-001",
+      "title": "Quantum Flow",
+      "description": "A high-performance particle simulation engine built for real-time generative art, optimized for low-end devices.",
+      "year": "2024",
+      "type": "Creative Tool",
+      "techStack": ["TypeScript", "WebGPU", "Rust", "Wasm"],
+      "previewUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200",
+      "demoUrl": "https://quantum-flow.demo",
+      "githubUrl": "https://github.com/thiago/quantum-flow"
+    },
+    {
+      "id": "proj-002",
+      "title": "Architect OS",
+      "description": "A minimal, keyboard-driven project management system designed for independent developers and small agile teams.",
+      "year": "2024",
+      "type": "Productivity App",
+      "techStack": ["Next.js", "PostgreSQL", "Tailwind CSS", "Zustand"],
+      "previewUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200",
+      "demoUrl": "https://architect-os.app",
+      "githubUrl": "https://github.com/thiago/architect-os"
+    },
+    {
+      "id": "proj-003",
+      "title": "Lumina Interface",
+      "description": "A set of high-performance UI components built for the next generation of spatial computing devices.",
+      "year": "2023",
+      "type": "Design System",
+      "techStack": ["React", "Three.js", "GSAP", "Framer Motion"],
+      "previewUrl": "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=1200",
+      "demoUrl": "https://lumina-ui.com",
+      "githubUrl": "https://github.com/thiago/lumina-interface"
+    },
+    {
+      "id": "proj-004",
+      "title": "Neural Bridge",
+      "description": "An experimental bridge between standard web APIs and local LLM execution using WebGPU for privacy-first AI apps.",
+      "year": "2023",
+      "type": "Technical Experiment",
+      "techStack": ["Python", "JavaScript", "ONNX", "WebGPU"],
+      "previewUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+      "githubUrl": "https://github.com/thiago/neural-bridge"
+    },
+    {
+      "id": "proj-005",
+      "title": "Sonic Layer",
+      "description": "A browser-based audio workstation for live loop manipulation and generative soundscapes using the Web Audio API.",
+      "year": "2022",
+      "type": "Creative App",
+      "techStack": ["Tone.js", "React", "Canvas API"],
+      "previewUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=1200",
+      "demoUrl": "https://sonic-layer.app"
+    },
+    {
+      "id": "proj-006",
+      "title": "Vanguard CLI",
+      "description": "A blazingly fast development workflow orchestrator that automates environment setup across different stack architectures.",
+      "year": "2022",
+      "type": "Developer Tool",
+      "techStack": ["Go", "Cobra", "Docker", "Bash"],
+      "previewUrl": "https://images.unsplash.com/photo-1629654230608-2162279996ed?auto=format&fit=crop&q=80&w=1200",
+      "githubUrl": "https://github.com/thiago/vanguard-cli"
+    }
+  ]
 }

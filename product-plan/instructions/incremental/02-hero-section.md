@@ -12,6 +12,7 @@ Implement the Hero Section — Animated hero section with introduction text and 
 Animated hero section with introduction text and tech stack showcase. Features micro-animations for text reveal and skill badges.
 
 **Key Functionality:**
+
 - Animated text reveal for introduction
 - Tech stack showcase categorized by frontend, backend, and tools
 - Social links integration
@@ -28,20 +29,24 @@ See `product-plan/sections/hero-section/tests.md` for detailed test-writing inst
 ### Components
 
 Copy the section components from `product-plan/sections/hero-section/components/`:
+
 - `HeroSection.tsx`
 
 ### Data Layer
 
 The components expect these data shapes:
+
 - `HeroSectionData` (Introduction, mainSkill, socialLinks, techStack)
 
 You'll need to:
+
 - Create API endpoints or data fetching logic
 - Connect real data to the components
 
 ### Callbacks
 
 Wire up these user actions:
+
 - Social link clicks (external navigation)
 
 ### Empty States

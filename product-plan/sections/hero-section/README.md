@@ -20,6 +20,7 @@ Animated hero section with introduction text and tech stack showcase. Features m
 ## Data Used
 
 **Entities:**
+
 - `HeroSectionData`
   - `introduction`
   - `mainSkill`
@@ -36,6 +37,6 @@ See `screenshot.png` (if available) for the target UI design.
 
 ## Callback Props
 
-| Callback | Description |
-|----------|-------------|
-| None | Currently uses static links for social profiles |
+| Callback | Description                                     |
+| -------- | ----------------------------------------------- |
+| None     | Currently uses static links for social profiles |

@@ -17,11 +17,13 @@ Tests should verify the display of GitHub-specific metadata and the overall typo
 #### Success Path
 
 **Steps:**
+
 1. Provide a list of `PlaygroundItem` objects.
 2. Verify repository names, stars, and primary languages are correctly displayed.
 3. Verify year and type (category) are visible.
 
 **Expected Results:**
+
 - [ ] Items are rendered in a clean grid.
 
 ---
@@ -31,6 +33,7 @@ Tests should verify the display of GitHub-specific metadata and the overall typo
 ### PlaygroundCard
 
 **User interactions:**
+
 - [ ] Clicking the card or the title calls `onItemClick` or opens the `githubUrl`.
 - [ ] Hovering shows subtle interaction states (elevation/scale).
 
@@ -41,9 +44,11 @@ Tests should verify the display of GitHub-specific metadata and the overall typo
 **Scenario:** Playground is empty.
 
 **Setup:**
+
 - `items = []`
 
 **Expected Results:**
+
 - [ ] Shows "No experiments found" message.
 
 ---
@@ -75,6 +80,6 @@ const mockPlaygroundItem = {
   techStack: ["React"],
   githubUrl: "https://github.com/test",
   stars: 10,
-  language: "TypeScript"
-};
+  language: "TypeScript",
+}
 ```

@@ -12,6 +12,7 @@ Implement the Contact Section — Social links and contact information.
 A minimalist, high-end directory of social links and contact information, designed with the same premium, typography-driven aesthetic as the rest of the site.
 
 **Key Functionality:**
+
 - List of social platforms and contact methods
 - Animated section title
 - Hover effects on social links
@@ -28,21 +29,25 @@ See `product-plan/sections/contact-section/tests.md` for detailed test-writing i
 ### Components
 
 Copy the section components from `product-plan/sections/contact-section/components/`:
+
 - `ContactSection.tsx`
 - `ContactLinkCard.tsx`
 
 ### Data Layer
 
 The components expect these data shapes:
+
 - `ContactLink[]` (platform, label, url, icon, type)
 
 You'll need to:
+
 - Create API endpoints or data fetching logic
 - Connect real data to the components
 
 ### Callbacks
 
 Wire up these user actions:
+
 - `onLinkClick`: Called when a user clicks on a contact link
 
 ### Empty States

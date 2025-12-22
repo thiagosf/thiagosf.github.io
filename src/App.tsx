@@ -1,5 +1,5 @@
-import { AppShell } from './components/shell'
-import { LandingPage } from './pages'
+import { AppShell } from "./components/shell"
+import { LandingPage } from "./pages"
 
 function App() {
   return (

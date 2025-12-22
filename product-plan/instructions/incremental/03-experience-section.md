@@ -12,6 +12,7 @@ Implement the Experience Section — Professional roles and achievements showcas
 A high-impact, editorial-style showcase of professional milestones. It uses a clean vertical timeline and grid layout to present career growth with premium typography and subtle animations.
 
 **Key Functionality:**
+
 - Chronological timeline of professional roles
 - Detailed achievements for each role
 - Tech chips for primary technologies used
@@ -28,21 +29,25 @@ See `product-plan/sections/experience-section/tests.md` for detailed test-writin
 ### Components
 
 Copy the section components from `product-plan/sections/experience-section/components/`:
+
 - `ExperienceSection.tsx`
 - `ExperienceItem.tsx`
 
 ### Data Layer
 
 The components expect these data shapes:
+
 - `Experience[]` (role, company, location, period, description, technologies, isCurrent)
 
 You'll need to:
+
 - Create API endpoints or data fetching logic
 - Connect real data to the components
 
 ### Callbacks
 
 Wire up these user actions:
+
 - `onItemClick`: Called when a user interacts with a specific experience item
 - `onFilterTech`: Called when a user filters experiences by technology
 

@@ -20,6 +20,7 @@ A high-impact, editorial-style showcase of professional milestones. It uses a cl
 ## Data Used
 
 **Entities:**
+
 - `Experience`
   - `role`
   - `company`
@@ -40,7 +41,7 @@ See `screenshot.png` (if available) for the target UI design.
 
 ## Callback Props
 
-| Callback | Description |
-|----------|-------------|
-| `onItemClick` | Called when a user interacts with a specific experience item |
-| `onFilterTech` | Called when a user filters experiences by technology |
+| Callback       | Description                                                  |
+| -------------- | ------------------------------------------------------------ |
+| `onItemClick`  | Called when a user interacts with a specific experience item |
+| `onFilterTech` | Called when a user filters experiences by technology         |

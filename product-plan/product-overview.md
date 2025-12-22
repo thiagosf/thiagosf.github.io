@@ -23,11 +23,13 @@ A personal landing page showcasing Thiago Silva Ferreira's work as a full-stack 
 ## Design System
 
 **Colors:**
+
 - Primary: lime
 - Secondary: emerald
 - Neutral: stone
 
 **Typography:**
+
 - Heading: Sora
 - Body: Sora
 - Mono: IBM Plex Mono

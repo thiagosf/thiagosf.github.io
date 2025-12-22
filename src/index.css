@@ -51,9 +51,9 @@
   --color-bg-light: #fafaf9;
   --color-bg-dark: #0c0a09;
 
-  --font-heading: 'Sora', sans-serif;
-  --font-body: 'Sora', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-heading: "Sora", sans-serif;
+  --font-body: "Sora", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 
   --section-padding-y: 6rem;
   --container-px: 2rem;
