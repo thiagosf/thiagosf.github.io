@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatedLetter, Section } from '../../shared'
 import type { ExperienceSectionProps } from '../../../types/experience'
 import { ExperienceItem } from './ExperienceItem'
+import heroData from '../../../data/hero-data.json'
 
 export function ExperienceSection({
   experiences,
@@ -102,10 +103,48 @@ export function ExperienceSection({
           ))}
         </div>
 
+      <div className="mt-6 ml-6">
+        <a
+          href={heroData.socialLinks?.linkedin ?? 'https://linkedin.com'}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open LinkedIn profile in a new tab"
+          className="experience-link inline-flex items-center gap-2 text-sm font-medium transition-colors"
+        >
+          View full timeline on LinkedIn
+        </a>
+      </div>
+
       <style>{`
                 @keyframes fadeInOut {
                     0%, 100% { opacity: 0; transform: translateY(-50px); }
                     50% { opacity: 0.3; transform: translateY(50px); }
+                }
+
+                /* Link using design token --color-primary and underline animation */
+                .experience-link{
+                  color: var(--color-primary);
+                  text-decoration: none;
+                  position: relative;
+                }
+
+                .experience-link::after{
+                  content: '';
+                  position: absolute;
+                  left: 0;
+                  bottom: -3px;
+                  height: 2px;
+                  width: 0;
+                  background: var(--color-primary);
+                  transition: width 250ms ease;
+                }
+
+                .experience-link:hover::after{
+                  width: 100%;
+                }
+
+                .dark .experience-link{
+                  color: var(--color-primary);
                 }
             `}</style>
     </Section>
