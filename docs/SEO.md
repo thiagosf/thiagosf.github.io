@@ -12,6 +12,12 @@ Files and changes added to improve SEO and social sharing:
 - `public/robots.txt` — hint to crawlers and points to `sitemap.xml`.
 - `scripts/generate-sitemap.cjs` — generates `sitemap.xml` after build using `package.json`'s `homepage` value by default.
 
+## Favicon & Web App Manifest
+
+- Replaced the default `vite.svg` with `public/logo.svg` (used as the site favicon).
+- Added `public/manifest.json` (web app manifest) and linked it in `index.html`.
+- Suggestion: Add PNG icon assets (192x192, 512x512) for maximum device compatibility; I can generate them if you want.
+
 How to customize:
 
 - Update the text and URLs in `index.html` (`meta` and JSON-LD) to match your public name and canonical URL.
