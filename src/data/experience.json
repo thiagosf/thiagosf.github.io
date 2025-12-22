@@ -68,7 +68,7 @@
     "company": "EFFICI",
     "location": "São Paulo, Brazil",
     "period": "Jan 2020 — Dec 2020",
-    "description": "Led the migration of a legacy Koa-based system to a modern Express architecture, improving maintainability and performance. Developed comprehensive GraphQL APIs and built dynamic frontend applications using Vue.js (Nuxt.js) and React. Managed cloud infrastructure across Google Cloud, Digital Ocean, and AWS, implementing containerized solutions with Docker and establishing automated deployment pipelines.",
+    "description": "Contributed to migrating a legacy Koa-based system to an Express-based architecture, helping improve maintainability and performance. Built and maintained Node.js backends with MySQL and developed frontend features using Vue.js (Nuxt.js). Supported cloud infrastructure on Google Cloud, containerized services with Docker, and helped maintain CI/CD and deployment pipelines.",
     "technologies": [
       "Node.js",
       "Express",
