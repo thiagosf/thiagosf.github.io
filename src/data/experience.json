@@ -27,7 +27,7 @@
     "company": "Chatchamp",
     "location": "Munich, Bavaria, Germany",
     "period": "Feb 2022 — Feb 2024",
-    "description": "Spearheaded frontend development for an AI-powered conversational commerce platform, building sophisticated user interfaces with Vue.js and React. Developed and maintained RESTful APIs using Node.js (Express) and Ruby on Rails, ensuring seamless integration between frontend and backend systems. Implemented comprehensive testing strategies and established CI/CD workflows, significantly improving code reliability and deployment efficiency.",
+    "description": "Contributed to the launch of 'Wizard', a guided product-recommendation product, shaping frontend architecture using Vue.js and Domain-Driven Design to keep the codebase modular and maintainable. Maintained a Ruby on Rails admin panel and built React-based admin UIs when needed. Supported and extended a Node.js backend for the Chatbot/Wizard, integrated WebSockets for real-time user interactions, and used PostgreSQL for persistence. Collaborated with backend engineers to implement AI-powered answers driven by customer knowledge bases via the OpenAI API. Ensured CI/CD, testing, and ongoing maintenance across the product suite.",
     "technologies": [
       "Vue.js",
       "React",
