@@ -28,6 +28,14 @@
       {
         "name": "Tailwind CSS",
         "category": "Styling"
+      },
+      {
+        "name": "Next.js",
+        "category": "Framework"
+      },
+      {
+        "name": "Vue.js",
+        "category": "Framework"
       }
     ],
     "backend": [
@@ -38,6 +46,18 @@
       {
         "name": "PostgreSQL",
         "category": "Database"
+      },
+      {
+        "name": "Ruby on Rails",
+        "category": "Framework"
+      },
+      {
+        "name": "GraphQL",
+        "category": "API"
+      },
+      {
+        "name": "Redis",
+        "category": "Cache"
       }
     ],
     "tools": [
@@ -48,6 +68,26 @@
       {
         "name": "Git",
         "category": "Version Control"
+      },
+      {
+        "name": "GitHub Copilot",
+        "category": "AI Assistant"
+      },
+      {
+        "name": "OpenAI API",
+        "category": "AI Integration"
+      },
+      {
+        "name": "VSCode",
+        "category": "AI Editor"
+      },
+      {
+        "name": "Antigravity",
+        "category": "AI Editor"
+      },
+      {
+        "name": "Cursor",
+        "category": "AI Editor"
       }
     ]
   }
