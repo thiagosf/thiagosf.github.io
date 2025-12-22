@@ -1,6 +1,6 @@
-import { CardContent } from './molecules/CardContent'
-import { CardFooter } from './molecules/CardFooter'
-import { CardHeader } from './molecules/CardHeader'
+import { CardContent } from '../molecules/CardContent'
+import { CardFooter } from '../molecules/CardFooter'
+import { CardHeader } from '../molecules/CardHeader'
 
 export interface CardItem {
   id: string

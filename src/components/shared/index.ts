@@ -1,4 +1,4 @@
-export { Card, type CardItem } from './Card'
+export { Card, type CardItem } from './organisms/Card'
 
 // Atoms
 export { AnimatedLetter } from './atoms/AnimatedLetter'
@@ -8,3 +8,6 @@ export { TechChip } from './atoms/TechChip'
 // Molecules
 export { AnimatedSkillDisplay } from './molecules/AnimatedSkillDisplay'
 export { TechStackAnimation } from './molecules/TechStackAnimation'
+export { CardContent } from './molecules/CardContent'
+export { CardFooter } from './molecules/CardFooter'
+export { CardHeader } from './molecules/CardHeader'

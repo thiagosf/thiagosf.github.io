@@ -1,4 +1,4 @@
-import { Card, type CardItem } from '../../shared/Card'
+import { Card, type CardItem } from '../../shared'
 import type { PlaygroundItem } from './types'
 
 interface PlaygroundCardProps {
