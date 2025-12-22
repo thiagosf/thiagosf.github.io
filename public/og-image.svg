@@ -64,11 +64,11 @@
 
     <!-- Name split into two lines -->
     <text x="96" y="232" font-size="76" font-weight="800" letter-spacing="-1.2">Thiago</text>
-    <text x="96" y="282" font-size="46" font-weight="300" fill="#a8a29e" letter-spacing="-0.4">Silva</text>
+    <text x="96" y="282" font-size="44" font-weight="300" fill="#a8a29e" letter-spacing="-0.4">Silva Ferreira</text>
 
     <!-- Title / subtitle -->
     <text x="96" y="342" font-size="28" font-weight="600" fill="#e7e5e4" opacity="0.98">Full-Stack Developer</text>
-    <text x="96" y="380" font-size="20" font-weight="400" fill="#a8a29e" opacity="0.92">Portfolio</text>
+    <text x="96" y="380" font-size="20" font-weight="400" fill="#a8a29e" opacity="0.92">Creative Full-stack Developer</text>
 
     <!-- Micro-divider + URL (monospace) -->
     <rect x="96" y="410" width="64" height="4" rx="2" fill="#84cc16" opacity="0.9" />
