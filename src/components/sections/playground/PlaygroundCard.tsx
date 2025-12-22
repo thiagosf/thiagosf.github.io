@@ -1,4 +1,4 @@
-import { Github, Star, Code2, Globe } from 'lucide-react'
+import { Github, Star, Code2, ExternalLink } from 'lucide-react'
 import type { PlaygroundItem } from './types'
 
 interface TechChipProps {
@@ -71,7 +71,7 @@ export function PlaygroundCard({
                             className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
                             aria-label="View Demo"
                         >
-                            <Globe size={16} />
+                            <ExternalLink size={16} />
                         </a>
                     )}
                 </div>
