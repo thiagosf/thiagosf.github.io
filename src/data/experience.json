@@ -46,7 +46,7 @@
     "company": "Slideworks",
     "location": "São Paulo, Brazil",
     "period": "Dec 2020 — Apr 2022",
-    "description": "Built and maintained full-stack web applications for multiple clients, delivering modern solutions using React (Next.js), Vue.js (Nuxt.js), and robust backend APIs with Node.js and Ruby on Rails. Architected responsive, mobile-first interfaces and managed MySQL databases while implementing containerized development and production environments using Docker. Successfully developed cross-platform mobile applications with Flutter and established automated CI/CD pipelines.",
+    "description": "Maintained and delivered multiple MVPs and client projects as a full-stack developer, building modern web and mobile experiences with React (Next.js), Vue.js (Nuxt.js), and Flutter. Implemented backend APIs with Node.js and Ruby on Rails, managed MySQL databases, and used Docker for containerized development. Advocated test-driven development (TDD) and mobile-first design, and established CI/CD pipelines to speed delivery and improve reliability.",
     "technologies": [
       "React",
       "Next.js",
