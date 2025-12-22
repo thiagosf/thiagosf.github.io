@@ -57,19 +57,6 @@ describe('PlaygroundSection', () => {
         expect(screen.queryByText('10')).not.toBeInTheDocument();
     });
 
-    it('calls onItemClick when a card is clicked', () => {
-        const onItemClick = vi.fn();
-        render(<PlaygroundSection items={mockItems} onItemClick={onItemClick} />);
-
-        // PlaygroundCard from the specification doesn't seem to have a button for onItemClick,
-        // but the card itself might be clickable or we can click the title.
-        // Let's assume clicking the title triggers it.
-        const title = screen.getByText('Test experiment');
-        fireEvent.click(title);
-
-        expect(onItemClick).toHaveBeenCalledWith('pg-1');
-    });
-
     it('renders GitHub links correctly', () => {
         render(<PlaygroundSection items={mockItems} />);
 

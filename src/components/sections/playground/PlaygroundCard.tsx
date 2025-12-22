@@ -17,14 +17,12 @@ interface PlaygroundCardProps {
     item: PlaygroundItem
     index: number
     isVisible: boolean
-    onClick?: (id: string) => void
 }
 
 export function PlaygroundCard({
     item,
     index,
-    isVisible,
-    onClick
+    isVisible
 }: PlaygroundCardProps) {
     return (
         <div
@@ -79,8 +77,7 @@ export function PlaygroundCard({
 
             <div className="space-y-4">
                 <div
-                    className="flex items-center gap-2 group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300 cursor-pointer"
-                    onClick={() => onClick?.(item.id)}
+                    className="flex items-center gap-2 group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300"
                 >
                     <Code2 size={18} className="text-stone-300 dark:text-stone-700 group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300" />
                     <h3 className="text-xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">

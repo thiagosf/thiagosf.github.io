@@ -58,8 +58,7 @@ function AnimatedLetter({
 }
 
 export function PlaygroundSection({
-    items,
-    onItemClick
+    items
 }: PlaygroundSectionProps) {
     const [isVisible, setIsVisible] = useState(false)
     const sectionRef = useRef<HTMLElement>(null)
@@ -127,7 +126,6 @@ export function PlaygroundSection({
                     <PlaygroundGrid
                         items={items}
                         isVisible={isVisible}
-                        onItemClick={onItemClick}
                     />
                 ) : (
                     <div className="py-20 text-center border border-dashed border-stone-200 dark:border-stone-800 rounded-lg">

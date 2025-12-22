@@ -4,13 +4,11 @@ import { PlaygroundCard } from './PlaygroundCard'
 interface PlaygroundGridProps {
     items: PlaygroundItem[]
     isVisible: boolean
-    onItemClick?: (id: string) => void
 }
 
 export function PlaygroundGrid({
     items,
-    isVisible,
-    onItemClick
+    isVisible
 }: PlaygroundGridProps) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -20,7 +18,6 @@ export function PlaygroundGrid({
                     item={item}
                     index={index}
                     isVisible={isVisible}
-                    onClick={onItemClick}
                 />
             ))}
         </div>

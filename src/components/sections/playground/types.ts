@@ -29,5 +29,4 @@ export interface PlaygroundItem {
  */
 export interface PlaygroundSectionProps {
     items: PlaygroundItem[]
-    onItemClick?: (id: string) => void
 }
