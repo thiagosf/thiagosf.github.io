@@ -15,7 +15,7 @@ export interface PlaygroundItem {
     /** List of primary technologies used */
     techStack: string[]
     /** Link to the source code on GitHub */
-    githubUrl: string
+    githubUrl?: string
     /** Optional link to a live demo or documentation */
     demoUrl?: string
     /** Number of stars if applicable */

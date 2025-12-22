@@ -1,4 +1,4 @@
-import { Github, Star, Code2 } from 'lucide-react'
+import { Github, Star, Code2, Globe } from 'lucide-react'
 import type { PlaygroundItem } from './types'
 
 interface TechChipProps {
@@ -52,15 +52,28 @@ export function PlaygroundCard({
                             <span className="text-[10px] font-bold">{item.stars}</span>
                         </div>
                     )}
-                    <a
-                        href={item.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
-                        aria-label="View Source"
-                    >
-                        <Github size={16} />
-                    </a>
+                    {item.githubUrl && (
+                        <a
+                            href={item.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
+                            aria-label="View Source"
+                        >
+                            <Github size={16} />
+                        </a>
+                    )}
+                    {item.demoUrl && (
+                        <a
+                            href={item.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
+                            aria-label="View Demo"
+                        >
+                            <Globe size={16} />
+                        </a>
+                    )}
                 </div>
             </div>
 
