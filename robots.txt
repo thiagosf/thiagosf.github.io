@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Update the URL below to your canonical site
-Sitemap: https://thiagosf.github.io/sitemap.xml
+Sitemap: https://thiagosf.net/sitemap.xml
