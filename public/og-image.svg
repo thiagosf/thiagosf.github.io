@@ -1,8 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="100%" height="100%" fill="#0f172a" />
-  <g fill="#fff" font-family="Sora, Arial, Helvetica, sans-serif">
-    <text x="60" y="220" font-size="48" font-weight="700">Thiago Silva</text>
-    <text x="60" y="290" font-size="28">Full-Stack Developer — Frontend-focused</text>
-    <text x="60" y="380" font-size="20" opacity="0.85">Portfolio — thiagosf.github.io</text>
+  <defs>
+    <!-- Design-system aligned colors (Tailwind stone + lime) -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c1917" />
+      <stop offset="1" stop-color="#0c0a09" />
+    </linearGradient>
+
+    <style>
+      .sans { font-family: Sora, Arial, Helvetica, sans-serif; }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)" />
+
+  <!-- Subtle horizontal lines (no verticals, no green) -->
+  <g opacity="0.08" stroke="#f5f5f4" stroke-width="1" shape-rendering="crispEdges">
+    <path d="M0 64H1200 M0 128H1200 M0 192H1200 M0 256H1200 M0 320H1200 M0 384H1200 M0 448H1200 M0 512H1200 M0 576H1200" />
+  </g>
+
+  <!-- Content -->
+  <g class="sans" fill="#f5f5f4">
+    <!-- Tagline (mirrors Hero styling) -->
+    <text x="96" y="140" font-size="16" font-weight="600" letter-spacing="3" fill="#a8a29e" opacity="0.95">
+      FULL-STACK <tspan fill="#84cc16">•</tspan> FRONTEND-FOCUSED
+    </text>
+
+    <!-- Name split into two lines -->
+    <text x="96" y="232" font-size="76" font-weight="800" letter-spacing="-1.2">Thiago</text>
+    <text x="96" y="282" font-size="46" font-weight="300" fill="#a8a29e" letter-spacing="-0.4">Silva</text>
+
+    <!-- Title / subtitle -->
+    <text x="96" y="342" font-size="28" font-weight="600" fill="#e7e5e4" opacity="0.98">Full-Stack Developer</text>
+    <text x="96" y="380" font-size="20" font-weight="400" fill="#a8a29e" opacity="0.92">Portfolio</text>
+
+    <!-- Micro-divider + URL (monospace) -->
+    <rect x="96" y="410" width="64" height="4" rx="2" fill="#84cc16" opacity="0.9" />
+    <text x="96" y="456" font-size="18" class="mono" fill="#d6d3d1" opacity="0.95">thiagosf.github.io</text>
   </g>
 </svg>
