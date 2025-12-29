@@ -68,10 +68,10 @@
 
     <!-- Title / subtitle -->
     <text x="96" y="342" font-size="28" font-weight="600" fill="#e7e5e4" opacity="0.98">Full-Stack Developer</text>
-    <text x="96" y="380" font-size="20" font-weight="400" fill="#a8a29e" opacity="0.92">Creative Full-stack Developer</text>
+    <text x="96" y="380" font-size="20" font-weight="400" fill="#a8a29e" opacity="0.92">Creative Software Developer</text>
 
     <!-- Micro-divider + URL (monospace) -->
     <rect x="96" y="410" width="64" height="4" rx="2" fill="#84cc16" opacity="0.9" />
-    <text x="96" y="456" font-size="18" class="mono" fill="#d6d3d1" opacity="0.95">thiagosf.github.io</text>
+    <text x="96" y="456" font-size="18" class="mono" fill="#d6d3d1" opacity="0.95">thiagosf.net</text>
   </g>
 </svg>
