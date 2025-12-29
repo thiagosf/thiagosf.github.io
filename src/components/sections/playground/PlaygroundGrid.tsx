@@ -1,3 +1,4 @@
+import { Grid } from '../../shared'
 import { PlaygroundCard } from './PlaygroundCard'
 import type { PlaygroundItem } from './types'
 
@@ -8,7 +9,7 @@ interface PlaygroundGridProps {
 
 export function PlaygroundGrid({ items, isVisible }: PlaygroundGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <Grid cols={2} gap={8}>
       {items.map((item, index) => (
         <PlaygroundCard
           key={item.id}
@@ -17,6 +18,6 @@ export function PlaygroundGrid({ items, isVisible }: PlaygroundGridProps) {
           isVisible={isVisible}
         />
       ))}
-    </div>
+    </Grid>
   )
 }

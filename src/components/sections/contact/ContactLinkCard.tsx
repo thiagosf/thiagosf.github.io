@@ -8,6 +8,7 @@ import {
   Twitter,
 } from 'lucide-react'
 
+import { CardOverline, Flex } from '../../shared'
 import type { ContactLink } from './types'
 
 interface ContactLinkCardProps {
@@ -62,7 +63,7 @@ export function ContactLinkCard({
           <ArrowUpRight className="w-5 h-5 text-lime-500 dark:text-lime-400" />
         </div>
 
-        <div className="flex items-center gap-6">
+        <Flex align="center" gap={6}>
           <div
             data-icon-name={resolvedIconKey}
             data-testid={`contact-link-icon-${link.id}`}
@@ -72,14 +73,14 @@ export function ContactLinkCard({
           </div>
 
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 dark:text-stone-600 mb-1 group-hover:text-lime-500/70 transition-colors duration-500">
+            <CardOverline className="mb-1 group-hover:text-lime-500/70 transition-colors duration-500">
               {link.platform}
-            </div>
+            </CardOverline>
             <div className="text-xl font-medium text-stone-900 dark:text-stone-100 group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-500">
               {link.label}
             </div>
           </div>
-        </div>
+        </Flex>
 
         <div className="absolute bottom-0 left-0 h-0.5 bg-lime-500 dark:bg-lime-400 transition-all duration-500 w-0 group-hover:w-full" />
       </a>

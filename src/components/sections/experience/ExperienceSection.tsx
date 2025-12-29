@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Section, SectionTitle } from '../../shared'
+import { EmptyState, Section, SectionTitle } from '../../shared'
 import type { ExperienceSectionProps } from '../../../types/experience'
 import { ExperienceItem } from './ExperienceItem'
 import heroData from '../../../data/hero-data.json'
@@ -37,9 +37,7 @@ export function ExperienceSection({
         ref={sectionRef}
         className="text-center bg-transparent dark:bg-transparent"
       >
-        <p className="text-stone-500 dark:text-stone-400">
-          No experience records found.
-        </p>
+        <EmptyState message="No experience records found." />
       </Section>
     )
   }

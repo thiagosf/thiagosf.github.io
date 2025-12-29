@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Section, SectionTitle } from '../../shared'
+import { EmptyState, Grid, Section, SectionTitle } from '../../shared'
 import { ContactLinkCard } from './ContactLinkCard'
 import type { ContactSectionProps } from './types'
 
@@ -54,30 +54,27 @@ export function ContactSection({
     >
 
 
-      <SectionTitle title="Contact" subtitle="Connect with me" isVisible={isVisible} />
+      <SectionTitle
+        title="Contact"
+        subtitle="Connect with me"
+        isVisible={isVisible}
+      />
 
-        {linksCount > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {contactLinks.map((link, index) => (
-              <ContactLinkCard
-                key={link.id}
-                link={link}
-                index={index}
-                isVisible={isVisible}
-                onLinkClick={onLinkClick}
-              />
-            ))}
-          </div>
-        ) : (
-          <div
-            className="rounded-2xl border border-dashed border-stone-300/70 dark:border-stone-600/70 bg-white/5 dark:bg-white/10 p-12 text-center"
-            aria-live="polite"
-          >
-            <p className="text-lg text-stone-500 dark:text-stone-400">
-              No contact information provided.
-            </p>
-          </div>
-        )}
+      {linksCount > 0 ? (
+        <Grid cols={2} gap={8}>
+          {contactLinks.map((link, index) => (
+            <ContactLinkCard
+              key={link.id}
+              link={link}
+              index={index}
+              isVisible={isVisible}
+              onLinkClick={onLinkClick}
+            />
+          ))}
+        </Grid>
+      ) : (
+        <EmptyState message="No contact information provided." />
+      )}
 
       <style>{`
                 @keyframes fadeInOutVertical {

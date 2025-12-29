@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Section, SectionTitle } from '../../shared'
+import { EmptyState, Section, SectionTitle } from '../../shared'
 import { PlaygroundGrid } from './PlaygroundGrid'
 import type { PlaygroundSectionProps } from './types'
 
@@ -51,18 +51,17 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
       background={background}
     >
 
-      <SectionTitle title="Playground" subtitle="Experiments & Open Source" isVisible={isVisible} />
+      <SectionTitle
+        title="Playground"
+        subtitle="Experiments & Open Source"
+        isVisible={isVisible}
+      />
 
-        {items.length > 0 ? (
-          <PlaygroundGrid items={items} isVisible={isVisible} />
-        ) : (
-          <div className="py-20 text-center border border-dashed border-stone-200 dark:border-stone-800 rounded-lg">
-            <p className="text-stone-500 dark:text-stone-400 font-medium">
-              No experiments found. Check back soon for new laboratory
-              creations.
-            </p>
-          </div>
-        )}
+      {items.length > 0 ? (
+        <PlaygroundGrid items={items} isVisible={isVisible} />
+      ) : (
+        <EmptyState message="No experiments found. Check back soon for new laboratory creations." />
+      )}
 
       <style>{`
                 @keyframes fadeInOut {

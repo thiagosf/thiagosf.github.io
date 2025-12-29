@@ -1,5 +1,6 @@
 import { ExternalLink, Github, Star } from 'lucide-react'
 
+import { Flex } from '../../shared'
 import type { CardItem } from '../organisms/Card'
 
 interface CardActionsProps {
@@ -11,12 +12,12 @@ export function CardActions({ item, variant }: CardActionsProps) {
   const isPlayground = variant === 'playground'
 
   return (
-    <div className={`flex ${isPlayground ? 'items-center gap-4' : 'gap-3'}`}>
+    <Flex className={isPlayground ? 'items-center gap-4' : 'gap-3'}>
       {item.stars !== undefined && isPlayground && (
-        <div className="flex items-center gap-1.5 text-stone-400 dark:text-stone-500">
+        <Flex align="center" gap={1.5} className="text-stone-400 dark:text-stone-500">
           <Star size={12} className="fill-current" />
           <span className="text-[10px] font-bold">{item.stars}</span>
-        </div>
+        </Flex>
       )}
       {item.githubUrl && (
         <a
@@ -40,6 +41,6 @@ export function CardActions({ item, variant }: CardActionsProps) {
           <ExternalLink size={16} />
         </a>
       )}
-    </div>
+    </Flex>
   )
 }

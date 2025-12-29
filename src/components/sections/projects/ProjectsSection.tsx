@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { Section, SectionTitle } from '../../shared'
+import { EmptyState, Section, SectionTitle } from '../../shared'
 import type { ProjectsSectionProps } from '../../../types/projects'
 import { ProjectGrid } from './ProjectGrid'
 
@@ -48,14 +48,14 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       className="bg-transparent dark:bg-transparent relative overflow-hidden"
       background={background}
     >
-      <SectionTitle title="Projects" subtitle="Selected Works" isVisible={isVisible} />
+      <SectionTitle
+        title="Projects"
+        subtitle="Selected Works"
+        isVisible={isVisible}
+      />
 
       {!projects || projects.length === 0 ? (
-        <div className="text-center py-24">
-          <p className="text-stone-500 dark:text-stone-400 italic">
-            No projects to display at the moment.
-          </p>
-        </div>
+        <EmptyState message="No projects to display at the moment." />
       ) : (
         <ProjectGrid projects={projects} isVisible={isVisible} />
       )}

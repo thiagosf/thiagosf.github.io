@@ -1,7 +1,7 @@
 import { Github, Linkedin, Twitter } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-import { SocialIcon, TechStackAnimation, Section } from '../../shared'
+import { Flex, Grid, Section, SocialIcon, Stack, TechStackAnimation } from '../../shared'
 import type { HeroSectionProps } from './types'
 
 export function HeroSection({ data }: HeroSectionProps) {
@@ -22,41 +22,44 @@ export function HeroSection({ data }: HeroSectionProps) {
   const taglineWords = data.introduction.tagline.split('•')
 
   return (
-    <Section className="flex items-center justify-center" containerClassName="max-w-7xl w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          {/* Left column - Main content */}
-          <div className="space-y-6 sm:space-y-8 lg:space-y-10">
-            {/* Tagline with creative styling */}
-            <div
-              className={`transition-all duration-700 mt-2 sm:mt-0 ${
-                isVisible
-                  ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 -translate-x-8'
-              }`}
-              style={{ animationDelay: '0.1s' }}
-            >
-              <div className="flex items-center gap-3 flex-wrap">
-                {taglineWords.map((word, index) => (
-                  <span
-                    key={index}
-                    className={`inline-block text-xs sm:text-sm font-medium uppercase tracking-widest text-stone-400 dark:text-stone-500 transition-all duration-500 ${
-                      isVisible
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-4'
-                    }`}
-                    style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-                  >
-                    {word.trim()}
-                    {index < taglineWords.length - 1 && (
-                      <span className="mx-2 text-primary-500">•</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-            </div>
+    <Section
+      className="flex items-center justify-center"
+      containerClassName="max-w-7xl w-full relative z-10"
+    >
+      <Grid cols={1} className="lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+        {/* Left column - Main content */}
+        <Stack gap={6} className="sm:space-y-8 lg:space-y-10">
+          {/* Tagline with creative styling */}
+          <div
+            className={`transition-all duration-700 mt-2 sm:mt-0 ${
+              isVisible
+                ? 'opacity-100 translate-x-0'
+                : 'opacity-0 -translate-x-8'
+            }`}
+            style={{ animationDelay: '0.1s' }}
+          >
+            <Flex align="center" gap={3} wrap>
+              {taglineWords.map((word, index) => (
+                <span
+                  key={index}
+                  className={`inline-block text-xs sm:text-sm font-medium uppercase tracking-widest text-stone-400 dark:text-stone-500 transition-all duration-500 ${
+                    isVisible
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-4'
+                  }`}
+                  style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+                >
+                  {word.trim()}
+                  {index < taglineWords.length - 1 && (
+                    <span className="mx-2 text-primary-500">•</span>
+                  )}
+                </span>
+              ))}
+            </Flex>
+          </div>
 
-            {/* Mobile Column Layout for Name and Title */}
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-8 items-baseline">
+          {/* Mobile Column Layout for Name and Title */}
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-8 items-baseline">
               {/* Name split into two lines */}
               <div
                 className={`transition-all duration-700 ${
@@ -156,7 +159,7 @@ export function HeroSection({ data }: HeroSectionProps) {
               className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               style={{ animationDelay: '1.2s' }}
             >
-              <div className="flex items-center gap-4">
+              <Flex align="center" gap={4}>
                 <SocialIcon
                   href={data.socialLinks.github}
                   icon={Github}
@@ -172,9 +175,9 @@ export function HeroSection({ data }: HeroSectionProps) {
                   icon={Twitter}
                   label="Twitter"
                 />
-              </div>
+              </Flex>
             </div>
-          </div>
+          </Stack>
 
           {/* Right column - Tech Stack with animated letter cycling */}
           <TechStackAnimation
@@ -183,7 +186,7 @@ export function HeroSection({ data }: HeroSectionProps) {
             tools={data.techStack.tools}
             isVisible={isVisible}
           />
-        </div>
+        </Grid>
     </Section>
   )
 }

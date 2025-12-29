@@ -1,3 +1,4 @@
+import { CardOverline, Flex, Stack } from '../../shared'
 import { CardActions } from './CardActions'
 import type { CardItem } from '../organisms/Card'
 
@@ -10,25 +11,25 @@ export function CardHeader({ item, variant }: CardHeaderProps) {
   const isPlayground = variant === 'playground'
 
   return (
-    <div className="flex justify-between items-start mb-6">
+    <Flex justify="between" align="start" className="mb-6">
       {isPlayground ? (
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 dark:text-stone-500">
+        <Stack gap={1}>
+          <CardOverline>
             {item.year} — {item.type}
-          </span>
+          </CardOverline>
           {item.language && (
             <span className="text-[9px] font-medium text-lime-600 dark:text-lime-500/70 uppercase tracking-wider">
               {item.language}
             </span>
           )}
-        </div>
+        </Stack>
       ) : (
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 dark:text-stone-500">
+        <CardOverline>
           {item.year} — {item.type}
-        </span>
+        </CardOverline>
       )}
 
       <CardActions item={item} variant={variant} />
-    </div>
+    </Flex>
   )
 }
