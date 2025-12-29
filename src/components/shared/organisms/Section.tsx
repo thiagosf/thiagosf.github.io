@@ -11,7 +11,7 @@ export type SectionProps = React.HTMLAttributes<HTMLElement> & {
 export const Section = forwardRef<HTMLDivElement, SectionProps>(
   ({ children, className = '', containerClassName, background, ...rest }, ref) => {
     const base =
-      'min-h-screen py-24 px-8 sm:px-12 md:px-24 bg-transparent dark:bg-transparent relative overflow-hidden'
+      'min-h-screen py-8 px-8 sm:px-12 md:p-16 lg:px-24 bg-transparent dark:bg-transparent relative overflow-hidden'
 
     const container = containerClassName ?? 'max-w-5xl mx-auto relative z-10'
 

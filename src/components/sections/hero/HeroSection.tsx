@@ -23,7 +23,7 @@ export function HeroSection({ data }: HeroSectionProps) {
 
   return (
     <Section className="flex items-center justify-center" containerClassName="max-w-7xl w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center py-8 md:py-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left column - Main content */}
           <div className="space-y-6 sm:space-y-8 lg:space-y-10">
             {/* Tagline with creative styling */}
