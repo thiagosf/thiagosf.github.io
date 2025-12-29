@@ -50,20 +50,20 @@ export function BackgroundEffect() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
+        :root {
+          --bg-effect-opacity: 0.5;
+        }
+
         @media (prefers-color-scheme: dark) {
-          @keyframes passThrough {
-            0% { left: 0; width: 0%; opacity: 0.1; }
-            50% { left: 0; width: 100%; }
-            100% { left: 100%; width: 0%; opacity: 0 }
+          :root {
+            --bg-effect-opacity: 0.1;
           }
         }
 
-        @media (prefers-color-scheme: light) {
-          @keyframes passThrough {
-            0% { left: 0; width: 0%; opacity: 0.5; }
-            50% { left: 0; width: 100%; }
-            100% { left: 100%; width: 0%; opacity: 0 }
-          }
+        @keyframes passThrough {
+          0% { left: 0; width: 0%; opacity: var(--bg-effect-opacity); }
+          50% { left: 0; width: 100%; }
+          100% { left: 100%; width: 0%; opacity: 0 }
         }
       `,
         }}
