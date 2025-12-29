@@ -21,7 +21,7 @@ export function AnimatedSkillDisplay({
   const skillLetters = skillNameLowercase.split('')
 
   return (
-    <div className="space-y-4">
+    <div className="md:space-y-4">
       <h3
         className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${
           isVisible
@@ -50,7 +50,7 @@ export function AnimatedSkillDisplay({
         </div>
       </div>
       <p
-        className={`text-sm mt-2 transition-opacity duration-300 ${
+        className={`text-sm transition-opacity duration-300 ${
           isVisible
             ? 'opacity-100 text-stone-500 dark:text-stone-400'
             : 'opacity-0'
