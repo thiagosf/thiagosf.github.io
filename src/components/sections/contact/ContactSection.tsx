@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { AnimatedLetter, Section } from '../../shared'
+import { Section, SectionTitle } from '../../shared'
 import { ContactLinkCard } from './ContactLinkCard'
 import type { ContactSectionProps } from './types'
 
@@ -29,9 +29,6 @@ export function ContactSection({
     return () => observer.disconnect()
   }, [])
 
-  const title = 'Contact'
-  const titleLetters = title.split('')
-
   const background = (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {[...Array(10)].map((_, i) => (
@@ -57,21 +54,7 @@ export function ContactSection({
     >
 
 
-      <div className="mb-8 lg:mb-16 2xl:mb-32">
-          <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-500 dark:text-stone-600 mb-6 ml-1">
-            Connect with me
-          </div>
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-none h-[1.1em] overflow-hidden">
-            {titleLetters.map((char, index) => (
-              <AnimatedLetter
-                key={`${char}-${index}`}
-                targetLetter={char}
-                isActive={isVisible}
-                delay={200 + index * 80}
-              />
-            ))}
-          </h2>
-        </div>
+      <SectionTitle title="Contact" subtitle="Connect with me" isVisible={isVisible} />
 
         {linksCount > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

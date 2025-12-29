@@ -1,4 +1,5 @@
 export { Card, type CardItem } from './organisms/Card'
+export { SectionTitle } from './organisms/SectionTitle'
 
 // Atoms
 export { AnimatedLetter } from './atoms/AnimatedLetter'
