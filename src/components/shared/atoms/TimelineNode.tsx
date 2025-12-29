@@ -1,0 +1,16 @@
+interface TimelineNodeProps {
+  isCurrent: boolean
+  isHighlighted: boolean
+}
+
+export function TimelineNode({ isCurrent, isHighlighted }: TimelineNodeProps) {
+  return (
+    <div
+      className={`absolute -left-1.25 top-0.75 w-2.5 h-2.5 transition-all duration-500 ${
+        isCurrent
+          ? 'bg-lime-500 border-lime-500 dark:bg-lime-500 dark:border-lime-500'
+          : 'bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-700'
+      } ${isHighlighted ? 'border-lime-500 dark:border-lime-500 scale-125' : ''}`}
+    />
+  )
+}

@@ -1,3 +1,8 @@
 export { AnimatedLetter } from './AnimatedLetter'
+export { CardDescription } from './CardDescription'
+export { CardMetadata } from './CardMetadata'
+export { CardOverline } from './CardOverline'
+export { CardTitle } from './CardTitle'
 export { SocialIcon } from './SocialIcon'
 export { TechChip } from './TechChip'
+export { TimelineNode } from './TimelineNode'

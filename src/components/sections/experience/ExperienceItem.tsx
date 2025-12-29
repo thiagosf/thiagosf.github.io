@@ -1,4 +1,11 @@
-import { TechChip } from '../../shared'
+import {
+  CardDescription,
+  CardMetadata,
+  CardOverline,
+  CardTitle,
+  TechChip,
+  TimelineNode,
+} from '../../shared'
 import type { Experience } from '../../../types/experience'
 
 interface ExperienceItemProps {
@@ -31,27 +38,19 @@ export function ExperienceItem({
       style={{ transitionDelay: `${index * 150}ms` }}
       onClick={() => onItemClick?.(experience.id)}
     >
-      {/* Timeline Node - centered with period text */}
-      <div
-        className={`absolute -left-1.25 top-0.75 w-2.5 h-2.5 transition-all duration-500 ${
-          experience.isCurrent
-            ? 'bg-lime-500 border-lime-500 dark:bg-lime-500 dark:border-lime-500'
-            : 'bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-700'
-        } ${isHighlighted ? 'border-lime-500 dark:border-lime-500 scale-125' : ''}`}
+      <TimelineNode
+        isCurrent={experience.isCurrent}
+        isHighlighted={!!isHighlighted}
       />
 
       <div className="space-y-3">
         {/* Period */}
-        <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 dark:text-stone-500">
-          {experience.period}
-        </span>
+        <CardOverline>{experience.period}</CardOverline>
 
         {/* Role & Company */}
         <div className="space-y-1">
-          <h3 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 tracking-tight">
-            {experience.role}
-          </h3>
-          <div className="flex items-center gap-2 text-sm sm:text-base font-medium">
+          <CardTitle>{experience.role}</CardTitle>
+          <CardMetadata>
             <span className="text-lime-500 dark:text-lime-400">
               {experience.company}
             </span>
@@ -59,13 +58,13 @@ export function ExperienceItem({
             <span className="text-stone-400 dark:text-stone-500">
               {experience.location}
             </span>
-          </div>
+          </CardMetadata>
         </div>
 
         {/* Description */}
-        <p className="max-w-2xl text-stone-600 dark:text-stone-400 leading-relaxed text-sm sm:text-base">
+        <CardDescription className="max-w-2xl">
           {experience.description}
-        </p>
+        </CardDescription>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 pt-2">
