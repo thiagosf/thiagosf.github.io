@@ -31,7 +31,7 @@ export function AnimatedSkillDisplay({
       >
         {category}
       </h3>
-      <div className="text-left min-h-[4rem] flex items-center">
+      <div className="text-left min-h-16 flex items-center">
         <div className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
           {skillLetters.map((letter, index) => (
             <AnimatedLetter
