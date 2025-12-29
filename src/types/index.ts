@@ -73,3 +73,10 @@ export interface HeroSectionData {
     tools: TechItem[]
   }
 }
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+    dataLayer?: any[]
+  }
+}
