@@ -33,17 +33,19 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
 
   return (
     <div
-      className={`transition-all duration-700 group relative bg-white dark:bg-stone-900 ${
+      className={`transition-all duration-700 group relative bg-white dark:bg-black/20 ${
         isVisible ? 'opacity-100 translate-y-0' : `opacity-0 ${translateY}`
       }`}
       style={transitionStyle}
     >
       <div
-        className="p-8 min-h-full transition-all duration-700 border border-stone-200 dark:border-stone-800 hover:border-lime-500/50 dark:hover:border-lime-400/50"
+        className="flex flex-col p-8 min-h-full transition-all duration-700 border border-stone-200 dark:border-stone-800 hover:border-lime-500/50 dark:hover:border-lime-400/50"
       >
         <CardHeader item={item} variant={variant} />
 
-        <CardContent item={item} variant={variant} />
+        <div className="grow">
+          <CardContent item={item} variant={variant} />
+        </div>
 
         <CardFooter item={item} variant={variant} />
 
