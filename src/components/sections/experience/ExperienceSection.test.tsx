@@ -1,15 +1,15 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import { Experience } from '../../../types/experience'
+import type { Experience } from '../../../types/experience'
 import { ExperienceSection } from './ExperienceSection'
 
 // Mock IntersectionObserver
-global.IntersectionObserver = class {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-} as any
+globalThis.IntersectionObserver = vi.fn(() => ({
+  observe: vi.fn(),
+  unobserve: vi.fn(),
+  disconnect: vi.fn(),
+})) as any
 
 const mockExperiences: Experience[] = [
   {
@@ -102,7 +102,6 @@ describe('ExperienceSection', () => {
   it('correctly identifies and styles the current position', () => {
     render(<ExperienceSection experiences={mockExperiences} />)
 
-    const currentItem = screen.getByText('Lead Developer').closest('div')
     // Check for indicator or specific class if applicable
     // This is a placeholder for styling check
   })

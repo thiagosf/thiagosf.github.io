@@ -19,9 +19,10 @@ export function BackgroundEffect() {
         key: i,
         top: (i + 1) * lineSpacing,
         // Random duration between 5s and 10s for natural flow
+        // eslint-disable-next-line react-hooks/purity
         duration: 1 + Math.random() * 2,
       })),
-    [],
+    [lineCount],
   )
 
   return (

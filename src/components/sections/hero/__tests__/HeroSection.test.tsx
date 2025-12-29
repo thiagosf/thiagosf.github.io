@@ -27,7 +27,7 @@ describe('HeroSection', () => {
     expect(screen.getByText(heroData.introduction.title)).toBeInTheDocument()
 
     // Check description (split into spans with non-breaking spaces)
-    const descriptionElement = screen.getByText((content, element) => {
+    const descriptionElement = screen.getByText((_, element) => {
       const hasText = (node: Element | null) =>
         normalizeText(node?.textContent) === heroData.introduction.description
       const nodeHasText = hasText(element)

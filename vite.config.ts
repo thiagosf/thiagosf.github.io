@@ -10,4 +10,5 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
   },
-})
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+} as any)

@@ -5,6 +5,7 @@ import {
   PlaygroundSection,
   ProjectsSection,
 } from '../components/sections'
+import type { ContactLink } from '../components/sections/contact/types'
 import contactData from '../data/contact.json'
 import experienceData from '../data/experience.json'
 import heroData from '../data/hero-data.json'
@@ -29,7 +30,7 @@ export function LandingPage() {
       <ProjectsSection projects={projectsData} />
       <PlaygroundSection items={playgroundData} />
       <ContactSection
-        contactLinks={contactData.contactLinks}
+        contactLinks={(contactData as { contactLinks: ContactLink[] }).contactLinks}
         onLinkClick={handleContactLinkClick}
       />
     </>

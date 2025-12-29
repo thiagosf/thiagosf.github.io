@@ -7,7 +7,7 @@ import { ContactSection } from '../ContactSection'
 import type { ContactLink } from '../types'
 
 describe('ContactSection', () => {
-  const { contactLinks } = contactData
+  const { contactLinks } = contactData as { contactLinks: ContactLink[] }
 
   it('renders contact links with platform and label text', () => {
     render(<ContactSection contactLinks={contactLinks} />)
