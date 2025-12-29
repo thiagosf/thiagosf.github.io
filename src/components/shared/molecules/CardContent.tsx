@@ -9,7 +9,7 @@ interface CardContentProps {
 
 export function CardContent({ item, variant }: CardContentProps) {
   const isPlayground = variant === 'playground'
-  const minHeight = isPlayground ? 'min-h-[4rem]' : 'min-h-[4.5rem]'
+  const minHeight = isPlayground ? 'min-h-16' : 'min-h-[4.5rem]'
 
   return (
     <div className="space-y-4">
