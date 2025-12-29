@@ -14,7 +14,7 @@ export function SectionTitle({ title, subtitle, isVisible }: SectionTitleProps) 
       <div className="text-[10px] font-bold uppercase tracking-[0.4em] text-stone-500 dark:text-stone-600 mb-6 ml-1">
         {subtitle}
       </div>
-      <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-none h-[1.1em] overflow-hidden">
+      <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter leading-none h-[1.1em] overflow-hidden">
         {titleLetters.map((char, index) => (
           <AnimatedLetter
             key={`${char}-${index}`}
