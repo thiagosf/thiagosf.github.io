@@ -6,11 +6,17 @@ import type { Project } from '../../../../types/projects'
 // Mock IntersectionObserver
 import { ProjectsSection } from '../ProjectsSection'
 
-globalThis.IntersectionObserver = vi.fn(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-})) as any
+globalThis.IntersectionObserver = class IntersectionObserver {
+  root: Element | null = null
+  rootMargin: string = ''
+  thresholds: ReadonlyArray<number> = []
+  scrollMargin: string = ''
+  constructor() {}
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
+  takeRecords = vi.fn(() => [])
+}
 
 const mockProjects: Project[] = [
   {

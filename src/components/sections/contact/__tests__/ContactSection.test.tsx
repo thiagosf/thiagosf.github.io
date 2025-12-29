@@ -1,10 +1,24 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, vi, beforeAll } from 'vitest'
 
 import contactData from '../../../../data/contact.json'
 import { ContactSection } from '../ContactSection'
 import type { ContactLink } from '../types'
+
+beforeAll(() => {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    root: Element | null = null
+    rootMargin: string = ''
+    thresholds: ReadonlyArray<number> = []
+    scrollMargin: string = ''
+    constructor() {}
+    observe = vi.fn()
+    unobserve = vi.fn()
+    disconnect = vi.fn()
+    takeRecords = vi.fn(() => [])
+  }
+})
 
 describe('ContactSection', () => {
   const { contactLinks } = contactData as { contactLinks: ContactLink[] }
@@ -13,8 +27,8 @@ describe('ContactSection', () => {
     render(<ContactSection contactLinks={contactLinks} />)
 
     expect(screen.getByText(/github.com\/thiagosf/i)).toBeInTheDocument()
-    expect(screen.getByText(/LinkedIn/i)).toBeInTheDocument()
-    expect(screen.getByText(/hello@thiago\.me/i)).toBeInTheDocument()
+    expect(screen.getByText(/^LinkedIn$/i)).toBeInTheDocument()
+    expect(screen.getByText(/twitter\.com\/thiago9/i)).toBeInTheDocument()
   })
 
   it('calls onLinkClick when a link is clicked', async () => {

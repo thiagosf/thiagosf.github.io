@@ -5,11 +5,17 @@ import { PlaygroundSection } from '../PlaygroundSection'
 import type { PlaygroundItem } from '../types'
 
 // Mock IntersectionObserver
-globalThis.IntersectionObserver = vi.fn(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-})) as any
+globalThis.IntersectionObserver = class IntersectionObserver {
+  root: Element | null = null
+  rootMargin: string = ''
+  thresholds: ReadonlyArray<number> = []
+  scrollMargin: string = ''
+  constructor() {}
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
+  takeRecords = vi.fn(() => [])
+}
 
 const mockItems: PlaygroundItem[] = [
   {
