@@ -57,7 +57,7 @@ export function ContactLinkCard({
             onLinkClick(link.id, link.url)
           }
         }}
-        className="group relative block p-4 md:p-8 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-lime-500/50 dark:hover:border-lime-400/50 transition-all duration-500 overflow-hidden"
+        className="group relative block p-4 md:p-8 bg-white/20 dark:bg-black/20 border border-stone-200 dark:border-stone-800 hover:border-lime-500/50 dark:hover:border-lime-400/50 transition-all duration-500 overflow-hidden"
       >
         <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <ArrowUpRight className="w-5 h-5 text-lime-500 dark:text-lime-400" />
