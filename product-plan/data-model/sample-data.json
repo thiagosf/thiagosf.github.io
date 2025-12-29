@@ -2,7 +2,7 @@
   "hero": {
     "introduction": {
       "name": "Thiago Silva Ferreira",
-      "title": "Creative Developer",
+      "title": "Creative Software Developer",
       "subtitle": "Crafting digital experiences",
       "description": "I blend code with creativity to build interfaces that don't just work—they inspire. Specializing in full-stack development with a passion for pixel-perfect design and smooth animations.",
       "tagline": "Code • Design • Create"
@@ -72,7 +72,7 @@
   "experiences": [
     {
       "id": "exp-001",
-      "role": "Senior Creative Developer",
+      "role": "Senior Creative Software Developer",
       "company": "Antigravity Labs",
       "location": "Remote",
       "period": "Jan 2023 — Present",
