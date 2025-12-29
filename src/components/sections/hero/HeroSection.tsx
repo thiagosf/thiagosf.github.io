@@ -9,7 +9,7 @@ export function HeroSection({ data }: HeroSectionProps) {
   const [nameRevealed, setNameRevealed] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    setTimeout(() => setIsVisible(true), 0)
     const timer = setTimeout(() => setNameRevealed(true), 200)
     return () => clearTimeout(timer)
   }, [])

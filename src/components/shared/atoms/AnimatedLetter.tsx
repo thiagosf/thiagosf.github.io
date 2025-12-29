@@ -32,7 +32,7 @@ export function AnimatedLetter({
 
   useEffect(() => {
     if (!isActive) {
-      setStatus('waiting')
+      setTimeout(() => setStatus('waiting'), 0)
       return
     }
 
