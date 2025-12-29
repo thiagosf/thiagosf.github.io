@@ -33,7 +33,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
 
   return (
     <div
-      className={`transition-all duration-700 group relative bg-white dark:bg-black/20 ${
+      className={`transition-all duration-700 group relative bg-white/20 dark:bg-black/20 ${
         isVisible ? 'opacity-100 translate-y-0' : `opacity-0 ${translateY}`
       }`}
       style={transitionStyle}
