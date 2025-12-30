@@ -24,7 +24,7 @@ export function CardActions({ item, variant }: CardActionsProps) {
           href={item.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors duration-200"
+          className="text-stone-400 hover:text-primary-500 transition-colors duration-200"
           aria-label="View Source"
         >
           <Github size={16} />
