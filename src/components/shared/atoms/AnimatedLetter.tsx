@@ -20,7 +20,7 @@ export function AnimatedLetter({
   intervalMs = 40,
   spaceWidth = 'w-4',
   doneClassName = 'text-stone-900 dark:text-stone-100',
-  cyclingClassName = 'text-lime-500 dark:text-lime-400',
+  cyclingClassName = 'text-primary-500 dark:text-primary-400',
   waitingClassName = 'opacity-0',
 }: AnimatedLetterProps) {
   const [currentLetter, setCurrentLetter] = useState('a')

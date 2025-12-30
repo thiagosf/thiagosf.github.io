@@ -35,7 +35,7 @@ export function CardActions({ item, variant }: CardActionsProps) {
           href={item.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-stone-400 hover:text-lime-500 transition-colors duration-200"
+          className="text-stone-400 hover:text-primary-500 transition-colors duration-200"
           aria-label="View Demo"
         >
           <ExternalLink size={16} />

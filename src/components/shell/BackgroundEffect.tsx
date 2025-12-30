@@ -37,7 +37,7 @@ export function BackgroundEffect() {
           }}
         >
           <div
-            className="absolute top-0 bottom-0 bg-lime-400"
+            className="absolute top-0 bottom-0 bg-primary-400"
             style={{
               left: 0,
               width: '0%',

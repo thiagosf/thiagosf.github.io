@@ -39,7 +39,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
       style={transitionStyle}
     >
       <div
-        className="flex flex-col p-8 min-h-full transition-all duration-700 border border-stone-200 dark:border-stone-800 hover:border-lime-500/50 dark:hover:border-lime-400/50"
+        className="flex flex-col p-8 min-h-full transition-all duration-700 border border-stone-200 dark:border-stone-800 hover:border-primary-500/50 dark:hover:border-primary-400/50"
       >
         <CardHeader item={item} variant={variant} />
 
@@ -50,7 +50,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
         <CardFooter item={item} variant={variant} />
 
         {/* Subtle interactive accent */}
-        <div className="absolute bottom-0 right-0 w-1 h-1 bg-lime-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute bottom-0 right-0 w-1 h-1 bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </div>
   )

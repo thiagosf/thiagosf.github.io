@@ -51,7 +51,7 @@ export function ExperienceItem({
         <div className="space-y-1">
           <CardTitle>{experience.role}</CardTitle>
           <CardMetadata>
-            <span className="text-lime-500 dark:text-lime-400">
+            <span className="text-primary-500 dark:text-primary-400">
               {experience.company}
             </span>
             <span className="text-stone-300 dark:text-stone-700">•</span>

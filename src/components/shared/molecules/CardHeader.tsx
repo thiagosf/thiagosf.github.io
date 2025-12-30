@@ -18,7 +18,7 @@ export function CardHeader({ item, variant }: CardHeaderProps) {
             {item.year} — {item.type}
           </CardOverline>
           {item.language && (
-            <span className="text-[9px] font-medium text-lime-600 dark:text-lime-500/70 uppercase tracking-wider">
+            <span className="text-[9px] font-medium text-primary-600 dark:text-primary-500/70 uppercase tracking-wider">
               {item.language}
             </span>
           )}

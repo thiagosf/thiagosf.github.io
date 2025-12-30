@@ -18,11 +18,11 @@ export function CardContent({ item, variant }: CardContentProps) {
         <Flex
           align="center"
           gap={2}
-          className="group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300"
+          className="group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-300"
         >
           <Code2
             size={18}
-            className="text-stone-300 dark:text-stone-700 group-hover:text-lime-500 dark:group-hover:text-lime-400 transition-colors duration-300"
+            className="text-stone-300 dark:text-stone-700 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-300"
           />
           <CardTitle className="text-xl">{item.title}</CardTitle>
         </Flex>
