@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary-50: color-mix(in srgb, var(--color-primary), white 90%);
   --color-primary-100: color-mix(in srgb, var(--color-primary), white 80%);
@@ -46,6 +48,7 @@
 
 /* Custom Properties for direct CSS usage */
 :root {
+  color-scheme: light;
   --color-primary: #84cc16;
   --color-primary-dark: #65a30d;
   --color-secondary: #10b981;
@@ -59,6 +62,10 @@
 
   --section-padding-y: 6rem;
   --container-px: 2rem;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 @layer base {

@@ -54,10 +54,8 @@ export function BackgroundEffect() {
           --bg-effect-opacity: 0.5;
         }
 
-        @media (prefers-color-scheme: dark) {
-          :root {
-            --bg-effect-opacity: 0.1;
-          }
+        :root.dark {
+          --bg-effect-opacity: 0.1;
         }
 
         @keyframes passThrough {
