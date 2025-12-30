@@ -72,11 +72,14 @@ export function ContactLinkCard({
             <Icon size={24} strokeWidth={1.5} aria-hidden="true" />
           </div>
 
-          <div>
+          <div className="min-w-0">
             <CardOverline className="mb-1 group-hover:text-primary-500/70 transition-colors duration-500">
               {link.platform}
             </CardOverline>
-            <div className="text-xl font-medium text-stone-900 dark:text-stone-100 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-500">
+            <div
+              className="text-xl font-medium text-stone-900 dark:text-stone-100 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-500 truncate"
+              title={link.label}
+            >
               {link.label}
             </div>
           </div>
