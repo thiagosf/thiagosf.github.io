@@ -14,7 +14,7 @@ export function CardActions({ item, variant }: CardActionsProps) {
   return (
     <Flex className={isPlayground ? 'items-center gap-4' : 'gap-3'}>
       {item.stars !== undefined && isPlayground && (
-        <Flex align="center" gap={1.5} className="text-stone-400 dark:text-stone-500">
+        <Flex align="center" gap={2} className="text-stone-400 dark:text-stone-500">
           <Star size={12} className="fill-current" />
           <span className="text-[10px] font-bold">{item.stars}</span>
         </Flex>
