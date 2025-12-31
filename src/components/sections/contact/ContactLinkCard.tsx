@@ -67,7 +67,7 @@ export function ContactLinkCard({
           <div
             data-icon-name={resolvedIconKey}
             data-testid={`contact-link-icon-${link.id}`}
-            className="p-4 bg-white dark:bg-stone-800 text-stone-400 dark:text-stone-500 group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-500"
+            className="p-4 bg-stone-200 dark:bg-stone-800 text-stone-400 dark:text-stone-500 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/20 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors duration-500"
           >
             <Icon size={24} strokeWidth={1.5} aria-hidden="true" />
           </div>
