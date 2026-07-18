@@ -1,5 +1,15 @@
 [
   {
+    "id": "proj-huhugames",
+    "title": "HuhuGames",
+    "description": "A platform for discovering and playing indie games. HuhuGames is a web application that allows users to explore a curated collection of independent games, read reviews, and connect with developers.",
+    "year": "2024",
+    "type": "Web Application",
+    "techStack": ["React", "Typescript", "Vite"],
+    "previewUrl": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&q=80&w=1200",
+    "demoUrl": "https://www.huhugames.com/"
+  },
+  {
     "id": "proj-001",
     "title": "QueroPresente!",
     "description": "Create wishlist and share with your friends anonymously! A platform for managing gift wishlists privately.",
