@@ -4,11 +4,11 @@
   "description": "I blend code with creativity to build interfaces that inspire. Specializing in full-stack development, pixel-perfect design, and AI-augmented workflows to deliver high-quality solutions faster.",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#0f172a",
-  "background_color": "#0f172a",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "icons": [
     {
-      "src": "/logo.svg",
+      "src": "/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any maskable"
