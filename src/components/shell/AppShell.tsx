@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 
 import { Signature } from '../shared/Signature'
-import { ThemeToggle } from './ThemeToggle'
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -9,7 +8,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header page-width">
+      <header className="site-header">
         <a
           href="#home"
           className="brand"
@@ -29,7 +28,6 @@ export function AppShell({ children }: { children: ReactNode }) {
             Let’s talk <span aria-hidden="true">↗</span>
           </a>
         </nav>
-        <ThemeToggle />
       </header>
       <main id="main">{children}</main>
       <footer className="site-footer page-width">

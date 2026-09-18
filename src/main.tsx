@@ -5,6 +5,8 @@ import App from './App.tsx'
 import './index.css'
 import './studio.css'
 
+document.documentElement.classList.remove('dark')
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
