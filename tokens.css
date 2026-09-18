@@ -1,0 +1,47 @@
+/* Hallmark · custom theme: Signature Studio · light / grotesk / warm */
+:root {
+  --color-paper: oklch(96.8% 0.012 85);
+  --color-paper-2: oklch(93.8% 0.018 85);
+  --color-ink: oklch(23% 0.018 55);
+  --color-muted: oklch(48% 0.018 55);
+  --color-rule: oklch(83% 0.019 70);
+  --color-accent: oklch(55% 0.21 30);
+  --color-accent-ink: var(--color-paper);
+  --color-focus: var(--color-accent);
+  --color-art-dark: oklch(25% 0.045 155);
+  --color-art-green: oklch(84% 0.15 135);
+  --color-art-pink: oklch(86% 0.044 28);
+  --color-art-red: oklch(46% 0.16 25);
+  --color-lab: oklch(25% 0.017 60);
+  --color-lab-ink: oklch(94% 0.014 85);
+  --color-lab-muted: oklch(75% 0.015 85);
+  --color-lab-rule: oklch(42% 0.017 60);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-heading: var(--font-display);
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 8rem;
+  --text-small: 0.75rem;
+  --text-body: 1rem;
+  --text-lead: 1.125rem;
+  --text-title: clamp(2.25rem, 4.2vw, 3.75rem);
+  --text-display: clamp(3.6rem, 6.7vw, 6rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 220ms;
+  --rule-thin: 1px;
+  --radius-small: 3px;
+}
+:root.dark {
+  --color-accent-ink: oklch(21% 0.015 55);
+  --color-paper: oklch(21% 0.015 55);
+  --color-paper-2: oklch(25% 0.018 55);
+  --color-ink: oklch(94% 0.015 85);
+  --color-muted: oklch(73% 0.015 85);
+  --color-rule: oklch(37% 0.02 55);
+  --color-accent: oklch(73% 0.15 35);
+}

@@ -1,11 +1,3 @@
-import {
-  CardDescription,
-  CardMetadata,
-  CardOverline,
-  CardTitle,
-  TechChip,
-  TimelineNode,
-} from '../../shared'
 import type { Experience } from '../../../types/experience'
 
 interface ExperienceItemProps {
@@ -17,67 +9,52 @@ interface ExperienceItemProps {
   onItemClick?: (id: string) => void
   onFilterTech?: (tech: string) => void
 }
-
 export function ExperienceItem({
   experience,
   index,
-  isVisible,
   activeTech,
   setActiveTech,
   onItemClick,
   onFilterTech,
 }: ExperienceItemProps) {
-  const isHighlighted =
-    activeTech && experience.technologies.includes(activeTech)
-
   return (
-    <div
-      className={`relative pl-8 pb-16 md:pl-16 md:pb-24 last:pb-0 transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}
-      style={{ transitionDelay: `${index * 150}ms` }}
-      onClick={() => onItemClick?.(experience.id)}
+    <details
+      className={`experience-item ${activeTech && experience.technologies.includes(activeTech) ? 'tech-highlight' : ''}`}
+      open={index === 0}
     >
-      <TimelineNode
-        isCurrent={experience.isCurrent}
-        isHighlighted={!!isHighlighted}
-      />
-
-      <div className="space-y-3">
-        {/* Period */}
-        <CardOverline>{experience.period}</CardOverline>
-
-        {/* Role & Company */}
-        <div className="space-y-1">
-          <CardTitle>{experience.role}</CardTitle>
-          <CardMetadata>
-            <span className="text-primary-500 dark:text-primary-400">
-              {experience.company}
-            </span>
-            <span className="text-stone-300 dark:text-stone-700">•</span>
-            <span className="text-stone-400 dark:text-stone-500">
-              {experience.location}
-            </span>
-          </CardMetadata>
-        </div>
-
-        {/* Description */}
-        <CardDescription className="max-w-2xl">
-          {experience.description}
-        </CardDescription>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 pt-2">
-          {experience.technologies.map((tech: string) => (
-            <TechChip
+      <summary onClick={() => onItemClick?.(experience.id)}>
+        <span className="experience-heading">
+          <span className="experience-company">
+            {experience.company}
+            {experience.isCurrent && (
+              <span className="current-label">Current</span>
+            )}
+          </span>
+          <span className="experience-role">{experience.role}</span>
+        </span>
+        <span className="experience-period">{experience.period}</span>
+        <span className="expand-symbol" aria-hidden="true">
+          +
+        </span>
+      </summary>
+      <div className="experience-detail">
+        <p className="experience-location">{experience.location}</p>
+        <p>{experience.description}</p>
+        <div className="tech-list">
+          {experience.technologies.map((tech) => (
+            <button
               key={tech}
-              tech={tech}
-              onHover={setActiveTech}
-              onClick={onFilterTech}
-            />
+              onMouseEnter={() => setActiveTech(tech)}
+              onMouseLeave={() => setActiveTech(null)}
+              onFocus={() => setActiveTech(tech)}
+              onBlur={() => setActiveTech(null)}
+              onClick={() => onFilterTech?.(tech)}
+            >
+              {tech}
+            </button>
           ))}
         </div>
       </div>
-    </div>
+    </details>
   )
 }
