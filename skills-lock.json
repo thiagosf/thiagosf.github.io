@@ -5,13 +5,13 @@
       "source": "juliusbrussee/caveman",
       "sourceType": "github",
       "skillPath": "skills/caveman/SKILL.md",
-      "computedHash": "d18cdf73a5f5c496d681a43a6846336b110223bdffa6817b8992529c57f1a815"
+      "computedHash": "2bc96f7c5d3c82f76714d9ec5027ef72518ede527b009a4cab6afd6db339ada9"
     },
     "hallmark": {
       "source": "nutlope/hallmark",
       "sourceType": "github",
       "skillPath": "skills/hallmark/SKILL.md",
-      "computedHash": "8a8ecafd613f09e701330b5aa4a591ac539abb2605596df4a2394f03628d1d76"
+      "computedHash": "579f86b27cdd7eb972107f7aecedd537f472891c5fd7c7c821bea15f64e0fe86"
     }
   }
 }

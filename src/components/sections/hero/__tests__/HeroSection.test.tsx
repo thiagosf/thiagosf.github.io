@@ -12,16 +12,10 @@ describe('HeroSection', () => {
     render(<HeroSection data={heroData} />)
 
     await waitFor(() => {
-      const headings = screen.getAllByRole('heading')
-      const h1 = headings.find((h) => h.tagName === 'H1')
-      const h2s = headings.filter((h) => h.tagName === 'H2')
-
-      expect(normalizeText(h1?.textContent)).toBe('Thiago')
-
-      const lastName = h2s.find((h) =>
-        h.textContent?.replace(/\u00a0/g, ' ').includes('Silva'),
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        'Code with character.',
       )
-      expect(normalizeText(lastName?.textContent)).toBe('Silva Ferreira')
+      expect(screen.getByText('Hello, I’m Thiago.')).toBeInTheDocument()
     })
 
     expect(screen.getByText(heroData.introduction.title)).toBeInTheDocument()
