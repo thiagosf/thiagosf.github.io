@@ -1,29 +1,40 @@
-import React from 'react'
+import type { ReactNode } from 'react'
 
-import { BackgroundEffect } from './BackgroundEffect'
-import { ThemeToggle } from './ThemeToggle'
+import { Signature } from '../shared/Signature'
 
-/**
- * AppShell Component - Landing Page Pattern
- *
- * A minimal wrapper that provides the layout structure for a landing page.
- * Includes a persistent animated background effect.
- */
-
-interface AppShellProps {
-  children: React.ReactNode
-}
-
-export function AppShell({ children }: AppShellProps) {
+export function AppShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-stone-100 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans selection:bg-primary-500/30 relative">
-      <BackgroundEffect />
-      <ThemeToggle />
-
-      {/* Main Content Area - above background */}
-      <main className="relative z-10 w-full min-h-screen flex flex-col">
-        {children}
-      </main>
+    <div className="studio">
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <header className="site-header">
+        <a
+          href="#home"
+          className="brand"
+          aria-label="Thiago Silva Ferreira, home"
+        >
+          <Signature />
+          <span>
+            Thiago Silva Ferreira
+            <span className="brand-role">Creative software developer</span>
+          </span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Work</a>
+          <a href="#playground">Playground</a>
+          <a className="nav-contact" href="#contact">
+            Let’s talk <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </header>
+      <main id="main">{children}</main>
+      <footer className="site-footer page-width">
+        <span>© {new Date().getFullYear()} Thiago Silva Ferreira</span>
+        <span>Built with intent. A little curiosity, too.</span>
+        <a href="#home">Back to top ↑</a>
+      </footer>
     </div>
   )
 }

@@ -1,192 +1,121 @@
-import { Github, Linkedin, Twitter } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { ArrowDown, ArrowUpRight, RotateCcw } from 'lucide-react'
+import { useRef, useState } from 'react'
+import type { PointerEvent } from 'react'
 
-import { Flex, Grid, Section, SocialIcon, Stack, TechStackAnimation } from '../../shared'
+import { Signature } from '../../shared/Signature'
 import type { HeroSectionProps } from './types'
 
 export function HeroSection({ data }: HeroSectionProps) {
-  const [isVisible, setIsVisible] = useState(false)
-  const [nameRevealed, setNameRevealed] = useState(false)
-
-  useEffect(() => {
-    setTimeout(() => setIsVisible(true), 0)
-    const timer = setTimeout(() => setNameRevealed(true), 200)
-    return () => clearTimeout(timer)
-  }, [])
-
-  // Split name into first name and last names
-  const nameParts = data.introduction.name.split(' ')
-  const firstName = nameParts[0] // "Thiago"
-  const lastName = nameParts.slice(1).join(' ') // "Silva Ferreira"
-  const firstNameChars = firstName.split('')
-  const taglineWords = data.introduction.tagline.split('•')
-
+  const [drawing, setDrawing] = useState(0)
+  const [outline, setOutline] = useState(false)
+  const artRef = useRef<HTMLDivElement>(null)
+  function moveSignature(event: PointerEvent<HTMLDivElement>) {
+    if (
+      event.pointerType !== 'mouse' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return
+    const bounds = event.currentTarget.getBoundingClientRect()
+    artRef.current?.style.setProperty(
+      '--pointer-x',
+      `${(event.clientX - bounds.left - bounds.width / 2) * 0.025}px`,
+    )
+    artRef.current?.style.setProperty(
+      '--pointer-y',
+      `${(event.clientY - bounds.top - bounds.height / 2) * 0.025}px`,
+    )
+  }
+  function resetPosition() {
+    artRef.current?.style.setProperty('--pointer-x', '0px')
+    artRef.current?.style.setProperty('--pointer-y', '0px')
+  }
   return (
-    <Section
-      className="flex items-center justify-center"
-      containerClassName="max-w-7xl w-full relative z-10"
-    >
-      <Grid cols={1} className="lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-        {/* Left column - Main content */}
-        <Stack gap={6} className="sm:space-y-8 lg:space-y-10">
-          {/* Tagline with creative styling */}
-          <div
-            className={`transition-all duration-700 mt-2 sm:mt-0 ${
-              isVisible
-                ? 'opacity-100 translate-x-0'
-                : 'opacity-0 -translate-x-8'
-            }`}
-            style={{ animationDelay: '0.1s' }}
-          >
-            <Flex align="center" gap={3} wrap>
-              {taglineWords.map((word, index) => (
-                <span
-                  key={index}
-                  className={`inline-block text-xs sm:text-sm font-medium uppercase tracking-widest text-stone-400 dark:text-stone-500 transition-all duration-500 ${
-                    isVisible
-                      ? 'opacity-100 translate-y-0'
-                      : 'opacity-0 translate-y-4'
-                  }`}
-                  style={{ animationDelay: `${0.2 + index * 0.1}s` }}
-                >
-                  {word.trim()}
-                  {index < taglineWords.length - 1 && (
-                    <span className="mx-2 text-primary-500">•</span>
-                  )}
-                </span>
-              ))}
-            </Flex>
+    <section id="home" className="hero page-width" aria-labelledby="hero-title">
+      <div className="hero-topline">
+        <span>
+          <i /> Frontend craft. Full-stack thinking.
+        </span>
+        <span>Independent mind / Collaborative spirit</span>
+      </div>
+      <div className="hero-layout">
+        <div className="hero-copy">
+          <p className="eyebrow">Hello, I’m Thiago.</p>
+          <h1 id="hero-title">
+            Code with <br />
+            <span>character.</span>
+          </h1>
+          <p className="hero-description">{data.introduction.description}</p>
+          <a className="primary-link" href="#projects">
+            Explore my work <ArrowDown size={18} />
+          </a>
+          <div className="hero-socials">
+            {Object.entries(data.socialLinks).map(([name, url]) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={
+                  name === 'github'
+                    ? 'GitHub'
+                    : name === 'linkedin'
+                      ? 'LinkedIn'
+                      : 'Twitter'
+                }
+              >
+                {name === 'github'
+                  ? 'GitHub'
+                  : name === 'linkedin'
+                    ? 'LinkedIn'
+                    : 'Twitter'}
+                <ArrowUpRight size={13} />
+              </a>
+            ))}
           </div>
-
-          {/* Mobile Column Layout for Name and Title */}
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 sm:gap-8 items-baseline">
-              {/* Name split into two lines */}
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible ? 'opacity-100' : 'opacity-0'
-                }`}
-                style={{ animationDelay: '0.3s' }}
-              >
-                {/* First name - Big */}
-                <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 dark:text-stone-100 tracking-tight leading-none">
-                  {firstNameChars.map((char, index) => (
-                    <span
-                      key={index}
-                      className={`inline-block transition-all duration-300 ${
-                        nameRevealed
-                          ? 'opacity-100 translate-y-0'
-                          : 'opacity-0 translate-y-8'
-                      }`}
-                      style={{
-                        animationDelay: `${0.4 + index * 0.03}s`,
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </h1>
-                {/* Last name - Small and light */}
-                <h2 className="text-sm sm:text-xl md:text-3xl lg:text-5xl font-light text-stone-400 dark:text-stone-500 tracking-tight leading-tight mt-1">
-                  {lastName.split('').map((char, index) => (
-                    <span
-                      key={index}
-                      className={`inline-block transition-all duration-300 ${
-                        nameRevealed
-                          ? 'opacity-100 translate-y-0'
-                          : 'opacity-0 translate-y-4'
-                      }`}
-                      style={{
-                        animationDelay: `${0.6 + index * 0.02}s`,
-                      }}
-                    >
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  ))}
-                </h2>
-              </div>
-
-              {/* Title and subtitle */}
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-4'
-                }`}
-                style={{ animationDelay: '0.7s' }}
-              >
-                <div className="space-y-1">
-                  <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-stone-800 dark:text-stone-200">
-                    {data.introduction.title}
-                  </h2>
-                  <p className="text-xs sm:text-lg text-stone-500 dark:text-stone-400 italic">
-                    {data.introduction.subtitle}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Description */}
-            <div
-              className={`transition-all duration-700 ${
-                isVisible ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{ animationDelay: '0.9s' }}
-            >
-              <p className="text-base sm:text-lg text-stone-600 dark:text-stone-400 leading-relaxed max-w-xl">
-                {data.introduction.description.split(' ').map((word, index) => (
-                  <span
-                    key={index}
-                    className={`inline-block transition-all duration-500 ${
-                      isVisible
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-2'
-                    }`}
-                    style={{
-                      animationDelay: `${1.0 + index * 0.03}s`,
-                    }}
-                  >
-                    {word}
-                    {index <
-                      data.introduction.description.split(' ').length - 1 &&
-                      '\u00A0'}
-                  </span>
-                ))}
-              </p>
-            </div>
-
-            {/* Social Media Icons */}
-            <div
-              className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ animationDelay: '1.2s' }}
-            >
-              <Flex align="center" gap={4}>
-                <SocialIcon
-                  href={data.socialLinks.github}
-                  icon={Github}
-                  label="GitHub"
-                />
-                <SocialIcon
-                  href={data.socialLinks.linkedin}
-                  icon={Linkedin}
-                  label="LinkedIn"
-                />
-                <SocialIcon
-                  href={data.socialLinks.twitter}
-                  icon={Twitter}
-                  label="Twitter"
-                />
-              </Flex>
-            </div>
-          </Stack>
-
-          {/* Right column - Tech Stack with animated letter cycling */}
-          <TechStackAnimation
-            frontend={data.techStack.frontend}
-            backend={data.techStack.backend}
-            tools={data.techStack.tools}
-            isVisible={isVisible}
-          />
-        </Grid>
-    </Section>
+        </div>
+        <div
+          className={`signature-stage ${outline ? 'is-outline' : ''}`}
+          onPointerMove={moveSignature}
+          onPointerLeave={resetPosition}
+        >
+          <div className="stage-top">
+            <span>THE PERSONAL TOUCH</span>
+            <span aria-hidden="true">↙</span>
+          </div>
+          <div className="signature-guides" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="signature-art" ref={artRef}>
+            <Signature key={drawing} animated />
+            <Signature className="signature-ghost" />
+          </div>
+          <div className="stage-caption">
+            <span>A signature. Written in code.</span>
+            <span className="stage-coordinate" aria-hidden="true">
+              TSF — 01
+            </span>
+          </div>
+          <div className="stage-controls">
+            <button onClick={() => setDrawing(drawing + 1)}>
+              <RotateCcw size={14} /> Replay signature
+            </button>
+            <button aria-pressed={outline} onClick={() => setOutline(!outline)}>
+              {outline ? '●' : '○'} Outline
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="hero-bottom">
+        <span>{data.introduction.title}</span>
+        <span>
+          React <b>/</b> TypeScript <b>/</b> Vue <b>/</b> Node.js
+        </span>
+        <a href="#experience">
+          A little more about me <ArrowDown size={14} />
+        </a>
+      </div>
+    </section>
   )
 }
