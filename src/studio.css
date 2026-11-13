@@ -163,7 +163,6 @@ body {
   color: var(--color-muted);
   letter-spacing: 0.025em;
   padding-top: 22px;
-  border-top: 1px solid var(--color-rule);
 }
 .hero-topline i {
   display: inline-block;
