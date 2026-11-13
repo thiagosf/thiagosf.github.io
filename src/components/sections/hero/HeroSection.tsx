@@ -1,34 +1,9 @@
-import { ArrowDown, ArrowUpRight, RotateCcw } from 'lucide-react'
-import { useRef, useState } from 'react'
-import type { PointerEvent } from 'react'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
-import { Signature } from '../../shared/Signature'
+import { TurbulentShearLogo } from '../../shared/TurbulentShearLogo'
 import type { HeroSectionProps } from './types'
 
 export function HeroSection({ data }: HeroSectionProps) {
-  const [drawing, setDrawing] = useState(0)
-  const [outline, setOutline] = useState(false)
-  const artRef = useRef<HTMLDivElement>(null)
-  function moveSignature(event: PointerEvent<HTMLDivElement>) {
-    if (
-      event.pointerType !== 'mouse' ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    )
-      return
-    const bounds = event.currentTarget.getBoundingClientRect()
-    artRef.current?.style.setProperty(
-      '--pointer-x',
-      `${(event.clientX - bounds.left - bounds.width / 2) * 0.025}px`,
-    )
-    artRef.current?.style.setProperty(
-      '--pointer-y',
-      `${(event.clientY - bounds.top - bounds.height / 2) * 0.025}px`,
-    )
-  }
-  function resetPosition() {
-    artRef.current?.style.setProperty('--pointer-x', '0px')
-    artRef.current?.style.setProperty('--pointer-y', '0px')
-  }
   return (
     <section id="home" className="hero page-width" aria-labelledby="hero-title">
       <div className="hero-topline">
@@ -73,11 +48,7 @@ export function HeroSection({ data }: HeroSectionProps) {
             ))}
           </div>
         </div>
-        <div
-          className={`signature-stage ${outline ? 'is-outline' : ''}`}
-          onPointerMove={moveSignature}
-          onPointerLeave={resetPosition}
-        >
+        <div className="signature-stage">
           <div className="stage-top">
             <span>THE PERSONAL TOUCH</span>
             <span aria-hidden="true">↙</span>
@@ -87,23 +58,12 @@ export function HeroSection({ data }: HeroSectionProps) {
             <span />
             <span />
           </div>
-          <div className="signature-art" ref={artRef}>
-            <Signature key={drawing} animated />
-            <Signature className="signature-ghost" />
-          </div>
+          <TurbulentShearLogo />
           <div className="stage-caption">
             <span>A signature. Written in code.</span>
             <span className="stage-coordinate" aria-hidden="true">
               TSF — 01
             </span>
-          </div>
-          <div className="stage-controls">
-            <button onClick={() => setDrawing(drawing + 1)}>
-              <RotateCcw size={14} /> Replay signature
-            </button>
-            <button aria-pressed={outline} onClick={() => setOutline(!outline)}>
-              {outline ? '●' : '○'} Outline
-            </button>
           </div>
         </div>
       </div>
