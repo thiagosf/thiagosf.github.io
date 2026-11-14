@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react'
 
 import { Signature } from './Signature'
+import {
+  getParticleMorph,
+  hashParticle,
+  traceParticleMorph,
+} from './particleMorph'
 import './turbulent-shear-logo.css'
 
 interface Particle {
@@ -16,33 +21,7 @@ interface Particle {
 
 const clamp = (value: number, min = 0, max = 1) =>
   Math.max(min, Math.min(max, value))
-const hash = (seed: number, salt: number) => {
-  const value =
-    Math.sin((seed + 1) * 127.1 + (salt + 1) * 311.7) * 43758.5453123
-  return value - Math.floor(value)
-}
-const shapes = ['circle', 'square', 'triangle', 'rectangle'] as const
-const rays = Array.from({ length: 16 }, (_, i) => (i / 16) * Math.PI * 2)
-const radii = shapes.map((shape) =>
-  rays.map((angle) => {
-    if (shape === 'circle') return 1
-    if (shape === 'rectangle') {
-      return (
-        Math.min(
-          1 / Math.max(0.0001, Math.abs(Math.cos(angle))),
-          0.68 / Math.max(0.0001, Math.abs(Math.sin(angle))),
-        ) / Math.hypot(1, 0.68)
-      )
-    }
-    const sides = shape === 'square' ? 4 : 3
-    const sector = (Math.PI * 2) / sides
-    const normal = shape === 'square' ? 0 : -Math.PI / 6
-    const offset =
-      ((((angle - normal + sector / 2) % sector) + sector) % sector) -
-      sector / 2
-    return Math.cos(Math.PI / sides) / Math.cos(offset)
-  }),
-)
+const hash = hashParticle
 
 /** The turbulent shear field from the motion specimen sheet. */
 export function TurbulentShearLogo() {
@@ -90,11 +69,13 @@ export function TurbulentShearLogo() {
       ctx.fillStyle = getComputedStyle(root!).color
       for (const p of particles) {
         const distance = Math.hypot(p.x - pointer.x, p.y - pointer.y)
-        const radius = Math.min(
+        const influenceRadius = Math.min(
           112,
           Math.max(78, Math.min(width, height) * 0.62),
         )
-        const edge = clamp((distance - radius * 0.28) / (radius * 0.72))
+        const edge = clamp(
+          (distance - influenceRadius * 0.28) / (influenceRadius * 0.72),
+        )
         const intensity =
           active && !reduced.matches ? 1 - edge * edge * (3 - 2 * edge) : 0
         if (intensity < 0.01) {
@@ -103,15 +84,7 @@ export function TurbulentShearLogo() {
           ctx.fill()
           continue
         }
-        const duration = 0.48 + 0.28 * hash(p.seed, 12)
-        const cycle = duration + 0.15 + 0.45 * hash(p.seed, 13)
-        const clock = time / 1000 + 0.38 * hash(p.seed, 11)
-        const index = Math.floor(clock / cycle)
-        const blend = clamp((clock - index * cycle) / duration)
-        const ease = blend * blend * (3 - 2 * blend)
-        const step = hash(p.seed, 14) < 0.5 ? 1 : 3
-        const from = ((((index - 1) * step) % 4) + 4) % 4
-        const to = (index * step) % 4
+        const morph = getParticleMorph(p.seed, time / 1000)
         const size =
           1 +
           0.16 *
@@ -121,19 +94,16 @@ export function TurbulentShearLogo() {
                 hash(p.seed, 16) * Math.PI * 2,
             ) *
             intensity
-        ctx.beginPath()
-        rays.forEach((angle, vertex) => {
-          const animated =
-            radii[from][vertex] +
-            (radii[to][vertex] - radii[from][vertex]) * ease
-          const r = p.radius * size * (1 + (animated - 1) * intensity)
-          const x = p.x + Math.cos(angle) * r,
-            y = p.y + Math.sin(angle) * r
-          if (vertex === 0) ctx.moveTo(x, y)
-          else ctx.lineTo(x, y)
-        })
-        ctx.closePath()
-        ctx.fill()
+        traceParticleMorph(
+          ctx,
+          p.x,
+          p.y,
+          p.radius * size,
+          morph.from,
+          morph.to,
+          morph.blend,
+          intensity,
+        )
       }
     }
 

@@ -22,35 +22,42 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
   padding: 24px;
   background: var(--color-paper);
-  color: var(--color-ink);
-}
-.portfolio-loader__mark {
-  width: min(68vw, 300px);
   color: var(--color-accent);
 }
-.portfolio-loader__mark .signature {
+.portfolio-loader__particles {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.portfolio-loader__mark path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: calc(1 - var(--logo-progress));
-  transition: stroke-dashoffset 320ms var(--ease-out);
+.portfolio-loader__geometry {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(58vw, 300px);
+  height: auto;
+  overflow: visible;
+  color: var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
 }
-.portfolio-loader__progress {
-  display: flex;
-  width: min(68vw, 300px);
-  justify-content: space-between;
-  gap: 24px;
-  font-size: 11px;
-  color: var(--color-muted);
+.portfolio-loader__particles + .portfolio-loader__geometry {
+  transform: translate(-50%, -50%);
 }
-.portfolio-loader__percent {
-  color: var(--color-ink);
-  font-variant-numeric: tabular-nums;
+.portfolio-loader__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 body {
   margin: 0;
@@ -1297,8 +1304,11 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .portfolio-loader__mark path {
-    transition: none;
+  .portfolio-loader__particles {
+    display: none;
+  }
+  .portfolio-loader__geometry {
+    opacity: 1;
   }
   .studio *,
   .studio *::before,

@@ -2,7 +2,7 @@ import Lenis from 'lenis'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import 'lenis/dist/lenis.css'
 
 import { AppShell } from './components/shell'
@@ -36,13 +36,14 @@ function App() {
   const root = useRef<HTMLDivElement>(null)
   const resourcesReadyRef = useRef(false)
   const preparedEntranceRef = useRef<HTMLElement[]>([])
+  const initialViewportTargetsRef = useRef<HTMLElement[]>([])
   const [progress, setProgress] = useState(0)
-  const [assetsReady, setAssetsReady] = useState(false)
+  const [resourcesReady, setResourcesReady] = useState(false)
+  const [loaderFillComplete, setLoaderFillComplete] = useState(false)
+  const assetsReady = resourcesReady && loaderFillComplete
 
   useEffect(() => {
     let active = true
-    let releaseFrame = 0
-    let releaseFallback = 0
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     )
@@ -53,34 +54,26 @@ function App() {
     })
     const prepareInitialEntrance = () => {
       if (
-        preparedEntranceRef.current.length ||
         !window.matchMedia('(prefers-reduced-motion: no-preference)').matches ||
         document.visibilityState !== 'visible' ||
         !root.current
       ) {
         return
       }
-      preparedEntranceRef.current = Array.from(
+      const allTargets = Array.from(
         root.current.querySelectorAll<HTMLElement>(MOTION_TARGETS),
-      ).filter((target) => {
+      )
+      initialViewportTargetsRef.current = allTargets.filter((target) => {
         const bounds = target.getBoundingClientRect()
         return bounds.bottom > 0 && bounds.top < window.innerHeight
       })
+      preparedEntranceRef.current = allTargets
       gsap.set(preparedEntranceRef.current, {
         autoAlpha: 0,
-        y: 10,
+        y: 30,
         scale: 0.98,
         transformOrigin: 'center center',
       })
-    }
-    const completeLoader = () => {
-      if (!active || !resourcesReadyRef.current) return
-      if (releaseFrame) window.cancelAnimationFrame(releaseFrame)
-      if (releaseFallback) window.clearTimeout(releaseFallback)
-      releaseFrame = 0
-      releaseFallback = 0
-      prepareInitialEntrance()
-      setAssetsReady(true)
     }
     const onPreferenceChange = () => {
       if (reducedMotion.matches) {
@@ -88,7 +81,8 @@ function App() {
           clearProps: 'opacity,visibility,transform',
         })
         preparedEntranceRef.current = []
-        completeLoader()
+        initialViewportTargetsRef.current = []
+        if (resourcesReadyRef.current) setLoaderFillComplete(true)
       }
     }
     reducedMotion.addEventListener('change', onPreferenceChange)
@@ -97,17 +91,18 @@ function App() {
       if (!active || result === 'cancelled') return
       resourcesReadyRef.current = true
       setProgress(1)
-      releaseFrame = window.requestAnimationFrame(() => {
-        prepareInitialEntrance()
-        releaseFrame = window.requestAnimationFrame(completeLoader)
-      })
-      releaseFallback = window.setTimeout(completeLoader, 1200)
+      prepareInitialEntrance()
+      setResourcesReady(true)
+      if (
+        reducedMotion.matches ||
+        document.visibilityState !== 'visible'
+      ) {
+        setLoaderFillComplete(true)
+      }
     })
 
     return () => {
       active = false
-      if (releaseFrame) window.cancelAnimationFrame(releaseFrame)
-      if (releaseFallback) window.clearTimeout(releaseFallback)
       readiness.cancel()
       reducedMotion.removeEventListener('change', onPreferenceChange)
     }
@@ -149,19 +144,27 @@ function App() {
       let revealFallback = 0
 
       const setupScrollArrivals = () => {
-        const visible = targets.filter((target) => {
-          const bounds = target.getBoundingClientRect()
-          return bounds.bottom > 0 && bounds.top < window.innerHeight
-        })
-        const belowViewport = targets.filter(
-          (target) => target.getBoundingClientRect().top >= window.innerHeight,
-        )
+        if (document.visibilityState !== 'visible') {
+          gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
+          preparedEntranceRef.current = []
+          initialViewportTargetsRef.current = []
+          return
+        }
+        const visible = initialViewportTargetsRef.current.length
+          ? initialViewportTargetsRef.current
+          : targets.filter((target) => {
+              const bounds = target.getBoundingClientRect()
+              return bounds.bottom > 0 && bounds.top < window.innerHeight
+            })
+        const visibleSet = new Set(visible)
+        const belowViewport = targets.filter((target) => !visibleSet.has(target))
 
-        belowViewport.forEach((target) => {
+        const scrollTweens = belowViewport.map((target) =>
           gsap.fromTo(
             target,
-            { y: 10, scale: 0.98 },
+            { autoAlpha: 0, y: 30, scale: 0.98 },
             {
+              autoAlpha: 1,
               y: 0,
               scale: 1,
               ease: 'none',
@@ -170,34 +173,33 @@ function App() {
                 trigger: target,
                 start: 'top 90%',
                 end: 'top 62%',
-                scrub: 0.35,
+                scrub: 0.55,
                 invalidateOnRefresh: true,
               },
             },
-          )
-        })
+          ),
+        )
 
-        const entranceTargets = preparedEntranceRef.current.length
-          ? preparedEntranceRef.current
-          : visible
+        const entranceTargets = visible
         const shouldAnimateEntrance =
           document.visibilityState === 'visible' && visible.length > 0
         const entrance = shouldAnimateEntrance
           ? gsap.fromTo(
               entranceTargets,
-              { autoAlpha: 0, y: 10, scale: 0.98 },
+              { autoAlpha: 0, y: 30, scale: 0.98 },
               {
                 autoAlpha: 1,
                 y: 0,
                 scale: 1,
-                duration: 0.62,
-                stagger: 0.055,
+                duration: 1.15,
+                stagger: 0.085,
                 ease: 'power3.out',
                 immediateRender: false,
                 clearProps: 'opacity,visibility,transform',
                 onComplete: () => {
                   window.clearTimeout(revealFallback)
                   preparedEntranceRef.current = []
+                  initialViewportTargetsRef.current = []
                 },
               },
             )
@@ -205,22 +207,22 @@ function App() {
         if (shouldAnimateEntrance) {
           revealFallback = window.setTimeout(() => {
             entrance?.kill()
-            gsap.set(entranceTargets, {
-              clearProps: 'opacity,visibility,transform',
-            })
+            scrollTweens.forEach((tween) => tween.scrollTrigger?.kill())
+            gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
             preparedEntranceRef.current = []
-          }, 1200)
+            initialViewportTargetsRef.current = []
+          }, 3000)
         }
 
         const refresh = () => ScrollTrigger.refresh()
         const handleVisibilityChange = () => {
           if (document.visibilityState !== 'hidden') return
           entrance?.kill()
+          scrollTweens.forEach((tween) => tween.scrollTrigger?.kill())
           window.clearTimeout(revealFallback)
-          gsap.set(entranceTargets, {
-            clearProps: 'opacity,visibility,transform',
-          })
+          gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
           preparedEntranceRef.current = []
+          initialViewportTargetsRef.current = []
         }
         document.addEventListener('toggle', refresh, true)
         document.addEventListener('visibilitychange', handleVisibilityChange)
@@ -228,17 +230,19 @@ function App() {
         return () => {
           window.clearTimeout(revealFallback)
           entrance?.kill()
+          scrollTweens.forEach((tween) => tween.scrollTrigger?.kill())
           document.removeEventListener('toggle', refresh, true)
           document.removeEventListener('visibilitychange', handleVisibilityChange)
-          gsap.set(entranceTargets, {
-            clearProps: 'opacity,visibility,transform',
-          })
+          gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
           preparedEntranceRef.current = []
+          initialViewportTargetsRef.current = []
         }
       }
 
       const setupReducedMotion = () => {
         gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
+        preparedEntranceRef.current = []
+        initialViewportTargetsRef.current = []
       }
 
       media.add(
@@ -260,6 +264,10 @@ function App() {
     },
     { scope: root, dependencies: [assetsReady], revertOnUpdate: true },
   )
+
+  const handleLoaderFillComplete = useCallback(() => {
+    setLoaderFillComplete(true)
+  }, [])
 
   useEffect(() => {
     if (!assetsReady) return
@@ -308,6 +316,7 @@ function App() {
       {!assetsReady && (
         <PortfolioLoader
           progress={progress}
+          onAnimationComplete={handleLoaderFillComplete}
         />
       )}
     </div>
