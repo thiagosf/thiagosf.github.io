@@ -7,6 +7,7 @@ import {
 } from './particleMorph'
 import {
   createWindParticleLaunch,
+  getParticleSamplingBounds,
   getRelativeParticleRadiusScale,
   getWindParticlePosition,
   sampleSignatureParticles,
@@ -21,6 +22,9 @@ interface PortfolioLoaderProps {
 const ANIMATION_DURATION = 1.75
 const SETTLED_HOLD_MS = 1000
 const FAIL_OPEN_MS = 4500
+const DOCK_DURATION_MS = 760
+const BACKDROP_EXIT_MS = 260
+const DOCK_DEADLINE_MS = 2400
 const clamp = (value: number, minimum = 0, maximum = 1) =>
   Math.max(minimum, Math.min(maximum, value))
 
@@ -62,18 +66,29 @@ export function PortfolioLoader({
     let completionScheduled = false
     let failOpen = 0
     let settledHold = 0
+    let dockStartedAt = 0
+    let dockSamples: ReturnType<typeof sampleSignatureParticles> = []
+    let dockFrame = 0
+    let dockProgress = 0
+    let dockDuration = DOCK_DURATION_MS
+    let handoffDeadline = 0
     const completionFrames: number[] = []
 
-    const draw = (progressValue: number, timeSeconds: number) => {
+    const draw = (progressValue: number, timeSeconds: number, dockProgress = 0) => {
       context.clearRect(0, 0, width, height)
       context.fillStyle = getComputedStyle(root).color
-      for (const particle of particles) {
+      particles.forEach((particle, index) => {
         const position = getWindParticlePosition(particle, progressValue)
+        const destination = dockSamples[index]
+        const easedDock = dockProgress * dockProgress * (3 - 2 * dockProgress)
+        const x = destination ? position.x + (destination.homeX - position.x) * easedDock : position.x
+        const y = destination ? position.y + (destination.homeY - position.y) * easedDock : position.y
+        const radius = destination ? particle.radius + (destination.radius - particle.radius) * easedDock : particle.radius
         if (progressValue >= 1) {
           context.beginPath()
-          context.arc(particle.homeX, particle.homeY, particle.radius, 0, Math.PI * 2)
+          context.arc(x, y, radius, 0, Math.PI * 2)
           context.fill()
-          continue
+          return
         }
 
         const morph = getParticleMorph(particle.seed, timeSeconds)
@@ -92,15 +107,15 @@ export function PortfolioLoader({
 
         traceParticleMorph(
           context,
-          position.x,
-          position.y,
-          particle.radius * size,
+          x,
+          y,
+          radius * size,
           morph.from,
           morph.to,
           morph.blend,
           morphIntensity,
         )
-      }
+      })
     }
 
     const finish = () => {
@@ -110,14 +125,99 @@ export function PortfolioLoader({
       frame = 0
       window.clearTimeout(failOpen)
       window.clearTimeout(settledHold)
+      window.clearTimeout(handoffDeadline)
+      window.cancelAnimationFrame(dockFrame)
       onCompleteRef.current()
+    }
+
+    const animateDock = (time: number) => {
+      if (completed) return
+      dockProgress = dockDuration === 0
+        ? 1
+        : clamp((time - dockStartedAt) / dockDuration)
+      draw(1, time / 1000, dockProgress)
+      if (dockProgress < 1) {
+        dockFrame = window.requestAnimationFrame(animateDock)
+        return
+      }
+      particles.forEach((particle, index) => {
+        const destination = dockSamples[index]
+        if (!destination) return
+        particle.homeX = destination.homeX
+        particle.homeY = destination.homeY
+        particle.radius = destination.radius
+      })
+      dockSamples = []
+      draw(1, time / 1000)
+      root.dataset.docked = 'true'
+      settledHold = window.setTimeout(finish, BACKDROP_EXIT_MS)
+    }
+
+    const scheduleDockAnimation = () => {
+      dockStartedAt = performance.now()
+      dockFrame = window.requestAnimationFrame(animateDock)
+    }
+
+    const sampleHeroDestination = () => {
+      const heroGeometry = document.querySelector<SVGSVGElement>(
+        '.turbulent-shear-logo > .signature',
+      )
+      const heroRoot = heroGeometry?.closest<HTMLElement>(
+        '.turbulent-shear-logo',
+      )
+      if (!heroGeometry || !heroRoot || !heroGeometry.clientWidth || !width || !height) {
+        return []
+      }
+      return sampleSignatureParticles(
+        [...heroGeometry.querySelectorAll('path')],
+        { left: 0, top: 0, width: heroRoot.getBoundingClientRect().width },
+      )
+    }
+
+    const scheduleDockAfterSettledHold = () => {
+      const destination = sampleHeroDestination()
+      if (destination.length !== particles.length) {
+        finish()
+        return
+      }
+      dockSamples = destination
+      root.dataset.holdStartedAt = String(performance.now())
+      settledHold = window.setTimeout(dockToHero, SETTLED_HOLD_MS)
+    }
+
+    const dockToHero = () => {
+      const heroGeometry = document.querySelector<SVGSVGElement>(
+        '.turbulent-shear-logo > .signature',
+      )
+      const heroRoot = heroGeometry?.closest<HTMLElement>(
+        '.turbulent-shear-logo',
+      )
+      if (!heroGeometry || !heroRoot || !heroGeometry.clientWidth || !width || !height) {
+        finish()
+        return
+      }
+      const destination = dockSamples.length === particles.length
+        ? dockSamples
+        : sampleHeroDestination()
+      if (destination.length !== particles.length) {
+        finish()
+        return
+      }
+      dockSamples = destination
+      root.dataset.docking = 'true'
+      dockProgress = 0
+      dockDuration = reducedMotion.matches ? 0 : DOCK_DURATION_MS
+      if (!handoffDeadline) {
+        handoffDeadline = window.setTimeout(finish, DOCK_DEADLINE_MS)
+      }
+      scheduleDockAnimation()
     }
 
     const finishAfterSettledFrames = () => {
       if (completionScheduled || completed) return
       completionScheduled = true
       const secondFrame = () => {
-        settledHold = window.setTimeout(finish, SETTLED_HOLD_MS)
+        scheduleDockAfterSettledHold()
       }
       completionFrames.push(window.requestAnimationFrame(secondFrame))
     }
@@ -155,7 +255,7 @@ export function PortfolioLoader({
         elapsed = ANIMATION_DURATION * readinessCap
         draw(readinessCap, performance.now() / 1000)
         if (readinessCap >= 1 && !settledHold) {
-          settledHold = window.setTimeout(finish, SETTLED_HOLD_MS)
+          scheduleDockAfterSettledHold()
         }
         return
       }
@@ -173,7 +273,7 @@ export function PortfolioLoader({
           frame = 0
           elapsed = ANIMATION_DURATION
           draw(1, performance.now() / 1000)
-          settledHold = window.setTimeout(finish, SETTLED_HOLD_MS)
+          scheduleDockAfterSettledHold()
         }, FAIL_OPEN_MS)
       }
       if (frame) return
@@ -196,6 +296,15 @@ export function PortfolioLoader({
       const referenceSignature = document.querySelector<SVGSVGElement>(
         '.turbulent-shear-logo > .signature',
       )
+      const referenceRoot = referenceSignature?.closest<HTMLElement>(
+        '.turbulent-shear-logo',
+      )
+      const samplingBounds = getParticleSamplingBounds(
+        box,
+        referenceRoot
+          ? referenceRoot.getBoundingClientRect().width
+          : box.width,
+      )
       const radiusScale = referenceSignature
         ? getRelativeParticleRadiusScale(
             geometry.clientWidth,
@@ -204,9 +313,10 @@ export function PortfolioLoader({
         : 1
       particles = sampleSignatureParticles(
         [...geometry.querySelectorAll('path')],
-        box,
+        samplingBounds,
         { radiusScale },
       ).map((sample) => createWindParticleLaunch(sample, width, height))
+      dockSamples = []
       root.dataset.particleCount = String(particles.length)
       draw(elapsed / ANIMATION_DURATION, performance.now() / 1000)
       start()
@@ -230,15 +340,72 @@ export function PortfolioLoader({
       window.cancelAnimationFrame(frame)
       frame = 0
       lastFrame = 0
+      if (reducedMotion.matches && root.dataset.docking === 'true') {
+        window.cancelAnimationFrame(dockFrame)
+        dockToHero()
+        return
+      }
       start()
+    }
+    const onResize = () => {
+      if (root.dataset.docking !== 'true') {
+        measure()
+        return
+      }
+      if (root.dataset.docked === 'true') {
+        finish()
+        return
+      }
+
+      const eased = dockProgress * dockProgress * (3 - 2 * dockProgress)
+      particles = particles.map((particle, index) => {
+        const target = dockSamples[index]
+        return {
+          ...particle,
+          homeX: particle.homeX + ((target?.homeX ?? particle.homeX) - particle.homeX) * eased,
+          homeY: particle.homeY + ((target?.homeY ?? particle.homeY) - particle.homeY) * eased,
+          radius: particle.radius + ((target?.radius ?? particle.radius) - particle.radius) * eased,
+          startX: particle.homeX,
+          startY: particle.homeY,
+        }
+      })
+      width = root.getBoundingClientRect().width
+      height = root.getBoundingClientRect().height
+      ratio = Math.min(window.devicePixelRatio || 1, width < 520 ? 1.5 : 2)
+      canvas.width = Math.round(width * ratio)
+      canvas.height = Math.round(height * ratio)
+      context.setTransform(ratio, 0, 0, ratio, 0, 0)
+      const heroGeometry = document.querySelector<SVGSVGElement>(
+        '.turbulent-shear-logo > .signature',
+      )
+      const heroRoot = heroGeometry?.closest<HTMLElement>('.turbulent-shear-logo')
+      if (!heroGeometry || !heroRoot) {
+        finish()
+        return
+      }
+      dockSamples = sampleSignatureParticles(
+        [...heroGeometry.querySelectorAll('path')],
+        { left: 0, top: 0, width: heroRoot.getBoundingClientRect().width },
+      )
+      if (dockSamples.length !== particles.length) {
+        finish()
+        return
+      }
+      window.cancelAnimationFrame(dockFrame)
+      window.clearTimeout(settledHold)
+      root.dataset.docked = 'false'
+      dockProgress = 0
+      dockDuration = reducedMotion.matches ? 0 : 350
+      draw(1, performance.now() / 1000)
+      scheduleDockAnimation()
     }
 
     animationStartRef.current = start
     measure()
     const observer =
-      typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(measure)
+      typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(onResize)
     observer?.observe(root)
-    window.addEventListener('resize', measure)
+    window.addEventListener('resize', onResize)
     document.addEventListener('visibilitychange', onVisibilityChange)
     reducedMotion.addEventListener('change', onPreferenceChange)
     return () => {
@@ -248,8 +415,10 @@ export function PortfolioLoader({
       )
       window.clearTimeout(failOpen)
       window.clearTimeout(settledHold)
+      window.clearTimeout(handoffDeadline)
       observer?.disconnect()
-      window.removeEventListener('resize', measure)
+      window.cancelAnimationFrame(dockFrame)
+      window.removeEventListener('resize', onResize)
       document.removeEventListener('visibilitychange', onVisibilityChange)
       reducedMotion.removeEventListener('change', onPreferenceChange)
       animationStartRef.current = () => {}

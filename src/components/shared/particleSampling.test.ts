@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
   createWindParticleLaunch,
+  getParticleSamplingBounds,
   getRelativeParticleRadiusScale,
   getWindParticlePosition,
   sampleSignatureParticles,
@@ -34,6 +35,26 @@ afterEach(() => {
 })
 
 describe('signature particle sampling and assembly', () => {
+  it('reads DOMRect accessor fields explicitly so sampled positions stay finite', () => {
+    vi.stubGlobal('DOMPoint', TestDOMPoint)
+    const inheritedRect = Object.create({
+      left: 24,
+      top: 36,
+      width: 800,
+    }) as DOMRect
+    const bounds = getParticleSamplingBounds(inheritedRect, 360)
+    const samples = sampleSignatureParticles(
+      [createStraightSignaturePath(360)],
+      bounds,
+    )
+
+    expect(bounds).toEqual({ left: 24, top: 36, width: 360 })
+    expect(samples.length).toBeGreaterThan(0)
+    expect(samples.every(({ homeX, homeY }) =>
+      Number.isFinite(homeX) && Number.isFinite(homeY),
+    )).toBe(true)
+  })
+
   it('repeats the hero sampling seed, radii, and point layout deterministically', () => {
     vi.stubGlobal('DOMPoint', TestDOMPoint)
     const path = createStraightSignaturePath(360)

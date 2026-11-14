@@ -23,8 +23,18 @@ html {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: var(--color-paper);
+  background: transparent;
   color: var(--color-accent);
+}
+.portfolio-loader::before {
+  position: absolute;
+  inset: 0;
+  background: var(--color-paper);
+  content: '';
+  transition: opacity 260ms ease-out;
+}
+.portfolio-loader[data-docked='true']::before {
+  opacity: 0;
 }
 .portfolio-loader__particles {
   position: absolute;
@@ -33,7 +43,9 @@ html {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
+.portfolio-loader__geometry { z-index: 0; }
 .portfolio-loader__geometry {
   position: absolute;
   top: 50%;

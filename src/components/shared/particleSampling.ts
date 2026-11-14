@@ -17,6 +17,17 @@ export interface SignatureParticleSamplingOptions {
   radiusScale?: number
 }
 
+export function getParticleSamplingBounds(
+  bounds: Pick<DOMRect, 'left' | 'top'>,
+  samplingWidth: number,
+): SignatureParticleBounds {
+  return {
+    left: bounds.left,
+    top: bounds.top,
+    width: samplingWidth,
+  }
+}
+
 export interface WindParticleLaunch extends SignatureParticleSample {
   startX: number
   startY: number

@@ -17,7 +17,6 @@ const MOTION_TARGETS = [
   '.site-header > nav',
   '.hero-topline > *',
   '.hero-copy > *',
-  '.signature-stage',
   '.hero-bottom > *',
   '.experience-section .section-intro',
   '.experience-item',
