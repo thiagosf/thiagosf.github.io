@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import heroData from '../../../../data/hero-data.json'
@@ -8,21 +8,19 @@ describe('HeroSection', () => {
   const normalizeText = (text: string | null | undefined) =>
     text?.replace(/\u00a0/g, ' ').trim()
 
-  it('uses the standalone turbulent shear logo without a replay control', () => {
+  it('exposes the logo as an image without a replay button', () => {
     render(<HeroSection data={heroData} />)
 
-    const logo = screen.getByRole('button', { name: /Turbulent shear logo/i })
+    const logo = screen.getByRole('img', {
+      name: /Thiago Silva Ferreira.*Hover on desktop or drag on touch/i,
+    })
     expect(logo.querySelectorAll('path')).toHaveLength(2)
     expect(logo.querySelector('canvas')).toHaveAttribute('aria-hidden', 'true')
     expect(logo.querySelector('.signature-animated')).not.toBeInTheDocument()
 
-    fireEvent.click(logo)
     expect(logo.querySelector('svg')).toBeInTheDocument()
     expect(
-      screen.queryByRole('button', { name: /Replay signature/i }),
-    ).not.toBeInTheDocument()
-    expect(
-      screen.queryByRole('button', { name: /Outline/i }),
+      screen.queryByRole('button', { name: /logo|signature|replay|outline/i }),
     ).not.toBeInTheDocument()
   })
 

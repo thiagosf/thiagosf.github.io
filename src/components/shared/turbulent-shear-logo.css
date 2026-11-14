@@ -7,7 +7,6 @@
   background: transparent;
   color: var(--color-accent);
   transform: none;
-  cursor: pointer;
   touch-action: pan-y;
 }
 
