@@ -1,4 +1,5 @@
 import type { Experience } from '../../../types/experience'
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 
 interface ExperienceItemProps {
   experience: Experience
@@ -33,8 +34,8 @@ export function ExperienceItem({
           <span className="experience-role">{experience.role}</span>
         </span>
         <span className="experience-period">{experience.period}</span>
-        <span className="expand-symbol" aria-hidden="true">
-          +
+        <span className="expand-symbol">
+          <SiteIcon name="plus" size={22} />
         </span>
       </summary>
       <div className="experience-detail">
