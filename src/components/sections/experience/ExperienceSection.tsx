@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import heroData from '../../../data/hero-data.json'
 import type { ExperienceSectionProps } from '../../../types/experience'
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 import { ExperienceItem } from './ExperienceItem'
 
 export function ExperienceSection({
@@ -30,7 +31,7 @@ export function ExperienceSection({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Full timeline on LinkedIn ↗
+          Full timeline on LinkedIn <SiteIcon name="arrow-up-right" />
         </a>
       </div>
       <div className="experience-list">

@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 
 import type { Project } from '../../../types/projects'
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 
 export function ProjectCard({
   project,
@@ -29,7 +30,9 @@ export function ProjectCard({
           </span>
           {artwork === 0 ? (
             <div className="game-art" aria-hidden="true">
-              <span className="pixel-spark">✳</span>
+              <span className="pixel-spark">
+                <SiteIcon name="asterisk" size={115} />
+              </span>
               <strong>
                 huhu<span>games</span>
               </strong>
@@ -43,7 +46,9 @@ export function ProjectCard({
                 <br />
                 Presente<span>!</span>
               </strong>
-              <span className="gift-star">✳</span>
+              <span className="gift-star">
+                <SiteIcon name="asterisk" size={70} />
+              </span>
             </div>
           )}
           <span className="art-footer">

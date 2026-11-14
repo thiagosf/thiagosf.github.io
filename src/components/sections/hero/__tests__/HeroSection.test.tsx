@@ -8,6 +8,19 @@ describe('HeroSection', () => {
   const normalizeText = (text: string | null | undefined) =>
     text?.replace(/\u00a0/g, ' ').trim()
 
+  it('renders the decorative signature marker as an SVG instead of a font glyph', () => {
+    const { container } = render(<HeroSection data={heroData} />)
+    const marker = container.querySelector('.stage-top > span[aria-hidden="true"]')
+    const icon = marker?.querySelector('svg')
+
+    expect(marker).not.toHaveTextContent('↙')
+    expect(icon).toHaveAttribute('aria-hidden', 'true')
+    expect(icon).toHaveAttribute('focusable', 'false')
+    expect(icon).toHaveAttribute('width', '1em')
+    expect(icon).toHaveAttribute('height', '1em')
+    expect(icon?.querySelector('path')).toHaveAttribute('d', 'M17 7 7 17')
+  })
+
   it('exposes the logo as an image without a replay button', () => {
     render(<HeroSection data={heroData} />)
 

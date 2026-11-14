@@ -1,6 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 import { Signature } from './Signature'
+import {
+  getParticleMorph,
+  hashParticle,
+  traceParticleMorph,
+} from './particleMorph'
+import { sampleSignatureParticles } from './particleSampling'
 import './turbulent-shear-logo.css'
 
 interface Particle {
@@ -16,33 +22,7 @@ interface Particle {
 
 const clamp = (value: number, min = 0, max = 1) =>
   Math.max(min, Math.min(max, value))
-const hash = (seed: number, salt: number) => {
-  const value =
-    Math.sin((seed + 1) * 127.1 + (salt + 1) * 311.7) * 43758.5453123
-  return value - Math.floor(value)
-}
-const shapes = ['circle', 'square', 'triangle', 'rectangle'] as const
-const rays = Array.from({ length: 16 }, (_, i) => (i / 16) * Math.PI * 2)
-const radii = shapes.map((shape) =>
-  rays.map((angle) => {
-    if (shape === 'circle') return 1
-    if (shape === 'rectangle') {
-      return (
-        Math.min(
-          1 / Math.max(0.0001, Math.abs(Math.cos(angle))),
-          0.68 / Math.max(0.0001, Math.abs(Math.sin(angle))),
-        ) / Math.hypot(1, 0.68)
-      )
-    }
-    const sides = shape === 'square' ? 4 : 3
-    const sector = (Math.PI * 2) / sides
-    const normal = shape === 'square' ? 0 : -Math.PI / 6
-    const offset =
-      ((((angle - normal + sector / 2) % sector) + sector) % sector) -
-      sector / 2
-    return Math.cos(Math.PI / sides) / Math.cos(offset)
-  }),
-)
+const hash = hashParticle
 
 /** The turbulent shear field from the motion specimen sheet. */
 export function TurbulentShearLogo() {
@@ -90,11 +70,13 @@ export function TurbulentShearLogo() {
       ctx.fillStyle = getComputedStyle(root!).color
       for (const p of particles) {
         const distance = Math.hypot(p.x - pointer.x, p.y - pointer.y)
-        const radius = Math.min(
+        const influenceRadius = Math.min(
           112,
           Math.max(78, Math.min(width, height) * 0.62),
         )
-        const edge = clamp((distance - radius * 0.28) / (radius * 0.72))
+        const edge = clamp(
+          (distance - influenceRadius * 0.28) / (influenceRadius * 0.72),
+        )
         const intensity =
           active && !reduced.matches ? 1 - edge * edge * (3 - 2 * edge) : 0
         if (intensity < 0.01) {
@@ -103,15 +85,7 @@ export function TurbulentShearLogo() {
           ctx.fill()
           continue
         }
-        const duration = 0.48 + 0.28 * hash(p.seed, 12)
-        const cycle = duration + 0.15 + 0.45 * hash(p.seed, 13)
-        const clock = time / 1000 + 0.38 * hash(p.seed, 11)
-        const index = Math.floor(clock / cycle)
-        const blend = clamp((clock - index * cycle) / duration)
-        const ease = blend * blend * (3 - 2 * blend)
-        const step = hash(p.seed, 14) < 0.5 ? 1 : 3
-        const from = ((((index - 1) * step) % 4) + 4) % 4
-        const to = (index * step) % 4
+        const morph = getParticleMorph(p.seed, time / 1000)
         const size =
           1 +
           0.16 *
@@ -121,19 +95,16 @@ export function TurbulentShearLogo() {
                 hash(p.seed, 16) * Math.PI * 2,
             ) *
             intensity
-        ctx.beginPath()
-        rays.forEach((angle, vertex) => {
-          const animated =
-            radii[from][vertex] +
-            (radii[to][vertex] - radii[from][vertex]) * ease
-          const r = p.radius * size * (1 + (animated - 1) * intensity)
-          const x = p.x + Math.cos(angle) * r,
-            y = p.y + Math.sin(angle) * r
-          if (vertex === 0) ctx.moveTo(x, y)
-          else ctx.lineTo(x, y)
-        })
-        ctx.closePath()
-        ctx.fill()
+        traceParticleMorph(
+          ctx,
+          p.x,
+          p.y,
+          p.radius * size,
+          morph.from,
+          morph.to,
+          morph.blend,
+          intensity,
+        )
       }
     }
 
@@ -207,71 +178,17 @@ export function TurbulentShearLogo() {
       width = box.width
       height = box.height
       if (!width || !height) return
-      const compact = width < 520
       const ratio = Math.min(window.devicePixelRatio || 1, 2)
       canvas!.width = Math.round(width * ratio)
       canvas!.height = Math.round(height * ratio)
       ctx!.setTransform(ratio, 0, 0, ratio, 0, 0)
-      let seed = 9143 + 8 * 7919
-      const random = () =>
-        (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296
-      particles = []
-      const offsets = compact
-        ? [-18, -9, 0, 9, 18]
-        : [-18, -12, -6, 0, 6, 12, 18]
-      const sampleSpacing = compact ? 9 : 7
-      for (const path of paths) {
-        const length = path.getTotalLength(),
-          matrix = path.getScreenCTM()
-        if (!matrix) continue
-        for (const offset of offsets) {
-          for (
-            let distance = -18.75;
-            distance <= length + 18.75;
-            distance += sampleSpacing
-          ) {
-            const at = clamp(distance, 0, length)
-            const before = path.getPointAtLength(Math.max(0, at - 1))
-            const after = path.getPointAtLength(Math.min(length, at + 1))
-            const tangentLength =
-              Math.hypot(after.x - before.x, after.y - before.y) || 1
-            const tx = (after.x - before.x) / tangentLength,
-              ty = (after.y - before.y) / tangentLength
-            const cap =
-              distance < 0
-                ? distance
-                : distance > length
-                  ? distance - length
-                  : 0
-            if (
-              cap &&
-              Math.abs(offset) > Math.sqrt(Math.max(0, 18.75 ** 2 - cap ** 2))
-            )
-              continue
-            const point = path.getPointAtLength(at)
-            const screen = new DOMPoint(
-              point.x + tx * cap - ty * offset,
-              point.y + ty * cap + tx * offset,
-            ).matrixTransform(matrix)
-            const x = screen.x - box.left,
-              y = screen.y - box.top
-            const radius = 1.25 + random() * 1.05
-            random() // Original particle angle.
-            const particleSeed = random()
-            random() // Original color selection.
-            particles.push({
-              homeX: x,
-              homeY: y,
-              x,
-              y,
-              vx: 0,
-              vy: 0,
-              radius,
-              seed: particleSeed,
-            })
-          }
-        }
-      }
+      particles = sampleSignatureParticles(paths, box).map((sample) => ({
+        ...sample,
+        x: sample.homeX,
+        y: sample.homeY,
+        vx: 0,
+        vy: 0,
+      }))
       root!.dataset.ready = String(particles.length > 0)
       root!.dataset.particleCount = String(particles.length)
       pointer = { x: width / 2, y: height / 2 }
