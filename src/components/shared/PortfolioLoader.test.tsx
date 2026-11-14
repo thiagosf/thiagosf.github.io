@@ -107,7 +107,10 @@ describe('PortfolioLoader', () => {
 
     expect(document.querySelector('.portfolio-loader')).toBeInTheDocument()
     expect(onAnimationComplete).not.toHaveBeenCalled()
-    act(() => vi.advanceTimersByTime(400))
+    act(() => vi.advanceTimersByTime(999))
+    expect(onAnimationComplete).not.toHaveBeenCalled()
+    expect(document.querySelector('.portfolio-loader')).toBeInTheDocument()
+    act(() => vi.advanceTimersByTime(1))
     expect(onAnimationComplete).toHaveBeenCalledTimes(1)
     expect(document.querySelector('.portfolio-loader')).not.toBeInTheDocument()
   })

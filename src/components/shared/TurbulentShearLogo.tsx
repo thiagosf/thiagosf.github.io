@@ -6,6 +6,7 @@ import {
   hashParticle,
   traceParticleMorph,
 } from './particleMorph'
+import { sampleSignatureParticles } from './particleSampling'
 import './turbulent-shear-logo.css'
 
 interface Particle {
@@ -177,71 +178,17 @@ export function TurbulentShearLogo() {
       width = box.width
       height = box.height
       if (!width || !height) return
-      const compact = width < 520
       const ratio = Math.min(window.devicePixelRatio || 1, 2)
       canvas!.width = Math.round(width * ratio)
       canvas!.height = Math.round(height * ratio)
       ctx!.setTransform(ratio, 0, 0, ratio, 0, 0)
-      let seed = 9143 + 8 * 7919
-      const random = () =>
-        (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296
-      particles = []
-      const offsets = compact
-        ? [-18, -9, 0, 9, 18]
-        : [-18, -12, -6, 0, 6, 12, 18]
-      const sampleSpacing = compact ? 9 : 7
-      for (const path of paths) {
-        const length = path.getTotalLength(),
-          matrix = path.getScreenCTM()
-        if (!matrix) continue
-        for (const offset of offsets) {
-          for (
-            let distance = -18.75;
-            distance <= length + 18.75;
-            distance += sampleSpacing
-          ) {
-            const at = clamp(distance, 0, length)
-            const before = path.getPointAtLength(Math.max(0, at - 1))
-            const after = path.getPointAtLength(Math.min(length, at + 1))
-            const tangentLength =
-              Math.hypot(after.x - before.x, after.y - before.y) || 1
-            const tx = (after.x - before.x) / tangentLength,
-              ty = (after.y - before.y) / tangentLength
-            const cap =
-              distance < 0
-                ? distance
-                : distance > length
-                  ? distance - length
-                  : 0
-            if (
-              cap &&
-              Math.abs(offset) > Math.sqrt(Math.max(0, 18.75 ** 2 - cap ** 2))
-            )
-              continue
-            const point = path.getPointAtLength(at)
-            const screen = new DOMPoint(
-              point.x + tx * cap - ty * offset,
-              point.y + ty * cap + tx * offset,
-            ).matrixTransform(matrix)
-            const x = screen.x - box.left,
-              y = screen.y - box.top
-            const radius = 1.25 + random() * 1.05
-            random() // Original particle angle.
-            const particleSeed = random()
-            random() // Original color selection.
-            particles.push({
-              homeX: x,
-              homeY: y,
-              x,
-              y,
-              vx: 0,
-              vy: 0,
-              radius,
-              seed: particleSeed,
-            })
-          }
-        }
-      }
+      particles = sampleSignatureParticles(paths, box).map((sample) => ({
+        ...sample,
+        x: sample.homeX,
+        y: sample.homeY,
+        vx: 0,
+        vy: 0,
+      }))
       root!.dataset.ready = String(particles.length > 0)
       root!.dataset.particleCount = String(particles.length)
       pointer = { x: width / 2, y: height / 2 }

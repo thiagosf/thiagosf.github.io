@@ -5,17 +5,13 @@ import {
   hashParticle,
   traceParticleMorph,
 } from './particleMorph'
+import {
+  createWindParticleLaunch,
+  getRelativeParticleRadiusScale,
+  getWindParticlePosition,
+  sampleSignatureParticles,
+} from './particleSampling'
 import { SignatureArtwork, SIGNATURE_VIEW_BOX } from './SignatureArtwork'
-
-interface Particle {
-  homeX: number
-  homeY: number
-  startX: number
-  startY: number
-  radius: number
-  seed: number
-  delay: number
-}
 
 interface PortfolioLoaderProps {
   progress: number
@@ -23,8 +19,8 @@ interface PortfolioLoaderProps {
 }
 
 const ANIMATION_DURATION = 1.75
-const SETTLED_HOLD_MS = 400
-const FAIL_OPEN_MS = 3200
+const SETTLED_HOLD_MS = 1000
+const FAIL_OPEN_MS = 4500
 const clamp = (value: number, minimum = 0, maximum = 1) =>
   Math.max(minimum, Math.min(maximum, value))
 
@@ -55,7 +51,7 @@ export function PortfolioLoader({
     }
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    let particles: Particle[] = []
+    let particles: ReturnType<typeof createWindParticleLaunch>[] = []
     let width = 0
     let height = 0
     let ratio = 1
@@ -71,35 +67,17 @@ export function PortfolioLoader({
     const draw = (progressValue: number, timeSeconds: number) => {
       context.clearRect(0, 0, width, height)
       context.fillStyle = getComputedStyle(root).color
-      const finalFrame = progressValue >= 1
-
       for (const particle of particles) {
-        const localProgress = clamp(
-          (progressValue - particle.delay * 0.18) /
-            (1 - particle.delay * 0.18),
-        )
-        const eased = 1 - Math.pow(1 - localProgress, 3)
-        const arc = Math.sin(localProgress * Math.PI)
-        const x =
-          particle.startX +
-          (particle.homeX - particle.startX) * eased
-        const y =
-          particle.startY +
-          (particle.homeY - particle.startY) * eased +
-          Math.sin(localProgress * Math.PI + particle.seed * 4) *
-            height *
-            0.065 *
-            arc
-
-        if (finalFrame) {
+        const position = getWindParticlePosition(particle, progressValue)
+        if (progressValue >= 1) {
           context.beginPath()
-          context.arc(x, y, particle.radius, 0, Math.PI * 2)
+          context.arc(particle.homeX, particle.homeY, particle.radius, 0, Math.PI * 2)
           context.fill()
           continue
         }
 
         const morph = getParticleMorph(particle.seed, timeSeconds)
-        const morphIntensity = Math.sin(localProgress * Math.PI)
+        const morphIntensity = Math.sin(position.progress * Math.PI)
         const size =
           1 +
           0.16 *
@@ -114,8 +92,8 @@ export function PortfolioLoader({
 
         traceParticleMorph(
           context,
-          x,
-          y,
+          position.x,
+          position.y,
           particle.radius * size,
           morph.from,
           morph.to,
@@ -128,6 +106,8 @@ export function PortfolioLoader({
     const finish = () => {
       if (completed) return
       completed = true
+      window.cancelAnimationFrame(frame)
+      frame = 0
       window.clearTimeout(failOpen)
       window.clearTimeout(settledHold)
       onCompleteRef.current()
@@ -144,7 +124,7 @@ export function PortfolioLoader({
 
     const tick = (time: number) => {
       frame = 0
-      if (document.hidden || reducedMotion.matches) return
+      if (completed || document.hidden || reducedMotion.matches) return
 
       const delta = Math.min(
         (time - (lastFrame || time - 16)) / 1000,
@@ -174,7 +154,9 @@ export function PortfolioLoader({
       if (reducedMotion.matches) {
         elapsed = ANIMATION_DURATION * readinessCap
         draw(readinessCap, performance.now() / 1000)
-        if (readinessCap >= 1) finish()
+        if (readinessCap >= 1 && !settledHold) {
+          settledHold = window.setTimeout(finish, SETTLED_HOLD_MS)
+        }
         return
       }
       if (document.hidden) {
@@ -187,9 +169,11 @@ export function PortfolioLoader({
       }
       if (readinessCap >= 1 && !failOpen) {
         failOpen = window.setTimeout(() => {
+          window.cancelAnimationFrame(frame)
+          frame = 0
           elapsed = ANIMATION_DURATION
           draw(1, performance.now() / 1000)
-          finish()
+          settledHold = window.setTimeout(finish, SETTLED_HOLD_MS)
         }, FAIL_OPEN_MS)
       }
       if (frame) return
@@ -209,67 +193,21 @@ export function PortfolioLoader({
       canvas.height = Math.round(height * ratio)
       context.setTransform(ratio, 0, 0, ratio, 0, 0)
 
-      const compact = width < 520
-      const offsets = compact
-        ? [-18.75, -9.375, 0, 9.375, 18.75]
-        : [-18.75, -12.5, -6.25, 0, 6.25, 12.5, 18.75]
-      const sampleSpacing = compact ? 24 : 21
-      let seed = 9143 + 11 * 7919
-      const random = () =>
-        (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296
-      particles = []
-
-      for (const path of geometry.querySelectorAll('path')) {
-        const pathLength = path.getTotalLength()
-        const matrix = path.getScreenCTM()
-        if (!matrix) continue
-
-        for (const offset of offsets) {
-          for (
-            let distance = -18.75;
-            distance <= pathLength + 18.75;
-            distance += sampleSpacing
-          ) {
-            const at = clamp(distance, 0, pathLength)
-            const before = path.getPointAtLength(Math.max(0, at - 1))
-            const after = path.getPointAtLength(Math.min(pathLength, at + 1))
-            const tangentLength =
-              Math.hypot(after.x - before.x, after.y - before.y) || 1
-            const tangentX = (after.x - before.x) / tangentLength
-            const tangentY = (after.y - before.y) / tangentLength
-            const cap =
-              distance < 0
-                ? distance
-                : distance > pathLength
-                  ? distance - pathLength
-                  : 0
-            if (
-              cap &&
-              Math.abs(offset) >
-                Math.sqrt(Math.max(0, 18.75 ** 2 - cap ** 2))
-            ) {
-              continue
-            }
-            const point = path.getPointAtLength(at)
-            const screenPoint = new DOMPoint(
-              point.x + tangentX * cap - tangentY * offset,
-              point.y + tangentY * cap + tangentX * offset,
-            ).matrixTransform(matrix)
-            const homeX = screenPoint.x - box.left
-            const homeY = screenPoint.y - box.top
-            const particleSeed = random()
-            particles.push({
-              homeX,
-              homeY,
-              startX: width + 36 + random() * width * 0.38,
-              startY: homeY + (random() - 0.5) * height * 0.58,
-              radius: 1.25 + random() * 1.05,
-              seed: particleSeed,
-              delay: random() * 0.22,
-            })
-          }
-        }
-      }
+      const referenceSignature = document.querySelector<SVGSVGElement>(
+        '.turbulent-shear-logo > .signature',
+      )
+      const radiusScale = referenceSignature
+        ? getRelativeParticleRadiusScale(
+            geometry.clientWidth,
+            referenceSignature.clientWidth,
+          )
+        : 1
+      particles = sampleSignatureParticles(
+        [...geometry.querySelectorAll('path')],
+        box,
+        { radiusScale },
+      ).map((sample) => createWindParticleLaunch(sample, width, height))
+      root.dataset.particleCount = String(particles.length)
       draw(elapsed / ANIMATION_DURATION, performance.now() / 1000)
       start()
     }
@@ -316,6 +254,7 @@ export function PortfolioLoader({
       reducedMotion.removeEventListener('change', onPreferenceChange)
       animationStartRef.current = () => {}
       context.clearRect(0, 0, width, height)
+      delete root.dataset.particleCount
     }
   }, [])
 
