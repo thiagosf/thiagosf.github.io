@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react'
 
-type SiteIconName = 'arrow-up-right' | 'arrow-up' | 'star' | 'asterisk' | 'plus'
+type SiteIconName = 'arrow-up-right' | 'arrow-down-left' | 'arrow-up' | 'star' | 'asterisk' | 'plus'
 
 interface SiteIconProps extends SVGProps<SVGSVGElement> {
   name: SiteIconName
@@ -12,6 +12,12 @@ const paths: Record<SiteIconName, React.ReactNode> = {
     <>
       <path d="M7 17 17 7" />
       <path d="M7 7h10v10" />
+    </>
+  ),
+  'arrow-down-left': (
+    <>
+      <path d="M17 7 7 17" />
+      <path d="M7 7v10h10" />
     </>
   ),
   'arrow-up': (

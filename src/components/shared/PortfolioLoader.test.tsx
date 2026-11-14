@@ -34,7 +34,11 @@ describe('PortfolioLoader', () => {
     vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
 
     render(
-      <PortfolioLoader progress={1} onAnimationComplete={onAnimationComplete} />,
+      <PortfolioLoader
+        progress={1}
+        onDockStart={vi.fn()}
+        onAnimationComplete={onAnimationComplete}
+      />,
     )
 
     expect(onAnimationComplete).toHaveBeenCalledTimes(1)
@@ -69,6 +73,7 @@ describe('PortfolioLoader', () => {
       return (
         <PortfolioLoader
           progress={1}
+          onDockStart={vi.fn()}
           onAnimationComplete={() => {
             onAnimationComplete()
             setMounted(false)

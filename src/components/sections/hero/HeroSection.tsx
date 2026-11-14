@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 import { TurbulentShearLogo } from '../../shared/TurbulentShearLogo'
 import type { HeroSectionProps } from './types'
 
@@ -51,7 +52,9 @@ export function HeroSection({ data }: HeroSectionProps) {
         <div className="signature-stage">
           <div className="stage-top">
             <span>THE PERSONAL TOUCH</span>
-            <span aria-hidden="true">↙</span>
+            <span aria-hidden="true">
+              <SiteIcon name="arrow-down-left" width="1em" height="1em" />
+            </span>
           </div>
           <div className="signature-guides" aria-hidden="true">
             <span />

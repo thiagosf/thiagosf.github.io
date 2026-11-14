@@ -16,6 +16,7 @@ import { SignatureArtwork, SIGNATURE_VIEW_BOX } from './SignatureArtwork'
 
 interface PortfolioLoaderProps {
   progress: number
+  onDockStart: () => void
   onAnimationComplete: () => void
 }
 
@@ -32,6 +33,7 @@ const easeOutCirc = (value: number) =>
 
 export function PortfolioLoader({
   progress,
+  onDockStart,
   onAnimationComplete,
 }: PortfolioLoaderProps) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -39,12 +41,15 @@ export function PortfolioLoader({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const readyProgressRef = useRef(progress)
   const animationStartRef = useRef<() => void>(() => {})
+  const onDockStartRef = useRef(onDockStart)
   const onCompleteRef = useRef(onAnimationComplete)
+  const dockStartNotifiedRef = useRef(false)
 
   useEffect(() => {
     readyProgressRef.current = progress
+    onDockStartRef.current = onDockStart
     onCompleteRef.current = onAnimationComplete
-  }, [progress, onAnimationComplete])
+  }, [progress, onDockStart, onAnimationComplete])
 
   useEffect(() => {
     const root = rootRef.current
@@ -207,6 +212,10 @@ export function PortfolioLoader({
       }
       dockSamples = destination
       root.dataset.docking = 'true'
+      if (!dockStartNotifiedRef.current) {
+        dockStartNotifiedRef.current = true
+        onDockStartRef.current()
+      }
       dockProgress = 0
       dockDuration = reducedMotion.matches ? 0 : DOCK_DURATION_MS
       if (!handoffDeadline) {

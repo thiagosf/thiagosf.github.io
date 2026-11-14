@@ -31,9 +31,9 @@ html {
   inset: 0;
   background: var(--color-paper);
   content: '';
-  transition: opacity 260ms ease-out;
+  transition: opacity 760ms ease-out;
 }
-.portfolio-loader[data-docked='true']::before {
+.portfolio-loader[data-docking='true']::before {
   opacity: 0;
 }
 .portfolio-loader__particles {
@@ -46,6 +46,14 @@ html {
   z-index: 1;
 }
 .portfolio-loader__geometry { z-index: 0; }
+[data-loader-docking='true'] .turbulent-shear-logo[data-ready='true'] > canvas {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-loader::before {
+    transition: none;
+  }
+}
 .portfolio-loader__geometry {
   position: absolute;
   top: 50%;

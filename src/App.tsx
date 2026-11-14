@@ -39,7 +39,9 @@ function App() {
   const [progress, setProgress] = useState(0)
   const [resourcesReady, setResourcesReady] = useState(false)
   const [loaderFillComplete, setLoaderFillComplete] = useState(false)
+  const [loaderDockingStarted, setLoaderDockingStarted] = useState(false)
   const assetsReady = resourcesReady && loaderFillComplete
+  const entranceReady = assetsReady || loaderDockingStarted
 
   useEffect(() => {
     let active = true
@@ -135,7 +137,7 @@ function App() {
 
   useGSAP(
     () => {
-      if (!assetsReady || !root.current) return
+      if (!entranceReady || !root.current) return
       const media = gsap.matchMedia()
       const targets = Array.from(
         root.current.querySelectorAll<HTMLElement>(MOTION_TARGETS),
@@ -261,8 +263,12 @@ function App() {
         media.revert()
       }
     },
-    { scope: root, dependencies: [assetsReady], revertOnUpdate: true },
+    { scope: root, dependencies: [entranceReady], revertOnUpdate: true },
   )
+
+  const handleLoaderDockStart = useCallback(() => {
+    setLoaderDockingStarted(true)
+  }, [])
 
   const handleLoaderFillComplete = useCallback(() => {
     setLoaderFillComplete(true)
@@ -308,13 +314,19 @@ function App() {
   }, [assetsReady])
 
   return (
-    <div ref={root}>
+    <div
+      ref={root}
+      data-loader-docking={
+        loaderDockingStarted && !assetsReady ? 'true' : undefined
+      }
+    >
       <AppShell busy={!assetsReady}>
         <LandingPage />
       </AppShell>
       {!assetsReady && (
         <PortfolioLoader
           progress={progress}
+          onDockStart={handleLoaderDockStart}
           onAnimationComplete={handleLoaderFillComplete}
         />
       )}

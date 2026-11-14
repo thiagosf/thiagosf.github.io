@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { SiteIcon } from './SiteIcon'
 
 describe('SiteIcon', () => {
-  it.each(['arrow-up-right', 'arrow-up', 'star', 'asterisk', 'plus'] as const)(
+  it.each(['arrow-up-right', 'arrow-down-left', 'arrow-up', 'star', 'asterisk', 'plus'] as const)(
     'renders the %s variant as a decorative SVG',
     (name) => {
       const { container } = render(<SiteIcon name={name} />)
