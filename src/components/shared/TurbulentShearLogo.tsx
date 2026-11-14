@@ -46,7 +46,7 @@ const radii = shapes.map((shape) =>
 
 /** The turbulent shear field from the motion specimen sheet. */
 export function TurbulentShearLogo() {
-  const rootRef = useRef<HTMLButtonElement>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -80,9 +80,9 @@ export function TurbulentShearLogo() {
     let pointer = { x: 0, y: 0 },
       velocity = 0,
       velocityAt = 0
-    let lastPointerAt = 0,
-      previewUntil = 0
-    let touchActive = false
+    let lastPointerAt = 0
+    let touchPointerId: number | null = null
+    let touchOrigin: { x: number; y: number } | null = null
 
     function draw(time: number) {
       if (!ctx) return
@@ -142,21 +142,10 @@ export function TurbulentShearLogo() {
       if (!visible || document.hidden || reduced.matches) return
       const dt = Math.min((time - (lastFrame || time - 16)) / 1000, 0.033)
       lastFrame = time
-      if (previewUntil) {
-        active = time < previewUntil
-        if (active) {
-          pointer = {
-            x: width * (0.25 + 0.5 * (1 - (previewUntil - time) / 900)),
-            y: height * 0.5,
-          }
-          direction = 0
-          velocity = 1
-          velocityAt = time
-        } else previewUntil = 0
-      }
       progress += ((active ? 1 : 0) - progress) * (1 - Math.exp(-10 * dt))
       const speed =
         velocity * Math.exp(-Math.max(0, time - velocityAt - 40) / 180)
+      const motionScale = width < 520 ? 0.72 : 1
       let moving = false
       for (const p of particles) {
         const dx = p.homeX - pointer.x,
@@ -171,12 +160,12 @@ export function TurbulentShearLogo() {
           Math.sin(cross * 0.085 + p.seed * 7 + time * 0.006)
         const targetX =
           p.homeX +
-          Math.cos(direction) * influence * progress * 18 +
-          Math.cos(direction + Math.PI / 2) * turbulence * 58
+          Math.cos(direction) * influence * progress * 18 * motionScale +
+          Math.cos(direction + Math.PI / 2) * turbulence * 58 * motionScale
         const targetY =
           p.homeY +
-          Math.sin(direction) * influence * progress * 18 +
-          Math.sin(direction + Math.PI / 2) * turbulence * 58
+          Math.sin(direction) * influence * progress * 18 * motionScale +
+          Math.sin(direction + Math.PI / 2) * turbulence * 58 * motionScale
         const damping = Math.exp(-10 * dt)
         p.vx =
           (p.vx + clamp((targetX - p.x) * 62, -10500, 10500) * dt) * damping
@@ -218,6 +207,7 @@ export function TurbulentShearLogo() {
       width = box.width
       height = box.height
       if (!width || !height) return
+      const compact = width < 520
       const ratio = Math.min(window.devicePixelRatio || 1, 2)
       canvas!.width = Math.round(width * ratio)
       canvas!.height = Math.round(height * ratio)
@@ -226,15 +216,19 @@ export function TurbulentShearLogo() {
       const random = () =>
         (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296
       particles = []
+      const offsets = compact
+        ? [-18, -9, 0, 9, 18]
+        : [-18, -12, -6, 0, 6, 12, 18]
+      const sampleSpacing = compact ? 9 : 7
       for (const path of paths) {
         const length = path.getTotalLength(),
           matrix = path.getScreenCTM()
         if (!matrix) continue
-        for (const offset of [-18, -12, -6, 0, 6, 12, 18]) {
+        for (const offset of offsets) {
           for (
             let distance = -18.75;
             distance <= length + 18.75;
-            distance += 7
+            distance += sampleSpacing
           ) {
             const at = clamp(distance, 0, length)
             const before = path.getPointAtLength(Math.max(0, at - 1))
@@ -279,11 +273,14 @@ export function TurbulentShearLogo() {
         }
       }
       root!.dataset.ready = String(particles.length > 0)
+      root!.dataset.particleCount = String(particles.length)
       pointer = { x: width / 2, y: height / 2 }
       draw(0)
       if (active) start()
     }
     function move(event: globalThis.PointerEvent) {
+      if (event.pointerType === 'touch' && event.pointerId !== touchPointerId)
+        return
       const box = root!.getBoundingClientRect(),
         time = performance.now()
       const next = { x: event.clientX - box.left, y: event.clientY - box.top }
@@ -303,38 +300,62 @@ export function TurbulentShearLogo() {
       }
       lastPointerAt = time
       pointer = next
-      previewUntil = 0
-      active = event.pointerType !== 'touch' || touchActive
+      active =
+        event.pointerType !== 'touch' ||
+        (event.pointerId === touchPointerId &&
+          touchOrigin !== null &&
+          Math.hypot(next.x - touchOrigin.x, next.y - touchOrigin.y) > 4)
       start()
     }
-    function leave() {
+    function pointerDown(event: globalThis.PointerEvent) {
+      if (
+        event.pointerType !== 'touch' ||
+        !event.isPrimary ||
+        touchPointerId !== null
+      )
+        return
+      touchPointerId = event.pointerId
+      const box = root!.getBoundingClientRect()
+      touchOrigin = {
+        x: event.clientX - box.left,
+        y: event.clientY - box.top,
+      }
+      pointer = touchOrigin
+      lastPointerAt = performance.now()
+      velocity = 0
       active = false
-      touchActive = false
-      previewUntil = 0
+    }
+    function releaseTouch(event: globalThis.PointerEvent) {
+      if (event.pointerId !== touchPointerId) return
+      touchPointerId = null
+      touchOrigin = null
+      active = false
       start()
     }
-    function preview() {
-      previewUntil = performance.now() + 900
-      active = true
+    function leave(event?: globalThis.PointerEvent) {
+      if (event?.pointerType === 'touch' && event.pointerId === touchPointerId)
+        return
+      active = false
+      touchPointerId = null
+      touchOrigin = null
       start()
     }
-    function click(event: MouseEvent) {
-      if ((event as globalThis.PointerEvent).pointerType === 'touch') {
-        touchActive = !touchActive
-        active = touchActive
-        start()
-      } else preview()
+    function moveOutsideTouch(event: globalThis.PointerEvent) {
+      if (touchPointerId !== null && !root!.contains(event.target as Node))
+        move(event)
     }
     function motionChange() {
       active = false
-      previewUntil = 0
+      touchPointerId = null
+      touchOrigin = null
       reset()
     }
     function visibilityChange() {
       if (document.hidden) {
-        cancelAnimationFrame(frame)
-        frame = 0
-        lastFrame = 0
+        active = false
+        touchPointerId = null
+        touchOrigin = null
+        reset()
       } else start()
     }
     measure()
@@ -355,15 +376,21 @@ export function TurbulentShearLogo() {
               lastFrame = 0
               start()
             } else {
+              active = false
+              touchPointerId = null
+              touchOrigin = null
               cancelAnimationFrame(frame)
               frame = 0
+              reset()
             }
           })
     intersection?.observe(root)
     root.addEventListener('pointermove', move)
+    root.addEventListener('pointerdown', pointerDown)
     root.addEventListener('pointerleave', leave)
-    root.addEventListener('blur', leave)
-    root.addEventListener('click', click)
+    window.addEventListener('pointermove', moveOutsideTouch)
+    window.addEventListener('pointerup', releaseTouch)
+    window.addEventListener('pointercancel', releaseTouch)
     window.addEventListener('resize', measure)
     document.addEventListener('visibilitychange', visibilityChange)
     reduced.addEventListener('change', motionChange)
@@ -373,25 +400,28 @@ export function TurbulentShearLogo() {
       themeObserver.disconnect()
       intersection?.disconnect()
       root.removeEventListener('pointermove', move)
+      root.removeEventListener('pointerdown', pointerDown)
       root.removeEventListener('pointerleave', leave)
-      root.removeEventListener('blur', leave)
-      root.removeEventListener('click', click)
+      window.removeEventListener('pointermove', moveOutsideTouch)
+      window.removeEventListener('pointerup', releaseTouch)
+      window.removeEventListener('pointercancel', releaseTouch)
       window.removeEventListener('resize', measure)
       document.removeEventListener('visibilitychange', visibilityChange)
       reduced.removeEventListener('change', motionChange)
       delete root.dataset.ready
+      delete root.dataset.particleCount
     }
   }, [])
 
   return (
-    <button
+    <div
       ref={rootRef}
-      type="button"
+      role="img"
       className="signature-art turbulent-shear-logo"
-      aria-label="Turbulent shear logo: move to scatter particles, or activate to replay"
+      aria-label="Thiago Silva Ferreira’s signature. Hover on desktop or drag on touch to move the particles."
     >
       <Signature />
       <canvas ref={canvasRef} aria-hidden="true" />
-    </button>
+    </div>
   )
 }
