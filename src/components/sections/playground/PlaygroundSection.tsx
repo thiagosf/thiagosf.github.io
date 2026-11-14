@@ -1,3 +1,4 @@
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 import { PlaygroundGrid } from './PlaygroundGrid'
 import type { PlaygroundSectionProps } from './types'
 
@@ -16,8 +17,8 @@ export function PlaygroundSection({ items }: PlaygroundSectionProps) {
             A place for experiments, first attempts, and the occasional rabbit
             hole. Learning by building, always.
           </p>
-          <span className="playground-asterisk" aria-hidden="true">
-            ✳
+          <span className="playground-asterisk">
+            <SiteIcon name="asterisk" size={130} />
           </span>
         </div>
         <div>

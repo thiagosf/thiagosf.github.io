@@ -1,3 +1,4 @@
+import { SiteIcon } from '../../shared/atoms/SiteIcon'
 import type { PlaygroundItem } from './types'
 
 export function PlaygroundCard({
@@ -25,7 +26,7 @@ export function PlaygroundCard({
             {item.stars !== undefined && (
               <span className="stars">
                 {' '}
-                ★ <span>{item.stars}</span>
+                <SiteIcon name="star" size={11} /> <span>{item.stars}</span>
               </span>
             )}
           </span>
@@ -37,7 +38,7 @@ export function PlaygroundCard({
                 rel="noopener noreferrer"
                 aria-label="View Demo"
               >
-                Try it ↗
+                Try it <SiteIcon name="arrow-up-right" size={14} />
               </a>
             )}
             {item.githubUrl && (
@@ -47,7 +48,7 @@ export function PlaygroundCard({
                 rel="noopener noreferrer"
                 aria-label="View Source"
               >
-                Source ↗
+                Source <SiteIcon name="arrow-up-right" size={14} />
               </a>
             )}
           </div>

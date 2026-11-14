@@ -54,6 +54,11 @@ body {
 .studio a {
   -webkit-tap-highlight-color: transparent;
 }
+.studio a svg {
+  display: inline-block;
+  flex: 0 0 auto;
+  vertical-align: -0.16em;
+}
 .studio a:focus-visible,
 .studio button:focus-visible,
 .studio summary:focus-visible {
@@ -68,9 +73,11 @@ body {
     background var(--dur-short),
     transform var(--dur-short) var(--ease-out);
 }
-.studio a:hover,
-.studio button:hover {
-  color: var(--color-accent);
+@media (hover: hover) and (pointer: fine) {
+  .studio a:hover,
+  .studio button:hover {
+    color: var(--color-accent);
+  }
 }
 .studio button:active {
   transform: translateY(1px);
@@ -215,8 +222,10 @@ body {
   color: var(--color-paper) !important;
   font-size: 13px;
 }
-.primary-link:hover {
-  background: var(--color-accent);
+@media (hover: hover) and (pointer: fine) {
+  .primary-link:hover {
+    background: var(--color-accent);
+  }
 }
 .hero-socials {
   display: flex;
@@ -550,7 +559,9 @@ body {
   justify-content: center;
   gap: 20px;
   transform: rotate(-6deg);
-  transition: transform 0.5s var(--ease-out);
+  transition:
+    transform 0.5s var(--ease-out),
+    scale 0.5s var(--ease-out);
 }
 .game-art strong {
   font-family: var(--font-display);
@@ -568,6 +579,10 @@ body {
   font-size: 115px;
   line-height: 1;
 }
+.pixel-spark svg {
+  width: 1em;
+  height: 1em;
+}
 .game-orbit {
   position: absolute;
   width: 140px;
@@ -582,7 +597,9 @@ body {
   position: relative;
   align-self: center;
   transform: rotate(-7deg);
-  transition: transform 0.5s var(--ease-out);
+  transition:
+    transform 0.5s var(--ease-out),
+    scale 0.5s var(--ease-out);
 }
 .gift-art strong {
   font-family: var(--font-display);
@@ -600,6 +617,10 @@ body {
   top: -28px;
   right: -55px;
 }
+.gift-star svg {
+  width: 1em;
+  height: 1em;
+}
 .gift-ribbon {
   position: absolute;
   border: 1px solid currentColor;
@@ -610,9 +631,43 @@ body {
   transform: rotate(20deg);
   opacity: 0.2;
 }
-.project-art:hover .game-art,
-.project-art:hover .gift-art {
+.project-art:focus-visible .game-art,
+.project-art:focus-visible .gift-art {
   transform: rotate(0deg);
+  scale: 1.035;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-art:hover .game-art,
+  .project-art:hover .gift-art {
+    transform: rotate(0deg);
+    scale: 1.035;
+  }
+  .project-art:hover .art-footer svg {
+    transform: translate(3px, -3px);
+  }
+}
+.project-art .art-footer svg {
+  transition: transform 220ms var(--ease-out);
+}
+.project-art:focus-visible .art-footer svg {
+  transform: translate(3px, -3px);
+}
+.studio main a:not(.project-art) {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition:
+    color var(--dur-short),
+    text-decoration-color var(--dur-short),
+    transform var(--dur-short) var(--ease-out);
+}
+.studio main a:not(.project-art):focus-visible {
+  text-decoration-color: currentColor;
+}
+@media (hover: hover) and (pointer: fine) {
+  .studio main a:not(.project-art):hover {
+    text-decoration-color: currentColor;
+  }
 }
 .project-info {
   padding: 24px 0 30px;
@@ -704,6 +759,10 @@ body {
   color: var(--color-art-pink);
   margin-top: 25px;
 }
+.playground-asterisk svg {
+  width: 1em;
+  height: 1em;
+}
 .playground-item {
   display: grid;
   grid-template-columns: 30px minmax(0, 1fr);
@@ -739,8 +798,10 @@ body {
   font-size: 10px;
   color: var(--color-lab-muted);
 }
-.playground-section a:hover {
-  color: var(--color-art-pink);
+@media (hover: hover) and (pointer: fine) {
+  .playground-section a:hover {
+    color: var(--color-art-pink);
+  }
 }
 .stars {
   margin-left: 10px;
@@ -1204,6 +1265,20 @@ body {
     animation: none !important;
     transition: none !important;
   }
+  .project-art:hover .game-art,
+  .project-art:focus-visible .game-art {
+    transform: rotate(-6deg) !important;
+    scale: 1 !important;
+  }
+  .project-art:hover .gift-art,
+  .project-art:focus-visible .gift-art {
+    transform: rotate(-7deg) !important;
+    scale: 1 !important;
+  }
+  .project-art:hover .art-footer svg,
+  .project-art:focus-visible .art-footer svg {
+    transform: none !important;
+  }
   .signature-art {
     transform: rotate(-9deg);
   }
@@ -1220,8 +1295,10 @@ body {
 .studio a:active {
   opacity: 0.8;
 }
-.primary-link:hover {
-  color: var(--color-accent-ink) !important;
+@media (hover: hover) and (pointer: fine) {
+  .primary-link:hover {
+    color: var(--color-accent-ink) !important;
+  }
 }
 @media (max-width: 540px) {
   .site-header {

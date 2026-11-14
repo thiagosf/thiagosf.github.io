@@ -28,7 +28,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
   const translateY = isPlayground ? 'translate-y-12' : 'translate-y-8'
 
   const transitionStyle = {
-    transitionDelay: `${400 + index * 100}ms`
+    transitionDelay: `${400 + index * 100}ms`,
   }
 
   return (
@@ -38,9 +38,7 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
       }`}
       style={transitionStyle}
     >
-      <div
-        className="flex flex-col p-8 min-h-full transition-all duration-700 border border-stone-200 dark:border-stone-800 hover:border-primary-500/50 dark:hover:border-primary-400/50"
-      >
+      <div className="flex flex-col p-8 min-h-full border border-stone-200 dark:border-stone-800">
         <CardHeader item={item} variant={variant} />
 
         <div className="grow">
@@ -48,9 +46,6 @@ export function Card({ item, index, isVisible, variant }: CardProps) {
         </div>
 
         <CardFooter item={item} variant={variant} />
-
-        {/* Subtle interactive accent */}
-        <div className="absolute bottom-0 right-0 w-1 h-1 bg-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </div>
   )

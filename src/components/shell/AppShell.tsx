@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 
 import { Signature } from '../shared/Signature'
+import { SiteIcon } from '../shared/atoms/SiteIcon'
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -25,7 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <a href="#projects">Work</a>
           <a href="#playground">Playground</a>
           <a className="nav-contact" href="#contact">
-            Let’s talk <span aria-hidden="true">↗</span>
+            Let’s talk <SiteIcon name="arrow-up-right" />
           </a>
         </nav>
       </header>
@@ -33,7 +34,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="site-footer page-width">
         <span>© {new Date().getFullYear()} Thiago Silva Ferreira</span>
         <span>Built with intent. A little curiosity, too.</span>
-        <a href="#home">Back to top ↑</a>
+        <a href="#home">
+          Back to top <SiteIcon name="arrow-up" />
+        </a>
       </footer>
     </div>
   )
