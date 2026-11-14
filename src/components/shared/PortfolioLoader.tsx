@@ -27,6 +27,8 @@ const BACKDROP_EXIT_MS = 260
 const DOCK_DEADLINE_MS = 2400
 const clamp = (value: number, minimum = 0, maximum = 1) =>
   Math.max(minimum, Math.min(maximum, value))
+const easeOutCirc = (value: number) =>
+  Math.sqrt(1 - (clamp(value) - 1) ** 2)
 
 export function PortfolioLoader({
   progress,
@@ -80,7 +82,7 @@ export function PortfolioLoader({
       particles.forEach((particle, index) => {
         const position = getWindParticlePosition(particle, progressValue)
         const destination = dockSamples[index]
-        const easedDock = dockProgress * dockProgress * (3 - 2 * dockProgress)
+        const easedDock = easeOutCirc(dockProgress)
         const x = destination ? position.x + (destination.homeX - position.x) * easedDock : position.x
         const y = destination ? position.y + (destination.homeY - position.y) * easedDock : position.y
         const radius = destination ? particle.radius + (destination.radius - particle.radius) * easedDock : particle.radius
@@ -357,7 +359,7 @@ export function PortfolioLoader({
         return
       }
 
-      const eased = dockProgress * dockProgress * (3 - 2 * dockProgress)
+      const eased = easeOutCirc(dockProgress)
       particles = particles.map((particle, index) => {
         const target = dockSamples[index]
         return {
