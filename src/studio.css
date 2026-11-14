@@ -11,8 +11,46 @@ body {
   overflow-x: clip;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: 8rem;
+}
+.portfolio-loader {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+.portfolio-loader__mark {
+  width: min(68vw, 300px);
+  color: var(--color-accent);
+}
+.portfolio-loader__mark .signature {
+  display: block;
+  width: 100%;
+}
+.portfolio-loader__mark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--logo-progress));
+  transition: stroke-dashoffset 320ms var(--ease-out);
+}
+.portfolio-loader__progress {
+  display: flex;
+  width: min(68vw, 300px);
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+.portfolio-loader__percent {
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
 }
 body {
   margin: 0;
@@ -1258,6 +1296,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .portfolio-loader__mark path {
+    transition: none;
   }
   .studio *,
   .studio *::before,

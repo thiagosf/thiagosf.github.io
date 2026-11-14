@@ -3,9 +3,15 @@ import type { ReactNode } from 'react'
 import { Signature } from '../shared/Signature'
 import { SiteIcon } from '../shared/atoms/SiteIcon'
 
-export function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({
+  children,
+  busy = false,
+}: {
+  children: ReactNode
+  busy?: boolean
+}) {
   return (
-    <div className="studio">
+    <div className="studio" aria-busy={busy} inert={busy}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
