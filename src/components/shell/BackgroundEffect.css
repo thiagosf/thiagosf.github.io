@@ -1,0 +1,9 @@
+.background-effect {
+  position: fixed;
+  z-index: -1;
+  inset: -140px;
+  display: block;
+  max-width: none;
+  filter: blur(56px);
+  pointer-events: none;
+}

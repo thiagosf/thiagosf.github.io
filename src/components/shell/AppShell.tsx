@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 
+import { BackgroundEffect } from './BackgroundEffect'
 import { Signature } from '../shared/Signature'
 import { SiteIcon } from '../shared/atoms/SiteIcon'
 
@@ -12,6 +13,7 @@ export function AppShell({
 }) {
   return (
     <div className="studio" aria-busy={busy} inert={busy}>
+      <BackgroundEffect />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

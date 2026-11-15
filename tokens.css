@@ -12,6 +12,10 @@
   --color-art-green: oklch(84% 0.15 135);
   --color-art-pink: oklch(86% 0.044 28);
   --color-art-red: oklch(46% 0.16 25);
+  --color-tide-mint: oklch(82% 0.075 165);
+  --color-tide-sky: oklch(82% 0.075 225);
+  --color-tide-blush: oklch(84% 0.075 15);
+  --color-tide-lemon: oklch(88% 0.08 92);
   --color-lab: oklch(25% 0.017 60);
   --color-lab-ink: oklch(94% 0.014 85);
   --color-lab-muted: oklch(75% 0.015 85);
@@ -44,4 +48,8 @@
   --color-muted: oklch(73% 0.015 85);
   --color-rule: oklch(37% 0.02 55);
   --color-accent: oklch(73% 0.15 35);
+  --color-tide-mint: oklch(45% 0.055 165);
+  --color-tide-sky: oklch(43% 0.055 225);
+  --color-tide-blush: oklch(47% 0.055 15);
+  --color-tide-lemon: oklch(49% 0.055 92);
 }
