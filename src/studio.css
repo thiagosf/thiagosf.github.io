@@ -218,11 +218,15 @@ body {
   inset: 0;
   content: '';
   background: var(--color-accent);
-  transform: scale(0);
-  transition: transform var(--dur-short) var(--ease-out);
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity var(--dur-short),
+    transform var(--dur-short) var(--ease-out);
 }
 .site-header nav a:hover::before,
 .site-header nav a:focus-visible::before {
+  opacity: 1;
   transform: scale(1);
 }
 .site-header nav a:hover,
@@ -503,6 +507,10 @@ body {
   padding-bottom: 7px;
   border-bottom: 1px solid var(--color-rule);
 }
+.text-link:hover,
+.text-link:focus-visible {
+  border-bottom-color: var(--color-accent);
+}
 .experience-item {
   border-top: 1px solid var(--color-rule);
 }
@@ -740,21 +748,40 @@ body {
 .project-art:focus-visible .art-footer svg {
   transform: translate(3px, -3px);
 }
-.studio main a:not(.project-art) {
+.studio main a:not(.project-art):not(.text-link) {
   text-decoration-line: underline;
   text-decoration-color: transparent;
   text-underline-offset: 4px;
   transition:
     color var(--dur-short),
+    background-color var(--dur-short),
     text-decoration-color var(--dur-short),
     transform var(--dur-short) var(--ease-out);
 }
-.studio main a:not(.project-art):focus-visible {
+.studio main a:not(.project-art):not(.text-link):focus-visible {
   text-decoration-color: currentColor;
 }
 @media (hover: hover) and (pointer: fine) {
-  .studio main a:not(.project-art):hover {
+  .studio main a:not(.project-art):not(.text-link):hover {
     text-decoration-color: currentColor;
+  }
+}
+
+@supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+  .experience-item {
+    interpolate-size: allow-keywords;
+  }
+  .experience-item::details-content {
+    block-size: 0;
+    content-visibility: hidden;
+    overflow: clip;
+    transition:
+      block-size var(--dur-medium, 320ms) var(--ease-out),
+      content-visibility var(--dur-medium, 320ms) allow-discrete;
+  }
+  .experience-item[open]::details-content {
+    block-size: auto;
+    content-visibility: visible;
   }
 }
 .project-info {
@@ -821,9 +848,26 @@ body {
   margin-top: auto;
 }
 .playground-section {
-  background: var(--color-lab);
+  background-color: var(--color-lab);
+  background-image: linear-gradient(
+    122deg,
+    oklch(22% 0.06 255),
+    oklch(30% 0.075 222),
+    oklch(24% 0.08 181),
+    oklch(28% 0.075 276)
+  );
+  background-size: 320% 280%;
+  animation: playground-cool-shift 28s ease-in-out infinite alternate;
   color: var(--color-lab-ink);
   padding-block: 90px;
+}
+@keyframes playground-cool-shift {
+  from {
+    background-position: 0% 45%;
+  }
+  to {
+    background-position: 100% 55%;
+  }
 }
 .playground-layout {
   display: grid;
@@ -1348,6 +1392,13 @@ body {
   }
   .portfolio-loader__geometry {
     opacity: 1;
+  }
+  .playground-section {
+    animation: none;
+    background-position: 50% 50%;
+  }
+  .experience-item::details-content {
+    transition: none;
   }
   .studio *,
   .studio *::before,
