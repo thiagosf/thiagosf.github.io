@@ -1,17 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "caveman": {
       "source": "juliusbrussee/caveman",
       "sourceType": "github",
       "skillPath": "skills/caveman/SKILL.md",
-      "computedHash": "2bc96f7c5d3c82f76714d9ec5027ef72518ede527b009a4cab6afd6db339ada9"
+      "computedHash": "b8dfa845022efd49eda28a3806d7bc5b76f0a8b03829ca85de386a0afab1eb4d"
+    },
+    "cook": {
+      "source": "Leonxlnx/cook",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "3dcf9cf36e34e6cd71137d8480fba18ea015339608d3e2065cdc712c6a362d1a"
     },
     "hallmark": {
       "source": "nutlope/hallmark",
       "sourceType": "github",
       "skillPath": "skills/hallmark/SKILL.md",
-      "computedHash": "579f86b27cdd7eb972107f7aecedd537f472891c5fd7c7c821bea15f64e0fe86"
+      "computedHash": "c5ae622ff654348da6e650400a17f7b28a3ad0b3a1be3944c1213101e71d6346"
     }
   }
 }
