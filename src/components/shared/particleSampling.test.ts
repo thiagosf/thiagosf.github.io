@@ -69,6 +69,26 @@ describe('signature particle sampling and assembly', () => {
     expect(first.some(({ seed }) => seed !== first[0].seed)).toBe(true)
   })
 
+  it('reduces compact sampling density while preserving the signature width and desktop density', () => {
+    vi.stubGlobal('DOMPoint', TestDOMPoint)
+    const path = createStraightSignaturePath(360)
+    const mobile = sampleSignatureParticles([path], {
+      left: 0,
+      top: 0,
+      width: 390,
+    })
+    const desktop = sampleSignatureParticles([path], {
+      left: 0,
+      top: 0,
+      width: 800,
+    })
+    const mobileY = mobile.map(({ homeY }) => homeY)
+
+    expect(mobile.length).toBeLessThan(desktop.length * 0.8)
+    expect(new Set(mobileY)).toEqual(new Set([-18, -9, 0, 9, 18].map((y) => 40 + y)))
+    expect(desktop.length).toBeGreaterThan(mobile.length)
+  })
+
   it('normalizes particle radius to the preloader signature footprint', () => {
     vi.stubGlobal('DOMPoint', TestDOMPoint)
     const paths = [createStraightSignaturePath(360)]
