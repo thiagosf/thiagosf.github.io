@@ -86,7 +86,8 @@ body {
   font-family: var(--font-body);
 }
 .studio {
-  background: var(--color-paper);
+  isolation: isolate;
+  background: transparent;
   color: var(--color-ink);
   line-height: 1.6;
 }
