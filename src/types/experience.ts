@@ -12,5 +12,4 @@ export interface Experience {
 export interface ExperienceSectionProps {
   experiences: Experience[]
   onItemClick?: (id: string) => void
-  onFilterTech?: (tech: string) => void
 }

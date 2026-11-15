@@ -4,25 +4,15 @@ import { SiteIcon } from '../../shared/atoms/SiteIcon'
 interface ExperienceItemProps {
   experience: Experience
   index: number
-  isVisible: boolean
-  activeTech: string | null
-  setActiveTech: (tech: string | null) => void
   onItemClick?: (id: string) => void
-  onFilterTech?: (tech: string) => void
 }
 export function ExperienceItem({
   experience,
   index,
-  activeTech,
-  setActiveTech,
   onItemClick,
-  onFilterTech,
 }: ExperienceItemProps) {
   return (
-    <details
-      className={`experience-item ${activeTech && experience.technologies.includes(activeTech) ? 'tech-highlight' : ''}`}
-      open={index === 0}
-    >
+    <details className="experience-item" open={index === 0}>
       <summary onClick={() => onItemClick?.(experience.id)}>
         <span className="experience-heading">
           <span className="experience-company">
@@ -43,16 +33,7 @@ export function ExperienceItem({
         <p>{experience.description}</p>
         <div className="tech-list">
           {experience.technologies.map((tech) => (
-            <button
-              key={tech}
-              onMouseEnter={() => setActiveTech(tech)}
-              onMouseLeave={() => setActiveTech(null)}
-              onFocus={() => setActiveTech(tech)}
-              onBlur={() => setActiveTech(null)}
-              onClick={() => onFilterTech?.(tech)}
-            >
-              {tech}
-            </button>
+            <span key={tech}>{tech}</span>
           ))}
         </div>
       </div>

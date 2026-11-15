@@ -84,19 +84,11 @@ describe('ExperienceSection', () => {
     // This test might need adjustment once the component is copied.
   })
 
-  it('calls onFilterTech when a tech chip is clicked', () => {
-    const onFilterTech = vi.fn()
-    render(
-      <ExperienceSection
-        experiences={mockExperiences}
-        onFilterTech={onFilterTech}
-      />,
-    )
-
-    const techChip = screen.getByText('React')
-    fireEvent.click(techChip)
-
-    expect(onFilterTech).toHaveBeenCalledWith('React')
+  it('renders technology labels without interactive controls', () => {
+    const { container } = render(<ExperienceSection experiences={mockExperiences} />)
+    const techList = container.querySelector('.tech-list')
+    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(techList?.querySelectorAll('button, a')).toHaveLength(0)
   })
 
   it('shows empty state when no experiences are provided', () => {
