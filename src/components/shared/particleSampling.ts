@@ -56,7 +56,7 @@ export function sampleSignatureParticles(
   const offsets = compact
     ? [-18, -9, 0, 9, 18]
     : [-18, -12, -6, 0, 6, 12, 18]
-  const sampleSpacing = compact ? 9 : 7
+  const sampleSpacing = compact ? 12 : 7
   let seed = 9143 + 8 * 7919
   const random = () =>
     (seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296
