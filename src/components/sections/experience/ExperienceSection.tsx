@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import heroData from '../../../data/hero-data.json'
 import type { ExperienceSectionProps } from '../../../types/experience'
 import { SiteIcon } from '../../shared/atoms/SiteIcon'
@@ -8,9 +6,7 @@ import { ExperienceItem } from './ExperienceItem'
 export function ExperienceSection({
   experiences,
   onItemClick,
-  onFilterTech,
 }: ExperienceSectionProps) {
-  const [activeTech, setActiveTech] = useState<string | null>(null)
   return (
     <section id="experience" className="experience-section page-width">
       <div className="section-intro">
@@ -43,11 +39,7 @@ export function ExperienceSection({
               key={experience.id}
               experience={experience}
               index={index}
-              isVisible
-              activeTech={activeTech}
-              setActiveTech={setActiveTech}
               onItemClick={onItemClick}
-              onFilterTech={onFilterTech}
             />
           ))
         )}
