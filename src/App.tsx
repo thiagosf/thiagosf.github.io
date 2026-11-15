@@ -218,6 +218,30 @@ function App() {
         }
 
         const refresh = () => ScrollTrigger.refresh()
+        const pendingDisclosureRefreshes = new Map<HTMLDetailsElement, number>()
+        const refreshAfterDisclosureToggle = (event: Event) => {
+          refresh()
+          const details = event.target
+          if (
+            !(details instanceof HTMLDetailsElement) ||
+            !details.classList.contains('experience-item')
+          ) return
+          const durations = getComputedStyle(details, '::details-content')
+            .transitionDuration.split(',')
+            .map((duration) => {
+              const value = Number.parseFloat(duration)
+              return duration.trim().endsWith('ms') ? value : value * 1000
+            })
+          const duration = Math.max(...durations)
+          if (duration <= 0) return
+          const previousTimeout = pendingDisclosureRefreshes.get(details)
+          if (previousTimeout) window.clearTimeout(previousTimeout)
+          const timeout = window.setTimeout(() => {
+            pendingDisclosureRefreshes.delete(details)
+            refresh()
+          }, duration + 34)
+          pendingDisclosureRefreshes.set(details, timeout)
+        }
         const handleVisibilityChange = () => {
           if (document.visibilityState !== 'hidden') return
           entrance?.kill()
@@ -227,14 +251,16 @@ function App() {
           preparedEntranceRef.current = []
           initialViewportTargetsRef.current = []
         }
-        document.addEventListener('toggle', refresh, true)
+        document.addEventListener('toggle', refreshAfterDisclosureToggle, true)
         document.addEventListener('visibilitychange', handleVisibilityChange)
         document.fonts?.ready.then(refresh)
         return () => {
           window.clearTimeout(revealFallback)
           entrance?.kill()
           scrollTweens.forEach((tween) => tween.scrollTrigger?.kill())
-          document.removeEventListener('toggle', refresh, true)
+          document.removeEventListener('toggle', refreshAfterDisclosureToggle, true)
+          pendingDisclosureRefreshes.forEach((timeout) => window.clearTimeout(timeout))
+          pendingDisclosureRefreshes.clear()
           document.removeEventListener('visibilitychange', handleVisibilityChange)
           gsap.set(targets, { clearProps: 'opacity,visibility,transform' })
           preparedEntranceRef.current = []
