@@ -172,8 +172,10 @@ function App() {
               immediateRender: false,
               scrollTrigger: {
                 trigger: target,
-                start: 'top 90%',
-                end: 'top 62%',
+                // Final-page targets must finish even when their usual bounds
+                // lie beyond the document's maximum scroll position.
+                start: 'clamp(top 90%)',
+                end: 'clamp(top 62%)',
                 scrub: 0.55,
                 invalidateOnRefresh: true,
               },
